@@ -3,14 +3,181 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OMNET IT System – Enterprise IT Solutions & Managed Services | Delhi NCR</title>
-  <meta name="description" content="Omnet IT System delivers comprehensive Enterprise IT Solutions including Cloud Services, Cybersecurity, IT Infrastructure, and Computer AMC Services across Delhi NCR." />
+  <title>OMNET IT System – IT Support | IT Security | Managed IT Services | Delhi NCR</title>
+  <meta name="description" content="OMNET IT System delivers comprehensive IT Support, IT Security, and Managed IT Services across Delhi NCR — 24/7 helpdesk, onsite engineers, fixed-cost AMC, cybersecurity, and cloud services for businesses of all sizes." />
+  <meta name="keywords" content="IT support Delhi NCR, IT security Delhi, managed IT services Delhi, computer AMC Noida, IT helpdesk Gurugram, cybersecurity Delhi NCR, managed IT Noida, IT company Delhi NCR" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" />
+  <style>
+    /* ── HERO BANNER (proit style - dark professional) ── */
+    .home-hero {
+      background: linear-gradient(135deg, #0a2240 0%, #0d4f5c 40%, #0d7377 100%);
+      padding: 120px 0 80px; position: relative; overflow: hidden; color: #fff;
+    }
+    .home-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(20,184,166,.18) 0%, transparent 55%),
+                  radial-gradient(circle at 80% 30%, rgba(6,182,212,.13) 0%, transparent 55%);
+    }
+    .home-hero-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .home-hero h1 {
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem); font-weight: 800; line-height: 1.15;
+      color: #fff; margin-bottom: 1.25rem;
+    }
+    .home-hero h1 span {
+      background: linear-gradient(90deg, #5eead4, #22d3ee); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .home-hero p {
+      font-size: 1.1rem; color: rgba(255,255,255,.82); line-height: 1.75; margin-bottom: 2rem;
+    }
+    .home-hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .hero-stat-row {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem;
+      border-top: 1px solid rgba(255,255,255,.15); padding-top: 1.75rem;
+    }
+    .hero-stat-item .val { font-size: 1.9rem; font-weight: 800; color: #5eead4; display: block; }
+    .hero-stat-item .lbl { font-size: .78rem; color: rgba(255,255,255,.65); margin-top: .2rem; }
+
+    /* Right side service cards */
+    .hero-svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .hero-svc-card {
+      background: rgba(255,255,255,.08); backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.14); border-radius: 16px; padding: 1.5rem 1.25rem;
+      text-decoration: none; transition: all .3s; color: #fff;
+    }
+    .hero-svc-card:hover {
+      background: rgba(255,255,255,.14); transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,.25);
+    }
+    .hero-svc-card .hsc-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1rem;
+    }
+    .hero-svc-card h4 { font-size: .95rem; font-weight: 700; margin-bottom: .3rem; }
+    .hero-svc-card p { font-size: .8rem; color: rgba(255,255,255,.65); line-height: 1.5; }
+    .hero-svc-card .arrow {
+      display: inline-flex; align-items: center; gap: .3rem;
+      font-size: .78rem; font-weight: 600; color: #5eead4; margin-top: .7rem;
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar-home {
+      background: linear-gradient(135deg, var(--teal-700), var(--cyan-700)); padding: 0;
+    }
+    .stats-bar-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;
+      display: grid; grid-template-columns: repeat(5,1fr);
+    }
+    .sbar-item {
+      padding: 1.5rem 1.25rem; text-align: center; color: #fff;
+      border-right: 1px solid rgba(255,255,255,.15);
+    }
+    .sbar-item:last-child { border-right: none; }
+    .sbar-item .n { font-size: 1.6rem; font-weight: 800; display: block; }
+    .sbar-item .l { font-size: .78rem; opacity: .8; }
+
+    /* ── FLEXIBLE SUPPORT SECTION (proit inspired) ── */
+    .flex-support-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+    }
+    .fscard {
+      border: 2px solid var(--gray-200); border-radius: 20px; padding: 2.5rem 2rem;
+      background: #fff; text-align: center; transition: all .3s; position: relative;
+    }
+    .fscard:hover { border-color: var(--teal-400); box-shadow: 0 16px 48px rgba(20,184,166,.12); transform: translateY(-4px); }
+    .fscard.featured { border-color: var(--teal-500); background: linear-gradient(135deg,#f0fdfa,#ecfeff); }
+    .fscard .ftop { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(90deg, var(--teal-500), var(--cyan-500)); color: #fff; font-size: .72rem; font-weight: 700; padding: .3rem 1.1rem; border-radius: 999px; white-space: nowrap; }
+    .fscard .ficon { font-size: 2.8rem; color: var(--teal-600); margin-bottom: 1.25rem; }
+    .fscard h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: .75rem; }
+    .fscard p { color: var(--gray-500); font-size: .9rem; line-height: 1.75; margin-bottom: 1.5rem; }
+    .fscard ul { list-style: none; padding: 0; margin: 0 0 1.75rem; text-align: left; }
+    .fscard ul li { display: flex; gap: .5rem; align-items: flex-start; padding: .35rem 0; font-size: .875rem; color: var(--gray-700); }
+    .fscard ul li i { color: var(--teal-500); flex-shrink: 0; margin-top: .1rem; }
+
+    /* ── SERVICE CARDS ── */
+    .svc-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+
+    /* ── WHY US - 2 col ── */
+    .why-left { display: flex; flex-direction: column; justify-content: center; }
+    .why-grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .wg-item {
+      background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 14px;
+      padding: 1.4rem; transition: all .3s;
+    }
+    .wg-item:hover { background: var(--teal-50); border-color: var(--teal-200); }
+    .wg-item .wi { font-size: 1.5rem; color: var(--teal-600); margin-bottom: .6rem; display: block; }
+    .wg-item h4 { font-size: .95rem; font-weight: 700; margin-bottom: .3rem; color: var(--gray-900); }
+    .wg-item p { font-size: .82rem; color: var(--gray-500); line-height: 1.5; }
+
+    /* ── INDUSTRIES ── */
+    .ind-scroll { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 1rem; }
+    .ind-tile {
+      background: #fff; border: 1px solid var(--gray-200); border-radius: 14px;
+      padding: 1.2rem 1.1rem; display: flex; align-items: center; gap: .75rem;
+      font-weight: 600; color: var(--gray-800); font-size: .9rem; transition: all .3s; cursor: default;
+    }
+    .ind-tile:hover { background: var(--teal-50); border-color: var(--teal-300); color: var(--teal-700); }
+    .ind-tile i { font-size: 1.3rem; color: var(--teal-600); }
+
+    /* ── TESTIMONIALS ── */
+    .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .tcard {
+      background: #fff; border: 1px solid var(--gray-200); border-radius: 20px;
+      padding: 2rem; transition: all .3s;
+    }
+    .tcard:hover { box-shadow: 0 8px 32px rgba(0,0,0,.08); transform: translateY(-2px); }
+    .tcard .stars { color: #f59e0b; font-size: 1rem; margin-bottom: 1rem; }
+    .tcard .quote { font-size: .95rem; color: var(--gray-600); line-height: 1.75; margin-bottom: 1.5rem; font-style: italic; }
+    .tcard .author { display: flex; align-items: center; gap: .9rem; }
+    .tcard .av {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal-500), var(--cyan-600));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; color: #fff; font-size: 1rem; flex-shrink: 0;
+    }
+    .tcard .aname { font-size: .9rem; font-weight: 700; color: var(--gray-900); }
+    .tcard .arole { font-size: .78rem; color: var(--gray-500); }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: linear-gradient(135deg, #0a2240, #0d4f5c, #0d7377);
+      padding: 5rem 0; text-align: center; color: #fff; position: relative; overflow: hidden;
+    }
+    .cta-banner::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(20,184,166,.15) 0%, transparent 70%);
+    }
+    .cta-banner h2 { font-size: clamp(1.8rem,3.5vw,2.6rem); font-weight: 800; margin-bottom: 1rem; position: relative; }
+    .cta-banner p { color: rgba(255,255,255,.82); font-size: 1.1rem; max-width: 600px; margin: 0 auto 2.5rem; position: relative; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1024px) {
+      .home-hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-svc-grid { grid-template-columns: repeat(3,1fr); }
+      .stats-bar-inner { grid-template-columns: repeat(3,1fr); }
+      .flex-support-grid { grid-template-columns: 1fr; }
+      .svc-row { grid-template-columns: 1fr 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+    }
+    @media(max-width:768px) {
+      .hero-stat-row { grid-template-columns: 1fr 1fr; }
+      .hero-svc-grid { grid-template-columns: 1fr 1fr; }
+      .stats-bar-inner { grid-template-columns: 1fr 1fr; }
+      .svc-row { grid-template-columns: 1fr; }
+      .why-grid-2x2 { grid-template-columns: 1fr; }
+      .ind-scroll { grid-template-columns: repeat(2,1fr); }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ── HEADER ── -->
 <header class="site-header">
   <div class="header-inner">
     <a href="index.html" class="logo-wrap">
@@ -22,37 +189,81 @@
     </a>
 
     <nav class="desktop-nav">
-      <a href="index.html" class="nav-link active">Home</a>
+      <a href="index.html" class="nav-link">Home</a>
 
       <div class="nav-dropdown">
-        <button class="dropdown-btn">About <i class="ri-arrow-down-s-line"></i></button>
+        <button class="dropdown-btn">IT Support <i class="ri-arrow-down-s-line"></i></button>
         <div class="dropdown-menu">
-          <a href="about.html"><i class="ri-information-line"></i>About Us</a>
-          <a href="portfolio.html"><i class="ri-briefcase-line"></i>Portfolio</a>
+          <div class="dropdown-menu-inner">
+            <a href="it-support.html"><i class="ri-customer-service-2-line"></i>IT Support Overview</a>
+            <a href="it-support-delhi.html"><i class="ri-map-pin-line"></i>IT Support — Delhi</a>
+            <a href="it-support-noida.html"><i class="ri-map-pin-line"></i>IT Support — Noida</a>
+            <a href="it-support-gurugram.html"><i class="ri-map-pin-line"></i>IT Support — Gurugram</a>
+            <a href="it-support-greater-noida.html"><i class="ri-map-pin-line"></i>IT Support — Greater Noida</a>
+            <a href="remote-onsite-support.html"><i class="ri-tools-line"></i>Remote &amp; Onsite Support</a>
+            <a href="repair-services.html"><i class="ri-hammer-line"></i>Repair &amp; Computer AMC</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-dropdown">
+        <button class="dropdown-btn">IT Security <i class="ri-arrow-down-s-line"></i></button>
+        <div class="dropdown-menu">
+          <div class="dropdown-menu-inner">
+            <a href="it-security.html"><i class="ri-shield-check-line"></i>IT Security Overview</a>
+            <a href="it-security.html#firewall"><i class="ri-shield-flash-line"></i>Firewall Management</a>
+            <a href="it-security.html#endpoint"><i class="ri-computer-line"></i>Endpoint Protection</a>
+            <a href="it-security.html#email-sec"><i class="ri-mail-shield-line"></i>Email Security</a>
+            <a href="it-security.html#pentest"><i class="ri-bug-2-line"></i>Penetration Testing</a>
+            <a href="it-security.html#cloud-sec"><i class="ri-cloud-line"></i>Cloud Security</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-dropdown">
+        <button class="dropdown-btn">Managed IT <i class="ri-arrow-down-s-line"></i></button>
+        <div class="dropdown-menu">
+          <div class="dropdown-menu-inner" style="min-width:240px">
+            <a href="managed-services.html"><i class="ri-settings-3-line"></i>Managed IT Overview</a>
+            <a href="managed-it-services-delhi.html"><i class="ri-map-pin-line"></i>Managed IT — Delhi</a>
+            <a href="managed-it-services-noida.html"><i class="ri-map-pin-line"></i>Managed IT — Noida</a>
+            <a href="managed-it-services-gurugram.html"><i class="ri-map-pin-line"></i>Managed IT — Gurugram</a>
+            <a href="managed-it-services-greater-noida.html"><i class="ri-map-pin-line"></i>Managed IT — Greater Noida</a>
+            <a href="cloud-services.html"><i class="ri-cloud-line"></i>Cloud Services</a>
+          </div>
         </div>
       </div>
 
       <div class="nav-dropdown">
         <button class="dropdown-btn">Services <i class="ri-arrow-down-s-line"></i></button>
-        <div class="dropdown-menu" style="min-width:260px">
-          <a href="services.html"><i class="ri-service-line"></i>All Services</a>
-          <a href="managed-services.html"><i class="ri-settings-3-line"></i>Managed IT Services</a>
-          <a href="cloud-services.html"><i class="ri-cloud-line"></i>Cloud Services</a>
-          <a href="devops-services.html"><i class="ri-git-merge-line"></i>DevOps Services</a>
-          <a href="digital-transformation.html"><i class="ri-refresh-line"></i>Digital Transformation</a>
-          <a href="email-solutions.html"><i class="ri-mail-line"></i>Email Solutions</a>
-          <a href="network-infrastructure.html"><i class="ri-global-line"></i>Network Infrastructure</a>
-          <a href="remote-onsite-support.html"><i class="ri-customer-service-2-line"></i>Remote &amp; Onsite Support</a>
-          <a href="repair-services.html"><i class="ri-tools-line"></i>Repair Services</a>
-          <a href="professional-services.html"><i class="ri-building-4-line"></i>Professional Services</a>
-          <a href="it-hardware-rental.html"><i class="ri-computer-line"></i>IT Hardware Rental</a>
+        <div class="dropdown-menu">
+          <div class="dropdown-menu-inner" style="min-width:260px">
+            <a href="services.html"><i class="ri-service-line"></i>All Services</a>
+            <a href="infrastructure-services.html"><i class="ri-building-2-line"></i>Infrastructure Services</a>
+            <a href="network-infrastructure.html"><i class="ri-global-line"></i>Network Infrastructure</a>
+            <a href="devops-services.html"><i class="ri-git-merge-line"></i>DevOps Services</a>
+            <a href="digital-transformation.html"><i class="ri-refresh-line"></i>Digital Transformation</a>
+            <a href="email-solutions.html"><i class="ri-mail-line"></i>Email Solutions</a>
+            <a href="professional-services.html"><i class="ri-building-4-line"></i>Professional Services</a>
+            <a href="it-hardware-rental.html"><i class="ri-computer-line"></i>IT Hardware Rental</a>
+          </div>
         </div>
       </div>
 
       <a href="products.html" class="nav-link">Products</a>
       <a href="industry-expertise.html" class="nav-link">Industries</a>
-      <a href="technology-domains.html" class="nav-link">Technology</a>
-      <a href="pricing.html" class="nav-link">Pricing</a>
+
+      <div class="nav-dropdown">
+        <button class="dropdown-btn">About <i class="ri-arrow-down-s-line"></i></button>
+        <div class="dropdown-menu">
+          <div class="dropdown-menu-inner">
+            <a href="about.html"><i class="ri-information-line"></i>About Us</a>
+            <a href="portfolio.html"><i class="ri-briefcase-line"></i>Portfolio</a>
+            <a href="pricing.html"><i class="ri-price-tag-3-line"></i>Pricing</a>
+          </div>
+        </div>
+      </div>
+
       <a href="contact.html" class="nav-link">Contact</a>
     </nav>
 
@@ -67,446 +278,457 @@
   <!-- Mobile Nav -->
   <div class="mobile-nav">
     <div class="mobile-nav-inner">
-      <a href="index.html">Home</a>
+      <a href="index.html" class="nav-link active" style="color:var(--teal-600);background:var(--teal-50)">Home</a>
       <div class="mobile-nav-section">
-        <div class="mobile-nav-label">About</div>
-        <div class="mobile-nav-child"><a href="about.html">About Us</a><a href="portfolio.html">Portfolio</a></div>
+        <div class="mobile-nav-label">IT Support</div>
+        <div class="mobile-nav-child">
+          <a href="it-support.html">IT Support Overview</a>
+          <a href="it-support-delhi.html">IT Support — Delhi</a>
+          <a href="it-support-noida.html">IT Support — Noida</a>
+          <a href="it-support-gurugram.html">IT Support — Gurugram</a>
+          <a href="it-support-greater-noida.html">IT Support — Greater Noida</a>
+          <a href="remote-onsite-support.html">Remote &amp; Onsite Support</a>
+          <a href="repair-services.html">Repair &amp; AMC</a>
+        </div>
+      </div>
+      <div class="mobile-nav-section">
+        <div class="mobile-nav-label">IT Security</div>
+        <div class="mobile-nav-child">
+          <a href="it-security.html">IT Security Overview</a>
+          <a href="it-security.html#firewall">Firewall Management</a>
+          <a href="it-security.html#endpoint">Endpoint Protection</a>
+          <a href="it-security.html#email-sec">Email Security</a>
+          <a href="it-security.html#pentest">Penetration Testing</a>
+        </div>
+      </div>
+      <div class="mobile-nav-section">
+        <div class="mobile-nav-label">Managed IT</div>
+        <div class="mobile-nav-child">
+          <a href="managed-services.html">Managed IT Overview</a>
+          <a href="managed-it-services-delhi.html">Managed IT — Delhi</a>
+          <a href="managed-it-services-noida.html">Managed IT — Noida</a>
+          <a href="managed-it-services-gurugram.html">Managed IT — Gurugram</a>
+          <a href="managed-it-services-greater-noida.html">Managed IT — Greater Noida</a>
+          <a href="cloud-services.html">Cloud Services</a>
+        </div>
       </div>
       <div class="mobile-nav-section">
         <div class="mobile-nav-label">Services</div>
         <div class="mobile-nav-child">
           <a href="services.html">All Services</a>
-          <a href="managed-services.html">Managed IT Services</a>
-          <a href="cloud-services.html">Cloud Services</a>
-          <a href="devops-services.html">DevOps Services</a>
-          <a href="digital-transformation.html">Digital Transformation</a>
-          <a href="email-solutions.html">Email Solutions</a>
+          <a href="infrastructure-services.html">Infrastructure Services</a>
           <a href="network-infrastructure.html">Network Infrastructure</a>
-          <a href="remote-onsite-support.html">Remote &amp; Onsite Support</a>
-          <a href="repair-services.html">Repair Services</a>
-          <a href="it-hardware-rental.html">IT Hardware Rental</a>
+          <a href="devops-services.html">DevOps Services</a>
+          <a href="email-solutions.html">Email Solutions</a>
         </div>
       </div>
       <a href="products.html">Products</a>
       <a href="industry-expertise.html">Industries</a>
-      <a href="technology-domains.html">Technology</a>
-      <a href="pricing.html">Pricing</a>
+      <div class="mobile-nav-section">
+        <div class="mobile-nav-label">About</div>
+        <div class="mobile-nav-child">
+          <a href="about.html">About Us</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="pricing.html">Pricing</a>
+        </div>
+      </div>
       <a href="contact.html">Contact</a>
-      <hr class="mobile-nav-divider" />
+      <hr class="mobile-nav-divider"/>
       <a href="tel:+919717270865"><i class="ri-phone-line"></i> +91-97172-70865</a>
       <a href="contact.html" style="background:linear-gradient(135deg,#14b8a6,#0891b2);color:#fff;text-align:center;font-weight:700;margin-top:.5rem">Get Free Quote</a>
     </div>
   </div>
 </header>
-<!-- /HEADER -->
 
 <main>
 
 <!-- ── HERO ── -->
-<section class="hero hero-bg">
-  <div class="hero-blob blob-1"></div>
-  <div class="hero-blob blob-2"></div>
-  <div class="hero-inner">
-    <div class="hero-content">
-      <div class="badge badge-teal hero-tag reveal">
-        <i class="ri-rocket-fill"></i> Launching January 2026 — Your IT Partner
+<section class="home-hero">
+  <div class="home-hero-inner">
+    <!-- LEFT: headline + stats -->
+    <div>
+      <div class="badge badge-white-glass mb-4"><i class="ri-rocket-fill"></i> Delhi NCR's Trusted IT Partner</div>
+      <h1>IT Support · Security <span>&amp; Managed IT</span> Services</h1>
+      <p>OMNET IT System delivers reliable IT Support, Cybersecurity, and Managed IT Services for businesses across Delhi NCR — with 20-minute remote response, 4-hour onsite SLA, and a single fixed monthly cost.</p>
+      <div class="home-hero-btns">
+        <a href="contact.html" class="btn btn-teal"><i class="ri-file-list-3-line"></i> Get Free Assessment</a>
+        <a href="tel:+919717270865" class="btn btn-outline-white"><i class="ri-phone-fill"></i> +91-97172-70865</a>
+        <a href="https://wa.me/919717270865" class="btn btn-outline-white"><i class="ri-whatsapp-fill"></i> WhatsApp</a>
       </div>
-      <h1 class="hero-title reveal">
-        Enterprise <span class="gradient">IT Solutions</span> &amp; Managed Services
-      </h1>
-      <p class="hero-subtitle reveal">
-        Omnet IT System delivers comprehensive Enterprise IT Solutions including Cloud Services, Cybersecurity, IT Infrastructure, and Computer AMC Services across Delhi NCR — Noida, Greater Noida, Gurugram, Faridabad &amp; Delhi.
-      </p>
-      <div class="hero-btns reveal">
-        <a href="contact.html" class="btn btn-teal"><i class="ri-phone-fill"></i> Get Free Quote</a>
-        <a href="services.html" class="btn btn-white">View Services <i class="ri-arrow-right-line"></i></a>
-      </div>
-      <div class="hero-stats reveal">
-        <div><div class="hero-stat-value">2026</div><div class="hero-stat-label">Startup Year</div></div>
-        <div><div class="hero-stat-value">10+</div><div class="hero-stat-label">Clients Served</div></div>
-        <div><div class="hero-stat-value">10+</div><div class="hero-stat-label">IT Engineers</div></div>
-        <div><div class="hero-stat-value">99%</div><div class="hero-stat-label">Satisfaction</div></div>
+      <div class="hero-stat-row">
+        <div class="hero-stat-item"><span class="val">20 Min</span><span class="lbl">Remote Response SLA</span></div>
+        <div class="hero-stat-item"><span class="val">4 Hrs</span><span class="lbl">Onsite Response Delhi NCR</span></div>
+        <div class="hero-stat-item"><span class="val">99%</span><span class="lbl">Uptime Target</span></div>
+        <div class="hero-stat-item"><span class="val">24/7</span><span class="lbl">Helpdesk &amp; Monitoring</span></div>
       </div>
     </div>
 
-    <div class="hero-cards reveal">
-      <div class="hero-card">
-        <div class="hero-card-icon" style="background:linear-gradient(135deg,#14b8a6,#06b6d4)"><i class="ri-cloud-line"></i></div>
-        <h4>Cloud Solutions</h4>
-      </div>
-      <div class="hero-card">
-        <div class="hero-card-icon" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)"><i class="ri-shield-keyhole-line"></i></div>
-        <h4>Cybersecurity</h4>
-      </div>
-      <div class="hero-card">
-        <div class="hero-card-icon" style="background:linear-gradient(135deg,#3b82f6,#6366f1)"><i class="ri-server-line"></i></div>
+    <!-- RIGHT: service cards -->
+    <div class="hero-svc-grid">
+      <a href="it-support.html" class="hero-svc-card">
+        <div class="hsc-icon" style="background:linear-gradient(135deg,#14b8a6,#06b6d4)"><i class="ri-customer-service-2-line"></i></div>
+        <h4>IT Support</h4>
+        <p>24/7 helpdesk, onsite engineers &amp; AMC for Delhi NCR businesses.</p>
+        <div class="arrow">Learn More <i class="ri-arrow-right-line"></i></div>
+      </a>
+      <a href="it-security.html" class="hero-svc-card">
+        <div class="hsc-icon" style="background:linear-gradient(135deg,#7c3aed,#4338ca)"><i class="ri-shield-check-line"></i></div>
+        <h4>IT Security</h4>
+        <p>Firewall, endpoint protection, pen testing &amp; 24/7 threat monitoring.</p>
+        <div class="arrow">Learn More <i class="ri-arrow-right-line"></i></div>
+      </a>
+      <a href="managed-services.html" class="hero-svc-card">
+        <div class="hsc-icon" style="background:linear-gradient(135deg,#0d7377,#14b8a6)"><i class="ri-settings-3-line"></i></div>
+        <h4>Managed IT</h4>
+        <p>Proactive monitoring, managed servers, network &amp; cloud under one fee.</p>
+        <div class="arrow">Learn More <i class="ri-arrow-right-line"></i></div>
+      </a>
+      <a href="infrastructure-services.html" class="hero-svc-card">
+        <div class="hsc-icon" style="background:linear-gradient(135deg,#3b82f6,#6366f1)"><i class="ri-building-2-line"></i></div>
         <h4>Infrastructure</h4>
-      </div>
-      <div class="hero-card">
-        <div class="hero-card-icon" style="background:linear-gradient(135deg,#14b8a6,#10b981)"><i class="ri-computer-line"></i></div>
-        <h4>Computer AMC</h4>
-      </div>
-      <div class="hero-card">
-        <div class="hero-card-icon" style="background:linear-gradient(135deg,#06b6d4,#14b8a6)"><i class="ri-global-line"></i></div>
-        <h4>Network Solutions</h4>
-      </div>
-      <div class="hero-card">
-        <div class="hero-card-icon" style="background:linear-gradient(135deg,#3b82f6,#06b6d4)"><i class="ri-customer-service-2-line"></i></div>
-        <h4>24/7 Support</h4>
-      </div>
+        <p>Cabling, CCTV, server rooms, access control &amp; smart office setup.</p>
+        <div class="arrow">Learn More <i class="ri-arrow-right-line"></i></div>
+      </a>
+      <a href="cloud-services.html" class="hero-svc-card">
+        <div class="hsc-icon" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)"><i class="ri-cloud-line"></i></div>
+        <h4>Cloud Services</h4>
+        <p>Azure, AWS, Microsoft 365 &amp; Google Workspace migration and management.</p>
+        <div class="arrow">Learn More <i class="ri-arrow-right-line"></i></div>
+      </a>
+      <a href="contact.html" class="hero-svc-card">
+        <div class="hsc-icon" style="background:linear-gradient(135deg,#f59e0b,#ef4444)"><i class="ri-phone-find-line"></i></div>
+        <h4>Get Free Quote</h4>
+        <p>Free IT assessment and tailored proposal for your business — within 24 hrs.</p>
+        <div class="arrow">Contact Us <i class="ri-arrow-right-line"></i></div>
+      </a>
     </div>
   </div>
-  <div class="scroll-indicator"><i class="ri-arrow-down-line"></i></div>
 </section>
 
-<!-- ── PARTNERS & CLIENTS ── -->
+<!-- ── STATS BAR ── -->
+<div class="stats-bar-home">
+  <div class="stats-bar-inner">
+    <div class="sbar-item"><span class="n">20 Min</span><span class="l">Remote Response</span></div>
+    <div class="sbar-item"><span class="n">4 Hrs</span><span class="l">Onsite Delhi NCR</span></div>
+    <div class="sbar-item"><span class="n">99%</span><span class="l">Uptime Target</span></div>
+    <div class="sbar-item"><span class="n">24/7</span><span class="l">Helpdesk &amp; Monitoring</span></div>
+    <div class="sbar-item"><span class="n">GST</span><span class="l">Compliant Invoicing</span></div>
+  </div>
+</div>
+
+<!-- ── FLEXIBLE SUPPORT SOLUTIONS (proit.com inspired) ── -->
 <section class="section bg-white">
   <div class="container">
     <div class="text-center mb-12">
-      <div class="badge badge-teal mb-4"><i class="ri-service-line"></i> What We Offer</div>
-      <h2 class="section-title">Enterprise <span class="gradient">IT Solutions</span></h2>
-      <p class="section-subtitle">From cloud infrastructure to cybersecurity, we provide end-to-end IT services tailored to your business needs.</p>
+      <div class="badge badge-teal mb-4"><i class="ri-settings-3-line"></i> Our Support Models</div>
+      <h2 class="section-title">We Provide <span class="gradient">Flexible IT Support</span> Solutions</h2>
+      <p class="section-subtitle">Whether you need an occasional IT callout or a fully outsourced IT department — OMNET IT System has a support model that fits your Delhi NCR business perfectly.</p>
     </div>
+    <div class="flex-support-grid reveal">
 
-    <div class="grid-3 reveal">
-      <div class="card">
-        <div class="icon-box mb-6" style="background:linear-gradient(135deg,#14b8a6,#06b6d4)"><i class="ri-cloud-line"></i></div>
-        <h3 style="font-size:1.3rem;font-weight:700;margin-bottom:.75rem">Cloud Solutions</h3>
-        <p style="color:var(--gray-500);font-size:.9rem;margin-bottom:1.25rem">Migrate, manage, and optimize your cloud infrastructure with our expert cloud services.</p>
-        <ul class="check-list" style="margin-bottom:1.5rem">
-          <li><i class="ri-check-line"></i>AWS, Azure &amp; Google Cloud</li>
-          <li><i class="ri-check-line"></i>Cloud Migration Services</li>
-          <li><i class="ri-check-line"></i>Hybrid Cloud Architecture</li>
-          <li><i class="ri-check-line"></i>Cost Optimization</li>
-        </ul>
-        <a href="cloud-services.html" style="color:var(--teal-600);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.25rem">Learn More <i class="ri-arrow-right-line"></i></a>
-      </div>
-
-      <div class="card">
-        <div class="icon-box mb-6" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)"><i class="ri-shield-keyhole-line"></i></div>
-        <h3 style="font-size:1.3rem;font-weight:700;margin-bottom:.75rem">Cybersecurity</h3>
-        <p style="color:var(--gray-500);font-size:.9rem;margin-bottom:1.25rem">Protect your business from cyber threats with our comprehensive security solutions.</p>
-        <ul class="check-list" style="margin-bottom:1.5rem">
-          <li><i class="ri-check-line"></i>Threat Detection &amp; Response</li>
-          <li><i class="ri-check-line"></i>Firewall Management</li>
-          <li><i class="ri-check-line"></i>Security Audits</li>
-          <li><i class="ri-check-line"></i>Compliance Management</li>
-        </ul>
-        <a href="services.html" style="color:var(--teal-600);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.25rem">Learn More <i class="ri-arrow-right-line"></i></a>
-      </div>
-
-      <div class="card">
-        <div class="icon-box mb-6" style="background:linear-gradient(135deg,#3b82f6,#6366f1)"><i class="ri-server-line"></i></div>
-        <h3 style="font-size:1.3rem;font-weight:700;margin-bottom:.75rem">Infrastructure Management</h3>
-        <p style="color:var(--gray-500);font-size:.9rem;margin-bottom:1.25rem">Complete infrastructure solutions from servers to storage and everything in between.</p>
-        <ul class="check-list" style="margin-bottom:1.5rem">
-          <li><i class="ri-check-line"></i>Server Administration</li>
-          <li><i class="ri-check-line"></i>Virtualization (VMware, Hyper-V)</li>
-          <li><i class="ri-check-line"></i>Storage Solutions</li>
-          <li><i class="ri-check-line"></i>Performance Monitoring</li>
-        </ul>
-        <a href="managed-services.html" style="color:var(--teal-600);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.25rem">Learn More <i class="ri-arrow-right-line"></i></a>
-      </div>
-
-      <div class="card">
-        <div class="icon-box mb-6" style="background:linear-gradient(135deg,#14b8a6,#10b981)"><i class="ri-customer-service-2-line"></i></div>
-        <h3 style="font-size:1.3rem;font-weight:700;margin-bottom:.75rem">24/7 IT Support</h3>
-        <p style="color:var(--gray-500);font-size:.9rem;margin-bottom:1.25rem">Round-the-clock technical support to keep your business running smoothly.</p>
-        <ul class="check-list" style="margin-bottom:1.5rem">
-          <li><i class="ri-check-line"></i>Help Desk Services</li>
-          <li><i class="ri-check-line"></i>Remote &amp; On-site Support</li>
-          <li><i class="ri-check-line"></i>Incident Management</li>
-          <li><i class="ri-check-line"></i>SLA-backed Response</li>
-        </ul>
-        <a href="remote-onsite-support.html" style="color:var(--teal-600);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.25rem">Learn More <i class="ri-arrow-right-line"></i></a>
-      </div>
-
-      <div class="card">
-        <div class="icon-box mb-6" style="background:linear-gradient(135deg,#06b6d4,#14b8a6)"><i class="ri-database-2-line"></i></div>
-        <h3 style="font-size:1.3rem;font-weight:700;margin-bottom:.75rem">Data Backup &amp; Recovery</h3>
-        <p style="color:var(--gray-500);font-size:.9rem;margin-bottom:1.25rem">Ensure business continuity with our robust backup and disaster recovery solutions.</p>
-        <ul class="check-list" style="margin-bottom:1.5rem">
-          <li><i class="ri-check-line"></i>Automated Backups</li>
-          <li><i class="ri-check-line"></i>Disaster Recovery Planning</li>
-          <li><i class="ri-check-line"></i>Data Replication</li>
-          <li><i class="ri-check-line"></i>Quick Recovery Solutions</li>
-        </ul>
-        <a href="managed-services.html" style="color:var(--teal-600);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.25rem">Learn More <i class="ri-arrow-right-line"></i></a>
-      </div>
-
-      <div class="card">
-        <div class="icon-box mb-6" style="background:linear-gradient(135deg,#3b82f6,#06b6d4)"><i class="ri-global-line"></i></div>
-        <h3 style="font-size:1.3rem;font-weight:700;margin-bottom:.75rem">Network Solutions</h3>
-        <p style="color:var(--gray-500);font-size:.9rem;margin-bottom:1.25rem">Design, implement, and manage high-performance network infrastructure.</p>
-        <ul class="check-list" style="margin-bottom:1.5rem">
-          <li><i class="ri-check-line"></i>Network Design &amp; Setup</li>
-          <li><i class="ri-check-line"></i>WiFi Solutions</li>
-          <li><i class="ri-check-line"></i>VPN &amp; Remote Access</li>
-          <li><i class="ri-check-line"></i>Network Security</li>
-        </ul>
-        <a href="network-infrastructure.html" style="color:var(--teal-600);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.25rem">Learn More <i class="ri-arrow-right-line"></i></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── AMC SECTION ── -->
-<section class="section bg-teal" style="color:#fff;position:relative;overflow:hidden">
-  <div style="position:absolute;inset:0;opacity:.08;background:repeating-linear-gradient(45deg,transparent,transparent 35px,rgba(255,255,255,.3) 35px,rgba(255,255,255,.3) 70px)"></div>
-  <div class="container" style="position:relative;z-index:1">
-    <div class="grid-2" style="align-items:center">
-      <div>
-        <h2 style="font-size:2.75rem;font-weight:800;margin-bottom:1.25rem">Computer <span style="color:#a7f3d0">AMC Services</span></h2>
-        <p style="font-size:1.1rem;color:rgba(255,255,255,.85);margin-bottom:2rem;line-height:1.7">Reliable Desktop, Laptop, Server &amp; Network AMC Services for offices across Delhi NCR. Keep your IT infrastructure running smoothly with our comprehensive Annual Maintenance Contracts.</p>
-        <div class="grid-2 reveal" style="grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:2rem">
-          <div style="display:flex;align-items:center;gap:.75rem;background:rgba(255,255,255,.12);padding:.875rem 1rem;border-radius:10px">
-            <i class="ri-check-double-line" style="color:#a7f3d0;font-size:1.2rem"></i><span style="font-size:.875rem;font-weight:500">Desktop &amp; Laptop AMC</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:.75rem;background:rgba(255,255,255,.12);padding:.875rem 1rem;border-radius:10px">
-            <i class="ri-check-double-line" style="color:#a7f3d0;font-size:1.2rem"></i><span style="font-size:.875rem;font-weight:500">Server Maintenance</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:.75rem;background:rgba(255,255,255,.12);padding:.875rem 1rem;border-radius:10px">
-            <i class="ri-check-double-line" style="color:#a7f3d0;font-size:1.2rem"></i><span style="font-size:.875rem;font-weight:500">Network AMC</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:.75rem;background:rgba(255,255,255,.12);padding:.875rem 1rem;border-radius:10px">
-            <i class="ri-check-double-line" style="color:#a7f3d0;font-size:1.2rem"></i><span style="font-size:.875rem;font-weight:500">Printer Support</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:.75rem;background:rgba(255,255,255,.12);padding:.875rem 1rem;border-radius:10px">
-            <i class="ri-check-double-line" style="color:#a7f3d0;font-size:1.2rem"></i><span style="font-size:.875rem;font-weight:500">Security Solutions</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:.75rem;background:rgba(255,255,255,.12);padding:.875rem 1rem;border-radius:10px">
-            <i class="ri-check-double-line" style="color:#a7f3d0;font-size:1.2rem"></i><span style="font-size:.875rem;font-weight:500">24/7 Helpdesk</span>
-          </div>
-        </div>
-        <a href="services.html" class="btn" style="background:#fff;color:var(--teal-600);border-color:#fff">View AMC Services <i class="ri-arrow-right-line"></i></a>
-      </div>
-      <div class="grid-2 reveal" style="grid-template-columns:1fr 1fr;gap:1rem">
-        <div style="background:rgba(255,255,255,.12);border-radius:16px;padding:2.5rem;text-align:center;border:1px solid rgba(255,255,255,.2)">
-          <div style="font-size:2.5rem;font-weight:800">20 min</div><div style="color:rgba(255,255,255,.8)">Remote Support</div>
-        </div>
-        <div style="background:rgba(255,255,255,.12);border-radius:16px;padding:2.5rem;text-align:center;border:1px solid rgba(255,255,255,.2)">
-          <div style="font-size:2.5rem;font-weight:800">4 hrs</div><div style="color:rgba(255,255,255,.8)">Onsite Response</div>
-        </div>
-        <div style="background:rgba(255,255,255,.12);border-radius:16px;padding:2.5rem;text-align:center;border:1px solid rgba(255,255,255,.2)">
-          <div style="font-size:2.5rem;font-weight:800">99%</div><div style="color:rgba(255,255,255,.8)">Uptime Focus</div>
-        </div>
-        <div style="background:rgba(255,255,255,.12);border-radius:16px;padding:2.5rem;text-align:center;border:1px solid rgba(255,255,255,.2)">
-          <div style="font-size:2.5rem;font-weight:800">24/7</div><div style="color:rgba(255,255,255,.8)">Support</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── COMPARISON TABLE ── -->
-<section style="padding:5rem 0;background:linear-gradient(135deg,var(--teal-600),var(--cyan-600),#3b82f6);position:relative;overflow:hidden">
-  <div style="position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(255,255,255,.15) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(255,255,255,.1) 0%,transparent 50%)"></div>
-  <div class="container text-center" style="position:relative;z-index:1">
-    <h2 style="font-size:2.75rem;font-weight:800;color:#fff;margin-bottom:1rem">Ready to Get Started?</h2>
-    <p style="font-size:1.1rem;color:rgba(255,255,255,.85);margin-bottom:2.5rem;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7">Contact us today for a customized IT solution tailored to your business needs.</p>
-    <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap">
-      <a href="contact.html" class="btn" style="background:#fff;color:var(--teal-600)"><i class="ri-mail-line"></i> Contact Us</a>
-      <a href="tel:+919717270865" class="btn" style="background:rgba(255,255,255,.15);color:#fff;border-color:rgba(255,255,255,.4)"><i class="ri-phone-line"></i> Call Now</a>
-    </div>
-  </div>
-</section>
-
-<!-- ── SOCIAL CONNECT ── -->
-
-<!-- ── FLEXIBLE IT SUPPORT MODELS (proit.com inspired) ── -->
-<section class="section" style="background:var(--gray-50)">
-  <div class="container">
-    <div class="text-center mb-12">
-      <div class="badge badge-teal mb-4"><i class="ri-settings-3-line"></i> Our Approach</div>
-      <h2 class="section-title">Flexible IT Support <span class="gradient">Solutions</span></h2>
-      <p class="section-subtitle">We provide flexible IT support solutions to meet your business needs — from occasional visits to a complete outsourced IT provider. Whichever model you choose, OMNET goes the extra mile.</p>
-    </div>
-    <div class="grid-3 reveal">
-      <div class="card" style="text-align:center">
-        <div class="icon-box mx-auto mb-6" style="background:linear-gradient(135deg,#14b8a6,#06b6d4)"><i class="ri-phone-find-line"></i></div>
-        <h3 style="font-size:1.2rem;font-weight:800;margin-bottom:.75rem">Ad-Hoc IT Support</h3>
-        <p style="color:var(--gray-500);font-size:.9rem;margin-bottom:1.25rem">Need occasional IT help without a contract? Our prepaid packs and casual callout service give you access to expert engineers when you need them — with no commitment required.</p>
-        <ul class="check-list" style="text-align:left;margin-bottom:1.5rem">
-          <li><i class="ri-check-line"></i>No minimum commitment</li>
-          <li><i class="ri-check-line"></i>Remote and onsite support</li>
-          <li><i class="ri-check-line"></i>Same or next day response</li>
+      <div class="fscard">
+        <div class="ficon"><i class="ri-phone-find-line"></i></div>
+        <h3>Ad-Hoc IT Support</h3>
+        <p>Need occasional IT help without a contract? Our prepaid packs and casual callout service give you access to certified engineers when you need them — with no commitment required.</p>
+        <ul>
+          <li><i class="ri-check-line"></i>No minimum commitment or contract</li>
+          <li><i class="ri-check-line"></i>Remote and onsite support available</li>
+          <li><i class="ri-check-line"></i>Same or next business day response</li>
           <li><i class="ri-check-line"></i>GST invoice per job</li>
         </ul>
-        <a href="it-support.html" style="color:var(--teal-600);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.25rem">Learn More <i class="ri-arrow-right-line"></i></a>
+        <a href="it-support.html" class="btn btn-white" style="border-color:var(--teal-500);width:100%;justify-content:center">Learn More</a>
       </div>
-      <div class="card" style="text-align:center;border:2px solid var(--teal-400);background:linear-gradient(135deg,#f0fdfa,#ecfeff)">
-        <div class="icon-box mx-auto mb-6" style="background:linear-gradient(135deg,#0d7377,#14b8a6)"><i class="ri-shield-star-line"></i></div>
-        <h3 style="font-size:1.2rem;font-weight:800;margin-bottom:.75rem">Fixed-Cost AMC</h3>
-        <p style="color:var(--gray-500);font-size:.9rem;margin-bottom:1.25rem">Our most popular option — one fixed monthly fee covering unlimited remote IT support, defined onsite visits, proactive monitoring, and full reporting through your client portal.</p>
-        <ul class="check-list" style="text-align:left;margin-bottom:1.5rem">
-          <li><i class="ri-check-line"></i>Unlimited remote helpdesk</li>
-          <li><i class="ri-check-line"></i>Proactive 24/7 monitoring</li>
-          <li><i class="ri-check-line"></i>Monthly reports and meetings</li>
+
+      <div class="fscard featured">
+        <div class="ftop">Most Popular</div>
+        <div class="ficon"><i class="ri-shield-star-line"></i></div>
+        <h3>Fixed-Cost AMC</h3>
+        <p>Our most popular option — one fixed monthly fee covering unlimited remote IT support, defined onsite visits, 24/7 proactive monitoring, and full reporting through your online client portal.</p>
+        <ul>
+          <li><i class="ri-check-line"></i>Unlimited remote helpdesk — 24/7</li>
+          <li><i class="ri-check-line"></i>Proactive monitoring of all IT systems</li>
+          <li><i class="ri-check-line"></i>Monthly reports &amp; performance review</li>
           <li><i class="ri-check-line"></i>Dedicated account manager</li>
         </ul>
-        <a href="it-support.html" class="btn btn-teal">Get AMC Quote</a>
+        <a href="it-support.html" class="btn btn-teal" style="width:100%;justify-content:center">Get AMC Quote</a>
       </div>
-      <div class="card" style="text-align:center">
-        <div class="icon-box mx-auto mb-6" style="background:linear-gradient(135deg,#3b82f6,#6366f1)"><i class="ri-building-4-line"></i></div>
-        <h3 style="font-size:1.2rem;font-weight:800;margin-bottom:.75rem">Fully Managed IT</h3>
-        <p style="color:var(--gray-500);font-size:.9rem;margin-bottom:1.25rem">Complete outsourcing of your IT function — OMNET manages everything from infrastructure and security to cloud and helpdesk, giving you a true IT department without the overhead.</p>
-        <ul class="check-list" style="text-align:left;margin-bottom:1.5rem">
+
+      <div class="fscard">
+        <div class="ficon"><i class="ri-building-4-line"></i></div>
+        <h3>Fully Managed IT</h3>
+        <p>Complete outsourcing of your IT function — OMNET manages everything from infrastructure and security to cloud and helpdesk, giving you a true IT department without the overhead cost.</p>
+        <ul>
           <li><i class="ri-check-line"></i>End-to-end IT management</li>
-          <li><i class="ri-check-line"></i>Managed security and cloud</li>
+          <li><i class="ri-check-line"></i>Managed security, cloud &amp; network</li>
           <li><i class="ri-check-line"></i>vCIO advisory included</li>
           <li><i class="ri-check-line"></i>Custom SLA agreement</li>
         </ul>
+        <a href="managed-services.html" class="btn btn-white" style="border-color:var(--teal-500);width:100%;justify-content:center">Learn More</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CORE SERVICES ── -->
+<section class="section" style="background:var(--gray-50)">
+  <div class="container">
+    <div class="text-center mb-12">
+      <div class="badge badge-teal mb-4"><i class="ri-service-line"></i> What We Offer</div>
+      <h2 class="section-title">Enterprise <span class="gradient">IT Services</span> for Delhi NCR</h2>
+      <p class="section-subtitle">From IT support and cybersecurity to infrastructure and cloud — OMNET IT System is your single partner for all IT needs across Delhi NCR.</p>
+    </div>
+    <div class="svc-row reveal">
+      <div class="card">
+        <div class="icon-box mb-6" style="background:linear-gradient(135deg,#14b8a6,#06b6d4)"><i class="ri-customer-service-2-line"></i></div>
+        <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:.75rem">IT Support &amp; Helpdesk</h3>
+        <p style="color:var(--gray-500);font-size:.9rem;margin-bottom:1.25rem">24/7 helpdesk, remote support, and onsite field engineers across Delhi NCR — resolving IT issues before they impact your business.</p>
+        <ul class="check-list" style="margin-bottom:1.5rem">
+          <li><i class="ri-check-line"></i>20-min remote response SLA</li>
+          <li><i class="ri-check-line"></i>4-hour onsite response</li>
+          <li><i class="ri-check-line"></i>Server, desktop, network support</li>
+          <li><i class="ri-check-line"></i>Fixed-cost AMC plans</li>
+        </ul>
+        <a href="it-support.html" style="color:var(--teal-600);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.25rem">Learn More <i class="ri-arrow-right-line"></i></a>
+      </div>
+      <div class="card">
+        <div class="icon-box mb-6" style="background:linear-gradient(135deg,#7c3aed,#4338ca)"><i class="ri-shield-check-line"></i></div>
+        <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:.75rem">IT Security &amp; Cybersecurity</h3>
+        <p style="color:var(--gray-500);font-size:.9rem;margin-bottom:1.25rem">Protect your Delhi NCR business from cyber threats — firewall management, endpoint protection, penetration testing, and 24/7 threat monitoring.</p>
+        <ul class="check-list" style="margin-bottom:1.5rem">
+          <li><i class="ri-check-line"></i>Managed firewall (Fortinet/Sophos)</li>
+          <li><i class="ri-check-line"></i>Endpoint detection &amp; response</li>
+          <li><i class="ri-check-line"></i>Penetration testing &amp; VA</li>
+          <li><i class="ri-check-line"></i>Email security &amp; anti-phishing</li>
+        </ul>
+        <a href="it-security.html" style="color:var(--teal-600);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.25rem">Learn More <i class="ri-arrow-right-line"></i></a>
+      </div>
+      <div class="card">
+        <div class="icon-box mb-6" style="background:linear-gradient(135deg,#0d7377,#14b8a6)"><i class="ri-settings-3-line"></i></div>
+        <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:.75rem">Managed IT Services</h3>
+        <p style="color:var(--gray-500);font-size:.9rem;margin-bottom:1.25rem">Proactive management of your entire IT environment — servers, security, network, cloud, and helpdesk — under one fixed monthly fee.</p>
+        <ul class="check-list" style="margin-bottom:1.5rem">
+          <li><i class="ri-check-line"></i>24/7 proactive monitoring</li>
+          <li><i class="ri-check-line"></i>Managed servers &amp; network</li>
+          <li><i class="ri-check-line"></i>Monthly reports via client portal</li>
+          <li><i class="ri-check-line"></i>Dedicated account manager</li>
+        </ul>
+        <a href="managed-services.html" style="color:var(--teal-600);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.25rem">Learn More <i class="ri-arrow-right-line"></i></a>
+      </div>
+      <div class="card">
+        <div class="icon-box mb-6" style="background:linear-gradient(135deg,#14b8a6,#10b981)"><i class="ri-building-2-line"></i></div>
+        <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:.75rem">IT Infrastructure</h3>
+        <p style="color:var(--gray-500);font-size:.9rem;margin-bottom:1.25rem">Complete infrastructure solutions — structured cabling, CCTV, server room builds, access control, and smart office AV across Delhi NCR.</p>
+        <ul class="check-list" style="margin-bottom:1.5rem">
+          <li><i class="ri-check-line"></i>Structured cabling (Cat6/Fibre)</li>
+          <li><i class="ri-check-line"></i>IP CCTV &amp; access control</li>
+          <li><i class="ri-check-line"></i>Server room &amp; data centre build</li>
+          <li><i class="ri-check-line"></i>WiFi 6 enterprise deployment</li>
+        </ul>
+        <a href="infrastructure-services.html" style="color:var(--teal-600);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.25rem">Learn More <i class="ri-arrow-right-line"></i></a>
+      </div>
+      <div class="card">
+        <div class="icon-box mb-6" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)"><i class="ri-cloud-line"></i></div>
+        <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:.75rem">Cloud &amp; Email Services</h3>
+        <p style="color:var(--gray-500);font-size:.9rem;margin-bottom:1.25rem">Cloud migration, Microsoft 365, Google Workspace, and Azure management — moving Delhi NCR businesses to the cloud securely and cost-effectively.</p>
+        <ul class="check-list" style="margin-bottom:1.5rem">
+          <li><i class="ri-check-line"></i>Azure, AWS &amp; Google Cloud</li>
+          <li><i class="ri-check-line"></i>Microsoft 365 &amp; Google Workspace</li>
+          <li><i class="ri-check-line"></i>Cloud migration services</li>
+          <li><i class="ri-check-line"></i>Backup &amp; disaster recovery</li>
+        </ul>
+        <a href="cloud-services.html" style="color:var(--teal-600);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.25rem">Learn More <i class="ri-arrow-right-line"></i></a>
+      </div>
+      <div class="card">
+        <div class="icon-box mb-6" style="background:linear-gradient(135deg,#3b82f6,#6366f1)"><i class="ri-database-2-line"></i></div>
+        <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:.75rem">Backup &amp; Disaster Recovery</h3>
+        <p style="color:var(--gray-500);font-size:.9rem;margin-bottom:1.25rem">Protect your critical business data with managed backup, tested DR plans, and rapid recovery — keeping your Delhi NCR business running no matter what.</p>
+        <ul class="check-list" style="margin-bottom:1.5rem">
+          <li><i class="ri-check-line"></i>Veeam, Acronis &amp; Azure Backup</li>
+          <li><i class="ri-check-line"></i>Daily monitoring &amp; restore testing</li>
+          <li><i class="ri-check-line"></i>Ransomware-proof offsite backup</li>
+          <li><i class="ri-check-line"></i>RPO/RTO-aligned DR planning</li>
+        </ul>
         <a href="managed-services.html" style="color:var(--teal-600);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.25rem">Learn More <i class="ri-arrow-right-line"></i></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── WHY OMNET (proit.com inspired) ── -->
+<!-- ── WHY OMNET (proit.com style 2-col) ── -->
 <section class="section bg-white">
   <div class="container">
-    <div class="grid-2 reveal" style="align-items:center;gap:3.5rem">
-      <div>
+    <div class="grid-2 reveal" style="align-items:center;gap:4rem">
+      <div class="why-left">
         <div class="badge badge-teal mb-4"><i class="ri-star-line"></i> Our Promise</div>
-        <h2 style="font-size:2.25rem;font-weight:800;margin-bottom:1.25rem">Unmatched IT Support — We Go the Extra Mile</h2>
-        <p style="color:var(--gray-600);line-height:1.8;margin-bottom:1rem">Our support is unmatched. We go the extra mile to make sure that not only are your issues solved — but that you are completely content with our solutions. That is our support promise to you.</p>
-        <p style="color:var(--gray-600);line-height:1.8;margin-bottom:1.5rem">OMNET IT System takes complete care and responsibility for your IT infrastructure, hosted services, and critical systems. We are known for being one of Delhi NCR's most responsive IT service providers — with 20-minute remote response and 4-hour onsite response across all locations.</p>
+        <h2 style="font-size:2.25rem;font-weight:800;line-height:1.25;margin-bottom:1.25rem">Unmatched IT Support — <span style="color:var(--teal-600)">We Go the Extra Mile</span></h2>
+        <p style="color:var(--gray-600);line-height:1.8;margin-bottom:1rem">Our IT support is unmatched. We go the extra mile to make sure that not only are your issues solved — but that you are completely content with our solutions. That is our support promise to you.</p>
+        <p style="color:var(--gray-600);line-height:1.8;margin-bottom:1.75rem">OMNET IT System takes complete care and responsibility for your IT infrastructure, hosted services, and critical systems maintenance. We believe in full transparency — providing monthly meeting minutes, performance reports, and improvement reports through your dedicated online client portal.</p>
         <ul class="check-list" style="margin-bottom:2rem">
-          <li><i class="ri-check-line"></i>20-minute remote response SLA — guaranteed</li>
-          <li><i class="ri-check-line"></i>4-hour onsite response across Delhi NCR</li>
-          <li><i class="ri-check-line"></i>Monthly performance and improvement reports</li>
-          <li><i class="ri-check-line"></i>Online client portal — full transparency always</li>
-          <li><i class="ri-check-line"></i>Dedicated engineers allocated to your account</li>
-          <li><i class="ri-check-line"></i>GST-compliant invoices — every month</li>
+          <li><i class="ri-check-line"></i>20-minute remote response — SLA guaranteed on every plan</li>
+          <li><i class="ri-check-line"></i>4-hour onsite engineer response across Delhi NCR</li>
+          <li><i class="ri-check-line"></i>Monthly reports &amp; improvement plans via online portal</li>
+          <li><i class="ri-check-line"></i>Dedicated engineers allocated specifically to your account</li>
+          <li><i class="ri-check-line"></i>Fixed monthly pricing — predictable IT budget always</li>
+          <li><i class="ri-check-line"></i>GST-compliant invoicing every single month</li>
         </ul>
         <div style="display:flex;gap:1rem;flex-wrap:wrap">
           <a href="contact.html" class="btn btn-teal"><i class="ri-file-list-3-line"></i> Get Free Assessment</a>
-          <a href="about.html" class="btn" style="border:2px solid var(--teal-600);color:var(--teal-600)">Learn About Us</a>
+          <a href="about.html" class="btn btn-white">About OMNET</a>
         </div>
       </div>
-      <div class="grid-2" style="gap:1rem">
-        <div class="card">
-          <div class="icon-box mb-4" style="background:linear-gradient(135deg,#14b8a6,#06b6d4)"><i class="ri-timer-flash-line"></i></div>
-          <h3 style="font-size:1rem;font-weight:700;margin-bottom:.3rem">20-Min Response</h3>
-          <p style="color:var(--gray-500);font-size:.85rem">SLA-backed remote response across every plan.</p>
+      <div class="why-grid-2x2">
+        <div class="wg-item"><i class="ri-timer-flash-line wi"></i><h4>20-Min Response</h4><p>SLA-backed remote response on every support plan we offer.</p></div>
+        <div class="wg-item"><i class="ri-bar-chart-line wi"></i><h4>Full Transparency</h4><p>Monthly reports and client portal — always know what we're doing.</p></div>
+        <div class="wg-item"><i class="ri-trophy-line wi"></i><h4>Certified Engineers</h4><p>Microsoft, Cisco &amp; VMware certified specialists on your account.</p></div>
+        <div class="wg-item"><i class="ri-currency-line wi"></i><h4>Fixed Monthly Cost</h4><p>No surprise bills, no per-call charges — predictable IT spend.</p></div>
+        <div class="wg-item"><i class="ri-expand-width-line wi"></i><h4>Scales With You</h4><p>From 5-user SMBs to 500-user enterprises — grows with your business.</p></div>
+        <div class="wg-item"><i class="ri-map-pin-line wi"></i><h4>Local NCR Presence</h4><p>Engineers across Delhi, Noida, Gurugram, Greater Noida &amp; Ghaziabad.</p></div>
+        <div class="wg-item"><i class="ri-shield-check-line wi"></i><h4>Security-First</h4><p>Security embedded in every service — we prevent problems, not just fix them.</p></div>
+        <div class="wg-item"><i class="ri-file-list-2-line wi"></i><h4>GST Invoicing</h4><p>GST-registered invoices every month — input tax credit made simple.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INDUSTRIES ── -->
+<section class="section" style="background:var(--gray-50)">
+  <div class="container">
+    <div class="text-center mb-12">
+      <div class="badge badge-teal mb-4"><i class="ri-building-2-line"></i> Industries</div>
+      <h2 class="section-title">IT Support for <span class="gradient">Every Industry</span></h2>
+      <p class="section-subtitle">OMNET IT System delivers tailored IT solutions to every major industry sector across Delhi NCR — understanding your compliance requirements, operational demands, and technology environment.</p>
+    </div>
+    <div class="ind-scroll reveal">
+      <div class="ind-tile"><i class="ri-building-2-line"></i>Manufacturing</div>
+      <div class="ind-tile"><i class="ri-hospital-line"></i>Healthcare &amp; Clinics</div>
+      <div class="ind-tile"><i class="ri-bank-line"></i>Finance &amp; Banking</div>
+      <div class="ind-tile"><i class="ri-store-2-line"></i>Retail &amp; E-Commerce</div>
+      <div class="ind-tile"><i class="ri-graduation-cap-line"></i>Education</div>
+      <div class="ind-tile"><i class="ri-government-line"></i>Government &amp; PSUs</div>
+      <div class="ind-tile"><i class="ri-building-4-line"></i>Real Estate</div>
+      <div class="ind-tile"><i class="ri-briefcase-4-line"></i>Legal &amp; CA Firms</div>
+      <div class="ind-tile"><i class="ri-car-line"></i>Logistics &amp; Auto</div>
+      <div class="ind-tile"><i class="ri-restaurant-line"></i>Hospitality &amp; F&amp;B</div>
+      <div class="ind-tile"><i class="ri-capsule-line"></i>Pharma &amp; Biotech</div>
+      <div class="ind-tile"><i class="ri-tv-line"></i>Media &amp; Advertising</div>
+    </div>
+    <div class="text-center mt-8">
+      <a href="industry-expertise.html" class="btn btn-teal">View All Industries <i class="ri-arrow-right-line"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="section bg-white">
+  <div class="container">
+    <div class="text-center mb-12">
+      <div class="badge badge-teal mb-4"><i class="ri-chat-quote-line"></i> Client Testimonials</div>
+      <h2 class="section-title">What Delhi NCR Businesses <span class="gradient">Say About Us</span></h2>
+      <p class="section-subtitle">We go the extra mile to make sure every client is completely content with our IT support — here's what some of them have to say.</p>
+    </div>
+    <div class="testi-grid reveal">
+      <div class="tcard">
+        <div class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+        <p class="quote">"OMNET IT System has been our IT partner since we launched. Their 20-minute remote response is real — whenever we have an issue, the team is on it immediately. The monthly reports give us full visibility of our IT health."</p>
+        <div class="author">
+          <div class="av">RK</div>
+          <div><div class="aname">Rajesh Kumar</div><div class="arole">MD, Manufacturing Company, Noida</div></div>
         </div>
-        <div class="card">
-          <div class="icon-box mb-4" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)"><i class="ri-bar-chart-line"></i></div>
-          <h3 style="font-size:1rem;font-weight:700;margin-bottom:.3rem">Full Transparency</h3>
-          <p style="color:var(--gray-500);font-size:.85rem">Monthly reports in your online client portal.</p>
+      </div>
+      <div class="tcard">
+        <div class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+        <p class="quote">"We moved from break-fix to OMNET's managed IT AMC plan and the difference is night and day. Zero downtime in 6 months, our server is monitored 24/7, and the GST invoices make our accounting much simpler."</p>
+        <div class="author">
+          <div class="av">PS</div>
+          <div><div class="aname">Priya Sharma</div><div class="arole">CFO, Financial Services Firm, Delhi</div></div>
         </div>
-        <div class="card">
-          <div class="icon-box mb-4" style="background:linear-gradient(135deg,#3b82f6,#6366f1)"><i class="ri-trophy-line"></i></div>
-          <h3 style="font-size:1rem;font-weight:700;margin-bottom:.3rem">Certified Engineers</h3>
-          <p style="color:var(--gray-500);font-size:.85rem">Microsoft, Cisco &amp; VMware certified specialists.</p>
-        </div>
-        <div class="card">
-          <div class="icon-box mb-4" style="background:linear-gradient(135deg,#14b8a6,#10b981)"><i class="ri-currency-line"></i></div>
-          <h3 style="font-size:1rem;font-weight:700;margin-bottom:.3rem">Fixed Monthly Cost</h3>
-          <p style="color:var(--gray-500);font-size:.85rem">No surprise bills — predictable IT spend always.</p>
+      </div>
+      <div class="tcard">
+        <div class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+        <p class="quote">"OMNET set up our entire IT infrastructure from scratch — structured cabling, server room, WiFi, and CCTV. The team was professional, on schedule, and the onsite response whenever we need support is always within the promised time."</p>
+        <div class="author">
+          <div class="av">AV</div>
+          <div><div class="aname">Amit Verma</div><div class="arole">Director, Logistics Company, Gurugram</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section bg-white text-center">
+<!-- ── CTA ── -->
+<section class="cta-banner">
   <div class="container">
-    <h2 class="section-title mb-4">Connect With Us</h2>
-    <p style="color:var(--gray-500);margin-bottom:2rem">Stay updated with the latest IT trends and company news</p>
-    <div style="display:flex;justify-content:center;gap:1rem">
-      <a href="https://www.linkedin.com/company/omnet-it-system/" target="_blank" rel="noopener" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#0077b5,#0055a5);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;text-decoration:none;transition:transform .2s;box-shadow:0 4px 16px rgba(0,0,0,.15)" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><i class="ri-linkedin-fill"></i></a>
-      <a href="https://x.com/omnetit" target="_blank" rel="noopener" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#1a1a1a,#333);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;text-decoration:none;transition:transform .2s;box-shadow:0 4px 16px rgba(0,0,0,.15)" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><i class="ri-twitter-x-fill"></i></a>
-      <a href="https://www.facebook.com/OMNETITSYSTEMS" target="_blank" rel="noopener" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#1877f2,#0c5dd6);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;text-decoration:none;transition:transform .2s;box-shadow:0 4px 16px rgba(0,0,0,.15)" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><i class="ri-facebook-fill"></i></a>
+    <h2>Ready for Reliable IT Support in Delhi NCR?</h2>
+    <p>Contact OMNET IT System today — free IT assessment and a tailored proposal within 24 hours. No obligation, no hidden costs.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn btn-teal"><i class="ri-file-list-3-line"></i> Get Free Assessment</a>
+      <a href="tel:+919717270865" class="btn btn-outline-white"><i class="ri-phone-fill"></i> +91-97172-70865</a>
+      <a href="https://wa.me/919717270865" class="btn btn-outline-white"><i class="ri-whatsapp-fill"></i> WhatsApp Now</a>
     </div>
   </div>
 </section>
 
 </main>
 
-<!-- ── FOOTER ── -->
 <footer class="site-footer">
   <div class="footer-main">
     <div class="footer-brand">
-      <a href="index.html" class="logo-wrap" style="text-decoration:none;margin-bottom:.5rem;display:inline-flex">
+      <a href="index.html" class="logo-wrap" style="text-decoration:none;display:inline-flex">
         <div class="logo-icon"><span>ON</span></div>
         <div class="logo-text-wrap">
           <div class="logo-name"><span style="color:#fff">OM</span><span class="net">NET</span></div>
           <div class="logo-tagline">IT System</div>
         </div>
       </a>
-      <p>Your trusted partner for Enterprise IT Solutions and Managed Services. Delivering reliable technology solutions across Delhi NCR including Noida, Greater Noida, Gurugram, Faridabad &amp; Delhi.</p>
+      <p>Your trusted partner for Enterprise IT Solutions and Managed Services. Delivering reliable technology solutions across Delhi NCR.</p>
       <div class="footer-social">
         <a href="https://www.linkedin.com/company/omnet-it-system/" target="_blank" rel="noopener"><i class="ri-linkedin-fill"></i></a>
         <a href="https://x.com/omnetit" target="_blank" rel="noopener"><i class="ri-twitter-x-fill"></i></a>
         <a href="https://www.facebook.com/OMNETITSYSTEMS" target="_blank" rel="noopener"><i class="ri-facebook-fill"></i></a>
       </div>
     </div>
-
     <div class="footer-col">
       <h4>IT Services</h4>
       <ul>
         <li><a href="managed-services.html"><i class="ri-arrow-right-s-line"></i>Managed IT Services</a></li>
         <li><a href="cloud-services.html"><i class="ri-arrow-right-s-line"></i>Cloud Solutions</a></li>
-        <li><a href="remote-onsite-support.html"><i class="ri-arrow-right-s-line"></i>IT Support Services</a></li>
+        <li><a href="remote-onsite-support.html"><i class="ri-arrow-right-s-line"></i>IT Support</a></li>
         <li><a href="network-infrastructure.html"><i class="ri-arrow-right-s-line"></i>Network Infrastructure</a></li>
         <li><a href="devops-services.html"><i class="ri-arrow-right-s-line"></i>DevOps Services</a></li>
-        <li><a href="email-solutions.html"><i class="ri-arrow-right-s-line"></i>Email Solutions</a></li>
         <li><a href="repair-services.html"><i class="ri-arrow-right-s-line"></i>Computer AMC</a></li>
       </ul>
     </div>
-
     <div class="footer-col">
       <h4>Company</h4>
       <ul>
         <li><a href="about.html"><i class="ri-arrow-right-s-line"></i>About Us</a></li>
         <li><a href="portfolio.html"><i class="ri-arrow-right-s-line"></i>Portfolio</a></li>
         <li><a href="industry-expertise.html"><i class="ri-arrow-right-s-line"></i>Industries</a></li>
-        <li><a href="technology-domains.html"><i class="ri-arrow-right-s-line"></i>Technology</a></li>
         <li><a href="pricing.html"><i class="ri-arrow-right-s-line"></i>Pricing</a></li>
         <li><a href="contact.html"><i class="ri-arrow-right-s-line"></i>Contact Us</a></li>
       </ul>
     </div>
-
     <div class="footer-col">
       <h4>Contact Us</h4>
-      <div class="footer-contact-item">
-        <i class="ri-smartphone-line"></i>
-        <div><div class="label">Mobile</div><div class="value">+91-97172-70865</div></div>
-      </div>
-      <div class="footer-contact-item">
-        <i class="ri-phone-line"></i>
-        <div><div class="label">Landline</div><div class="value">+91-120-522-3376</div></div>
-      </div>
-      <div class="footer-contact-item">
-        <i class="ri-mail-line"></i>
-        <div><div class="label">Email</div><div class="value">hello@omnetitsystem.com</div></div>
-      </div>
-      <div class="footer-contact-item">
-        <i class="ri-map-pin-line"></i>
-        <div><div class="label">Location</div><div class="value">Ghaziabad, UP, India<br/><span style="color:var(--gray-600);font-size:.75rem">Serving Delhi NCR</span></div></div>
-      </div>
+      <div class="footer-contact-item"><i class="ri-smartphone-line"></i><div><div class="label">Mobile</div><div class="value">+91-97172-70865</div></div></div>
+      <div class="footer-contact-item"><i class="ri-mail-line"></i><div><div class="label">Email</div><div class="value">hello@omnetitsystem.com</div></div></div>
+      <div class="footer-contact-item"><i class="ri-map-pin-line"></i><div><div class="label">Location</div><div class="value">Ghaziabad, UP, India</div></div></div>
     </div>
   </div>
-
   <div class="footer-coverage">
     <div class="label">Service Coverage Area</div>
     <p>Delhi • Noida • Greater Noida • Gurgaon • Gurugram • Ghaziabad • Faridabad • Delhi NCR</p>
   </div>
-
   <div class="footer-bottom">
     <div class="footer-bottom-inner">
       <p>© <script>document.write(new Date().getFullYear())</script> OMNET IT SYSTEM. All rights reserved.</p>
-      <div class="footer-legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-      </div>
+      <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
     </div>
   </div>
 </footer>
 
 <button class="back-to-top" aria-label="Back to top"><i class="ri-arrow-up-line"></i></button>
-
 <script src="script.js"></script>
 </body>
 </html>
