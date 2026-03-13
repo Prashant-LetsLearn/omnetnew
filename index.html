@@ -125,24 +125,7 @@
     .ind-tile:hover { background: var(--teal-50); border-color: var(--teal-300); color: var(--teal-700); }
     .ind-tile i { font-size: 1.3rem; color: var(--teal-600); }
 
-    /* ── TESTIMONIALS ── */
-    .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-    .tcard {
-      background: #fff; border: 1px solid var(--gray-200); border-radius: 20px;
-      padding: 2rem; transition: all .3s;
-    }
-    .tcard:hover { box-shadow: 0 8px 32px rgba(0,0,0,.08); transform: translateY(-2px); }
-    .tcard .stars { color: #f59e0b; font-size: 1rem; margin-bottom: 1rem; }
-    .tcard .quote { font-size: .95rem; color: var(--gray-600); line-height: 1.75; margin-bottom: 1.5rem; font-style: italic; }
-    .tcard .author { display: flex; align-items: center; gap: .9rem; }
-    .tcard .av {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--teal-500), var(--cyan-600));
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800; color: #fff; font-size: 1rem; flex-shrink: 0;
-    }
-    .tcard .aname { font-size: .9rem; font-weight: 700; color: var(--gray-900); }
-    .tcard .arole { font-size: .78rem; color: var(--gray-500); }
+    
 
     /* ── CTA BANNER ── */
     .cta-banner {
@@ -164,7 +147,6 @@
       .stats-bar-inner { grid-template-columns: repeat(3,1fr); }
       .flex-support-grid { grid-template-columns: 1fr; }
       .svc-row { grid-template-columns: 1fr 1fr; }
-      .testi-grid { grid-template-columns: 1fr; }
     }
     @media(max-width:768px) {
       .hero-stat-row { grid-template-columns: 1fr 1fr; }
@@ -591,43 +573,6 @@
     </div>
     <div class="text-center mt-8">
       <a href="industry-expertise.html" class="btn btn-teal">View All Industries <i class="ri-arrow-right-line"></i></a>
-    </div>
-  </div>
-</section>
-
-<!-- ── TESTIMONIALS ── -->
-<section class="section bg-white">
-  <div class="container">
-    <div class="text-center mb-12">
-      <div class="badge badge-teal mb-4"><i class="ri-chat-quote-line"></i> Client Testimonials</div>
-      <h2 class="section-title">What Delhi NCR Businesses <span class="gradient">Say About Us</span></h2>
-      <p class="section-subtitle">We go the extra mile to make sure every client is completely content with our IT support — here's what some of them have to say.</p>
-    </div>
-    <div class="testi-grid reveal">
-      <div class="tcard">
-        <div class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
-        <p class="quote">"OMNET IT System has been our IT partner since we launched. Their 20-minute remote response is real — whenever we have an issue, the team is on it immediately. The monthly reports give us full visibility of our IT health."</p>
-        <div class="author">
-          <div class="av">RK</div>
-          <div><div class="aname">Rajesh Kumar</div><div class="arole">MD, Manufacturing Company, Noida</div></div>
-        </div>
-      </div>
-      <div class="tcard">
-        <div class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
-        <p class="quote">"We moved from break-fix to OMNET's managed IT AMC plan and the difference is night and day. Zero downtime in 6 months, our server is monitored 24/7, and the GST invoices make our accounting much simpler."</p>
-        <div class="author">
-          <div class="av">PS</div>
-          <div><div class="aname">Priya Sharma</div><div class="arole">CFO, Financial Services Firm, Delhi</div></div>
-        </div>
-      </div>
-      <div class="tcard">
-        <div class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
-        <p class="quote">"OMNET set up our entire IT infrastructure from scratch — structured cabling, server room, WiFi, and CCTV. The team was professional, on schedule, and the onsite response whenever we need support is always within the promised time."</p>
-        <div class="author">
-          <div class="av">AV</div>
-          <div><div class="aname">Amit Verma</div><div class="arole">Director, Logistics Company, Gurugram</div></div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
