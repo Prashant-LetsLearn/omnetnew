@@ -156,7 +156,253 @@
       .why-grid-2x2 { grid-template-columns: 1fr; }
       .ind-scroll { grid-template-columns: repeat(2,1fr); }
     }
-  </style>
+  
+
+    /* ════════════════════════════════════════════════════════
+       PROIT-STYLE HERO + SERVICES SECTIONS
+    ════════════════════════════════════════════════════════ */
+
+    /* ── Full-width banner hero ── */
+    .proit-hero {
+      position: relative;
+      min-height: 600px;
+      background:
+        linear-gradient(to right, rgba(0,0,0,.72) 0%, rgba(0,0,0,.45) 55%, rgba(0,0,0,.15) 100%),
+        url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .proit-hero-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+    .proit-hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(20,184,166,.2);
+      border: 1px solid rgba(20,184,166,.5);
+      color: #5eead4;
+      padding: .4rem 1rem;
+      border-radius: 999px;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .proit-hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.12;
+      color: #fff;
+      max-width: 720px;
+      margin-bottom: 1.5rem;
+    }
+    .proit-hero h1 em {
+      font-style: normal;
+      color: #5eead4;
+    }
+    .proit-hero-sub {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,.82);
+      line-height: 1.75;
+      max-width: 580px;
+      margin-bottom: 2.5rem;
+    }
+    .proit-hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .proit-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: linear-gradient(135deg, #14b8a6, #0891b2);
+      color: #fff;
+      padding: .9rem 2rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all .25s;
+      box-shadow: 0 4px 20px rgba(20,184,166,.4);
+    }
+    .proit-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(20,184,166,.55); }
+    .proit-btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(255,255,255,.08);
+      color: #fff;
+      padding: .9rem 2rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,.35);
+      transition: all .25s;
+    }
+    .proit-btn-outline:hover { background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.7); }
+
+    /* Trust badges row */
+    .proit-trust {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,.15);
+    }
+    .proit-trust-item {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      color: rgba(255,255,255,.8);
+      font-size: .9rem;
+      font-weight: 600;
+    }
+    .proit-trust-item i {
+      font-size: 1.3rem;
+      color: #5eead4;
+    }
+
+    /* ── Services section ── */
+    .proit-services {
+      background: #fff;
+      padding: 0;
+      position: relative;
+    }
+    .proit-services-header {
+      background: linear-gradient(135deg, #0a2240 0%, #0d4f5c 100%);
+      padding: 3.5rem 1.5rem;
+      text-align: center;
+    }
+    .proit-services-header h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: .75rem;
+    }
+    .proit-services-header p {
+      color: rgba(255,255,255,.75);
+      font-size: 1.05rem;
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .proit-svc-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .proit-svc-card {
+      background: #fff;
+      border-right: 1px solid var(--gray-100);
+      border-bottom: 1px solid var(--gray-100);
+      padding: 2.5rem 1.75rem;
+      text-align: center;
+      text-decoration: none;
+      transition: all .3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .proit-svc-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #14b8a6, #0891b2);
+      transform: scaleX(0);
+      transition: transform .3s;
+    }
+    .proit-svc-card:hover { background: var(--teal-50); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(20,184,166,.12); }
+    .proit-svc-card:hover::after { transform: scaleX(1); }
+    .proit-svc-card:last-child { border-right: none; }
+    .proit-svc-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.9rem;
+      color: #fff;
+      margin: 0 auto 1.25rem;
+      flex-shrink: 0;
+    }
+    .proit-svc-card h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--gray-900);
+      margin-bottom: .6rem;
+    }
+    .proit-svc-card p {
+      font-size: .875rem;
+      color: var(--gray-500);
+      line-height: 1.65;
+      margin-bottom: 1.2rem;
+    }
+    .proit-svc-card .svc-link {
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--teal-600);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      transition: gap .2s;
+    }
+    .proit-svc-card:hover .svc-link { gap: .6rem; }
+
+    /* Section divider label */
+    .section-divider {
+      text-align: center;
+      padding: 3rem 0 1rem;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem .5rem;
+    }
+    .section-divider::before, .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--gray-200);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1100px) {
+      .proit-svc-grid { grid-template-columns: repeat(3, 1fr); }
+      .proit-svc-card:nth-child(3) { border-right: none; }
+    }
+    @media (max-width: 768px) {
+      .proit-hero { min-height: auto; }
+      .proit-svc-grid { grid-template-columns: repeat(2, 1fr); }
+      .proit-svc-card { border-right: 1px solid var(--gray-100) !important; }
+      .proit-svc-card:nth-child(even) { border-right: none !important; }
+      .proit-trust { gap: 1rem; }
+    }
+    @media (max-width: 480px) {
+      .proit-svc-grid { grid-template-columns: 1fr; }
+      .proit-svc-card { border-right: none !important; }
+    }
+</style>
 </head>
 <body>
 
@@ -327,6 +573,113 @@
 </header>
 
 <main>
+<!-- ════════════════════════════════════════════════════
+     NEW HERO — proit.com inspired layout
+════════════════════════════════════════════════════ -->
+<section class="proit-hero">
+  <div class="proit-hero-inner">
+    <div class="proit-hero-label">
+      <i class="ri-shield-check-line"></i>
+      Delhi NCR's Trusted IT Partner Since 2026
+    </div>
+
+    <h1>
+      Reliable IT Support &amp;<br>
+      <em>Managed IT Services</em><br>
+      for Your Business
+    </h1>
+
+    <p class="proit-hero-sub">
+      OMNET IT System delivers enterprise-grade IT Support, Cybersecurity, and Managed IT Services
+      for businesses across Delhi NCR — with 20-minute response, fixed monthly cost,
+      and a dedicated team that treats your IT as our responsibility.
+    </p>
+
+    <div class="proit-hero-btns">
+      <a href="contact.html" class="proit-btn-primary">
+        <i class="ri-file-list-3-line"></i> Get Free IT Assessment
+      </a>
+      <a href="tel:+919717270865" class="proit-btn-outline">
+        <i class="ri-phone-fill"></i> +91-97172-70865
+      </a>
+      <a href="https://wa.me/919717270865" class="proit-btn-outline">
+        <i class="ri-whatsapp-fill"></i> WhatsApp Us
+      </a>
+    </div>
+
+    <div class="proit-trust">
+      <div class="proit-trust-item"><i class="ri-timer-flash-line"></i> 20-Min Remote Response</div>
+      <div class="proit-trust-item"><i class="ri-map-pin-line"></i> 4-Hr Onsite Delhi NCR</div>
+      <div class="proit-trust-item"><i class="ri-eye-2-line"></i> 24/7 Proactive Monitoring</div>
+      <div class="proit-trust-item"><i class="ri-currency-line"></i> Fixed Monthly Cost</div>
+      <div class="proit-trust-item"><i class="ri-file-list-2-line"></i> GST-Compliant Invoicing</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     IT SERVICES SECTION — proit.com style card grid
+════════════════════════════════════════════════════ -->
+<section class="proit-services">
+  <div class="proit-services-header">
+    <h2>Our IT Services &amp; Solutions</h2>
+    <p>From 24/7 IT support and cybersecurity to managed infrastructure and cloud services — OMNET IT System is your single partner for all IT needs across Delhi NCR.</p>
+  </div>
+
+  <div class="proit-svc-grid">
+
+    <a href="managed-services.html" class="proit-svc-card">
+      <div class="proit-svc-icon" style="background:linear-gradient(135deg,#0d9488,#0891b2)">
+        <i class="ri-settings-3-line"></i>
+      </div>
+      <h3>Managed IT Services</h3>
+      <p>Proactive 24/7 monitoring, managed servers, security, network, and cloud — all under one fixed monthly fee.</p>
+      <span class="svc-link">Learn More <i class="ri-arrow-right-line"></i></span>
+    </a>
+
+    <a href="it-support.html" class="proit-svc-card">
+      <div class="proit-svc-icon" style="background:linear-gradient(135deg,#0891b2,#2563eb)">
+        <i class="ri-customer-service-2-line"></i>
+      </div>
+      <h3>IT Support</h3>
+      <p>24/7 helpdesk, onsite field engineers, and flexible AMC plans — keeping your business running without interruption.</p>
+      <span class="svc-link">Learn More <i class="ri-arrow-right-line"></i></span>
+    </a>
+
+    <a href="it-security.html" class="proit-svc-card">
+      <div class="proit-svc-icon" style="background:linear-gradient(135deg,#7c3aed,#4338ca)">
+        <i class="ri-shield-check-line"></i>
+      </div>
+      <h3>Cybersecurity</h3>
+      <p>Firewall management, endpoint protection, penetration testing, and 24/7 threat monitoring for complete peace of mind.</p>
+      <span class="svc-link">Learn More <i class="ri-arrow-right-line"></i></span>
+    </a>
+
+    <a href="infrastructure-services.html" class="proit-svc-card">
+      <div class="proit-svc-icon" style="background:linear-gradient(135deg,#059669,#0d9488)">
+        <i class="ri-building-2-line"></i>
+      </div>
+      <h3>IT Infrastructure</h3>
+      <p>Structured cabling, CCTV, server rooms, WiFi 6, access control, and smart office — built right from day one.</p>
+      <span class="svc-link">Learn More <i class="ri-arrow-right-line"></i></span>
+    </a>
+
+    <a href="cloud-services.html" class="proit-svc-card">
+      <div class="proit-svc-icon" style="background:linear-gradient(135deg,#0284c7,#6366f1)">
+        <i class="ri-cloud-line"></i>
+      </div>
+      <h3>Cloud Services</h3>
+      <p>Azure, AWS, Microsoft 365, and Google Workspace — migration, management, and cost optimisation for your cloud journey.</p>
+      <span class="svc-link">Learn More <i class="ri-arrow-right-line"></i></span>
+    </a>
+
+  </div>
+</section>
+
+<!-- Divider between new and existing content -->
+<div class="section-divider">Explore More Below</div>
+
+
 
 <!-- ── HERO ── -->
 <section class="home-hero">
