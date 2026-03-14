@@ -479,310 +479,597 @@
 </footer>
 <button class="back-to-top" aria-label="Back to top"><i class="ri-arrow-up-line"></i></button>
 <script src="script.js"></script>
-<!-- ================================================================
-     ALL 3 WIDGETS - paste just before </body> on every page
-     1. WhatsApp chatbot (bottom-left)
-     2. Telegram form   (bottom-right, higher up)  
-     3. Leave a Message (bottom-right, lower)
-================================================================ -->
-
-<!-- ═══ 1. WHATSAPP CHATBOT ═══ -->
-<div id="waWrap" style="position:fixed;bottom:28px;left:28px;z-index:9000;font-family:inherit;">
-
-  <button id="waBubble" style="background:none;border:none;padding:0;cursor:pointer;display:block;">
-    <div style="display:flex;align-items:center;background:#25D366;border-radius:50px;box-shadow:0 4px 20px rgba(37,211,102,.5);overflow:hidden;transition:transform .2s;">
-      <div style="background:#1ebe5d;width:52px;height:52px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-radius:50px 0 0 50px;">
-        <svg width="26" height="26" viewBox="0 0 28 28" fill="none"><path d="M14 2C7.373 2 2 7.373 2 14c0 2.13.554 4.13 1.523 5.868L2 26l6.292-1.498A11.94 11.94 0 0014 26c6.627 0 12-5.373 12-12S20.627 2 14 2z" fill="#fff"/><path d="M14 4.5c-5.238 0-9.5 4.262-9.5 9.5 0 1.79.496 3.464 1.36 4.893l.18.303-.768 2.802 2.875-.753.294.174A9.454 9.454 0 0014 23.5c5.238 0 9.5-4.262 9.5-9.5S19.238 4.5 14 4.5zm4.712 13.16c-.2.562-.988 1.032-1.624 1.168-.432.092-.996.166-2.894-.622-2.43-1-3.978-3.474-4.1-3.634-.116-.16-.98-1.306-.98-2.492 0-1.186.62-1.77.84-2.01.218-.238.476-.298.634-.298.16 0 .318.002.456.008.146.008.342-.056.534.408.198.474.672 1.636.73 1.756.06.12.1.26.02.42-.08.16-.12.26-.24.4-.118.14-.25.312-.356.42-.12.118-.244.246-.104.482.14.238.618 1.02 1.328 1.652.912.812 1.682 1.062 1.918 1.182.238.12.376.1.516-.06.14-.16.596-.696.754-.934.16-.238.318-.198.536-.12.218.08 1.388.654 1.626.774.238.12.396.18.456.278.058.1.058.574-.142 1.136z" fill="#25D366"/></svg>
+  <!-- === TELEGRAM BUTTON === -->
+  <button class="tg-trigger" id="tgTrigger" aria-label="Message on Telegram">
+    <div class="tg-btn-inner">
+      <div class="tg-icon-circle">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" fill="#fff"/><path d="M17.93 7.093L15.42 17.4c-.178.797-.645.992-1.307.617l-3.61-2.659-1.742 1.676c-.193.193-.354.354-.726.354l.26-3.674 6.693-6.044c.291-.26-.063-.404-.451-.144L6.29 13.4l-3.55-1.11c-.772-.242-.787-.772.16-1.143l13.87-5.348c.644-.242 1.208.145.96 1.294z" fill="#229ED9"/></svg>
       </div>
-      <div style="display:flex;flex-direction:column;padding:0 16px 0 12px;line-height:1.2;">
-        <span style="color:#fff;font-size:13px;font-weight:800;letter-spacing:.3px;">WhatsApp</span>
-        <span style="color:rgba(255,255,255,.85);font-size:11px;">Chat with us</span>
+      <div class="tg-btn-text">
+        <span class="tg-btn-title">Telegram</span>
+        <span class="tg-btn-sub">Send us a message</span>
       </div>
     </div>
   </button>
+  <div class="tg-overlay" id="tgOverlay"></div>
+  <div class="tg-modal" id="tgModal" role="dialog" aria-modal="true">
+    <div class="tg-header">
+      <div class="tg-logo"><span class="tg-logo-top">OMNET</span><span class="tg-logo-bottom">IT</span></div>
+      <span class="tg-title">Message Us on Telegram</span>
+      <button class="tg-close" id="tgClose">&times;</button>
+    </div>
+    <div class="tg-body">
+      <form id="tgForm" novalidate>
+        <div class="tg-field"><label for="tgEmail">Email address</label><input type="email" id="tgEmail" name="email" placeholder="Enter your email address"></div>
+        <div class="tg-field"><label for="tgPhone">Contact number</label><input type="tel" id="tgPhone" name="phone" placeholder="Enter your contact number"></div>
+        <div class="tg-field"><label for="tgDept">Department <span class="tg-req">*</span></label>
+          <select id="tgDept" name="department" required>
+            <option value="" disabled selected>Choose a department</option>
+            <option value="IT Support">IT Support</option>
+            <option value="Sales">Sales</option>
+          </select></div>
+        <div class="tg-field"><label for="tgMsg">Message</label><textarea id="tgMsg" name="message" placeholder="Type your message and hit Submit"></textarea></div>
+        <button type="submit" class="tg-submit" id="tgSubmitBtn">&#10148; Send via Telegram</button>
+        <div class="tg-success" id="tgSuccess">&#10003; Message sent! Our team will connect with you soon.</div>
+        <div class="tg-error" id="tgError">&#9888; Something went wrong. Please try again.</div>
+      </form>
+    </div>
+  </div>
+  <style>
+    .tg-trigger{position:fixed;bottom:90px;right:28px;z-index:9999;background:none;border:none;padding:0;cursor:pointer;}
+    .tg-btn-inner{display:flex;align-items:center;background:#229ED9;border-radius:50px;box-shadow:0 4px 20px rgba(34,158,217,.5);overflow:hidden;transition:transform .2s,box-shadow .2s;}
+    .tg-trigger:hover .tg-btn-inner{transform:translateY(-2px);box-shadow:0 8px 28px rgba(34,158,217,.6);}
+    .tg-icon-circle{background:#1a8bbf;width:52px;height:52px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-radius:50px 0 0 50px;}
+    .tg-btn-text{display:flex;flex-direction:column;padding:0 16px 0 12px;justify-content:center;line-height:1.2;}
+    .tg-btn-title{color:#fff;font-size:13px;font-weight:800;letter-spacing:.3px;}
+    .tg-btn-sub{color:rgba(255,255,255,.85);font-size:11px;}
+    .tg-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.45);}
+    .tg-overlay.open{display:block;}
+    .tg-modal{display:none;position:fixed;z-index:10000;bottom:90px;right:28px;width:340px;max-width:calc(100vw - 32px);background:#fff;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.18);overflow:hidden;font-family:inherit;}
+    .tg-modal.open{display:block;}
+    .tg-header{background:#229ED9;padding:12px 16px;display:flex;align-items:center;gap:10px;}
+    .tg-logo{display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0d1b2a;border:2px solid #fff;border-radius:6px;padding:4px 8px;flex-shrink:0;line-height:1;}
+    .tg-logo-top{font-size:8px;font-weight:300;color:#90caf9;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1px;}
+    .tg-logo-bottom{font-size:12px;font-weight:800;color:#fff;letter-spacing:2px;}
+    .tg-title{color:#fff;font-size:15px;font-weight:600;flex:1;}
+    .tg-close{color:#fff;background:none;border:none;font-size:22px;cursor:pointer;opacity:.8;line-height:1;margin-left:auto;}
+    .tg-close:hover{opacity:1;}
+    .tg-body{padding:18px 16px 16px;}
+    .tg-field{margin-bottom:14px;}
+    .tg-field label{display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:5px;}
+    .tg-req{color:#e53935;}
+    .tg-field input,.tg-field select,.tg-field textarea{width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;background:#fff;color:#222;font-family:inherit;outline:none;transition:border-color .15s;box-sizing:border-box;}
+    .tg-field input:focus,.tg-field select:focus,.tg-field textarea:focus{border-color:#229ED9;box-shadow:0 0 0 3px rgba(34,158,217,.12);}
+    .tg-field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;}
+    .tg-field textarea{resize:vertical;min-height:90px;}
+    .tg-submit{width:100%;padding:11px;background:#229ED9;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .15s;}
+    .tg-submit:hover{background:#1a8bbf;}
+    .tg-submit:disabled{opacity:.6;cursor:not-allowed;}
+    .tg-success{display:none;margin-top:10px;padding:10px 14px;background:#ecfdf5;color:#065f46;border-radius:8px;font-size:13px;text-align:center;}
+    .tg-error{display:none;margin-top:10px;padding:10px 14px;background:#fef2f2;color:#991b1b;border-radius:8px;font-size:13px;text-align:center;}
+    @media(max-width:480px){.tg-trigger{bottom:90px;right:12px;}.tg-modal{bottom:0;right:0;left:0;width:100%;max-width:100%;border-radius:16px 16px 0 0;}}
+  </style>
+  <script>
+  (function(){
+    var trigger=document.getElementById("tgTrigger");
+    var modal=document.getElementById("tgModal");
+    var overlay=document.getElementById("tgOverlay");
+    var closeBtn=document.getElementById("tgClose");
+    var form=document.getElementById("tgForm");
+    var submitBtn=document.getElementById("tgSubmitBtn");
+    var success=document.getElementById("tgSuccess");
+    var error=document.getElementById("tgError");
+    function openModal(){modal.classList.add("open");overlay.classList.add("open");}
+    function closeModal(){modal.classList.remove("open");overlay.classList.remove("open");}
+    if(trigger) trigger.addEventListener("click",openModal);
+    if(closeBtn) closeBtn.addEventListener("click",closeModal);
+    if(overlay) overlay.addEventListener("click",closeModal);
+    if(form) form.addEventListener("submit",async function(e){
+      e.preventDefault();
+      var dept=document.getElementById("tgDept").value;
+      if(!dept){document.getElementById("tgDept").style.borderColor="#e53935";document.getElementById("tgDept").focus();return;}
+      document.getElementById("tgDept").style.borderColor="";
+      submitBtn.disabled=true; submitBtn.textContent="Sending...";
+      success.style.display="none"; error.style.display="none";
+      try{
+        var fd=new FormData(form);
+        var email=fd.get("email")||"Not provided";
+        var phone=fd.get("phone")||"Not provided";
+        var dept2=fd.get("department")||"Not provided";
+        var msg=fd.get("message")||"Not provided";
+        var page=window.location.pathname.split("/").pop()||"index.html";
+        var text="[Telegram] *New Message - OMNET IT*\n\n"
+          +"*Page:* "+page+"\n"
+          +"*Email:* "+email+"\n"
+          +"*Phone:* "+phone+"\n"
+          +"*Dept:* "+dept2+"\n"
+          +"*Message:* "+msg;
+        var res=await fetch("https://api.telegram.org/bot8739187370:AAHDZnMgNsBqADEDVD3F6l44zNZ5WfoMpsE/sendMessage",{
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({chat_id:"6126529341",text:text,parse_mode:"Markdown"})
+        });
+        var json=await res.json();
+        if(json.ok){
+          success.style.display="block";
+          form.reset();
+          submitBtn.disabled=false;
+          submitBtn.textContent="\u27a4 Send via Telegram";
+        } else { throw new Error("failed"); }
+      } catch(err){
+        error.style.display="block";
+        submitBtn.disabled=false;
+        submitBtn.textContent="\u27a4 Send via Telegram";
+      }
+    });
+  })();
+  <\/script>
+  <!-- === END TELEGRAM BUTTON === -->
 
-  <div id="waChat" style="display:none;flex-direction:column;position:absolute;bottom:64px;left:0;width:310px;background:#ece5dd;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.2);overflow:hidden;">
-    <div style="background:#075E54;padding:12px 14px;display:flex;align-items:center;gap:10px;">
-      <div style="position:relative;flex-shrink:0;">
-        <div style="width:42px;height:42px;border-radius:50%;background:#0d1b2a;border:2px solid #fff;display:flex;align-items:center;justify-content:center;flex-direction:column;line-height:1;">
-          <span style="font-size:7px;font-weight:300;color:#90caf9;letter-spacing:1px;text-transform:uppercase;">OMNET</span>
-          <span style="font-size:11px;font-weight:800;color:#fff;letter-spacing:2px;">IT</span>
+  <!-- ═══ LEAVE A MESSAGE FLOATING BUTTON ═══ -->
+  <button class="lam-trigger" id="lamTrigger" aria-label="Leave a message">
+    <i class="ri-message-3-line"></i>
+    <span>Leave a Message</span>
+  </button>
+
+  <!-- ═══ LEAVE A MESSAGE MODAL ═══ -->
+  <div class="lam-overlay" id="lamOverlay"></div>
+  <div class="lam-modal" id="lamModal" role="dialog" aria-modal="true" aria-label="Leave a message">
+    <div class="lam-header">
+      <div class="lam-logo">
+        <span class="lam-logo-top">OMNET</span>
+        <span class="lam-logo-bottom">IT</span>
+      </div>
+      <span class="lam-title">Leave a message</span>
+      <button class="lam-close" id="lamClose" aria-label="Close">&times;</button>
+    </div>
+    <div class="lam-body">
+      <form id="lamForm" novalidate>
+        <input type="hidden" name="access_key" value="2af0c0f5-01fa-4349-b83c-fff623cb969b">
+        <input type="hidden" name="subject" value="New Message from OMNET IT Website">
+        <input type="hidden" name="from_name" value="OMNET IT Website">
+        <div class="lam-field">
+          <label for="lamEmail">Email address</label>
+          <input type="email" id="lamEmail" name="email" placeholder="Enter your email address">
         </div>
-        <span style="position:absolute;bottom:1px;right:1px;width:11px;height:11px;background:#25D366;border-radius:50%;border:2px solid #075E54;display:block;"></span>
-      </div>
-      <div style="flex:1;">
-        <div style="color:#fff;font-size:14px;font-weight:700;">OMNET IT Support</div>
-        <div style="color:rgba(255,255,255,.75);font-size:11px;">&#9679; Online now</div>
-      </div>
-      <button id="waChatClose" style="color:#fff;background:none;border:none;font-size:22px;cursor:pointer;opacity:.8;line-height:1;">&times;</button>
-    </div>
-    <div id="waMessages" style="padding:12px 10px;overflow-y:auto;max-height:220px;display:flex;flex-direction:column;gap:6px;">
-      <div style="text-align:center;font-size:11px;color:#888;background:rgba(255,255,255,.6);padding:2px 10px;border-radius:8px;align-self:center;">Today</div>
-      <div style="align-self:flex-start;max-width:82%;">
-        <div style="padding:9px 12px;border-radius:0 10px 10px 10px;background:#fff;font-size:13px;color:#111;line-height:1.5;box-shadow:0 1px 2px rgba(0,0,0,.1);">
-          👋 Hello! Welcome to <strong>OMNET IT System</strong>.<br>How can we help you today?
+        <div class="lam-field">
+          <label for="lamPhone">Contact number</label>
+          <input type="tel" id="lamPhone" name="phone" placeholder="Enter your contact number">
         </div>
-        <div id="waGreetTime" style="font-size:10px;color:#888;margin-top:2px;"></div>
+        <div class="lam-field">
+          <label for="lamDept">Department <span class="lam-req">*</span></label>
+          <select id="lamDept" name="department" required>
+            <option value="" disabled selected>Choose a department</option>
+            <option value="IT Support">IT Support</option>
+            <option value="Sales">Sales</option>
+          </select>
+        </div>
+        <div class="lam-field">
+          <label for="lamMsg">Message</label>
+          <textarea id="lamMsg" name="message" placeholder="Type your message and hit 'Submit'"></textarea>
+        </div>
+        <button type="submit" class="lam-submit" id="lamSubmitBtn">&#10148; Submit</button>
+        <div class="lam-success" id="lamSuccess">&#10003; Your message has been sent! We'll get back to you soon.</div>
+        <div class="lam-error" id="lamError">&#9888; Something went wrong. Please try again.</div>
+      </form>
+    </div>
+  </div>
+
+  <style>
+    .lam-trigger {
+      position: fixed; bottom: 28px; right: 28px; z-index: 10001;
+      background: #29b6f6; color: #fff; border: none; border-radius: 50px;
+      padding: 13px 20px; font-size: 14px; font-weight: 600;
+      display: flex; align-items: center; gap: 8px; cursor: pointer;
+      box-shadow: 0 4px 18px rgba(41,182,246,.45);
+      transition: background .2s, transform .2s;
+    }
+    .lam-trigger:hover { background: #039be5; transform: translateY(-2px); }
+    .lam-trigger i { font-size: 18px; }
+    .lam-overlay {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,.45);
+    }
+    .lam-overlay.open { display: block; }
+    .lam-modal {
+      display: none; position: fixed; z-index: 10000;
+      bottom: 90px; right: 28px;
+      width: 340px; max-width: calc(100vw - 32px);
+      background: #fff; border-radius: 14px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.18);
+      overflow: hidden; font-family: inherit; z-index:10002;
+    }
+    .lam-modal.open { display: block; }
+    .lam-header {
+      background: #29b6f6; padding: 12px 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .lam-logo {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; background: #0d1b2a;
+      border: 2px solid #fff; border-radius: 6px;
+      padding: 4px 8px; flex-shrink: 0; line-height: 1;
+    }
+    .lam-logo-top { font-size: 8px; font-weight: 300; color: #90caf9; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1px; }
+    .lam-logo-bottom { font-size: 12px; font-weight: 800; color: #fff; letter-spacing: 2px; }
+    .lam-title { color: #fff; font-size: 16px; font-weight: 600; flex: 1; }
+    .lam-close {
+      color: #fff; background: none; border: none;
+      font-size: 22px; cursor: pointer; opacity: .8; line-height: 1;
+      margin-left: auto;
+    }
+    .lam-close:hover { opacity: 1; }
+    .lam-body { padding: 18px 16px 16px; }
+    .lam-field { margin-bottom: 14px; }
+    .lam-field label { display: block; font-size: 13px; font-weight: 600; color: #222; margin-bottom: 5px; }
+    .lam-req { color: #e53935; }
+    .lam-field input, .lam-field select, .lam-field textarea {
+      width: 100%; padding: 9px 12px; font-size: 13px;
+      border: 1px solid #d1d5db; border-radius: 8px;
+      background: #fff; color: #222; font-family: inherit; outline: none;
+      transition: border-color .15s;
+    }
+    .lam-field input:focus, .lam-field select:focus, .lam-field textarea:focus { border-color: #29b6f6; box-shadow: 0 0 0 3px rgba(41,182,246,.12); }
+    .lam-field select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px;
+    }
+    .lam-field textarea { resize: vertical; min-height: 90px; }
+    .lam-submit {
+      width: 100%; padding: 11px; background: #29b6f6; color: #fff;
+      border: none; border-radius: 8px; font-size: 14px; font-weight: 600;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      gap: 6px; transition: background .15s;
+    }
+    .lam-submit:hover { background: #039be5; }
+    .lam-submit:disabled { opacity: .6; cursor: not-allowed; }
+    .lam-success { display: none; margin-top: 10px; padding: 10px 14px; background: #ecfdf5; color: #065f46; border-radius: 8px; font-size: 13px; text-align: center; }
+    .lam-error   { display: none; margin-top: 10px; padding: 10px 14px; background: #fef2f2; color: #991b1b; border-radius: 8px; font-size: 13px; text-align: center; }
+    @media (max-width: 480px) {
+      .lam-modal { bottom: 0; right: 0; left: 0; width: 100%; max-width: 100%; border-radius: 16px 16px 0 0; }
+      .lam-trigger { bottom: 16px; right: 16px; }
+    }
+  </style>
+
+  <script>
+  (function(){
+    var trigger = document.getElementById('lamTrigger');
+    var modal   = document.getElementById('lamModal');
+    var overlay = document.getElementById('lamOverlay');
+    var closeBtn= document.getElementById('lamClose');
+    var form    = document.getElementById('lamForm');
+    var submitBtn = document.getElementById('lamSubmitBtn');
+    var success = document.getElementById('lamSuccess');
+    var error   = document.getElementById('lamError');
+
+    function openModal(){ modal.classList.add('open'); overlay.classList.add('open'); }
+    function closeModal(){ modal.classList.remove('open'); overlay.classList.remove('open'); }
+
+    if(trigger) trigger.addEventListener('click', openModal);
+    if(closeBtn) closeBtn.addEventListener('click', closeModal);
+    if(overlay) overlay.addEventListener('click', closeModal);
+
+    if(form) form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      var dept = document.getElementById('lamDept').value;
+      if(!dept){ document.getElementById('lamDept').style.borderColor='#e53935'; document.getElementById('lamDept').focus(); return; }
+      document.getElementById('lamDept').style.borderColor='';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      success.style.display = 'none';
+      error.style.display   = 'none';
+      try {
+        var fd = new FormData(form);
+        var email = fd.get('email') || 'Not provided';
+        var phone = fd.get('phone') || 'Not provided';
+        var dept  = fd.get('department') || 'Not provided';
+        var msg   = fd.get('message') || 'Not provided';
+        var page  = window.location.pathname.split('/').pop() || 'index.html';
+        var text  = '📬 *New Message - OMNET IT Website*\n\n'
+                  + '📄 *Page:* ' + page + '\n'
+                  + '📧 *Email:* ' + email + '\n'
+                  + '📞 *Phone:* ' + phone + '\n'
+                  + '🏢 *Department:* ' + dept + '\n'
+                  + '💬 *Message:* ' + msg;
+        var res = await fetch('https://api.telegram.org/bot8739187370:AAHDZnMgNsBqADEDVD3F6l44zNZ5WfoMpsE/sendMessage', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({chat_id:'6126529341', text:text, parse_mode:'Markdown'})
+        });
+        var json = await res.json();
+        if(json.ok){
+          success.style.display = 'block';
+          form.reset();
+          submitBtn.disabled = false;
+          submitBtn.textContent = '\u27a4 Submit';
+        } else { throw new Error('failed'); }
+      } catch(err){
+        error.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = '\u27a4 Submit';
+      }
+    });
+  })();
+  </script>
+  <!-- ═══ END LEAVE A MESSAGE ═══ -->
+  <!-- ═══ WHATSAPP CHATBOT ═══ -->
+  <div class="wa-wrap" id="waWrap">
+    <!-- Bubble trigger -->
+    <button class="wa-bubble" id="waBubble" aria-label="Chat on WhatsApp">
+      <div class="wa-btn-inner">
+        <div class="wa-icon-circle">
+          <svg width="26" height="26" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 2C7.373 2 2 7.373 2 14c0 2.13.554 4.13 1.523 5.868L2 26l6.292-1.498A11.94 11.94 0 0014 26c6.627 0 12-5.373 12-12S20.627 2 14 2z" fill="#fff"/>
+            <path d="M14 4.5c-5.238 0-9.5 4.262-9.5 9.5 0 1.79.496 3.464 1.36 4.893l.18.303-.768 2.802 2.875-.753.294.174A9.454 9.454 0 0014 23.5c5.238 0 9.5-4.262 9.5-9.5S19.238 4.5 14 4.5zm4.712 13.16c-.2.562-.988 1.032-1.624 1.168-.432.092-.996.166-2.894-.622-2.43-1-3.978-3.474-4.1-3.634-.116-.16-.98-1.306-.98-2.492 0-1.186.62-1.77.84-2.01.218-.238.476-.298.634-.298.16 0 .318.002.456.008.146.008.342-.056.534.408.198.474.672 1.636.73 1.756.06.12.1.26.02.42-.08.16-.12.26-.24.4-.118.14-.25.312-.356.42-.12.118-.244.246-.104.482.14.238.618 1.02 1.328 1.652.912.812 1.682 1.062 1.918 1.182.238.12.376.1.516-.06.14-.16.596-.696.754-.934.16-.238.318-.198.536-.12.218.08 1.388.654 1.626.774.238.12.396.18.456.278.058.1.058.574-.142 1.136z" fill="#25D366"/>
+          </svg>
+        </div>
+        <div class="wa-btn-text">
+          <span class="wa-btn-title">WhatsApp</span>
+          <span class="wa-btn-sub">Chat with us</span>
+        </div>
+        <span class="wa-online-dot"></span>
+      </div>
+    </button>
+
+    <!-- Chat window -->
+    <div class="wa-chat" id="waChat">
+      <div class="wa-chat-header">
+        <div class="wa-chat-avatar">
+          <div class="wa-avatar-ring">
+            <div class="wa-avatar-inner">
+              <span class="wa-avatar-top">OMNET</span>
+              <span class="wa-avatar-bottom">IT</span>
+            </div>
+          </div>
+          <span class="wa-status-dot"></span>
+        </div>
+        <div class="wa-chat-info">
+          <div class="wa-chat-name">OMNET IT Support</div>
+          <div class="wa-chat-status">&#9679; Online now</div>
+        </div>
+        <button class="wa-chat-close" id="waChatClose">&times;</button>
+      </div>
+
+      <div class="wa-messages" id="waMessages">
+        <div class="wa-time-label">Today</div>
+        <div class="wa-msg wa-msg-in" id="waMsgGreet">
+          <div class="wa-bubble-msg">
+            👋 Hello! Welcome to <strong>OMNET IT System</strong>.<br>How can we help you today?
+          </div>
+          <div class="wa-msg-time" id="waGreetTime"></div>
+        </div>
+      </div>
+
+      <!-- Step: Choose Support or Sales -->
+      <div class="wa-options" id="waStep1">
+        <p class="wa-options-label">Please select a department:</p>
+        <button class="wa-opt-btn" onclick="waSelectDept('IT Support','🛠️ IT Support')">🛠️ IT Support</button>
+        <button class="wa-opt-btn" onclick="waSelectDept('Sales','💼 Sales')">💼 Sales</button>
+      </div>
+
+      <!-- Step: Type message -->
+      <div class="wa-input-row" id="waInputRow" style="display:none;">
+        <input type="text" id="waInput" placeholder="Type your message..." maxlength="300" />
+        <button class="wa-send-btn" id="waSendBtn" onclick="waSendMessage()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
       </div>
     </div>
-    <div id="waStep1" style="background:#fff;padding:10px 12px;border-top:1px solid #e0e0e0;">
-      <p style="font-size:12px;color:#555;margin-bottom:7px;">Please select a department:</p>
-      <button onclick="waSelectDept('IT Support','IT Support')" style="display:block;width:100%;margin-bottom:6px;padding:9px 14px;background:#f0fdf4;border:1.5px solid #25D366;border-radius:8px;color:#075E54;font-size:13px;font-weight:600;cursor:pointer;text-align:left;">IT Support</button>
-      <button onclick="waSelectDept('Sales','Sales')" style="display:block;width:100%;padding:9px 14px;background:#f0fdf4;border:1.5px solid #25D366;border-radius:8px;color:#075E54;font-size:13px;font-weight:600;cursor:pointer;text-align:left;">Sales</button>
-    </div>
-    <div id="waInputRow" style="display:none;background:#fff;padding:8px 10px;border-top:1px solid #e0e0e0;gap:8px;align-items:center;">
-      <input id="waInput" type="text" placeholder="Type your message..." maxlength="300" style="flex:1;padding:9px 12px;border:1px solid #d1d5db;border-radius:20px;font-size:13px;outline:none;font-family:inherit;background:#f9f9f9;width:100%;box-sizing:border-box;" />
-      <button onclick="waSendMessage()" style="width:36px;height:36px;border-radius:50%;background:#25D366;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:6px;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-    </div>
   </div>
-</div>
 
-<!-- ═══ 2. TELEGRAM FORM (bottom-right, 90px up) ═══ -->
-<button id="tgTrigger" style="position:fixed;bottom:90px;right:28px;z-index:9000;background:none;border:none;padding:0;cursor:pointer;">
-  <div style="display:flex;align-items:center;background:#229ED9;border-radius:50px;box-shadow:0 4px 20px rgba(34,158,217,.5);overflow:hidden;transition:transform .2s;">
-    <div style="background:#1a8bbf;width:52px;height:52px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-radius:50px 0 0 50px;">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" fill="#fff"/><path d="M17.93 7.093L15.42 17.4c-.178.797-.645.992-1.307.617l-3.61-2.659-1.742 1.676c-.193.193-.354.354-.726.354l.26-3.674 6.693-6.044c.291-.26-.063-.404-.451-.144L6.29 13.4l-3.55-1.11c-.772-.242-.787-.772.16-1.143l13.87-5.348c.644-.242 1.208.145.96 1.294z" fill="#229ED9"/></svg>
-    </div>
-    <div style="display:flex;flex-direction:column;padding:0 16px 0 12px;line-height:1.2;">
-      <span style="color:#fff;font-size:13px;font-weight:800;letter-spacing:.3px;">Telegram</span>
-      <span style="color:rgba(255,255,255,.85);font-size:11px;">Send a message</span>
-    </div>
-  </div>
-</button>
+  <style>
+    .wa-wrap { position:fixed; bottom:28px; left:28px; z-index:9997; font-family:inherit; }
+    .wa-bubble {
+      background:none; border:none; padding:0; cursor:pointer;
+      position:relative; display:block;
+    }
+    .wa-btn-inner {
+      display:flex; align-items:center; gap:0;
+      background:#25D366; border-radius:50px;
+      box-shadow:0 4px 20px rgba(37,211,102,.5);
+      overflow:hidden; position:relative;
+      transition:transform .2s, box-shadow .2s;
+    }
+    .wa-bubble:hover .wa-btn-inner { transform:translateY(-2px); box-shadow:0 8px 28px rgba(37,211,102,.6); }
+    .wa-icon-circle {
+      background:#1ebe5d; width:52px; height:52px; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+      border-radius:50px 0 0 50px;
+    }
+    .wa-btn-text {
+      display:flex; flex-direction:column; padding:0 16px 0 12px;
+      justify-content:center; line-height:1.2;
+    }
+    .wa-btn-title { color:#fff; font-size:13px; font-weight:800; letter-spacing:.3px; }
+    .wa-btn-sub { color:rgba(255,255,255,.85); font-size:11px; font-weight:400; }
+    .wa-online-dot {
+      position:absolute; top:9px; right:9px; width:9px; height:9px;
+      background:#fff; border-radius:50%; border:2px solid #25D366;
+      animation:waPulse 2s infinite;
+    }
+    @keyframes waPulse { 0%,100%{opacity:1}50%{opacity:.3} }
 
-<div id="tgOverlay" style="display:none;position:fixed;inset:0;z-index:9001;background:rgba(0,0,0,.45);"></div>
-<div id="tgModal" style="display:none;position:fixed;bottom:160px;right:28px;z-index:9002;width:340px;max-width:calc(100vw - 32px);background:#fff;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.2);overflow:hidden;font-family:inherit;">
-  <div style="background:#229ED9;padding:12px 16px;display:flex;align-items:center;gap:10px;">
-    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0d1b2a;border:2px solid #fff;border-radius:6px;padding:4px 8px;line-height:1;flex-shrink:0;">
-      <span style="font-size:8px;font-weight:300;color:#90caf9;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1px;">OMNET</span>
-      <span style="font-size:12px;font-weight:800;color:#fff;letter-spacing:2px;">IT</span>
-    </div>
-    <span style="color:#fff;font-size:15px;font-weight:600;flex:1;">Message via Telegram</span>
-    <button id="tgClose" style="color:#fff;background:none;border:none;font-size:24px;cursor:pointer;line-height:1;">&times;</button>
-  </div>
-  <div style="padding:16px;">
-    <form id="tgForm">
-      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Email address</label><input type="email" name="email" placeholder="Enter your email address" style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;"></div>
-      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Contact number</label><input type="tel" name="phone" placeholder="Enter your contact number" style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;"></div>
-      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Department <span style="color:#e53935;">*</span></label>
-        <select id="tgDept" name="department" required style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;appearance:none;background:#fff;">
-          <option value="" disabled selected>Choose a department</option>
-          <option value="IT Support">IT Support</option>
-          <option value="Sales">Sales</option>
-        </select></div>
-      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Message</label><textarea name="message" placeholder="Type your message..." rows="3" style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;resize:vertical;"></textarea></div>
-      <button type="submit" id="tgSubmitBtn" style="width:100%;padding:11px;background:#229ED9;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;">Send via Telegram</button>
-      <div id="tgSuccess" style="display:none;margin-top:10px;padding:10px;background:#ecfdf5;color:#065f46;border-radius:8px;font-size:13px;text-align:center;">&#10003; Message received! Our team will connect with you soon.</div>
-      <div id="tgError" style="display:none;margin-top:10px;padding:10px;background:#fef2f2;color:#991b1b;border-radius:8px;font-size:13px;text-align:center;">Something went wrong. Please try again.</div>
-    </form>
-  </div>
-</div>
+    /* Chat window */
+    .wa-chat {
+      display:none; flex-direction:column;
+      position:absolute; bottom:64px; left:0;
+      width:310px; max-width:calc(100vw - 40px);
+      background:#ece5dd; border-radius:16px;
+      box-shadow:0 8px 40px rgba(0,0,0,.2); overflow:hidden;
+    }
+    .wa-chat.open { display:flex; }
 
-<!-- ═══ 3. LEAVE A MESSAGE (bottom-right, 28px) ═══ -->
-<button id="lamTrigger" style="position:fixed;bottom:28px;right:28px;z-index:9000;background:#29b6f6;color:#fff;border:none;border-radius:50px;padding:13px 20px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;cursor:pointer;box-shadow:0 4px 18px rgba(41,182,246,.45);">
-  <i class="ri-message-3-line" style="font-size:18px;"></i>
-  <span>Leave a Message</span>
-</button>
+    /* Header */
+    .wa-chat-header {
+      background:#075E54; padding:12px 14px;
+      display:flex; align-items:center; gap:10px;
+    }
+    .wa-chat-avatar { position:relative; flex-shrink:0; }
+    .wa-avatar-ring {
+      width:42px; height:42px; border-radius:50%;
+      background:#0d1b2a; border:2px solid #fff;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .wa-avatar-inner { display:flex; flex-direction:column; align-items:center; line-height:1; }
+    .wa-avatar-top { font-size:7px; font-weight:300; color:#90caf9; letter-spacing:1px; text-transform:uppercase; }
+    .wa-avatar-bottom { font-size:11px; font-weight:800; color:#fff; letter-spacing:2px; }
+    .wa-status-dot {
+      position:absolute; bottom:1px; right:1px;
+      width:11px; height:11px; background:#25D366;
+      border-radius:50%; border:2px solid #075E54;
+    }
+    .wa-chat-info { flex:1; }
+    .wa-chat-name { color:#fff; font-size:14px; font-weight:700; }
+    .wa-chat-status { color:rgba(255,255,255,.75); font-size:11px; margin-top:1px; }
+    .wa-chat-close {
+      color:#fff; background:none; border:none;
+      font-size:22px; cursor:pointer; opacity:.8; line-height:1;
+    }
+    .wa-chat-close:hover { opacity:1; }
 
-<div id="lamOverlay" style="display:none;position:fixed;inset:0;z-index:9001;background:rgba(0,0,0,.45);"></div>
-<div id="lamModal" style="display:none;position:fixed;bottom:90px;right:28px;z-index:9002;width:340px;max-width:calc(100vw - 32px);background:#fff;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.2);overflow:hidden;font-family:inherit;">
-  <div style="background:#29b6f6;padding:12px 16px;display:flex;align-items:center;gap:10px;">
-    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0d1b2a;border:2px solid #fff;border-radius:6px;padding:4px 8px;line-height:1;flex-shrink:0;">
-      <span style="font-size:8px;font-weight:300;color:#90caf9;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1px;">OMNET</span>
-      <span style="font-size:12px;font-weight:800;color:#fff;letter-spacing:2px;">IT</span>
-    </div>
-    <span style="color:#fff;font-size:15px;font-weight:600;flex:1;">Leave a message</span>
-    <button id="lamClose" style="color:#fff;background:none;border:none;font-size:24px;cursor:pointer;line-height:1;">&times;</button>
-  </div>
-  <div style="padding:16px;">
-    <form id="lamForm">
-      <input type="hidden" name="access_key" value="2af0c0f5-01fa-4349-b83c-fff623cb969b">
-      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Email address</label><input type="email" name="email" placeholder="Enter your email address" style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;"></div>
-      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Contact number</label><input type="tel" name="phone" placeholder="Enter your contact number" style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;"></div>
-      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Department <span style="color:#e53935;">*</span></label>
-        <select id="lamDept" name="department" required style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;appearance:none;background:#fff;">
-          <option value="" disabled selected>Choose a department</option>
-          <option value="IT Support">IT Support</option>
-          <option value="Sales">Sales</option>
-        </select></div>
-      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Message</label><textarea name="message" placeholder="Type your message..." rows="3" style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;resize:vertical;"></textarea></div>
-      <button type="submit" id="lamSubmitBtn" style="width:100%;padding:11px;background:#29b6f6;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;">Submit Message</button>
-      <div id="lamSuccess" style="display:none;margin-top:10px;padding:10px;background:#ecfdf5;color:#065f46;border-radius:8px;font-size:13px;text-align:center;">&#10003; Message received! Our team will connect with you soon.</div>
-      <div id="lamError" style="display:none;margin-top:10px;padding:10px;background:#fef2f2;color:#991b1b;border-radius:8px;font-size:13px;text-align:center;">Something went wrong. Please try again.</div>
-    </form>
-  </div>
-</div>
+    /* Messages */
+    .wa-messages {
+      flex:1; padding:12px 10px; overflow-y:auto;
+      max-height:240px; display:flex; flex-direction:column; gap:6px;
+      background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E");
+    }
+    .wa-time-label { text-align:center; font-size:11px; color:#888; background:rgba(255,255,255,.6); padding:2px 10px; border-radius:8px; align-self:center; margin-bottom:4px; }
+    .wa-msg { display:flex; flex-direction:column; max-width:82%; }
+    .wa-msg-in { align-self:flex-start; }
+    .wa-msg-out { align-self:flex-end; }
+    .wa-bubble-msg {
+      padding:9px 12px; border-radius:0 10px 10px 10px;
+      background:#fff; font-size:13px; color:#111; line-height:1.5;
+      box-shadow:0 1px 2px rgba(0,0,0,.1);
+    }
+    .wa-msg-out .wa-bubble-msg {
+      background:#dcf8c6; border-radius:10px 0 10px 10px;
+    }
+    .wa-msg-time { font-size:10px; color:#888; margin-top:2px; text-align:right; }
+    .wa-msg-in .wa-msg-time { text-align:left; }
 
-<script>
-(function(){
-  var WA_NUMBER = '919717270865';
-  var TG_BOT = '8739187370:AAHDZnMgNsBqADEDVD3F6l44zNZ5WfoMpsE';
-  var TG_CHAT = '6126529341';
-  var selectedDept = '';
+    /* Options */
+    .wa-options { background:#fff; padding:10px 12px; border-top:1px solid #e0e0e0; }
+    .wa-options-label { font-size:12px; color:#555; margin-bottom:7px; }
+    .wa-opt-btn {
+      display:block; width:100%; margin-bottom:6px; padding:9px 14px;
+      background:#f0fdf4; border:1.5px solid #25D366; border-radius:8px;
+      color:#075E54; font-size:13px; font-weight:600; cursor:pointer; text-align:left;
+      transition:background .15s;
+    }
+    .wa-opt-btn:hover { background:#dcf8c6; }
 
-  function getTime(){ return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}); }
-  document.getElementById('waGreetTime').textContent = getTime();
+    /* Input */
+    .wa-input-row {
+      background:#fff; padding:8px 10px;
+      border-top:1px solid #e0e0e0;
+      display:flex; gap:8px; align-items:center;
+    }
+    .wa-input-row input {
+      flex:1; padding:9px 12px; border:1px solid #d1d5db;
+      border-radius:20px; font-size:13px; outline:none;
+      font-family:inherit; background:#f9f9f9;
+    }
+    .wa-input-row input:focus { border-color:#25D366; }
+    .wa-send-btn {
+      width:36px; height:36px; border-radius:50%;
+      background:#25D366; border:none; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0; transition:background .15s;
+    }
+    .wa-send-btn:hover { background:#1da851; }
 
-  // ── WhatsApp chatbot ──
-  var waBubble = document.getElementById('waBubble');
-  var waChat   = document.getElementById('waChat');
-  var waClose  = document.getElementById('waChatClose');
-  var waMessages = document.getElementById('waMessages');
-  var waStep1  = document.getElementById('waStep1');
-  var waInputRow = document.getElementById('waInputRow');
-  var waInput  = document.getElementById('waInput');
+    @media(max-width:480px){
+      .wa-wrap { bottom:16px; left:12px; }
+      .wa-chat { width:calc(100vw - 24px); bottom:60px; }
+    }
+  </style>
 
-  waBubble.addEventListener('click', function(){ waChat.style.display = waChat.style.display === 'flex' ? 'none' : 'flex'; });
-  waClose.addEventListener('click', function(){ waChat.style.display = 'none'; });
+  <script>
+  (function(){
+    var bubble   = document.getElementById('waBubble');
+    var chat     = document.getElementById('waChat');
+    var closeBtn = document.getElementById('waChatClose');
+    var messages = document.getElementById('waMessages');
+    var step1    = document.getElementById('waStep1');
+    var inputRow = document.getElementById('waInputRow');
+    var input    = document.getElementById('waInput');
+    var sendBtn  = document.getElementById('waSendBtn');
+    var selectedDept = '';
+    var WA_NUMBER = '919717270865';
 
-  function addWaMsg(text, dir, isHTML){
-    var wrap = document.createElement('div');
-    wrap.style.cssText = 'align-self:' + (dir==='out'?'flex-end':'flex-start') + ';max-width:82%;';
-    var bub = document.createElement('div');
-    bub.style.cssText = 'padding:9px 12px;border-radius:' + (dir==='out'?'10px 0 10px 10px':'0 10px 10px 10px') + ';background:' + (dir==='out'?'#dcf8c6':'#fff') + ';font-size:13px;color:#111;line-height:1.5;box-shadow:0 1px 2px rgba(0,0,0,.1);';
-    if(isHTML) bub.innerHTML = text; else bub.textContent = text;
-    var time = document.createElement('div');
-    time.style.cssText = 'font-size:10px;color:#888;margin-top:2px;text-align:' + (dir==='out'?'right':'left') + ';';
-    time.textContent = getTime();
-    wrap.appendChild(bub); wrap.appendChild(time);
-    waMessages.appendChild(wrap);
-    waMessages.scrollTop = waMessages.scrollHeight;
-  }
+    function getTime(){
+      return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+    }
 
-  window.waSelectDept = function(dept, label){
-    selectedDept = dept;
-    addWaMsg(label, 'out');
-    waStep1.style.display = 'none';
-    setTimeout(function(){
-      addWaMsg('Got it! Please type your message and our <strong>' + dept + '</strong> team will connect with you. 👇', 'in', true);
-      waInputRow.style.display = 'flex';
-      waInput.focus();
-    }, 600);
-  };
+    document.getElementById('waGreetTime').textContent = getTime();
 
-  window.waSendMessage = function(){
-    var msg = waInput.value.trim();
-    if(!msg) return;
-    addWaMsg(msg, 'out');
-    waInput.value = '';
-    var page = window.location.pathname.split('/').pop() || 'index.html';
-    var tgText = 'WhatsApp Chat - OMNET IT\nPage: ' + page + '\nDept: ' + selectedDept + '\nMsg: ' + msg;
-    // WhatsApp chat notification - skipped (CORS), WA redirect handles delivery
-    setTimeout(function(){
-      addWaMsg('Thank you! Our <strong>' + selectedDept + '</strong> team will connect with you soon. Have a great day!', 'in', true);
-      waInputRow.style.display = 'none';
-      var waText = encodeURIComponent('Hi OMNET IT, I need help with ' + selectedDept + '.\n\n' + msg);
-      setTimeout(function(){ window.open('https://wa.me/' + WA_NUMBER + '?text=' + waText, '_blank'); }, 1200);
-    }, 900);
-  };
+    function addMsg(text, dir, isHTML){
+      var wrap = document.createElement('div');
+      wrap.className = 'wa-msg wa-msg-' + dir;
+      var bub = document.createElement('div');
+      bub.className = 'wa-bubble-msg';
+      if(isHTML) bub.innerHTML = text; else bub.textContent = text;
+      var time = document.createElement('div');
+      time.className = 'wa-msg-time';
+      time.textContent = getTime();
+      wrap.appendChild(bub);
+      wrap.appendChild(time);
+      messages.appendChild(wrap);
+      messages.scrollTop = messages.scrollHeight;
+    }
 
-  waInput.addEventListener('keydown', function(e){ if(e.key==='Enter') waSendMessage(); });
+    bubble.addEventListener('click', function(){
+      chat.classList.toggle('open');
+    });
+    closeBtn.addEventListener('click', function(){
+      chat.classList.remove('open');
+    });
 
-  // ── Telegram modal ──
-  var tgTrigger = document.getElementById('tgTrigger');
-  var tgModal   = document.getElementById('tgModal');
-  var tgOverlay = document.getElementById('tgOverlay');
-  var tgClose   = document.getElementById('tgClose');
-  var tgForm    = document.getElementById('tgForm');
-  var tgSubmit  = document.getElementById('tgSubmitBtn');
-  var tgSuccess = document.getElementById('tgSuccess');
-  var tgError   = document.getElementById('tgError');
+    window.waSelectDept = function(dept, label){
+      selectedDept = dept;
+      addMsg(label, 'out');
+      step1.style.display = 'none';
+      setTimeout(function(){
+        addMsg('Got it! Please type your message and we\'ll connect you with our <strong>' + dept + '</strong> team right away. 👇', 'in', true);
+        inputRow.style.display = 'flex';
+        input.focus();
+      }, 600);
+    };
 
-  tgTrigger.addEventListener('click', function(){ tgModal.style.display='block'; tgOverlay.style.display='block'; });
-  tgClose.addEventListener('click',   function(){ tgModal.style.display='none';  tgOverlay.style.display='none'; });
-  tgOverlay.addEventListener('click', function(){ tgModal.style.display='none';  tgOverlay.style.display='none'; });
-
-  tgForm.addEventListener('submit', async function(e){
-    e.preventDefault();
-    var dept = document.getElementById('tgDept').value;
-    if(!dept){ document.getElementById('tgDept').style.borderColor='#e53935'; return; }
-    document.getElementById('tgDept').style.borderColor='';
-    tgSubmit.disabled = true; tgSubmit.textContent = 'Sending...';
-    tgSuccess.style.display = 'none'; tgError.style.display = 'none';
-    try {
-      var fd   = new FormData(tgForm);
+    window.waSendMessage = function(){
+      var msg = input.value.trim();
+      if(!msg) return;
+      addMsg(msg, 'out');
+      input.value = '';
+      sendBtn.disabled = true;
       var page = window.location.pathname.split('/').pop() || 'index.html';
-      var txt  = 'New Telegram Message - OMNET IT\n'
-               + 'Page: ' + page + '\n'
-               + 'Email: ' + (fd.get('email')||'N/A') + '\n'
-               + 'Phone: ' + (fd.get('phone')||'N/A') + '\n'
-               + 'Dept: '  + (fd.get('department')||'N/A') + '\n'
-               + 'Msg: '   + (fd.get('message')||'N/A');
-      // Send via Web3Forms (no CORS, works from browser, delivers to email)
-      var payload = {
-        access_key: '2af0c0f5-01fa-4349-b83c-fff623cb969b',
-        subject: 'Telegram Form - OMNET IT: ' + (fd.get('department')||''),
-        from_name: 'OMNET IT Website',
-        email: fd.get('email') || 'noreply@omnetit.com',
-        message: txt
-      };
-      var res  = await fetch('https://api.web3forms.com/submit', {
+      var text = '\ud83d\udcac *WhatsApp Chat - OMNET IT Website*\n\n'
+               + '\ud83d\udcc4 *Page:* ' + page + '\n'
+               + '\ud83c\udfe2 *Department:* ' + selectedDept + '\n'
+               + '\ud83d\udcac *Message:* ' + msg;
+      fetch('https://api.telegram.org/bot8739187370:AAHDZnMgNsBqADEDVD3F6l44zNZ5WfoMpsE/sendMessage', {
         method: 'POST',
-        headers: {'Content-Type':'application/json','Accept':'application/json'},
-        body: JSON.stringify(payload)
-      });
-      var json = await res.json();
-      if(json.success){ tgSuccess.style.display='block'; tgForm.reset(); }
-      else { throw new Error('fail'); }
-    } catch(err){ tgError.style.display='block'; }
-    tgSubmit.disabled = false; tgSubmit.textContent = 'Send via Telegram';
-  });
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({chat_id:'6126529341', text:text, parse_mode:'Markdown'})
+      }).catch(function(){});
+      setTimeout(function(){
+        addMsg('\u2705 Thank you! Our <strong>' + selectedDept + '</strong> team will connect with you soon. Have a great day! \ud83d\ude0a', 'in', true);
+        inputRow.style.display = 'none';
+        sendBtn.disabled = false;
+        var waText = encodeURIComponent('Hi OMNET IT, I need help with ' + selectedDept + '.\n\n' + msg);
+        setTimeout(function(){
+          window.open('https://wa.me/' + WA_NUMBER + '?text=' + waText, '_blank');
+        }, 1200);
+      }, 900);
+    };
 
-  // ── Leave a Message modal ──
-  var lamTrigger = document.getElementById('lamTrigger');
-  var lamModal   = document.getElementById('lamModal');
-  var lamOverlay = document.getElementById('lamOverlay');
-  var lamClose   = document.getElementById('lamClose');
-  var lamForm    = document.getElementById('lamForm');
-  var lamSubmit  = document.getElementById('lamSubmitBtn');
-  var lamSuccess = document.getElementById('lamSuccess');
-  var lamError   = document.getElementById('lamError');
-
-  lamTrigger.addEventListener('click', function(){ lamModal.style.display='block'; lamOverlay.style.display='block'; });
-  lamClose.addEventListener('click',   function(){ lamModal.style.display='none';  lamOverlay.style.display='none'; });
-  lamOverlay.addEventListener('click', function(){ lamModal.style.display='none';  lamOverlay.style.display='none'; });
-
-  lamForm.addEventListener('submit', async function(e){
-    e.preventDefault();
-    var dept = document.getElementById('lamDept').value;
-    if(!dept){ document.getElementById('lamDept').style.borderColor='#e53935'; return; }
-    document.getElementById('lamDept').style.borderColor='';
-    lamSubmit.disabled = true; lamSubmit.textContent = 'Sending...';
-    lamSuccess.style.display = 'none'; lamError.style.display = 'none';
-    try {
-      var fd   = new FormData(lamForm);
-      var page = window.location.pathname.split('/').pop() || 'index.html';
-      var txt  = 'New Message - OMNET IT Website\n'
-               + 'Page: ' + page + '\n'
-               + 'Email: ' + (fd.get('email')||'N/A') + '\n'
-               + 'Phone: ' + (fd.get('phone')||'N/A') + '\n'
-               + 'Dept: '  + (fd.get('department')||'N/A') + '\n'
-               + 'Msg: '   + (fd.get('message')||'N/A');
-      // Send via Web3Forms (no CORS, works from browser, delivers to email)
-      var payload = {
-        access_key: '2af0c0f5-01fa-4349-b83c-fff623cb969b',
-        subject: 'Leave a Message - OMNET IT: ' + (fd.get('department')||''),
-        from_name: 'OMNET IT Website',
-        email: fd.get('email') || 'noreply@omnetit.com',
-        message: txt
-      };
-      var res  = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {'Content-Type':'application/json','Accept':'application/json'},
-        body: JSON.stringify(payload)
-      });
-      var json = await res.json();
-      if(json.success){ lamSuccess.style.display='block'; lamForm.reset(); }
-      else { throw new Error('fail'); }
-    } catch(err){ lamError.style.display='block'; }
-    lamSubmit.disabled = false; lamSubmit.textContent = 'Submit Message';
-  });
-
-})();
-</script>
-<!-- ═══ END ALL WIDGETS ═══ -->
-
+    input.addEventListener('keydown', function(e){
+      if(e.key === 'Enter') waSendMessage();
+    });
+  })();
+  </script>
+  <!-- ═══ END WHATSAPP CHATBOT ═══ -->
 </body>
 </html>
