@@ -525,6 +525,133 @@
 </footer>
 <button class="back-to-top" aria-label="Back to top"><i class="ri-arrow-up-line"></i></button>
 <script src="script.js"></script>
+  <!-- === TELEGRAM BUTTON === -->
+  <button class="tg-trigger" id="tgTrigger" aria-label="Message on Telegram">
+    <div class="tg-btn-inner">
+      <div class="tg-icon-circle">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" fill="#fff"/><path d="M17.93 7.093L15.42 17.4c-.178.797-.645.992-1.307.617l-3.61-2.659-1.742 1.676c-.193.193-.354.354-.726.354l.26-3.674 6.693-6.044c.291-.26-.063-.404-.451-.144L6.29 13.4l-3.55-1.11c-.772-.242-.787-.772.16-1.143l13.87-5.348c.644-.242 1.208.145.96 1.294z" fill="#229ED9"/></svg>
+      </div>
+      <div class="tg-btn-text">
+        <span class="tg-btn-title">Telegram</span>
+        <span class="tg-btn-sub">Send us a message</span>
+      </div>
+    </div>
+  </button>
+  <div class="tg-overlay" id="tgOverlay"></div>
+  <div class="tg-modal" id="tgModal" role="dialog" aria-modal="true">
+    <div class="tg-header">
+      <div class="tg-logo"><span class="tg-logo-top">OMNET</span><span class="tg-logo-bottom">IT</span></div>
+      <span class="tg-title">Message Us on Telegram</span>
+      <button class="tg-close" id="tgClose">&times;</button>
+    </div>
+    <div class="tg-body">
+      <form id="tgForm" novalidate>
+        <div class="tg-field"><label for="tgEmail">Email address</label><input type="email" id="tgEmail" name="email" placeholder="Enter your email address"></div>
+        <div class="tg-field"><label for="tgPhone">Contact number</label><input type="tel" id="tgPhone" name="phone" placeholder="Enter your contact number"></div>
+        <div class="tg-field"><label for="tgDept">Department <span class="tg-req">*</span></label>
+          <select id="tgDept" name="department" required>
+            <option value="" disabled selected>Choose a department</option>
+            <option value="IT Support">IT Support</option>
+            <option value="Sales">Sales</option>
+          </select></div>
+        <div class="tg-field"><label for="tgMsg">Message</label><textarea id="tgMsg" name="message" placeholder="Type your message and hit Submit"></textarea></div>
+        <button type="submit" class="tg-submit" id="tgSubmitBtn">&#10148; Send via Telegram</button>
+        <div class="tg-success" id="tgSuccess">&#10003; Message sent! Our team will connect with you soon.</div>
+        <div class="tg-error" id="tgError">&#9888; Something went wrong. Please try again.</div>
+      </form>
+    </div>
+  </div>
+  <style>
+    .tg-trigger{position:fixed;bottom:90px;right:28px;z-index:9998;background:none;border:none;padding:0;cursor:pointer;}
+    .tg-btn-inner{display:flex;align-items:center;background:#229ED9;border-radius:50px;box-shadow:0 4px 20px rgba(34,158,217,.5);overflow:hidden;transition:transform .2s,box-shadow .2s;}
+    .tg-trigger:hover .tg-btn-inner{transform:translateY(-2px);box-shadow:0 8px 28px rgba(34,158,217,.6);}
+    .tg-icon-circle{background:#1a8bbf;width:52px;height:52px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-radius:50px 0 0 50px;}
+    .tg-btn-text{display:flex;flex-direction:column;padding:0 16px 0 12px;justify-content:center;line-height:1.2;}
+    .tg-btn-title{color:#fff;font-size:13px;font-weight:800;letter-spacing:.3px;}
+    .tg-btn-sub{color:rgba(255,255,255,.85);font-size:11px;}
+    .tg-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.45);}
+    .tg-overlay.open{display:block;}
+    .tg-modal{display:none;position:fixed;z-index:10000;bottom:90px;right:28px;width:340px;max-width:calc(100vw - 32px);background:#fff;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.18);overflow:hidden;font-family:inherit;}
+    .tg-modal.open{display:block;}
+    .tg-header{background:#229ED9;padding:12px 16px;display:flex;align-items:center;gap:10px;}
+    .tg-logo{display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0d1b2a;border:2px solid #fff;border-radius:6px;padding:4px 8px;flex-shrink:0;line-height:1;}
+    .tg-logo-top{font-size:8px;font-weight:300;color:#90caf9;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1px;}
+    .tg-logo-bottom{font-size:12px;font-weight:800;color:#fff;letter-spacing:2px;}
+    .tg-title{color:#fff;font-size:15px;font-weight:600;flex:1;}
+    .tg-close{color:#fff;background:none;border:none;font-size:22px;cursor:pointer;opacity:.8;line-height:1;margin-left:auto;}
+    .tg-close:hover{opacity:1;}
+    .tg-body{padding:18px 16px 16px;}
+    .tg-field{margin-bottom:14px;}
+    .tg-field label{display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:5px;}
+    .tg-req{color:#e53935;}
+    .tg-field input,.tg-field select,.tg-field textarea{width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;background:#fff;color:#222;font-family:inherit;outline:none;transition:border-color .15s;box-sizing:border-box;}
+    .tg-field input:focus,.tg-field select:focus,.tg-field textarea:focus{border-color:#229ED9;box-shadow:0 0 0 3px rgba(34,158,217,.12);}
+    .tg-field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;}
+    .tg-field textarea{resize:vertical;min-height:90px;}
+    .tg-submit{width:100%;padding:11px;background:#229ED9;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .15s;}
+    .tg-submit:hover{background:#1a8bbf;}
+    .tg-submit:disabled{opacity:.6;cursor:not-allowed;}
+    .tg-success{display:none;margin-top:10px;padding:10px 14px;background:#ecfdf5;color:#065f46;border-radius:8px;font-size:13px;text-align:center;}
+    .tg-error{display:none;margin-top:10px;padding:10px 14px;background:#fef2f2;color:#991b1b;border-radius:8px;font-size:13px;text-align:center;}
+    @media(max-width:480px){.tg-trigger{bottom:90px;right:12px;}.tg-modal{bottom:0;right:0;left:0;width:100%;max-width:100%;border-radius:16px 16px 0 0;}}
+  </style>
+  <script>
+  (function(){
+    var trigger=document.getElementById("tgTrigger");
+    var modal=document.getElementById("tgModal");
+    var overlay=document.getElementById("tgOverlay");
+    var closeBtn=document.getElementById("tgClose");
+    var form=document.getElementById("tgForm");
+    var submitBtn=document.getElementById("tgSubmitBtn");
+    var success=document.getElementById("tgSuccess");
+    var error=document.getElementById("tgError");
+    function openModal(){modal.classList.add("open");overlay.classList.add("open");}
+    function closeModal(){modal.classList.remove("open");overlay.classList.remove("open");}
+    if(trigger) trigger.addEventListener("click",openModal);
+    if(closeBtn) closeBtn.addEventListener("click",closeModal);
+    if(overlay) overlay.addEventListener("click",closeModal);
+    if(form) form.addEventListener("submit",async function(e){
+      e.preventDefault();
+      var dept=document.getElementById("tgDept").value;
+      if(!dept){document.getElementById("tgDept").style.borderColor="#e53935";document.getElementById("tgDept").focus();return;}
+      document.getElementById("tgDept").style.borderColor="";
+      submitBtn.disabled=true; submitBtn.textContent="Sending...";
+      success.style.display="none"; error.style.display="none";
+      try{
+        var fd=new FormData(form);
+        var email=fd.get("email")||"Not provided";
+        var phone=fd.get("phone")||"Not provided";
+        var dept2=fd.get("department")||"Not provided";
+        var msg=fd.get("message")||"Not provided";
+        var page=window.location.pathname.split("/").pop()||"index.html";
+        var text="&#128232; *Telegram Msg - OMNET IT*\n\n"
+          +"*Page:* "+page+"\n"
+          +"*Email:* "+email+"\n"
+          +"*Phone:* "+phone+"\n"
+          +"*Dept:* "+dept2+"\n"
+          +"*Message:* "+msg;
+        var res=await fetch("https://api.telegram.org/bot8739187370:AAHDZnMgNsBqADEDVD3F6l44zNZ5WfoMpsE/sendMessage",{
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({chat_id:"6126529341",text:text,parse_mode:"Markdown"})
+        });
+        var json=await res.json();
+        if(json.ok){
+          success.style.display="block";
+          form.reset();
+          submitBtn.disabled=false;
+          submitBtn.textContent="\u27a4 Send via Telegram";
+        } else { throw new Error("failed"); }
+      } catch(err){
+        error.style.display="block";
+        submitBtn.disabled=false;
+        submitBtn.textContent="\u27a4 Send via Telegram";
+      }
+    });
+  })();
+  <\/script>
+  <!-- === END TELEGRAM BUTTON === -->
+
   <!-- ═══ LEAVE A MESSAGE FLOATING BUTTON ═══ -->
   <button class="lam-trigger" id="lamTrigger" aria-label="Leave a message">
     <i class="ri-message-3-line"></i>
