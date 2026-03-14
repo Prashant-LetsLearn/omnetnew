@@ -509,24 +509,23 @@
                + 'Phone: ' + (fd.get('phone')||'N/A') + '\n'
                + 'Dept: '  + (fd.get('department')||'N/A') + '\n'
                + 'Msg: '   + (fd.get('message')||'N/A');
-      // Send via FormSubmit (free, no signup, direct email delivery)
-      var formData = new FormData();
-      formData.append('_subject', 'New Message - OMNET IT: ' + (fd.get('department')||''));
-      formData.append('_template', 'table');
-      formData.append('_captcha', 'false');
-      formData.append('Email', fd.get('email') || 'Not provided');
-      formData.append('Phone', fd.get('phone') || 'Not provided');
-      formData.append('Department', fd.get('department') || 'Not provided');
-      formData.append('Message', fd.get('message') || 'Not provided');
-      formData.append('Page', window.location.pathname.split('/').pop() || 'index.html');
-      var res  = await fetch('https://formsubmit.co/ajax/Prashantnoida10@gmail.com', {
+      var BOT  = '8739187370:AAHDZnMgNsBqADEDVD3F6l44zNZ5WfoMpsE';
+      var CHAT = '6126529341';
+      var page = window.location.pathname.split('/').pop() || 'index.html';
+      var text = '=== OMNET IT - Leave a Message ===\n'
+               + 'Page: '       + page + '\n'
+               + 'Email: '      + (fd.get('email')||'N/A') + '\n'
+               + 'Phone: '      + (fd.get('phone')||'N/A') + '\n'
+               + 'Department: ' + (fd.get('department')||'N/A') + '\n'
+               + 'Message: '    + (fd.get('message')||'N/A');
+      var res  = await fetch('https://api.telegram.org/bot' + BOT + '/sendMessage', {
         method: 'POST',
-        headers: {'Accept': 'application/json'},
-        body: formData
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({chat_id: CHAT, text: text})
       });
       var json = await res.json();
-      if(json.success === 'true' || json.success === true){ lamSuccess.style.display='block'; lamForm.reset(); }
-      else { throw new Error('fail'); }
+      if(json.ok){ lamSuccess.style.display='block'; lamForm.reset(); }
+      else { throw new Error('Telegram: ' + JSON.stringify(json)); }
     } catch(err){ lamError.style.display='block'; }
     lamSubmit.disabled = false; lamSubmit.textContent = 'Submit Message';
   });
