@@ -530,5 +530,252 @@
   })();
   </script>
   <!-- ═══ END LEAVE A MESSAGE ═══ -->
+  <!-- ═══ WHATSAPP CHATBOT ═══ -->
+  <div class="wa-wrap" id="waWrap">
+    <!-- Bubble trigger -->
+    <button class="wa-bubble" id="waBubble" aria-label="Chat on WhatsApp">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 2C7.373 2 2 7.373 2 14c0 2.13.554 4.13 1.523 5.868L2 26l6.292-1.498A11.94 11.94 0 0014 26c6.627 0 12-5.373 12-12S20.627 2 14 2z" fill="#fff"/>
+        <path d="M14 4.5c-5.238 0-9.5 4.262-9.5 9.5 0 1.79.496 3.464 1.36 4.893l.18.303-.768 2.802 2.875-.753.294.174A9.454 9.454 0 0014 23.5c5.238 0 9.5-4.262 9.5-9.5S19.238 4.5 14 4.5zm4.712 13.16c-.2.562-.988 1.032-1.624 1.168-.432.092-.996.166-2.894-.622-2.43-1-3.978-3.474-4.1-3.634-.116-.16-.98-1.306-.98-2.492 0-1.186.62-1.77.84-2.01.218-.238.476-.298.634-.298.16 0 .318.002.456.008.146.008.342-.056.534.408.198.474.672 1.636.73 1.756.06.12.1.26.02.42-.08.16-.12.26-.24.4-.118.14-.25.312-.356.42-.12.118-.244.246-.104.482.14.238.618 1.02 1.328 1.652.912.812 1.682 1.062 1.918 1.182.238.12.376.1.516-.06.14-.16.596-.696.754-.934.16-.238.318-.198.536-.12.218.08 1.388.654 1.626.774.238.12.396.18.456.278.058.1.058.574-.142 1.136z" fill="#25D366"/>
+      </svg>
+      <span class="wa-bubble-label">Chat with us</span>
+      <span class="wa-online-dot"></span>
+    </button>
+
+    <!-- Chat window -->
+    <div class="wa-chat" id="waChat">
+      <div class="wa-chat-header">
+        <div class="wa-chat-avatar">
+          <div class="wa-avatar-ring">
+            <div class="wa-avatar-inner">
+              <span class="wa-avatar-top">OMNET</span>
+              <span class="wa-avatar-bottom">IT</span>
+            </div>
+          </div>
+          <span class="wa-status-dot"></span>
+        </div>
+        <div class="wa-chat-info">
+          <div class="wa-chat-name">OMNET IT Support</div>
+          <div class="wa-chat-status">&#9679; Online now</div>
+        </div>
+        <button class="wa-chat-close" id="waChatClose">&times;</button>
+      </div>
+
+      <div class="wa-messages" id="waMessages">
+        <div class="wa-time-label">Today</div>
+        <div class="wa-msg wa-msg-in" id="waMsgGreet">
+          <div class="wa-bubble-msg">
+            👋 Hello! Welcome to <strong>OMNET IT System</strong>.<br>How can we help you today?
+          </div>
+          <div class="wa-msg-time" id="waGreetTime"></div>
+        </div>
+      </div>
+
+      <!-- Step: Choose Support or Sales -->
+      <div class="wa-options" id="waStep1">
+        <p class="wa-options-label">Please select a department:</p>
+        <button class="wa-opt-btn" onclick="waSelectDept('IT Support','🛠️ IT Support')">🛠️ IT Support</button>
+        <button class="wa-opt-btn" onclick="waSelectDept('Sales','💼 Sales')">💼 Sales</button>
+      </div>
+
+      <!-- Step: Type message -->
+      <div class="wa-input-row" id="waInputRow" style="display:none;">
+        <input type="text" id="waInput" placeholder="Type your message..." maxlength="300" />
+        <button class="wa-send-btn" id="waSendBtn" onclick="waSendMessage()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .wa-wrap { position:fixed; bottom:28px; left:28px; z-index:9997; font-family:inherit; }
+    .wa-bubble {
+      display:flex; align-items:center; gap:8px;
+      background:#25D366; border:none; border-radius:50px;
+      padding:11px 18px 11px 14px; cursor:pointer;
+      box-shadow:0 4px 18px rgba(37,211,102,.4);
+      transition:transform .2s, box-shadow .2s; position:relative;
+    }
+    .wa-bubble:hover { transform:translateY(-2px); box-shadow:0 6px 24px rgba(37,211,102,.5); }
+    .wa-bubble-label { color:#fff; font-size:14px; font-weight:600; }
+    .wa-online-dot {
+      position:absolute; top:8px; right:8px; width:9px; height:9px;
+      background:#fff; border-radius:50%; border:2px solid #25D366;
+      animation:waPulse 2s infinite;
+    }
+    @keyframes waPulse { 0%,100%{opacity:1}50%{opacity:.4} }
+
+    /* Chat window */
+    .wa-chat {
+      display:none; flex-direction:column;
+      position:absolute; bottom:64px; left:0;
+      width:310px; max-width:calc(100vw - 40px);
+      background:#ece5dd; border-radius:16px;
+      box-shadow:0 8px 40px rgba(0,0,0,.2); overflow:hidden;
+    }
+    .wa-chat.open { display:flex; }
+
+    /* Header */
+    .wa-chat-header {
+      background:#075E54; padding:12px 14px;
+      display:flex; align-items:center; gap:10px;
+    }
+    .wa-chat-avatar { position:relative; flex-shrink:0; }
+    .wa-avatar-ring {
+      width:42px; height:42px; border-radius:50%;
+      background:#0d1b2a; border:2px solid #fff;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .wa-avatar-inner { display:flex; flex-direction:column; align-items:center; line-height:1; }
+    .wa-avatar-top { font-size:7px; font-weight:300; color:#90caf9; letter-spacing:1px; text-transform:uppercase; }
+    .wa-avatar-bottom { font-size:11px; font-weight:800; color:#fff; letter-spacing:2px; }
+    .wa-status-dot {
+      position:absolute; bottom:1px; right:1px;
+      width:11px; height:11px; background:#25D366;
+      border-radius:50%; border:2px solid #075E54;
+    }
+    .wa-chat-info { flex:1; }
+    .wa-chat-name { color:#fff; font-size:14px; font-weight:700; }
+    .wa-chat-status { color:rgba(255,255,255,.75); font-size:11px; margin-top:1px; }
+    .wa-chat-close {
+      color:#fff; background:none; border:none;
+      font-size:22px; cursor:pointer; opacity:.8; line-height:1;
+    }
+    .wa-chat-close:hover { opacity:1; }
+
+    /* Messages */
+    .wa-messages {
+      flex:1; padding:12px 10px; overflow-y:auto;
+      max-height:240px; display:flex; flex-direction:column; gap:6px;
+      background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E");
+    }
+    .wa-time-label { text-align:center; font-size:11px; color:#888; background:rgba(255,255,255,.6); padding:2px 10px; border-radius:8px; align-self:center; margin-bottom:4px; }
+    .wa-msg { display:flex; flex-direction:column; max-width:82%; }
+    .wa-msg-in { align-self:flex-start; }
+    .wa-msg-out { align-self:flex-end; }
+    .wa-bubble-msg {
+      padding:9px 12px; border-radius:0 10px 10px 10px;
+      background:#fff; font-size:13px; color:#111; line-height:1.5;
+      box-shadow:0 1px 2px rgba(0,0,0,.1);
+    }
+    .wa-msg-out .wa-bubble-msg {
+      background:#dcf8c6; border-radius:10px 0 10px 10px;
+    }
+    .wa-msg-time { font-size:10px; color:#888; margin-top:2px; text-align:right; }
+    .wa-msg-in .wa-msg-time { text-align:left; }
+
+    /* Options */
+    .wa-options { background:#fff; padding:10px 12px; border-top:1px solid #e0e0e0; }
+    .wa-options-label { font-size:12px; color:#555; margin-bottom:7px; }
+    .wa-opt-btn {
+      display:block; width:100%; margin-bottom:6px; padding:9px 14px;
+      background:#f0fdf4; border:1.5px solid #25D366; border-radius:8px;
+      color:#075E54; font-size:13px; font-weight:600; cursor:pointer; text-align:left;
+      transition:background .15s;
+    }
+    .wa-opt-btn:hover { background:#dcf8c6; }
+
+    /* Input */
+    .wa-input-row {
+      background:#fff; padding:8px 10px;
+      border-top:1px solid #e0e0e0;
+      display:flex; gap:8px; align-items:center;
+    }
+    .wa-input-row input {
+      flex:1; padding:9px 12px; border:1px solid #d1d5db;
+      border-radius:20px; font-size:13px; outline:none;
+      font-family:inherit; background:#f9f9f9;
+    }
+    .wa-input-row input:focus { border-color:#25D366; }
+    .wa-send-btn {
+      width:36px; height:36px; border-radius:50%;
+      background:#25D366; border:none; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0; transition:background .15s;
+    }
+    .wa-send-btn:hover { background:#1da851; }
+
+    @media(max-width:480px){
+      .wa-wrap { bottom:16px; left:12px; }
+      .wa-chat { width:calc(100vw - 24px); bottom:60px; }
+    }
+  </style>
+
+  <script>
+  (function(){
+    var bubble   = document.getElementById('waBubble');
+    var chat     = document.getElementById('waChat');
+    var closeBtn = document.getElementById('waChatClose');
+    var messages = document.getElementById('waMessages');
+    var step1    = document.getElementById('waStep1');
+    var inputRow = document.getElementById('waInputRow');
+    var input    = document.getElementById('waInput');
+    var sendBtn  = document.getElementById('waSendBtn');
+    var selectedDept = '';
+    var WA_NUMBER = '919717270865';
+
+    function getTime(){
+      return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+    }
+
+    document.getElementById('waGreetTime').textContent = getTime();
+
+    function addMsg(text, dir, isHTML){
+      var wrap = document.createElement('div');
+      wrap.className = 'wa-msg wa-msg-' + dir;
+      var bub = document.createElement('div');
+      bub.className = 'wa-bubble-msg';
+      if(isHTML) bub.innerHTML = text; else bub.textContent = text;
+      var time = document.createElement('div');
+      time.className = 'wa-msg-time';
+      time.textContent = getTime();
+      wrap.appendChild(bub);
+      wrap.appendChild(time);
+      messages.appendChild(wrap);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    bubble.addEventListener('click', function(){
+      chat.classList.toggle('open');
+    });
+    closeBtn.addEventListener('click', function(){
+      chat.classList.remove('open');
+    });
+
+    window.waSelectDept = function(dept, label){
+      selectedDept = dept;
+      addMsg(label, 'out');
+      step1.style.display = 'none';
+      setTimeout(function(){
+        addMsg('Got it! Please type your message and we\'ll connect you with our <strong>' + dept + '</strong> team right away. 👇', 'in', true);
+        inputRow.style.display = 'flex';
+        input.focus();
+      }, 600);
+    };
+
+    window.waSendMessage = function(){
+      var msg = input.value.trim();
+      if(!msg) return;
+      addMsg(msg, 'out');
+      input.value = '';
+      sendBtn.disabled = true;
+      setTimeout(function(){
+        addMsg('✅ Thank you! Our <strong>' + selectedDept + '</strong> team will connect with you soon. Have a great day! 😊', 'in', true);
+        inputRow.style.display = 'none';
+        sendBtn.disabled = false;
+        var waText = encodeURIComponent('Hi OMNET IT, I need help with ' + selectedDept + '.\n\n' + msg);
+        setTimeout(function(){
+          window.open('https://wa.me/' + WA_NUMBER + '?text=' + waText, '_blank');
+        }, 1200);
+      }, 900);
+    };
+
+    input.addEventListener('keydown', function(e){
+      if(e.key === 'Enter') waSendMessage();
+    });
+  })();
+  </script>
+  <!-- ═══ END WHATSAPP CHATBOT ═══ -->
 </body>
 </html>
