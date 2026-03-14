@@ -648,13 +648,25 @@
       success.style.display = 'none';
       error.style.display   = 'none';
       try {
-        var res = await fetch('https://api.web3forms.com/submit', {
+        var fd = new FormData(form);
+        var email = fd.get('email') || 'Not provided';
+        var phone = fd.get('phone') || 'Not provided';
+        var dept  = fd.get('department') || 'Not provided';
+        var msg   = fd.get('message') || 'Not provided';
+        var page  = window.location.pathname.split('/').pop() || 'index.html';
+        var text  = '📬 *New Message - OMNET IT Website*\n\n'
+                  + '📄 *Page:* ' + page + '\n'
+                  + '📧 *Email:* ' + email + '\n'
+                  + '📞 *Phone:* ' + phone + '\n'
+                  + '🏢 *Department:* ' + dept + '\n'
+                  + '💬 *Message:* ' + msg;
+        var res = await fetch('https://api.telegram.org/bot8739187370:AAHDZnMgNsBqADEDVD3F6l44zNZ5WfoMpsE/sendMessage', {
           method: 'POST',
-          headers: {'Content-Type':'application/json','Accept':'application/json'},
-          body: JSON.stringify(Object.fromEntries(new FormData(form)))
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({chat_id:'6126529341', text:text, parse_mode:'Markdown'})
         });
         var json = await res.json();
-        if(json.success){
+        if(json.ok){
           success.style.display = 'block';
           form.reset();
           submitBtn.disabled = false;
@@ -899,8 +911,18 @@
       addMsg(msg, 'out');
       input.value = '';
       sendBtn.disabled = true;
+      var page = window.location.pathname.split('/').pop() || 'index.html';
+      var text = '\ud83d\udcac *WhatsApp Chat - OMNET IT Website*\n\n'
+               + '\ud83d\udcc4 *Page:* ' + page + '\n'
+               + '\ud83c\udfe2 *Department:* ' + selectedDept + '\n'
+               + '\ud83d\udcac *Message:* ' + msg;
+      fetch('https://api.telegram.org/bot8739187370:AAHDZnMgNsBqADEDVD3F6l44zNZ5WfoMpsE/sendMessage', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({chat_id:'6126529341', text:text, parse_mode:'Markdown'})
+      }).catch(function(){});
       setTimeout(function(){
-        addMsg('✅ Thank you! Our <strong>' + selectedDept + '</strong> team will connect with you soon. Have a great day! 😊', 'in', true);
+        addMsg('\u2705 Thank you! Our <strong>' + selectedDept + '</strong> team will connect with you soon. Have a great day! \ud83d\ude0a', 'in', true);
         inputRow.style.display = 'none';
         sendBtn.disabled = false;
         var waText = encodeURIComponent('Hi OMNET IT, I need help with ' + selectedDept + '.\n\n' + msg);
