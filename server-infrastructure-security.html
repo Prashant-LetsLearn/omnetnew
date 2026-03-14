@@ -521,21 +521,23 @@
                + 'Phone: ' + (fd.get('phone')||'N/A') + '\n'
                + 'Dept: '  + (fd.get('department')||'N/A') + '\n'
                + 'Msg: '   + (fd.get('message')||'N/A');
-      // Send via Web3Forms (no CORS, works from browser, delivers to email)
-      var payload = {
-        access_key: '2af0c0f5-01fa-4349-b83c-fff623cb969b',
-        subject: 'Leave a Message - OMNET IT: ' + (fd.get('department')||''),
-        from_name: 'OMNET IT Website',
-        email: fd.get('email') || 'noreply@omnetit.com',
-        message: txt
-      };
-      var res  = await fetch('https://api.web3forms.com/submit', {
+      // Send via FormSubmit (free, no signup, direct email delivery)
+      var formData = new FormData();
+      formData.append('_subject', 'New Message - OMNET IT: ' + (fd.get('department')||''));
+      formData.append('_template', 'table');
+      formData.append('_captcha', 'false');
+      formData.append('Email', fd.get('email') || 'Not provided');
+      formData.append('Phone', fd.get('phone') || 'Not provided');
+      formData.append('Department', fd.get('department') || 'Not provided');
+      formData.append('Message', fd.get('message') || 'Not provided');
+      formData.append('Page', window.location.pathname.split('/').pop() || 'index.html');
+      var res  = await fetch('https://formsubmit.co/ajax/Prashantnoida10@gmail.com', {
         method: 'POST',
-        headers: {'Content-Type':'application/json','Accept':'application/json'},
-        body: JSON.stringify(payload)
+        headers: {'Accept': 'application/json'},
+        body: formData
       });
       var json = await res.json();
-      if(json.success){ lamSuccess.style.display='block'; lamForm.reset(); }
+      if(json.success === 'true' || json.success === true){ lamSuccess.style.display='block'; lamForm.reset(); }
       else { throw new Error('fail'); }
     } catch(err){ lamError.style.display='block'; }
     lamSubmit.disabled = false; lamSubmit.textContent = 'Submit Message';

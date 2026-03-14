@@ -91,7 +91,7 @@
 
 /* ── CONTACT FORM ── */
 (function () {
-  const form = document.getElementById('contact-form');
+const form = document.getElementById('contact-form');
   if (!form) return;
 
   const counter = document.getElementById('msg-counter');
@@ -112,13 +112,17 @@
     btn.innerHTML = '<i class="ri-loader-4-line" style="animation:spin 1s linear infinite"></i> Sending...';
 
     try {
-      const data     = new FormData(form);
-      const response = await fetch('https://readdy.ai/api/form/d6mj9aaqoe30lj0v8ck0', {
+      const data = new FormData(form);
+      data.append('_subject', 'New Contact Form - OMNET IT: ' + (data.get('service') || ''));
+      data.append('_template', 'table');
+      data.append('_captcha', 'false');
+      const response = await fetch('https://formsubmit.co/ajax/Prashantnoida10@gmail.com', {
         method: 'POST',
-        body: new URLSearchParams(data),
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        headers: { 'Accept': 'application/json' },
+        body: data
       });
-      if (response.ok) {
+      const json = await response.json();
+      if (json.success === 'true' || json.success === true) {
         if (successMsg) successMsg.style.display = 'flex';
         if (errorMsg)   errorMsg.style.display   = 'none';
         form.reset();
