@@ -45,6 +45,7 @@ body { font-family: 'DM Sans', sans-serif; color: var(--gray-900); background: #
 .header-inner {
   max-width: 1280px; margin: 0 auto; padding: .6rem 1.5rem .4rem;
   display: flex; align-items: center; justify-content: space-between;
+  position: relative; z-index: 1001;
 }
 
 /* Row 2: nav bar */
