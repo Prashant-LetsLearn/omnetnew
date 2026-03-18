@@ -20,6 +20,10 @@
     .ptag{background:#fff;border:1px solid var(--teal-200);color:var(--teal-700);padding:.45rem 1.1rem;border-radius:2rem;font-size:.85rem;font-weight:600;text-decoration:none;transition:all .3s;display:inline-block;margin:.25rem}
     .ptag:hover{background:var(--teal-600);color:#fff}
   </style>
+<script>
+function cbOpen(){var m=document.getElementById('cbModal'),o=document.getElementById('cbOverlay');if(m)m.style.display='block';if(o)o.style.display='block';}
+function cbHide(){var m=document.getElementById('cbModal'),o=document.getElementById('cbOverlay');if(m)m.style.display='none';if(o)o.style.display='none';}
+</script>
 </head>
 <body>
 <header class="site-header">
@@ -37,7 +41,7 @@
     <div class="header-cta">
       <a href="tel:+918920603270" class="header-phone"><i class="ri-phone-line"></i> +91-89206-03270</a>
       <button onclick="cbOpen()" style="display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#f97316,#eab308);color:#fff;border:none;border-radius:50px;padding:8px 15px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;animation:cbPulse 2s infinite;"><i class="ri-callback-line" style="font-size:15px;"></i> Request Callback</button>
-      <a href="contact.html" class="btn-primary">Get Free Quote</a>
+      <a href="pricing.html" class="btn-primary">Get Free Quote</a>
     </div>
     <button class="mobile-menu-btn" aria-label="Toggle menu"><i class="ri-menu-line" style="font-size:1.5rem"></i></button>
   </div>
@@ -184,7 +188,7 @@
       <a href="contact.html">Contact</a>
       <hr class="mobile-nav-divider"/>
       <a href="tel:+918920603270"><i class="ri-phone-line"></i> +91-89206-03270</a>
-      <a href="contact.html" style="background:linear-gradient(135deg,#14b8a6,#0891b2);color:#fff;text-align:center;font-weight:700;margin-top:.5rem">Get Free Quote</a>
+      <a href="pricing.html" style="background:linear-gradient(135deg,#14b8a6,#0891b2);color:#fff;text-align:center;font-weight:700;margin-top:.5rem">Get Free Quote</a>
     </div>
   </div>
 </header>
@@ -675,8 +679,6 @@ document.addEventListener('DOMContentLoaded', function(){
   </div>
 </div>
 <script>
-function cbOpen(){ document.getElementById('cbModal').style.display='block'; document.getElementById('cbOverlay').style.display='block'; }
-function cbHide(){ document.getElementById('cbModal').style.display='none';  document.getElementById('cbOverlay').style.display='none'; }
 document.addEventListener('DOMContentLoaded',function(){
 
   var cbForm=document.getElementById('cbForm');
