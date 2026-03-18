@@ -262,13 +262,175 @@
         <span style="color:#3b82f6;font-weight:600;font-size:.875rem">Send Email →</span>
         <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--gray-100);font-size:.75rem;color:var(--gray-400);display:flex;align-items:center;justify-content:center;gap:.4rem"><i class="ri-reply-line"></i> Reply within 24hrs</div>
       </a>
-      <div class="quick-card" style="border-color:#fed7aa">
+      <div class="quick-card" style="border-color:#fed7aa;cursor:pointer;" onclick="document.getElementById('cbOverlay').style.display='block';document.getElementById('cbModal').style.display='block';">
         <div class="quick-icon" style="background:linear-gradient(135deg,#f97316,#eab308)"><i class="ri-calendar-check-fill"></i></div>
         <h3 style="font-weight:700;margin-bottom:.5rem">Request Callback</h3>
         <p style="font-size:.85rem;color:var(--gray-500);margin-bottom:1rem">Schedule a call at your preferred time and date</p>
         <span style="color:#ea580c;font-weight:600;font-size:.875rem">Schedule Now →</span>
         <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--gray-100);font-size:.75rem;color:var(--gray-400);display:flex;align-items:center;justify-content:center;gap:.4rem"><i class="ri-calendar-line"></i> Choose Your Time</div>
       </div>
+
+      <!-- ── CALLBACK MODAL ── -->
+      <div id="cbOverlay" style="display:none;position:fixed;inset:0;z-index:9100;background:rgba(0,0,0,.5);" onclick="document.getElementById('cbOverlay').style.display='none';document.getElementById('cbModal').style.display='none';"></div>
+      <div id="cbModal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9101;width:420px;max-width:calc(100vw - 24px);background:#fff;border-radius:16px;box-shadow:0 12px 50px rgba(0,0,0,.2);overflow:hidden;font-family:inherit;">
+        <!-- Header -->
+        <div style="background:linear-gradient(135deg,#f97316,#eab308);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:38px;height:38px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="ri-calendar-check-fill" style="color:#fff;font-size:18px;"></i></div>
+            <div>
+              <div style="color:#fff;font-size:15px;font-weight:700;line-height:1.2;">Request a Callback</div>
+              <div style="color:rgba(255,255,255,.85);font-size:12px;">We'll call you at your preferred time</div>
+            </div>
+          </div>
+          <button onclick="document.getElementById('cbOverlay').style.display='none';document.getElementById('cbModal').style.display='none';" style="color:#fff;background:none;border:none;font-size:24px;cursor:pointer;line-height:1;opacity:.85;">&times;</button>
+        </div>
+        <!-- Tabs -->
+        <div style="display:flex;border-bottom:2px solid #f3f4f6;background:#fafafa;">
+          <button id="cbTabCallback" onclick="cbShowTab('callback')" style="flex:1;padding:12px;font-size:13px;font-weight:700;border:none;background:none;cursor:pointer;color:#f97316;border-bottom:2px solid #f97316;margin-bottom:-2px;display:flex;align-items:center;justify-content:center;gap:6px;">
+            <i class="ri-phone-line"></i> Request Callback
+          </button>
+          <button id="cbTabMeet" onclick="cbShowTab('meet')" style="flex:1;padding:12px;font-size:13px;font-weight:700;border:none;background:none;cursor:pointer;color:#6b7280;border-bottom:2px solid transparent;margin-bottom:-2px;display:flex;align-items:center;justify-content:center;gap:6px;">
+            <i class="ri-video-chat-line"></i> Google Meet
+          </button>
+        </div>
+
+        <!-- Tab: Callback Form -->
+        <div id="cbPanelCallback" style="padding:20px;">
+          <form id="cbForm">
+            <div style="margin-bottom:14px;">
+              <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:5px;">Full Name <span style="color:#e53935;">*</span></label>
+              <input type="text" name="name" required placeholder="Your full name" style="width:100%;padding:9px 12px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#f97316'" onblur="this.style.borderColor='#e5e7eb'">
+            </div>
+            <div style="margin-bottom:14px;">
+              <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:5px;">Phone Number <span style="color:#e53935;">*</span></label>
+              <input type="tel" name="phone" required placeholder="+91 XXXXX XXXXX" style="width:100%;padding:9px 12px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#f97316'" onblur="this.style.borderColor='#e5e7eb'">
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;">
+              <div>
+                <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:5px;">Preferred Date <span style="color:#e53935;">*</span></label>
+                <input type="date" name="date" required style="width:100%;padding:9px 12px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#f97316'" onblur="this.style.borderColor='#e5e7eb'">
+              </div>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:5px;">Preferred Time <span style="color:#e53935;">*</span></label>
+                <select name="time" required style="width:100%;padding:9px 12px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:#fff;appearance:none;" onfocus="this.style.borderColor='#f97316'" onblur="this.style.borderColor='#e5e7eb'">
+                  <option value="" disabled selected>Select time</option>
+                  <option>9:00 AM – 10:00 AM</option>
+                  <option>10:00 AM – 11:00 AM</option>
+                  <option>11:00 AM – 12:00 PM</option>
+                  <option>12:00 PM – 1:00 PM</option>
+                  <option>2:00 PM – 3:00 PM</option>
+                  <option>3:00 PM – 4:00 PM</option>
+                  <option>4:00 PM – 5:00 PM</option>
+                  <option>5:00 PM – 6:00 PM</option>
+                </select>
+              </div>
+            </div>
+            <div style="margin-bottom:16px;">
+              <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:5px;">Topic / Service</label>
+              <select name="topic" style="width:100%;padding:9px 12px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:#fff;appearance:none;" onfocus="this.style.borderColor='#f97316'" onblur="this.style.borderColor='#e5e7eb'">
+                <option value="" selected>General Enquiry</option>
+                <option>IT Support / AMC</option>
+                <option>Managed IT Services</option>
+                <option>IT Security</option>
+                <option>Cloud Services</option>
+                <option>Network Infrastructure</option>
+                <option>Hardware / Products</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <button type="submit" id="cbSubmitBtn" style="width:100%;padding:11px;background:linear-gradient(135deg,#f97316,#eab308);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.3px;">
+              <i class="ri-calendar-check-line"></i> Schedule My Callback
+            </button>
+            <div id="cbSuccess" style="display:none;margin-top:12px;padding:10px 14px;background:#ecfdf5;color:#065f46;border-radius:8px;font-size:13px;text-align:center;"><i class="ri-checkbox-circle-line"></i> Callback scheduled! We'll call you at your chosen time.</div>
+            <div id="cbError" style="display:none;margin-top:12px;padding:10px 14px;background:#fef2f2;color:#991b1b;border-radius:8px;font-size:13px;text-align:center;">Something went wrong. Please try again.</div>
+          </form>
+        </div>
+
+        <!-- Tab: Google Meet -->
+        <div id="cbPanelMeet" style="display:none;padding:20px;">
+          <div style="text-align:center;margin-bottom:18px;">
+            <div style="width:56px;height:56px;background:linear-gradient(135deg,#1a73e8,#34a853);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
+              <i class="ri-video-chat-fill" style="color:#fff;font-size:26px;"></i>
+            </div>
+            <h3 style="font-size:15px;font-weight:700;color:#111827;margin-bottom:6px;">Schedule a Google Meet Call</h3>
+            <p style="font-size:13px;color:#6b7280;line-height:1.6;">Book a video consultation with our IT experts via Google Meet. Pick a date and time that suits you — a Google Meet link will be sent to your email instantly.</p>
+          </div>
+          <div style="background:#f0f7ff;border:1.5px solid #bfdbfe;border-radius:10px;padding:14px;margin-bottom:18px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <i class="ri-time-line" style="color:#1a73e8;"></i>
+              <span style="font-size:12px;font-weight:600;color:#1e40af;">Available Slots</span>
+            </div>
+            <p style="font-size:12px;color:#374151;margin:0;line-height:1.7;">
+              📅 Monday – Saturday<br>
+              🕘 9:00 AM – 6:00 PM IST<br>
+              ⏱ 30-minute sessions<br>
+              📧 Hosted by: omnetit@gmail.com
+            </p>
+          </div>
+          <a id="cbMeetBtn" href="https://calendar.google.com/calendar/appointments/schedules/PLACEHOLDER_REPLACE_WITH_YOUR_BOOKING_LINK" target="_blank" rel="noopener"
+            style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:12px;background:linear-gradient(135deg,#1a73e8,#34a853);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;box-sizing:border-box;">
+            <svg width="18" height="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M44 24c0-1.1-.1-2.2-.3-3.3H24v6.3h11.3c-.5 2.6-2 4.8-4.2 6.3v5.2h6.8C41.5 34.8 44 29.8 44 24z"/><path fill="#fff" d="M24 44c5.6 0 10.3-1.9 13.8-5.1l-6.8-5.2c-1.9 1.3-4.3 2-7 2-5.4 0-9.9-3.6-11.5-8.5H5.4v5.4C8.9 39.9 16 44 24 44z"/><path fill="#fff" d="M12.5 27.2c-.4-1.3-.7-2.7-.7-4.2s.3-2.9.7-4.2v-5.4H5.4C3.9 16.6 3 20.2 3 24s.9 7.4 2.4 10.6l7.1-7.4z"/><path fill="#fff" d="M24 10.7c3 0 5.7 1 7.8 3l5.8-5.8C33.9 4.5 29.3 2.5 24 2.5 16 2.5 8.9 6.6 5.4 13.4l7.1 5.4C14.1 14.3 18.6 10.7 24 10.7z"/></svg>
+            Open Google Calendar &amp; Book a Slot
+          </a>
+          <p style="font-size:11px;color:#9ca3af;text-align:center;margin-top:10px;">
+            <i class="ri-information-line"></i> After booking, you'll receive a confirmation email with your Google Meet link.
+          </p>
+          <div style="margin-top:14px;padding:10px 14px;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;font-size:12px;color:#92400e;text-align:center;">
+            <i class="ri-settings-3-line"></i> <strong>Setup required:</strong> Replace the booking link in your code with your Google Calendar Appointment Schedule URL.
+          </div>
+        </div>
+      </div>
+
+      <script>
+      function cbShowTab(tab) {
+        var isCallback = tab === 'callback';
+        document.getElementById('cbPanelCallback').style.display = isCallback ? 'block' : 'none';
+        document.getElementById('cbPanelMeet').style.display     = isCallback ? 'none'  : 'block';
+        document.getElementById('cbTabCallback').style.color        = isCallback ? '#f97316' : '#6b7280';
+        document.getElementById('cbTabCallback').style.borderBottom = isCallback ? '2px solid #f97316' : '2px solid transparent';
+        document.getElementById('cbTabMeet').style.color            = isCallback ? '#6b7280' : '#1a73e8';
+        document.getElementById('cbTabMeet').style.borderBottom     = isCallback ? '2px solid transparent' : '2px solid #1a73e8';
+      }
+      document.getElementById('cbForm').addEventListener('submit', async function(e){
+        e.preventDefault();
+        var btn     = document.getElementById('cbSubmitBtn');
+        var success = document.getElementById('cbSuccess');
+        var error   = document.getElementById('cbError');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="ri-loader-4-line" style="animation:spin 1s linear infinite"></i> Scheduling...';
+        success.style.display = 'none';
+        error.style.display   = 'none';
+        try {
+          var fd = new FormData(this);
+          var res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              access_key: '2af0c0f5-01fa-4349-b83c-fff623cb969b',
+              subject:    'OMNET IT — Callback Request',
+              from_name:  'OMNET IT Website',
+              name:       fd.get('name')  || 'N/A',
+              phone:      fd.get('phone') || 'N/A',
+              date:       fd.get('date')  || 'N/A',
+              time:       fd.get('time')  || 'N/A',
+              topic:      fd.get('topic') || 'General Enquiry'
+            })
+          });
+          var json = await res.json();
+          if(json.success){
+            success.style.display = 'block';
+            this.reset();
+            setTimeout(function(){
+              document.getElementById('cbOverlay').style.display  = 'none';
+              document.getElementById('cbModal').style.display    = 'none';
+              document.getElementById('cbSuccess').style.display  = 'none';
+            }, 3000);
+          } else { throw new Error(); }
+        } catch(err){ error.style.display = 'block'; }
+        btn.disabled = false;
+        btn.innerHTML = '<i class="ri-calendar-check-line"></i> Schedule My Callback';
+      });
+      </script>
     </div>
   </div>
 </section>
@@ -557,15 +719,14 @@
 <script src="script.js"></script>
 <style>@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.7;transform:scale(1.2)}}</style>
 <!-- ================================================================
-     ALL 3 WIDGETS - paste just before </body> on every page
+     ALL WIDGETS - paste just before </body> on every page
      1. WhatsApp chatbot (bottom-left)
-     2. Telegram form   (bottom-right, higher up)  
-     3. Leave a Message (bottom-right, lower)
+     2. Leave a Message (bottom-right)
+     3. Support Ticket button (bottom-right, above Leave a Message)
 ================================================================ -->
 
 <!-- ═══ 1. WHATSAPP CHATBOT ═══ -->
 <div id="waWrap" style="position:fixed;bottom:28px;left:28px;z-index:9000;font-family:inherit;">
-
   <button id="waBubble" style="background:none;border:none;padding:0;cursor:pointer;display:block;">
     <div style="display:flex;align-items:center;background:#25D366;border-radius:50px;box-shadow:0 4px 20px rgba(37,211,102,.5);overflow:hidden;transition:transform .2s;">
       <div style="background:#1ebe5d;width:52px;height:52px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-radius:50px 0 0 50px;">
@@ -577,13 +738,12 @@
       </div>
     </div>
   </button>
-
   <div id="waChat" style="display:none;flex-direction:column;position:absolute;bottom:64px;left:0;width:310px;background:#ece5dd;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.2);overflow:hidden;">
     <div style="background:#075E54;padding:12px 14px;display:flex;align-items:center;gap:10px;">
       <div style="position:relative;flex-shrink:0;">
-        <div style="width:42px;height:42px;border-radius:50%;background:#0d1b2a;border:2px solid #fff;display:flex;align-items:center;justify-content:center;flex-direction:column;line-height:1;">
-          <span style="font-size:7px;font-weight:300;color:#90caf9;letter-spacing:1px;text-transform:uppercase;">OMNET</span>
-          <span style="font-size:11px;font-weight:800;color:#fff;letter-spacing:2px;">IT</span>
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0d1b2a;border:2px solid #fff;border-radius:6px;padding:4px 8px;line-height:1;">
+          <span style="font-size:8px;font-weight:300;color:#90caf9;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1px;">OMNET</span>
+          <span style="font-size:12px;font-weight:800;color:#fff;letter-spacing:2px;">IT</span>
         </div>
         <span style="position:absolute;bottom:1px;right:1px;width:11px;height:11px;background:#25D366;border-radius:50%;border:2px solid #075E54;display:block;"></span>
       </div>
@@ -616,7 +776,91 @@
   </div>
 </div>
 
-<!-- ═══ 3. LEAVE A MESSAGE (bottom-right, 28px) ═══ -->
+<!-- ═══ 2. SUPPORT TICKET (bottom-right, higher) ═══ -->
+<button id="stTrigger" style="position:fixed;bottom:92px;right:28px;z-index:9000;background:#ef4444;color:#fff;border:none;border-radius:50px;padding:11px 18px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;cursor:pointer;box-shadow:0 4px 18px rgba(239,68,68,.45);">
+  <i class="ri-customer-service-2-line" style="font-size:17px;"></i>
+  <span>Technical Support</span>
+</button>
+
+<!-- Support Ticket Modal -->
+<div id="stOverlay" style="display:none;position:fixed;inset:0;z-index:9010;background:rgba(0,0,0,.5);"></div>
+<div id="stModal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9011;width:420px;max-width:calc(100vw - 24px);background:#fff;border-radius:16px;box-shadow:0 12px 50px rgba(0,0,0,.2);overflow:hidden;font-family:inherit;">
+  <!-- Header -->
+  <div style="background:linear-gradient(135deg,#ef4444,#dc2626);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div style="width:38px;height:38px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="ri-customer-service-2-line" style="color:#fff;font-size:19px;"></i></div>
+      <div>
+        <div style="color:#fff;font-size:15px;font-weight:700;line-height:1.2;">Log a Support Ticket</div>
+        <div style="color:rgba(255,255,255,.85);font-size:12px;">Our team will respond within 2 hours</div>
+      </div>
+    </div>
+    <button id="stClose" style="color:#fff;background:none;border:none;font-size:24px;cursor:pointer;line-height:1;opacity:.85;">&times;</button>
+  </div>
+  <!-- Form -->
+  <div style="padding:20px;max-height:80vh;overflow-y:auto;">
+    <form id="stForm">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px;">
+        <div>
+          <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Full Name <span style="color:#e53935;">*</span></label>
+          <input type="text" name="name" required placeholder="Your name" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+        </div>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Phone <span style="color:#e53935;">*</span></label>
+          <input type="tel" name="phone" required placeholder="+91 XXXXX XXXXX" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+        </div>
+      </div>
+      <div style="margin-bottom:13px;">
+        <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Email Address <span style="color:#e53935;">*</span></label>
+        <input type="email" name="email" required placeholder="your@email.com" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px;">
+        <div>
+          <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Issue Category <span style="color:#e53935;">*</span></label>
+          <select name="category" required style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:#fff;appearance:none;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+            <option value="" disabled selected>Select category</option>
+            <option>Hardware Issue</option>
+            <option>Software / OS Issue</option>
+            <option>Network / Internet</option>
+            <option>Email Issue</option>
+            <option>Server / Cloud</option>
+            <option>Security / Virus</option>
+            <option>Printer / Peripheral</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Priority <span style="color:#e53935;">*</span></label>
+          <select name="priority" required style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:#fff;appearance:none;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+            <option value="" disabled selected>Select priority</option>
+            <option>🔴 Critical — System Down</option>
+            <option>🟠 High — Major Impact</option>
+            <option>🟡 Medium — Partial Impact</option>
+            <option>🟢 Low — Minor Issue</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-bottom:13px;">
+        <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Company / Organisation</label>
+        <input type="text" name="company" placeholder="Your company name" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+      </div>
+      <div style="margin-bottom:16px;">
+        <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Describe Your Issue <span style="color:#e53935;">*</span></label>
+        <textarea name="issue" required placeholder="Please describe the issue in detail — what happened, when it started, and what you have already tried..." rows="4" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;resize:vertical;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'"></textarea>
+      </div>
+      <button type="submit" id="stSubmitBtn" style="width:100%;padding:12px;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.3px;">
+        <i class="ri-send-plane-line"></i> Submit Support Ticket
+      </button>
+      <div id="stSuccess" style="display:none;margin-top:12px;padding:12px 14px;background:#ecfdf5;color:#065f46;border-radius:8px;font-size:13px;text-align:center;">
+        <i class="ri-checkbox-circle-line"></i> <strong>Ticket submitted!</strong> Our team will connect with you soon. Check your email for confirmation.
+      </div>
+      <div id="stError" style="display:none;margin-top:12px;padding:12px 14px;background:#fef2f2;color:#991b1b;border-radius:8px;font-size:13px;text-align:center;">
+        Something went wrong. Please call us at <strong>+91-89206-03270</strong>.
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ═══ 3. LEAVE A MESSAGE (bottom-right, lower) ═══ -->
 <button id="lamTrigger" style="position:fixed;bottom:28px;right:28px;z-index:9000;background:#29b6f6;color:#fff;border:none;border-radius:50px;padding:13px 20px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;cursor:pointer;box-shadow:0 4px 18px rgba(41,182,246,.45);">
   <i class="ri-message-3-line" style="font-size:18px;"></i>
   <span>Leave a Message</span>
@@ -654,14 +898,12 @@
 <script>
 (function(){
   var WA_NUMBER = '918920603270';
-  var TG_BOT = '8739187370:AAHDZnMgNsBqADEDVD3F6l44zNZ5WfoMpsE';
-  var TG_CHAT = '6126529341';
   var selectedDept = '';
 
   function getTime(){ return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}); }
   document.getElementById('waGreetTime').textContent = getTime();
 
-  // ── WhatsApp chatbot ──
+  // ── WhatsApp ──
   var waBubble = document.getElementById('waBubble');
   var waChat   = document.getElementById('waChat');
   var waClose  = document.getElementById('waChatClose');
@@ -703,19 +945,71 @@
     if(!msg) return;
     addWaMsg(msg, 'out');
     waInput.value = '';
-    var page = window.location.pathname.split('/').pop() || 'index.html';
-    var tgText = 'WhatsApp Chat - OMNET IT\nPage: ' + page + '\nDept: ' + selectedDept + '\nMsg: ' + msg;
-    // WhatsApp chat notification - skipped (CORS), WA redirect handles delivery
     setTimeout(function(){
       addWaMsg('Thank you! Our <strong>' + selectedDept + '</strong> team will connect with you soon. Have a great day!', 'in', true);
       waInputRow.style.display = 'none';
-      var waText = encodeURIComponent('Hi OMNET IT, I need help with ' + selectedDept + '.\n\n' + msg);
+      var waText = encodeURIComponent('Hi OMNET IT, I need help with ' + selectedDept + '.
+
+' + msg);
       setTimeout(function(){ window.open('https://wa.me/' + WA_NUMBER + '?text=' + waText, '_blank'); }, 1200);
     }, 900);
   };
-
   waInput.addEventListener('keydown', function(e){ if(e.key==='Enter') waSendMessage(); });
-  // ── Leave a Message modal ──
+
+  // ── Support Ticket ──
+  var stTrigger = document.getElementById('stTrigger');
+  var stModal   = document.getElementById('stModal');
+  var stOverlay = document.getElementById('stOverlay');
+  var stClose   = document.getElementById('stClose');
+  var stForm    = document.getElementById('stForm');
+  var stSubmit  = document.getElementById('stSubmitBtn');
+  var stSuccess = document.getElementById('stSuccess');
+  var stError   = document.getElementById('stError');
+
+  stTrigger.addEventListener('click', function(){ stModal.style.display='block'; stOverlay.style.display='block'; });
+  stClose.addEventListener('click',   function(){ stModal.style.display='none';  stOverlay.style.display='none'; });
+  stOverlay.addEventListener('click', function(){ stModal.style.display='none';  stOverlay.style.display='none'; });
+
+  stForm.addEventListener('submit', async function(e){
+    e.preventDefault();
+    stSubmit.disabled = true;
+    stSubmit.innerHTML = '<i class="ri-loader-4-line" style="animation:spin 1s linear infinite"></i> Submitting...';
+    stSuccess.style.display = 'none'; stError.style.display = 'none';
+    try {
+      var fd = new FormData(stForm);
+      var page = window.location.pathname.split('/').pop() || 'index.html';
+      var res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          access_key: '2af0c0f5-01fa-4349-b83c-fff623cb969b',
+          subject:    '🔴 Support Ticket — ' + (fd.get('priority')||'') + ' | ' + (fd.get('category')||''),
+          from_name:  'OMNET IT Support Ticket',
+          page:       page,
+          name:       fd.get('name')     || 'N/A',
+          phone:      fd.get('phone')    || 'N/A',
+          email:      fd.get('email')    || 'N/A',
+          company:    fd.get('company')  || 'N/A',
+          category:   fd.get('category') || 'N/A',
+          priority:   fd.get('priority') || 'N/A',
+          issue:      fd.get('issue')    || 'N/A'
+        })
+      });
+      var json = await res.json();
+      if(json.success){
+        stSuccess.style.display = 'block';
+        stForm.reset();
+        setTimeout(function(){
+          stModal.style.display='none'; stOverlay.style.display='none';
+          stSuccess.style.display='none';
+        }, 4000);
+      } else { throw new Error(); }
+    } catch(err){ stError.style.display = 'block'; }
+    stSubmit.disabled = false;
+    stSubmit.innerHTML = '<i class="ri-send-plane-line"></i> Submit Support Ticket';
+  });
+
+  // ── Leave a Message ──
   var lamTrigger = document.getElementById('lamTrigger');
   var lamModal   = document.getElementById('lamModal');
   var lamOverlay = document.getElementById('lamOverlay');
@@ -739,29 +1033,23 @@
     try {
       var fd   = new FormData(lamForm);
       var page = window.location.pathname.split('/').pop() || 'index.html';
-      var txt  = 'New Message - OMNET IT Website\n'
-               + 'Page: ' + page + '\n'
-               + 'Email: ' + (fd.get('email')||'N/A') + '\n'
-               + 'Phone: ' + (fd.get('phone')||'N/A') + '\n'
-               + 'Dept: '  + (fd.get('department')||'N/A') + '\n'
-               + 'Msg: '   + (fd.get('message')||'N/A');
-      var BOT  = '8739187370:AAHDZnMgNsBqADEDVD3F6l44zNZ5WfoMpsE';
-      var CHAT = '6126529341';
-      var page = window.location.pathname.split('/').pop() || 'index.html';
-      var text = '=== OMNET IT - Leave a Message ===\n'
-               + 'Page: '       + page + '\n'
-               + 'Email: '      + (fd.get('email')||'N/A') + '\n'
-               + 'Phone: '      + (fd.get('phone')||'N/A') + '\n'
-               + 'Department: ' + (fd.get('department')||'N/A') + '\n'
-               + 'Message: '    + (fd.get('message')||'N/A');
-      var res  = await fetch('https://api.telegram.org/bot' + BOT + '/sendMessage', {
+      var res  = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({chat_id: CHAT, text: text})
+        body: JSON.stringify({
+          access_key:  '2af0c0f5-01fa-4349-b83c-fff623cb969b',
+          subject:     'OMNET IT - Leave a Message',
+          from_name:   'OMNET IT Website',
+          page:        page,
+          email:       fd.get('email')      || 'N/A',
+          phone:       fd.get('phone')      || 'N/A',
+          department:  fd.get('department') || 'N/A',
+          message:     fd.get('message')    || 'N/A'
+        })
       });
       var json = await res.json();
-      if(json.ok){ lamSuccess.style.display='block'; lamForm.reset(); }
-      else { throw new Error('Telegram: ' + JSON.stringify(json)); }
+      if(json.success){ lamSuccess.style.display='block'; lamForm.reset(); }
+      else { throw new Error(); }
     } catch(err){ lamError.style.display='block'; }
     lamSubmit.disabled = false; lamSubmit.textContent = 'Submit Message';
   });
