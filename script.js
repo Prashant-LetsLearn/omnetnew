@@ -69,22 +69,17 @@
   });
 })();
 
-/* ── SEND TO TELEGRAM ── */
-async function sendToTelegram(fields) {
-  var BOT = '8739187370:AAHDZnMgNsBqADEDVD3F6l44zNZ5WfoMpsE';
-  var CHAT = '6126529341';
-  var lines = ['=== OMNET IT - New Message ==='];
-  for (var key in fields) {
-    lines.push(key + ': ' + fields[key]);
-  }
-  var text = lines.join('\n');
-  var res = await fetch('https://api.telegram.org/bot' + BOT + '/sendMessage', {
+/* ── SEND TO WEB3FORMS ── */
+async function sendToWeb3Forms(fields) {
+  var ACCESS_KEY = '2af0c0f5-01fa-4349-b83c-fff623cb969b';
+  var payload = Object.assign({ access_key: ACCESS_KEY }, fields);
+  var res = await fetch('https://api.web3forms.com/submit', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chat_id: CHAT, text: text })
+    body: JSON.stringify(payload)
   });
   var json = await res.json();
-  if (!json.ok) throw new Error('Telegram error: ' + JSON.stringify(json));
+  if (!json.success) throw new Error('Web3Forms error: ' + JSON.stringify(json));
   return json;
 }
 
@@ -112,7 +107,7 @@ async function sendToTelegram(fields) {
 
     try {
       const data = new FormData(form);
-      await sendToTelegram({
+      await sendToWeb3Forms({
         'Source'  : 'Contact Page - Send Us a Message',
         'Name'    : data.get('name') || 'N/A',
         'Email'   : data.get('email') || 'N/A',

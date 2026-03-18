@@ -777,8 +777,6 @@
 <script>
 (function(){
   var WA_NUMBER = '919717270865';
-  var TG_BOT = '8739187370:AAHDZnMgNsBqADEDVD3F6l44zNZ5WfoMpsE';
-  var TG_CHAT = '6126529341';
   var selectedDept = '';
 
   function getTime(){ return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}); }
@@ -862,29 +860,23 @@
     try {
       var fd   = new FormData(lamForm);
       var page = window.location.pathname.split('/').pop() || 'index.html';
-      var txt  = 'New Message - OMNET IT Website\n'
-               + 'Page: ' + page + '\n'
-               + 'Email: ' + (fd.get('email')||'N/A') + '\n'
-               + 'Phone: ' + (fd.get('phone')||'N/A') + '\n'
-               + 'Dept: '  + (fd.get('department')||'N/A') + '\n'
-               + 'Msg: '   + (fd.get('message')||'N/A');
-      var BOT  = '8739187370:AAHDZnMgNsBqADEDVD3F6l44zNZ5WfoMpsE';
-      var CHAT = '6126529341';
-      var page = window.location.pathname.split('/').pop() || 'index.html';
-      var text = '=== OMNET IT - Leave a Message ===\n'
-               + 'Page: '       + page + '\n'
-               + 'Email: '      + (fd.get('email')||'N/A') + '\n'
-               + 'Phone: '      + (fd.get('phone')||'N/A') + '\n'
-               + 'Department: ' + (fd.get('department')||'N/A') + '\n'
-               + 'Message: '    + (fd.get('message')||'N/A');
-      var res  = await fetch('https://api.telegram.org/bot' + BOT + '/sendMessage', {
+      var res  = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({chat_id: CHAT, text: text})
+        body: JSON.stringify({
+          access_key:  '2af0c0f5-01fa-4349-b83c-fff623cb969b',
+          subject:     'OMNET IT - Leave a Message',
+          from_name:   'OMNET IT Website',
+          page:        page,
+          email:       fd.get('email')      || 'N/A',
+          phone:       fd.get('phone')      || 'N/A',
+          department:  fd.get('department') || 'N/A',
+          message:     fd.get('message')    || 'N/A'
+        })
       });
       var json = await res.json();
-      if(json.ok){ lamSuccess.style.display='block'; lamForm.reset(); }
-      else { throw new Error('Telegram: ' + JSON.stringify(json)); }
+      if(json.success){ lamSuccess.style.display='block'; lamForm.reset(); }
+      else { throw new Error('Web3Forms: ' + JSON.stringify(json)); }
     } catch(err){ lamError.style.display='block'; }
     lamSubmit.disabled = false; lamSubmit.textContent = 'Submit Message';
   });
