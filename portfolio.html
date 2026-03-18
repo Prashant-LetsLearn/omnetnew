@@ -677,10 +677,6 @@ document.addEventListener('DOMContentLoaded', function(){
     </div>
     <button onclick="cbHide()" style="color:#fff;background:none;border:none;font-size:24px;cursor:pointer;line-height:1;opacity:.85;">&times;</button>
   </div>
-  <div style="display:flex;border-bottom:2px solid #f3f4f6;background:#fafafa;">
-    <button id="cbTabCallback" onclick="cbShowTab('callback')" style="flex:1;padding:11px;font-size:13px;font-weight:700;border:none;background:none;cursor:pointer;color:#f97316;border-bottom:2px solid #f97316;margin-bottom:-2px;display:flex;align-items:center;justify-content:center;gap:6px;"><i class="ri-phone-line"></i> Request Callback</button>
-    <button id="cbTabMeet" onclick="cbShowTab('meet')" style="flex:1;padding:11px;font-size:13px;font-weight:700;border:none;background:none;cursor:pointer;color:#6b7280;border-bottom:2px solid transparent;margin-bottom:-2px;display:flex;align-items:center;justify-content:center;gap:6px;"><i class="ri-calendar-event-line"></i> Book Meeting</button>
-  </div>
   <div id="cbPanelCallback" style="padding:20px;">
     <form id="cbForm">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px;">
@@ -715,155 +711,12 @@ document.addEventListener('DOMContentLoaded', function(){
       <div id="cbError" style="display:none;margin-top:12px;padding:11px;background:#fef2f2;color:#991b1b;border-radius:8px;font-size:13px;text-align:center;">Something went wrong. Please call +91-89206-03270.</div>
     </form>
   </div>
-  <div id="cbPanelMeet" style="display:none;padding:20px;">
-    <div style="text-align:center;margin-bottom:16px;">
-      <div style="width:52px;height:52px;background:linear-gradient(135deg,#1a73e8,#34a853);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
-        <i class="ri-video-chat-fill" style="color:#fff;font-size:24px;"></i>
-      </div>
-      <h3 style="font-size:15px;font-weight:700;color:#111827;margin-bottom:6px;">Schedule a Google Meet Call</h3>
-      <p style="font-size:13px;color:#6b7280;line-height:1.6;">Pick your preferred date and time below. We will send you a Google Meet link and the meeting will be added to your calendar.</p>
-    </div>
-    <!-- Date & Time picker -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px;">
-      <div>
-        <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Your Name <span style="color:#e53935;">*</span></label>
-        <input id="meetName" type="text" placeholder="Full name" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#1a73e8'" onblur="this.style.borderColor='#e5e7eb'">
-      </div>
-      <div>
-        <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Your Email <span style="color:#e53935;">*</span></label>
-        <input id="meetEmail" type="email" placeholder="your@email.com" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#1a73e8'" onblur="this.style.borderColor='#e5e7eb'">
-      </div>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px;">
-      <div>
-        <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Preferred Date <span style="color:#e53935;">*</span></label>
-        <input id="meetDate" type="date" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#1a73e8'" onblur="this.style.borderColor='#e5e7eb'">
-      </div>
-      <div>
-        <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Preferred Time <span style="color:#e53935;">*</span></label>
-        <select id="meetTime" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:#fff;appearance:none;">
-          <option value="" disabled selected>Select time</option>
-          <option value="09:00">9:00 AM</option>
-          <option value="09:30">9:30 AM</option>
-          <option value="10:00">10:00 AM</option>
-          <option value="10:30">10:30 AM</option>
-          <option value="11:00">11:00 AM</option>
-          <option value="11:30">11:30 AM</option>
-          <option value="12:00">12:00 PM</option>
-          <option value="12:30">12:30 PM</option>
-          <option value="14:00">2:00 PM</option>
-          <option value="14:30">2:30 PM</option>
-          <option value="15:00">3:00 PM</option>
-          <option value="15:30">3:30 PM</option>
-          <option value="16:00">4:00 PM</option>
-          <option value="16:30">4:30 PM</option>
-          <option value="17:00">5:00 PM</option>
-          <option value="17:30">5:30 PM</option>
-        </select>
-      </div>
-    </div>
-    <div style="margin-bottom:14px;">
-      <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Topic / Purpose</label>
-      <select id="meetTopic" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:#fff;appearance:none;">
-        <option selected>IT Consultation</option>
-        <option>IT Support / AMC</option>
-        <option>Managed IT Services</option>
-        <option>IT Security</option>
-        <option>Cloud Services</option>
-        <option>Network Infrastructure</option>
-        <option>Hardware / Products</option>
-        <option>Other</option>
-      </select>
-    </div>
-    <div id="meetValidation" style="display:none;margin-bottom:10px;padding:8px 12px;background:#fef2f2;color:#991b1b;border-radius:8px;font-size:12px;">Please fill in all required fields.</div>
-    <button onclick="bookGoogleMeet()" id="meetBookBtn" style="width:100%;padding:12px;background:linear-gradient(135deg,#1a73e8,#34a853);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
-      <svg width="17" height="17" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="8" width="36" height="34" rx="3" stroke="white" stroke-width="3"/><path d="M6 18h36" stroke="white" stroke-width="3"/><path d="M16 4v8M32 4v8" stroke="white" stroke-width="3" stroke-linecap="round"/><circle cx="16" cy="28" r="2.5" fill="white"/><circle cx="24" cy="28" r="2.5" fill="white"/><circle cx="32" cy="28" r="2.5" fill="white"/></svg>
-      Add to Google Calendar &amp; Get Meet Link
-    </button>
-    <div style="margin-top:12px;padding:10px 12px;background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;font-size:12px;color:#075985;line-height:1.7;">
-      <strong><i class="ri-information-line"></i> How it works:</strong><br>
-      1. Click the button above — Google Calendar opens pre-filled.<br>
-      2. Sign in with your Google account &amp; click <strong>Save</strong>.<br>
-      3. A <strong>Google Meet link</strong> is auto-generated and added to the event.<br>
-      4. OMNET IT (<strong>omnetit@gmail.com</strong>) is added as a guest and will confirm.
-    </div>
-  </div>
 </div>
 <script>
-function bookGoogleMeet(){
-  var name  = document.getElementById('meetName').value.trim();
-  var email = document.getElementById('meetEmail').value.trim();
-  var date  = document.getElementById('meetDate').value;
-  var time  = document.getElementById('meetTime').value;
-  var topic = document.getElementById('meetTopic').value;
-  var val   = document.getElementById('meetValidation');
-
-  if(!name || !email || !date || !time){
-    val.style.display='block'; return;
-  }
-  val.style.display='none';
-
-  // Build start and end datetime in Google Calendar format: YYYYMMDDTHHmmSS
-  var d = date.replace(/-/g,'');
-  var startH = time.split(':')[0], startM = time.split(':')[1];
-  var endH   = String(parseInt(startH) + (startM==='30'?0:0)).padStart(2,'0');
-  var endM   = startM === '30' ? '00' : '30';
-  var endH2  = startM === '30' ? String(parseInt(startH)+1).padStart(2,'0') : startH;
-  var start  = d + 'T' + startH + startM + '00';
-  var end    = d + 'T' + endH2  + endM   + '00';
-
-  var title  = encodeURIComponent('OMNET IT - ' + topic + ' with ' + name);
-  var details= encodeURIComponent(
-    'Meeting requested via OMNET IT website.
-' +
-    'Client: ' + name + '
-' +
-    'Email: ' + email + '
-' +
-    'Topic: ' + topic + '
-
-' +
-    'This meeting includes a Google Meet video link.
-' +
-    'Contact OMNET IT: +91-89206-03270 | omnetit@gmail.com'
-  );
-  var guests = encodeURIComponent('omnetit@gmail.com');
-
-  // Google Calendar new event URL with Meet conference
-  var url = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
-    '&text=' + title +
-    '&dates=' + start + '/' + end +
-    '&details=' + details +
-    '&add=' + guests +
-    '&sf=true&output=xml&trp=false';
-
-  window.open(url, '_blank');
-
-  // Also notify OMNET team via Web3Forms
-  fetch('https://api.web3forms.com/submit',{
-    method:'POST', headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({
-      access_key:'2af0c0f5-01fa-4349-b83c-fff623cb969b',
-      subject:'OMNET IT - Google Meet Booking Request',
-      from_name:'OMNET IT Website',
-      name:name, email:email, date:date, time:time, topic:topic,
-      message:'Client has initiated a Google Calendar meeting booking.'
-    })
-  });
-}
-</script>
 function cbOpen(){ document.getElementById('cbModal').style.display='block'; document.getElementById('cbOverlay').style.display='block'; }
 function cbHide(){ document.getElementById('cbModal').style.display='none';  document.getElementById('cbOverlay').style.display='none'; }
-function cbShowTab(tab){
-  var isCb=(tab==='callback');
-  document.getElementById('cbPanelCallback').style.display=isCb?'block':'none';
-  document.getElementById('cbPanelMeet').style.display=isCb?'none':'block';
-  document.getElementById('cbTabCallback').style.color=isCb?'#f97316':'#6b7280';
-  document.getElementById('cbTabCallback').style.borderBottom=isCb?'2px solid #f97316':'2px solid transparent';
-  document.getElementById('cbTabMeet').style.color=isCb?'#6b7280':'#1a73e8';
-  document.getElementById('cbTabMeet').style.borderBottom=isCb?'2px solid transparent':'2px solid #1a73e8';
-}
 document.addEventListener('DOMContentLoaded',function(){
+
   var cbForm=document.getElementById('cbForm');
   if(!cbForm) return;
   cbForm.addEventListener('submit',async function(e){
@@ -882,15 +735,12 @@ document.addEventListener('DOMContentLoaded',function(){
       var json=await res.json();
       if(json.success){
         suc.style.display='block'; cbForm.reset();
-        // After 1.5s switch to Book Meeting tab so user can schedule on Calendly
-        setTimeout(function(){
-          cbShowTab('meet');
-          suc.innerHTML='<i class="ri-checkbox-circle-line"></i> <strong>Request received!</strong> Our team will confirm your callback. Want to also book a slot right now? 👇';
-        }, 1500);
+        setTimeout(function(){ cbHide(); suc.style.display='none'; },3500);
       } else { throw new Error(); }
     }catch(e2){ err.style.display='block'; }
     btn.disabled=false; btn.innerHTML='<i class="ri-calendar-check-line"></i> Schedule My Callback';
   });
+
 });
 </script>
 <!-- ═══ END CALLBACK MODAL ═══ -->
