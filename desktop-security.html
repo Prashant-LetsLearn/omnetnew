@@ -37,6 +37,8 @@
 
     <div class="header-cta">
       <a href="tel:+918920603270" class="header-phone"><i class="ri-phone-line"></i> +91-89206-03270</a>
+      <button onclick="cbOpen()" style="display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#f97316,#eab308);color:#fff;border:none;border-radius:50px;padding:8px 16px;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 2px 12px rgba(249,115,22,.4);animation:cbPulse 2s infinite;white-space:nowrap;"><i class="ri-callback-line" style="font-size:15px;"></i> Request Callback</button>
+<style>@keyframes cbPulse{0%,100%{box-shadow:0 2px 12px rgba(249,115,22,.4);}50%{box-shadow:0 2px 22px rgba(249,115,22,.85);}}</style>
       <a href="contact.html" class="btn-primary">Get Free Quote</a>
     </div>
     <button class="mobile-menu-btn" aria-label="Toggle menu"><i class="ri-menu-line" style="font-size:1.5rem"></i></button>
@@ -525,167 +527,242 @@
   </div>
 </div>
 
+
 <script>
-(function(){
+document.addEventListener('DOMContentLoaded', function(){
   var WA_NUMBER = '918920603270';
   var selectedDept = '';
-
   function getTime(){ return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}); }
-  document.getElementById('waGreetTime').textContent = getTime();
+  var waGreetEl = document.getElementById('waGreetTime');
+  if(waGreetEl) waGreetEl.textContent = getTime();
 
-  // ── WhatsApp ──
-  var waBubble = document.getElementById('waBubble');
-  var waChat   = document.getElementById('waChat');
-  var waClose  = document.getElementById('waChatClose');
-  var waMessages = document.getElementById('waMessages');
-  var waStep1  = document.getElementById('waStep1');
-  var waInputRow = document.getElementById('waInputRow');
-  var waInput  = document.getElementById('waInput');
+  /* WhatsApp */
+  var waBubble=document.getElementById('waBubble'),waChat=document.getElementById('waChat'),
+      waClose=document.getElementById('waChatClose'),waMessages=document.getElementById('waMessages'),
+      waStep1=document.getElementById('waStep1'),waInputRow=document.getElementById('waInputRow'),
+      waInput=document.getElementById('waInput');
 
-  waBubble.addEventListener('click', function(){ waChat.style.display = waChat.style.display === 'flex' ? 'none' : 'flex'; });
-  waClose.addEventListener('click', function(){ waChat.style.display = 'none'; });
+  if(waBubble){ waBubble.addEventListener('click',function(){
+    if(!waChat) return;
+    if(waChat.style.display==='flex'){ waChat.style.display='none'; }
+    else{ waChat.style.display='flex'; waChat.style.flexDirection='column'; }
+  }); }
+  if(waClose){ waClose.addEventListener('click',function(){ if(waChat) waChat.style.display='none'; }); }
 
-  function addWaMsg(text, dir, isHTML){
-    var wrap = document.createElement('div');
-    wrap.style.cssText = 'align-self:' + (dir==='out'?'flex-end':'flex-start') + ';max-width:82%;';
-    var bub = document.createElement('div');
-    bub.style.cssText = 'padding:9px 12px;border-radius:' + (dir==='out'?'10px 0 10px 10px':'0 10px 10px 10px') + ';background:' + (dir==='out'?'#dcf8c6':'#fff') + ';font-size:13px;color:#111;line-height:1.5;box-shadow:0 1px 2px rgba(0,0,0,.1);';
-    if(isHTML) bub.innerHTML = text; else bub.textContent = text;
-    var time = document.createElement('div');
-    time.style.cssText = 'font-size:10px;color:#888;margin-top:2px;text-align:' + (dir==='out'?'right':'left') + ';';
-    time.textContent = getTime();
-    wrap.appendChild(bub); wrap.appendChild(time);
-    waMessages.appendChild(wrap);
-    waMessages.scrollTop = waMessages.scrollHeight;
+  function addWaMsg(text,dir,isHTML){
+    if(!waMessages) return;
+    var wrap=document.createElement('div');
+    wrap.style.cssText='align-self:'+(dir==='out'?'flex-end':'flex-start')+';max-width:82%;';
+    var bub=document.createElement('div');
+    bub.style.cssText='padding:9px 12px;border-radius:'+(dir==='out'?'10px 0 10px 10px':'0 10px 10px 10px')+';background:'+(dir==='out'?'#dcf8c6':'#fff')+';font-size:13px;color:#111;line-height:1.5;box-shadow:0 1px 2px rgba(0,0,0,.1);';
+    if(isHTML) bub.innerHTML=text; else bub.textContent=text;
+    var t=document.createElement('div');
+    t.style.cssText='font-size:10px;color:#888;margin-top:2px;text-align:'+(dir==='out'?'right':'left')+';';
+    t.textContent=getTime();
+    wrap.appendChild(bub); wrap.appendChild(t);
+    waMessages.appendChild(wrap); waMessages.scrollTop=waMessages.scrollHeight;
   }
 
-  window.waSelectDept = function(dept, label){
-    selectedDept = dept;
-    addWaMsg(label, 'out');
-    waStep1.style.display = 'none';
+  window.waSelectDept=function(dept,label){
+    selectedDept=dept; addWaMsg(label,'out');
+    if(waStep1) waStep1.style.display='none';
     setTimeout(function(){
-      addWaMsg('Got it! Please type your message and our <strong>' + dept + '</strong> team will connect with you. 👇', 'in', true);
-      waInputRow.style.display = 'flex';
-      waInput.focus();
-    }, 600);
+      addWaMsg('Got it! Please type your message and our <strong>'+dept+'</strong> team will connect with you.','in',true);
+      if(waInputRow){ waInputRow.style.display='flex'; }
+      if(waInput) waInput.focus();
+    },600);
   };
 
-  window.waSendMessage = function(){
-    var msg = waInput.value.trim();
-    if(!msg) return;
-    addWaMsg(msg, 'out');
-    waInput.value = '';
+  window.waSendMessage=function(){
+    if(!waInput) return;
+    var msg=waInput.value.trim(); if(!msg) return;
+    addWaMsg(msg,'out'); waInput.value='';
     setTimeout(function(){
-      addWaMsg('Thank you! Our <strong>' + selectedDept + '</strong> team will connect with you soon. Have a great day!', 'in', true);
-      waInputRow.style.display = 'none';
-      var waText = encodeURIComponent('Hi OMNET IT, I need help with ' + selectedDept + '.
-
-' + msg);
-      setTimeout(function(){ window.open('https://wa.me/' + WA_NUMBER + '?text=' + waText, '_blank'); }, 1200);
-    }, 900);
+      addWaMsg('Thank you! Our <strong>'+selectedDept+'</strong> team will connect with you soon!','in',true);
+      if(waInputRow) waInputRow.style.display='none';
+      var waText=encodeURIComponent('Hi OMNET IT, I need help with '+selectedDept+'.\n\n'+msg);
+      setTimeout(function(){ window.open('https://wa.me/'+WA_NUMBER+'?text='+waText,'_blank'); },1200);
+    },900);
   };
-  waInput.addEventListener('keydown', function(e){ if(e.key==='Enter') waSendMessage(); });
+  if(waInput){ waInput.addEventListener('keydown',function(e){ if(e.key==='Enter') waSendMessage(); }); }
 
-  // ── Support Ticket ──
-  var stTrigger = document.getElementById('stTrigger');
-  var stModal   = document.getElementById('stModal');
-  var stOverlay = document.getElementById('stOverlay');
-  var stClose   = document.getElementById('stClose');
-  var stForm    = document.getElementById('stForm');
-  var stSubmit  = document.getElementById('stSubmitBtn');
-  var stSuccess = document.getElementById('stSuccess');
-  var stError   = document.getElementById('stError');
+  /* Support Ticket */
+  var stTrigger=document.getElementById('stTrigger'),stModal=document.getElementById('stModal'),
+      stOverlay=document.getElementById('stOverlay'),stClose2=document.getElementById('stClose'),
+      stForm=document.getElementById('stForm'),stSubmit=document.getElementById('stSubmitBtn'),
+      stSuccess=document.getElementById('stSuccess'),stError=document.getElementById('stError');
 
-  stTrigger.addEventListener('click', function(){ stModal.style.display='block'; stOverlay.style.display='block'; });
-  stClose.addEventListener('click',   function(){ stModal.style.display='none';  stOverlay.style.display='none'; });
-  stOverlay.addEventListener('click', function(){ stModal.style.display='none';  stOverlay.style.display='none'; });
+  function stOpen(){ if(stModal) stModal.style.display='block'; if(stOverlay) stOverlay.style.display='block'; }
+  function stHide(){ if(stModal) stModal.style.display='none';  if(stOverlay) stOverlay.style.display='none'; }
+  if(stTrigger) stTrigger.addEventListener('click',stOpen);
+  if(stClose2)  stClose2.addEventListener('click',stHide);
+  if(stOverlay) stOverlay.addEventListener('click',stHide);
 
-  stForm.addEventListener('submit', async function(e){
+  if(stForm){ stForm.addEventListener('submit',async function(e){
     e.preventDefault();
-    stSubmit.disabled = true;
-    stSubmit.innerHTML = '<i class="ri-loader-4-line" style="animation:spin 1s linear infinite"></i> Submitting...';
-    stSuccess.style.display = 'none'; stError.style.display = 'none';
-    try {
-      var fd = new FormData(stForm);
-      var page = window.location.pathname.split('/').pop() || 'index.html';
-      var res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          access_key: '2af0c0f5-01fa-4349-b83c-fff623cb969b',
-          subject:    '🔴 Support Ticket — ' + (fd.get('priority')||'') + ' | ' + (fd.get('category')||''),
-          from_name:  'OMNET IT Support Ticket',
-          page:       page,
-          name:       fd.get('name')     || 'N/A',
-          phone:      fd.get('phone')    || 'N/A',
-          email:      fd.get('email')    || 'N/A',
-          company:    fd.get('company')  || 'N/A',
-          category:   fd.get('category') || 'N/A',
-          priority:   fd.get('priority') || 'N/A',
-          issue:      fd.get('issue')    || 'N/A'
-        })
-      });
-      var json = await res.json();
-      if(json.success){
-        stSuccess.style.display = 'block';
-        stForm.reset();
-        setTimeout(function(){
-          stModal.style.display='none'; stOverlay.style.display='none';
-          stSuccess.style.display='none';
-        }, 4000);
+    if(stSubmit){ stSubmit.disabled=true; stSubmit.innerHTML='Submitting...'; }
+    if(stSuccess) stSuccess.style.display='none';
+    if(stError)   stError.style.display='none';
+    try{
+      var fd=new FormData(stForm);
+      var page=window.location.pathname.split('/').pop()||'index.html';
+      var res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({access_key:'2af0c0f5-01fa-4349-b83c-fff623cb969b',
+          subject:'Support Ticket - '+(fd.get('priority')||'')+' | '+(fd.get('category')||''),
+          from_name:'OMNET IT Support Ticket',page:page,
+          name:fd.get('name')||'N/A',phone:fd.get('phone')||'N/A',email:fd.get('email')||'N/A',
+          company:fd.get('company')||'N/A',category:fd.get('category')||'N/A',
+          priority:fd.get('priority')||'N/A',issue:fd.get('issue')||'N/A'})});
+      var json=await res.json();
+      if(json.success){ if(stSuccess) stSuccess.style.display='block'; stForm.reset();
+        setTimeout(function(){ stHide(); if(stSuccess) stSuccess.style.display='none'; },4000);
       } else { throw new Error(); }
-    } catch(err){ stError.style.display = 'block'; }
-    stSubmit.disabled = false;
-    stSubmit.innerHTML = '<i class="ri-send-plane-line"></i> Submit Support Ticket';
-  });
+    }catch(err){ if(stError) stError.style.display='block'; }
+    if(stSubmit){ stSubmit.disabled=false; stSubmit.innerHTML='<i class="ri-send-plane-line"></i> Submit Support Ticket'; }
+  }); }
 
-  // ── Leave a Message ──
-  var lamTrigger = document.getElementById('lamTrigger');
-  var lamModal   = document.getElementById('lamModal');
-  var lamOverlay = document.getElementById('lamOverlay');
-  var lamClose   = document.getElementById('lamClose');
-  var lamForm    = document.getElementById('lamForm');
-  var lamSubmit  = document.getElementById('lamSubmitBtn');
-  var lamSuccess = document.getElementById('lamSuccess');
-  var lamError   = document.getElementById('lamError');
+  /* Leave a Message */
+  var lamTrigger=document.getElementById('lamTrigger'),lamModal=document.getElementById('lamModal'),
+      lamOverlay=document.getElementById('lamOverlay'),lamClose2=document.getElementById('lamClose'),
+      lamForm=document.getElementById('lamForm'),lamSubmit=document.getElementById('lamSubmitBtn'),
+      lamSuccess=document.getElementById('lamSuccess'),lamError=document.getElementById('lamError');
 
-  lamTrigger.addEventListener('click', function(){ lamModal.style.display='block'; lamOverlay.style.display='block'; });
-  lamClose.addEventListener('click',   function(){ lamModal.style.display='none';  lamOverlay.style.display='none'; });
-  lamOverlay.addEventListener('click', function(){ lamModal.style.display='none';  lamOverlay.style.display='none'; });
+  function lamOpen(){ if(lamModal) lamModal.style.display='block'; if(lamOverlay) lamOverlay.style.display='block'; }
+  function lamHide(){ if(lamModal) lamModal.style.display='none';  if(lamOverlay) lamOverlay.style.display='none'; }
+  if(lamTrigger) lamTrigger.addEventListener('click',lamOpen);
+  if(lamClose2)  lamClose2.addEventListener('click',lamHide);
+  if(lamOverlay) lamOverlay.addEventListener('click',lamHide);
 
-  lamForm.addEventListener('submit', async function(e){
+  if(lamForm){ lamForm.addEventListener('submit',async function(e){
     e.preventDefault();
-    var dept = document.getElementById('lamDept').value;
-    if(!dept){ document.getElementById('lamDept').style.borderColor='#e53935'; return; }
-    document.getElementById('lamDept').style.borderColor='';
-    lamSubmit.disabled = true; lamSubmit.textContent = 'Sending...';
-    lamSuccess.style.display = 'none'; lamError.style.display = 'none';
-    try {
-      var fd   = new FormData(lamForm);
-      var page = window.location.pathname.split('/').pop() || 'index.html';
-      var res  = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          access_key:  '2af0c0f5-01fa-4349-b83c-fff623cb969b',
-          subject:     'OMNET IT - Leave a Message',
-          from_name:   'OMNET IT Website',
-          page:        page,
-          email:       fd.get('email')      || 'N/A',
-          phone:       fd.get('phone')      || 'N/A',
-          department:  fd.get('department') || 'N/A',
-          message:     fd.get('message')    || 'N/A'
-        })
-      });
-      var json = await res.json();
-      if(json.success){ lamSuccess.style.display='block'; lamForm.reset(); }
-      else { throw new Error(); }
-    } catch(err){ lamError.style.display='block'; }
-    lamSubmit.disabled = false; lamSubmit.textContent = 'Submit Message';
-  });
-
-})();
+    var deptEl=document.getElementById('lamDept');
+    if(deptEl && !deptEl.value){ deptEl.style.borderColor='#e53935'; return; }
+    if(deptEl) deptEl.style.borderColor='';
+    if(lamSubmit){ lamSubmit.disabled=true; lamSubmit.textContent='Sending...'; }
+    if(lamSuccess) lamSuccess.style.display='none';
+    if(lamError)   lamError.style.display='none';
+    try{
+      var fd=new FormData(lamForm);
+      var page=window.location.pathname.split('/').pop()||'index.html';
+      var res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({access_key:'2af0c0f5-01fa-4349-b83c-fff623cb969b',
+          subject:'OMNET IT - Leave a Message',from_name:'OMNET IT Website',page:page,
+          email:fd.get('email')||'N/A',phone:fd.get('phone')||'N/A',
+          department:fd.get('department')||'N/A',message:fd.get('message')||'N/A'})});
+      var json=await res.json();
+      if(json.success){ if(lamSuccess) lamSuccess.style.display='block'; lamForm.reset(); }
+      else{ throw new Error(); }
+    }catch(err){ if(lamError) lamError.style.display='block'; }
+    if(lamSubmit){ lamSubmit.disabled=false; lamSubmit.textContent='Submit Message'; }
+  }); }
+});
 </script>
+<!-- ═══ CALLBACK MODAL (global) ═══ -->
+<div id="cbOverlay" style="display:none;position:fixed;inset:0;z-index:9200;background:rgba(0,0,0,.5);" onclick="cbHide()"></div>
+<div id="cbModal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9201;width:430px;max-width:calc(100vw - 24px);background:#fff;border-radius:16px;box-shadow:0 12px 50px rgba(0,0,0,.22);overflow:hidden;font-family:inherit;">
+  <div style="background:linear-gradient(135deg,#f97316,#eab308);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div style="width:38px;height:38px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="ri-calendar-check-fill" style="color:#fff;font-size:19px;"></i></div>
+      <div>
+        <div style="color:#fff;font-size:15px;font-weight:700;line-height:1.2;">Request a Callback</div>
+        <div style="color:rgba(255,255,255,.85);font-size:12px;">We'll call you at your preferred time</div>
+      </div>
+    </div>
+    <button onclick="cbHide()" style="color:#fff;background:none;border:none;font-size:24px;cursor:pointer;line-height:1;opacity:.85;">&times;</button>
+  </div>
+  <div style="display:flex;border-bottom:2px solid #f3f4f6;background:#fafafa;">
+    <button id="cbTabCallback" onclick="cbShowTab('callback')" style="flex:1;padding:11px;font-size:13px;font-weight:700;border:none;background:none;cursor:pointer;color:#f97316;border-bottom:2px solid #f97316;margin-bottom:-2px;display:flex;align-items:center;justify-content:center;gap:6px;"><i class="ri-phone-line"></i> Request Callback</button>
+    <button id="cbTabMeet" onclick="cbShowTab('meet')" style="flex:1;padding:11px;font-size:13px;font-weight:700;border:none;background:none;cursor:pointer;color:#6b7280;border-bottom:2px solid transparent;margin-bottom:-2px;display:flex;align-items:center;justify-content:center;gap:6px;"><i class="ri-video-chat-line"></i> Google Meet</button>
+  </div>
+  <div id="cbPanelCallback" style="padding:20px;">
+    <form id="cbForm">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px;">
+        <div><label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Full Name <span style="color:#e53935;">*</span></label>
+          <input type="text" name="cb_name" required placeholder="Your name" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#f97316'" onblur="this.style.borderColor='#e5e7eb'"></div>
+        <div><label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Phone <span style="color:#e53935;">*</span></label>
+          <input type="tel" name="cb_phone" required placeholder="+91 XXXXX XXXXX" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#f97316'" onblur="this.style.borderColor='#e5e7eb'"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px;">
+        <div><label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Preferred Date <span style="color:#e53935;">*</span></label>
+          <input type="date" name="cb_date" required style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#f97316'" onblur="this.style.borderColor='#e5e7eb'"></div>
+        <div><label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Preferred Time <span style="color:#e53935;">*</span></label>
+          <select name="cb_time" required style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:#fff;appearance:none;" onfocus="this.style.borderColor='#f97316'" onblur="this.style.borderColor='#e5e7eb'">
+            <option value="" disabled selected>Select time</option>
+            <option>9:00 AM – 10:00 AM</option><option>10:00 AM – 11:00 AM</option>
+            <option>11:00 AM – 12:00 PM</option><option>12:00 PM – 1:00 PM</option>
+            <option>2:00 PM – 3:00 PM</option><option>3:00 PM – 4:00 PM</option>
+            <option>4:00 PM – 5:00 PM</option><option>5:00 PM – 6:00 PM</option>
+          </select></div>
+      </div>
+      <div style="margin-bottom:16px;"><label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Topic / Service</label>
+        <select name="cb_topic" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:#fff;appearance:none;">
+          <option selected>General Enquiry</option><option>IT Support / AMC</option>
+          <option>Managed IT Services</option><option>IT Security</option>
+          <option>Cloud Services</option><option>Network Infrastructure</option>
+          <option>Hardware / Products</option><option>Other</option>
+        </select></div>
+      <button type="submit" id="cbSubmitBtn" style="width:100%;padding:12px;background:linear-gradient(135deg,#f97316,#eab308);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">
+        <i class="ri-calendar-check-line"></i> Schedule My Callback
+      </button>
+      <div id="cbSuccess" style="display:none;margin-top:12px;padding:11px;background:#ecfdf5;color:#065f46;border-radius:8px;font-size:13px;text-align:center;"><i class="ri-checkbox-circle-line"></i> Callback scheduled! Our team will call you at your chosen time.</div>
+      <div id="cbError" style="display:none;margin-top:12px;padding:11px;background:#fef2f2;color:#991b1b;border-radius:8px;font-size:13px;text-align:center;">Something went wrong. Please call +91-89206-03270.</div>
+    </form>
+  </div>
+  <div id="cbPanelMeet" style="display:none;padding:20px;">
+    <div style="text-align:center;margin-bottom:16px;">
+      <div style="width:52px;height:52px;background:linear-gradient(135deg,#1a73e8,#34a853);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;"><i class="ri-video-chat-fill" style="color:#fff;font-size:24px;"></i></div>
+      <h3 style="font-size:15px;font-weight:700;color:#111827;margin-bottom:6px;">Schedule a Google Meet Call</h3>
+      <p style="font-size:13px;color:#6b7280;line-height:1.6;">Book a video consultation with our IT experts. A Google Meet link will be sent to your email instantly.</p>
+    </div>
+    <div style="background:#f0f7ff;border:1.5px solid #bfdbfe;border-radius:10px;padding:14px;margin-bottom:16px;">
+      <p style="font-size:12px;color:#374151;margin:0;line-height:1.8;">📅 Monday – Saturday &nbsp;|&nbsp; 🕘 9:00 AM – 6:00 PM IST<br>⏱ 30-minute sessions &nbsp;|&nbsp; 📧 omnetit@gmail.com</p>
+    </div>
+    <a href="https://calendar.google.com/calendar/appointments/schedules/PLACEHOLDER_REPLACE_WITH_YOUR_BOOKING_LINK" target="_blank" rel="noopener"
+      style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:12px;background:linear-gradient(135deg,#1a73e8,#34a853);color:#fff;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;box-sizing:border-box;">
+      <svg width="17" height="17" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M44 24c0-1.1-.1-2.2-.3-3.3H24v6.3h11.3c-.5 2.6-2 4.8-4.2 6.3v5.2h6.8C41.5 34.8 44 29.8 44 24z"/><path fill="#fff" d="M24 44c5.6 0 10.3-1.9 13.8-5.1l-6.8-5.2c-1.9 1.3-4.3 2-7 2-5.4 0-9.9-3.6-11.5-8.5H5.4v5.4C8.9 39.9 16 44 24 44z"/><path fill="#fff" d="M12.5 27.2c-.4-1.3-.7-2.7-.7-4.2s.3-2.9.7-4.2v-5.4H5.4C3.9 16.6 3 20.2 3 24s.9 7.4 2.4 10.6l7.1-7.4z"/><path fill="#fff" d="M24 10.7c3 0 5.7 1 7.8 3l5.8-5.8C33.9 4.5 29.3 2.5 24 2.5 16 2.5 8.9 6.6 5.4 13.4l7.1 5.4C14.1 14.3 18.6 10.7 24 10.7z"/></svg>
+      Open Google Calendar &amp; Book a Slot
+    </a>
+    <p style="font-size:11px;color:#9ca3af;text-align:center;margin-top:10px;"><i class="ri-information-line"></i> Replace the booking link with your Google Calendar Appointment Schedule URL.</p>
+  </div>
+</div>
+<script>
+function cbOpen(){ document.getElementById('cbModal').style.display='block'; document.getElementById('cbOverlay').style.display='block'; }
+function cbHide(){ document.getElementById('cbModal').style.display='none';  document.getElementById('cbOverlay').style.display='none'; }
+function cbShowTab(tab){
+  var isCb=(tab==='callback');
+  document.getElementById('cbPanelCallback').style.display=isCb?'block':'none';
+  document.getElementById('cbPanelMeet').style.display=isCb?'none':'block';
+  document.getElementById('cbTabCallback').style.color=isCb?'#f97316':'#6b7280';
+  document.getElementById('cbTabCallback').style.borderBottom=isCb?'2px solid #f97316':'2px solid transparent';
+  document.getElementById('cbTabMeet').style.color=isCb?'#6b7280':'#1a73e8';
+  document.getElementById('cbTabMeet').style.borderBottom=isCb?'2px solid transparent':'2px solid #1a73e8';
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var cbForm=document.getElementById('cbForm');
+  if(!cbForm) return;
+  cbForm.addEventListener('submit',async function(e){
+    e.preventDefault();
+    var btn=document.getElementById('cbSubmitBtn'),suc=document.getElementById('cbSuccess'),err=document.getElementById('cbError');
+    btn.disabled=true; btn.innerHTML='Scheduling...';
+    suc.style.display='none'; err.style.display='none';
+    try{
+      var fd=new FormData(cbForm);
+      var res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({access_key:'2af0c0f5-01fa-4349-b83c-fff623cb969b',
+          subject:'OMNET IT - Callback Request',from_name:'OMNET IT Website',
+          name:fd.get('cb_name')||'N/A',phone:fd.get('cb_phone')||'N/A',
+          date:fd.get('cb_date')||'N/A',time:fd.get('cb_time')||'N/A',
+          topic:fd.get('cb_topic')||'General Enquiry'})});
+      var json=await res.json();
+      if(json.success){ suc.style.display='block'; cbForm.reset();
+        setTimeout(function(){ cbHide(); suc.style.display='none'; },3500);
+      } else { throw new Error(); }
+    }catch(e2){ err.style.display='block'; }
+    btn.disabled=false; btn.innerHTML='<i class="ri-calendar-check-line"></i> Schedule My Callback';
+  });
+});
+</script>
+<!-- ═══ END CALLBACK MODAL ═══ -->
 <!-- ═══ END ALL WIDGETS ═══ -->
 
 </body>
