@@ -672,7 +672,7 @@ document.addEventListener('DOMContentLoaded', function(){
   </div>
   <div style="display:flex;border-bottom:2px solid #f3f4f6;background:#fafafa;">
     <button id="cbTabCallback" onclick="cbShowTab('callback')" style="flex:1;padding:11px;font-size:13px;font-weight:700;border:none;background:none;cursor:pointer;color:#f97316;border-bottom:2px solid #f97316;margin-bottom:-2px;display:flex;align-items:center;justify-content:center;gap:6px;"><i class="ri-phone-line"></i> Request Callback</button>
-    <button id="cbTabMeet" onclick="cbShowTab('meet')" style="flex:1;padding:11px;font-size:13px;font-weight:700;border:none;background:none;cursor:pointer;color:#6b7280;border-bottom:2px solid transparent;margin-bottom:-2px;display:flex;align-items:center;justify-content:center;gap:6px;"><i class="ri-video-chat-line"></i> Google Meet</button>
+    <button id="cbTabMeet" onclick="cbShowTab('meet')" style="flex:1;padding:11px;font-size:13px;font-weight:700;border:none;background:none;cursor:pointer;color:#6b7280;border-bottom:2px solid transparent;margin-bottom:-2px;display:flex;align-items:center;justify-content:center;gap:6px;"><i class="ri-calendar-event-line"></i> Book Meeting</button>
   </div>
   <div id="cbPanelCallback" style="padding:20px;">
     <form id="cbForm">
@@ -710,19 +710,31 @@ document.addEventListener('DOMContentLoaded', function(){
   </div>
   <div id="cbPanelMeet" style="display:none;padding:20px;">
     <div style="text-align:center;margin-bottom:16px;">
-      <div style="width:52px;height:52px;background:linear-gradient(135deg,#1a73e8,#34a853);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;"><i class="ri-video-chat-fill" style="color:#fff;font-size:24px;"></i></div>
-      <h3 style="font-size:15px;font-weight:700;color:#111827;margin-bottom:6px;">Schedule a Google Meet Call</h3>
-      <p style="font-size:13px;color:#6b7280;line-height:1.6;">Book a video consultation with our IT experts. A Google Meet link will be sent to your email instantly.</p>
+      <div style="width:52px;height:52px;background:linear-gradient(135deg,#006bff,#00a2ff);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+        <i class="ri-calendar-event-fill" style="color:#fff;font-size:24px;"></i>
+      </div>
+      <h3 style="font-size:15px;font-weight:700;color:#111827;margin-bottom:6px;">Book a Meeting via Calendly</h3>
+      <p style="font-size:13px;color:#6b7280;line-height:1.6;">Choose a convenient date and time for a call with our IT experts. Your booking syncs instantly with Google Calendar and you'll receive a confirmation with all details.</p>
     </div>
     <div style="background:#f0f7ff;border:1.5px solid #bfdbfe;border-radius:10px;padding:14px;margin-bottom:16px;">
-      <p style="font-size:12px;color:#374151;margin:0;line-height:1.8;">📅 Monday – Saturday &nbsp;|&nbsp; 🕘 9:00 AM – 6:00 PM IST<br>⏱ 30-minute sessions &nbsp;|&nbsp; 📧 omnetit@gmail.com</p>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><i class="ri-time-line" style="color:#006bff;font-size:15px;"></i><span style="font-size:12px;font-weight:700;color:#1e40af;">Booking Details</span></div>
+      <p style="font-size:12px;color:#374151;margin:0;line-height:1.9;">
+        📅 &nbsp;Monday – Saturday<br>
+        🕘 &nbsp;9:00 AM – 6:00 PM IST<br>
+        ⏱ &nbsp;30-minute consultation<br>
+        📹 &nbsp;Google Meet link sent on confirmation<br>
+        📧 &nbsp;Reminder emails included
+      </p>
     </div>
-    <a href="https://calendar.google.com/calendar/appointments/schedules/PLACEHOLDER_REPLACE_WITH_YOUR_BOOKING_LINK" target="_blank" rel="noopener"
-      style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:12px;background:linear-gradient(135deg,#1a73e8,#34a853);color:#fff;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;box-sizing:border-box;">
-      <svg width="17" height="17" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M44 24c0-1.1-.1-2.2-.3-3.3H24v6.3h11.3c-.5 2.6-2 4.8-4.2 6.3v5.2h6.8C41.5 34.8 44 29.8 44 24z"/><path fill="#fff" d="M24 44c5.6 0 10.3-1.9 13.8-5.1l-6.8-5.2c-1.9 1.3-4.3 2-7 2-5.4 0-9.9-3.6-11.5-8.5H5.4v5.4C8.9 39.9 16 44 24 44z"/><path fill="#fff" d="M12.5 27.2c-.4-1.3-.7-2.7-.7-4.2s.3-2.9.7-4.2v-5.4H5.4C3.9 16.6 3 20.2 3 24s.9 7.4 2.4 10.6l7.1-7.4z"/><path fill="#fff" d="M24 10.7c3 0 5.7 1 7.8 3l5.8-5.8C33.9 4.5 29.3 2.5 24 2.5 16 2.5 8.9 6.6 5.4 13.4l7.1 5.4C14.1 14.3 18.6 10.7 24 10.7z"/></svg>
-      Open Google Calendar &amp; Book a Slot
+    <a href="https://calendly.com/omnetit" target="_blank" rel="noopener"
+      style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:13px;background:linear-gradient(135deg,#006bff,#00a2ff);color:#fff;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;box-sizing:border-box;transition:opacity .2s;" onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="17" rx="2" stroke="#fff" stroke-width="2"/><path d="M3 9h18" stroke="#fff" stroke-width="2"/><path d="M8 2v4M16 2v4" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="8" cy="14" r="1.2" fill="#fff"/><circle cx="12" cy="14" r="1.2" fill="#fff"/><circle cx="16" cy="14" r="1.2" fill="#fff"/></svg>
+      Book a Free Consultation on Calendly
     </a>
-    <p style="font-size:11px;color:#9ca3af;text-align:center;margin-top:10px;"><i class="ri-information-line"></i> Replace the booking link with your Google Calendar Appointment Schedule URL.</p>
+    <div style="margin-top:12px;display:flex;align-items:flex-start;gap:8px;padding:10px 12px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;">
+      <i class="ri-checkbox-circle-fill" style="color:#16a34a;font-size:15px;margin-top:1px;flex-shrink:0;"></i>
+      <p style="font-size:12px;color:#166534;margin:0;line-height:1.6;">After booking, you will receive a <strong>confirmation email</strong> with a Google Meet link, date, time, and a reminder 24 hours before your appointment.</p>
+    </div>
   </div>
 </div>
 <script>
@@ -754,8 +766,13 @@ document.addEventListener('DOMContentLoaded',function(){
           date:fd.get('cb_date')||'N/A',time:fd.get('cb_time')||'N/A',
           topic:fd.get('cb_topic')||'General Enquiry'})});
       var json=await res.json();
-      if(json.success){ suc.style.display='block'; cbForm.reset();
-        setTimeout(function(){ cbHide(); suc.style.display='none'; },3500);
+      if(json.success){
+        suc.style.display='block'; cbForm.reset();
+        // After 1.5s switch to Book Meeting tab so user can schedule on Calendly
+        setTimeout(function(){
+          cbShowTab('meet');
+          suc.innerHTML='<i class="ri-checkbox-circle-line"></i> <strong>Request received!</strong> Our team will confirm your callback. Want to also book a slot right now? 👇';
+        }, 1500);
       } else { throw new Error(); }
     }catch(e2){ err.style.display='block'; }
     btn.disabled=false; btn.innerHTML='<i class="ri-calendar-check-line"></i> Schedule My Callback';
