@@ -885,6 +885,101 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 </script>
 <!-- ═══ END CALLBACK MODAL ═══ -->
+
+<!-- ═══ CALENDLY FLOATING BUTTON ═══ -->
+<!-- Calendly badge widget begin -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+<!-- Floating Video Call Button -->
+<div id="schedule-video-call-btn" style="
+  position:fixed;
+  bottom:180px;
+  right:24px;
+  z-index:9999;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:8px;
+">
+  <!-- Tooltip text -->
+  <div id="vcall-tooltip" style="
+    background:rgba(15,23,42,.92);
+    color:#fff;
+    font-size:12px;
+    font-weight:500;
+    padding:6px 12px;
+    border-radius:20px;
+    white-space:nowrap;
+    pointer-events:none;
+    font-family:inherit;
+    letter-spacing:.01em;
+    box-shadow:0 4px 15px rgba(0,0,0,.25);
+    animation:vcallFadeInRight .4s ease both;
+  ">Talk to an IT Support Expert in Minutes.</div>
+
+  <!-- Main Button -->
+  <button onclick="Calendly.initPopupWidget({url:'https://calendly.com/omnetit'}); return false;" style="
+    display:flex;
+    align-items:center;
+    gap:9px;
+    background:linear-gradient(135deg,#1a3fd4,#0e9cdb);
+    color:#fff;
+    border:none;
+    border-radius:50px;
+    padding:13px 20px;
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 6px 24px rgba(26,63,212,.45);
+    font-family:inherit;
+    letter-spacing:.01em;
+    animation:vcallPulse 2.8s ease-in-out infinite;
+    transition:transform .2s, box-shadow .2s;
+    white-space:nowrap;
+  "
+  onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 10px 32px rgba(26,63,212,.55)';this.style.animation='none'"
+  onmouseout="this.style.transform='';this.style.boxShadow='0 6px 24px rgba(26,63,212,.45)';this.style.animation='vcallPulse 2.8s ease-in-out infinite'"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+      <line x1="16" y1="2" x2="16" y2="6"></line>
+      <line x1="8" y1="2" x2="8" y2="6"></line>
+      <line x1="3" y1="10" x2="21" y2="10"></line>
+    </svg>
+    Schedule a Video Call
+  </button>
+</div>
+
+<style>
+@keyframes vcallPulse {
+  0%,100%{box-shadow:0 6px 24px rgba(26,63,212,.45),0 0 0 0 rgba(26,63,212,.35)}
+  50%{box-shadow:0 6px 24px rgba(26,63,212,.55),0 0 0 10px rgba(26,63,212,0)}
+}
+@keyframes vcallFadeInRight {
+  from{opacity:0;transform:translateX(12px)}
+  to{opacity:1;transform:translateX(0)}
+}
+/* Hide tooltip after 5s */
+#vcall-tooltip { animation: vcallFadeInRight .4s ease both, vcallFadeOut .5s ease 5s forwards; }
+@keyframes vcallFadeOut { to{opacity:0;pointer-events:none} }
+
+/* Mobile: compact button */
+@media(max-width:600px){
+  #schedule-video-call-btn {
+    bottom:160px !important;
+    right:14px !important;
+  }
+  #schedule-video-call-btn button {
+    font-size:13px !important;
+    padding:11px 15px !important;
+  }
+  #vcall-tooltip { display:none !important; }
+}
+</style>
+<!-- Calendly badge widget end -->
+<!-- ═══ END CALENDLY FLOATING BUTTON ═══ -->
+
 <!-- ═══ END ALL WIDGETS ═══ -->
 
 </body>
