@@ -161,6 +161,7 @@
 function cbOpen(){var m=document.getElementById('cbModal'),o=document.getElementById('cbOverlay');if(m)m.style.display='block';if(o)o.style.display='block';}
 function cbHide(){var m=document.getElementById('cbModal'),o=document.getElementById('cbOverlay');if(m)m.style.display='none';if(o)o.style.display='none';}
 </script>
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 </head>
 <body>
 
@@ -1073,7 +1074,6 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <!-- ═══ CALENDLY FLOATING BUTTON ═══ -->
 <!-- Calendly badge widget begin -->
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
 <!-- Floating Video Call Button -->
@@ -1104,7 +1104,7 @@ document.addEventListener('DOMContentLoaded',function(){
   ">Talk to an IT Support Expert in Minutes.</div>
 
   <!-- Main Button -->
-  <button onclick="Calendly.initPopupWidget({url:'https://calendly.com/omnetit'}); return false;" style="
+  <button onclick="if(typeof Calendly!=='undefined'){Calendly.initPopupWidget({url:'https://calendly.com/omnetit'});}else{window.open('https://calendly.com/omnetit','_blank');} return false;" style="
     display:flex;
     align-items:center;
     gap:9px;
@@ -1152,7 +1152,7 @@ document.addEventListener('DOMContentLoaded',function(){
 /* Mobile: compact button */
 @media(max-width:600px){
   #schedule-video-call-btn {
-    bottom:160px !important;
+    bottom:175px !important;
     right:14px !important;
   }
   #schedule-video-call-btn button {
