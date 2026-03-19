@@ -1,0 +1,29 @@
+OG SOCIAL SHARING BANNER — CREATION INSTRUCTIONS
+=================================================
+
+Your pages reference: https://www.omnetit.in/og-banner.png
+
+You need to create a 1200 x 630 px PNG image and upload it as "og-banner.png" to your website root.
+
+DESIGN SPEC:
+- Background: Dark navy gradient (#0f2744 to #0d5c6b)
+- Logo: "OMNET IT System" in white + teal
+- Tagline: "IT Support in Noida Sector 62, 63 & Delhi NCR"
+- Sub-text: "Fast, Reliable & Affordable IT Support for Businesses"
+- Phone: +91-89206-03270
+- Website: www.omnetit.in
+
+QUICK OPTIONS:
+1. Canva (free): canva.com → Create design → Custom size 1200x630 → Use above spec
+2. Adobe Express (free): express.adobe.com
+3. Ask Claude: "Design an OG banner SVG for OMNET IT System"
+
+This image appears when your pages are shared on:
+- LinkedIn
+- WhatsApp
+- Facebook
+- Twitter/X
+- Slack
+- Any platform that uses OG tags
+
+IMPORTANT: Upload the PNG to your website root at: /og-banner.png

@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Disallow admin or utility paths
+Disallow: /cdn-cgi/
+
+# Sitemap location
+Sitemap: https://www.omnetit.in/sitemap.xml
+
+# Crawl-delay for well-behaved bots
+Crawl-delay: 1
