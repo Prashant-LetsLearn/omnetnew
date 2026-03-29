@@ -341,7 +341,7 @@ body { font-family: 'DM Sans', sans-serif; color: var(--gray-900); background: #
 
 /* ── UTILITY ── */
 .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
-.section { padding: 5rem 0; }
+.section { padding: 4rem 0; }
 .section-sm { padding: 3rem 0; }
 .text-center { text-align: center; }
 .text-white { color: #fff !important; }
@@ -422,5 +422,5 @@ body { font-family: 'DM Sans', sans-serif; color: var(--gray-900); background: #
 
 /* Adjust hero/page padding for 2-row header (~110px total) */
 .hero { padding-top: 110px; }
-.page-hero { padding: 110px 0 4rem; }
-.home-hero { padding: 130px 0 80px; }
+.page-hero { padding: 110px 0 3rem; }
+.home-hero { padding: 120px 0 60px; }
