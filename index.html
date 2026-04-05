@@ -142,6 +142,75 @@
       font-size: .78rem; font-weight: 600; color: #5eead4; margin-top: .7rem;
     }
 
+    /* ── HERO MARQUEE BANNER ── */
+    .hero-marquee-wrap {
+      overflow: hidden;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 50px;
+      padding: .55rem 1rem;
+      margin: 1.25rem 0 1.5rem;
+      position: relative;
+    }
+    .hero-marquee-wrap::before,
+    .hero-marquee-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 60px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .hero-marquee-wrap::before {
+      left: 0;
+      background: linear-gradient(to right, rgba(10,34,64,.9), transparent);
+    }
+    .hero-marquee-wrap::after {
+      right: 0;
+      background: linear-gradient(to left, rgba(13,55,92,.9), transparent);
+    }
+    .hero-marquee-track {
+      display: flex;
+      white-space: nowrap;
+      animation: marqueeScroll 32s linear infinite;
+      will-change: transform;
+    }
+    .hero-marquee-track:hover { animation-play-state: paused; }
+    @keyframes marqueeScroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .hero-marquee-msg {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .82rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.8);
+      line-height: 1.4;
+      padding: 0 2.5rem;
+      flex-shrink: 0;
+    }
+    .hero-marquee-msg .m-dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #5eead4;
+      flex-shrink: 0;
+    }
+    .hero-marquee-msg .m-city {
+      color: #5eead4;
+      font-weight: 700;
+    }
+    .hero-marquee-msg .m-svc {
+      color: #fcd34d;
+      font-weight: 700;
+    }
+    @media (max-width:768px) {
+      .hero-marquee-msg { font-size: .76rem; padding: 0 1.8rem; }
+      .hero-marquee-track { animation-duration: 24s; }
+    }
+
     /* ── STATS BAR ── */
     .stats-bar-home {
       background: linear-gradient(135deg, var(--teal-700), var(--cyan-700)); padding: 0;
@@ -469,6 +538,50 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
     <div>
       <div class="badge badge-white-glass mb-4"><i class="ri-rocket-fill"></i> Delhi NCR's Trusted IT Partner</div>
       <h1>IT Support · Security <span>&amp; Managed IT</span> Services</h1>
+
+      <!-- HERO SCROLLING MARQUEE -->
+      <div class="hero-marquee-wrap" aria-label="Service regions">
+        <div class="hero-marquee-track" id="heroMarqueeTrack">
+          <!-- Message 1 -->
+          <span class="hero-marquee-msg">
+            <span class="m-dot"></span>
+            Providing reliable <span class="m-svc">IT Support</span>, <span class="m-svc">Managed IT Services</span>, and <span class="m-svc">IT Products</span> across <span class="m-city">Bihar</span>, <span class="m-city">Jharkhand</span>, <span class="m-city">Uttar Pradesh</span>, <span class="m-city">West Bengal</span>, <span class="m-city">Delhi</span>, <span class="m-city">Haryana</span>, <span class="m-city">Punjab</span>, <span class="m-city">Gujarat</span>, <span class="m-city">Maharashtra</span>, <span class="m-city">Rajasthan</span>, <span class="m-city">Noida</span>, <span class="m-city">Gurugram</span>, <span class="m-city">Faridabad</span>, and throughout <span class="m-city">Delhi NCR</span>.
+          </span>
+          <!-- Message 2 -->
+          <span class="hero-marquee-msg">
+            <span class="m-dot"></span>
+            From <span class="m-city">Delhi NCR</span>, <span class="m-city">Noida</span>, <span class="m-city">Gurugram</span>, and <span class="m-city">Faridabad</span> to <span class="m-city">Bihar</span>, <span class="m-city">Jharkhand</span>, <span class="m-city">Uttar Pradesh</span>, <span class="m-city">West Bengal</span>, <span class="m-city">Punjab</span>, <span class="m-city">Haryana</span>, <span class="m-city">Gujarat</span>, <span class="m-city">Maharashtra</span>, and <span class="m-city">Rajasthan</span> — we deliver trusted technology solutions and project execution.
+          </span>
+          <!-- Message 3 -->
+          <span class="hero-marquee-msg">
+            <span class="m-dot"></span>
+            Expanding our <span class="m-svc">IT Services</span> footprint across North and West India with successful projects in <span class="m-city">Bihar</span>, <span class="m-city">Jharkhand</span>, <span class="m-city">Uttar Pradesh</span>, <span class="m-city">West Bengal</span>, <span class="m-city">Delhi</span>, <span class="m-city">Haryana</span>, <span class="m-city">Punjab</span>, <span class="m-city">Gujarat</span>, <span class="m-city">Maharashtra</span>, <span class="m-city">Rajasthan</span>, <span class="m-city">Noida</span>, <span class="m-city">Gurugram</span>, <span class="m-city">Faridabad</span>, and <span class="m-city">Delhi NCR</span>.
+          </span>
+          <!-- Message 4 -->
+          <span class="hero-marquee-msg">
+            <span class="m-dot"></span>
+            Supporting businesses with <span class="m-svc">Managed IT Services</span>, <span class="m-svc">IT Infrastructure</span>, and <span class="m-svc">Product Solutions</span> across <span class="m-city">Delhi NCR</span>, <span class="m-city">Noida</span>, <span class="m-city">Gurugram</span>, <span class="m-city">Faridabad</span>, <span class="m-city">Bihar</span>, <span class="m-city">Jharkhand</span>, <span class="m-city">Uttar Pradesh</span>, <span class="m-city">West Bengal</span>, <span class="m-city">Haryana</span>, <span class="m-city">Punjab</span>, <span class="m-city">Gujarat</span>, <span class="m-city">Maharashtra</span>, and <span class="m-city">Rajasthan</span>.
+          </span>
+          <!-- Duplicate set for seamless loop -->
+          <span class="hero-marquee-msg">
+            <span class="m-dot"></span>
+            Providing reliable <span class="m-svc">IT Support</span>, <span class="m-svc">Managed IT Services</span>, and <span class="m-svc">IT Products</span> across <span class="m-city">Bihar</span>, <span class="m-city">Jharkhand</span>, <span class="m-city">Uttar Pradesh</span>, <span class="m-city">West Bengal</span>, <span class="m-city">Delhi</span>, <span class="m-city">Haryana</span>, <span class="m-city">Punjab</span>, <span class="m-city">Gujarat</span>, <span class="m-city">Maharashtra</span>, <span class="m-city">Rajasthan</span>, <span class="m-city">Noida</span>, <span class="m-city">Gurugram</span>, <span class="m-city">Faridabad</span>, and throughout <span class="m-city">Delhi NCR</span>.
+          </span>
+          <span class="hero-marquee-msg">
+            <span class="m-dot"></span>
+            From <span class="m-city">Delhi NCR</span>, <span class="m-city">Noida</span>, <span class="m-city">Gurugram</span>, and <span class="m-city">Faridabad</span> to <span class="m-city">Bihar</span>, <span class="m-city">Jharkhand</span>, <span class="m-city">Uttar Pradesh</span>, <span class="m-city">West Bengal</span>, <span class="m-city">Punjab</span>, <span class="m-city">Haryana</span>, <span class="m-city">Gujarat</span>, <span class="m-city">Maharashtra</span>, and <span class="m-city">Rajasthan</span> — we deliver trusted technology solutions and project execution.
+          </span>
+          <span class="hero-marquee-msg">
+            <span class="m-dot"></span>
+            Expanding our <span class="m-svc">IT Services</span> footprint across North and West India with successful projects in <span class="m-city">Bihar</span>, <span class="m-city">Jharkhand</span>, <span class="m-city">Uttar Pradesh</span>, <span class="m-city">West Bengal</span>, <span class="m-city">Delhi</span>, <span class="m-city">Haryana</span>, <span class="m-city">Punjab</span>, <span class="m-city">Gujarat</span>, <span class="m-city">Maharashtra</span>, <span class="m-city">Rajasthan</span>, <span class="m-city">Noida</span>, <span class="m-city">Gurugram</span>, <span class="m-city">Faridabad</span>, and <span class="m-city">Delhi NCR</span>.
+          </span>
+          <span class="hero-marquee-msg">
+            <span class="m-dot"></span>
+            Supporting businesses with <span class="m-svc">Managed IT Services</span>, <span class="m-svc">IT Infrastructure</span>, and <span class="m-svc">Product Solutions</span> across <span class="m-city">Delhi NCR</span>, <span class="m-city">Noida</span>, <span class="m-city">Gurugram</span>, <span class="m-city">Faridabad</span>, <span class="m-city">Bihar</span>, <span class="m-city">Jharkhand</span>, <span class="m-city">Uttar Pradesh</span>, <span class="m-city">West Bengal</span>, <span class="m-city">Haryana</span>, <span class="m-city">Punjab</span>, <span class="m-city">Gujarat</span>, <span class="m-city">Maharashtra</span>, and <span class="m-city">Rajasthan</span>.
+          </span>
+        </div>
+      </div>
+
       <p>Omnet IT Solutions delivers enterprise-grade IT Support, Cybersecurity, and Managed IT Services to businesses across Delhi NCR — backed by a 20-minute remote response SLA, 4-hour onsite coverage, and transparent fixed monthly pricing.</p>
       
       <div style="display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.5rem">
