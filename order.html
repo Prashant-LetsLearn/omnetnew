@@ -393,17 +393,9 @@
 
         <!-- Payment method tabs -->
         <div class="pay-method-title">Select how you'd like to pay:</div>
-        <div class="pay-method-grid">
-          <button class="pay-method-btn pm-razorpay selected" id="pmRzp" onclick="selectPM('rzp')">
-            <span class="pm-icon">💳</span>
-            <span class="pm-label">Card / Net Banking</span>
-            <span class="pm-sub">via Razorpay</span>
-          </button>
-          <button class="pay-method-btn pm-upi" id="pmUpi" onclick="selectPM('upi')">
-            <span class="pm-icon">📱</span>
-            <span class="pm-label">UPI / QR Scan</span>
-            <span class="pm-sub">GPay · PhonePe · Paytm</span>
-          </button>
+        <div style="background:var(--teal-50);border:1px solid var(--teal-200);border-radius:12px;padding:.85rem 1.1rem;display:flex;align-items:center;gap:.6rem;margin-bottom:1.5rem;">
+          <i class="ri-shield-check-line" style="color:var(--teal-500);font-size:1.2rem;"></i>
+          <span style="font-size:.82rem;color:var(--teal-700);font-weight:600;">Pay securely via Razorpay — Cards, Net Banking, UPI, Wallets & EMI</span>
         </div>
 
         <!-- Razorpay panel -->
@@ -428,14 +420,7 @@
           </div>
         </div>
 
-        <!-- UPI panel -->
-        <div id="panelUpi" style="display:none;">
-          <button class="btn-pay-upi" onclick="window.openUpiModal(document.getElementById('oAmount').value)">
-            <span style="font-weight:900;font-size:1.1rem;">₹</span>
-            Pay ₹<span id="upiAmountBtn">0</span> via UPI / Scan QR
-          </button>
-          <p style="text-align:center;font-size:.75rem;color:var(--gray-400);margin-top:.5rem;">Opens UPI QR scanner · GPay · PhonePe · Paytm · BHIM</p>
-        </div>
+
 
         <div class="order-nav">
           <button class="btn-order-back" onclick="goStep(2)"><i class="ri-arrow-left-line"></i> Back</button>
@@ -606,9 +591,7 @@ function updateAmountButtons() {
 function selectPM(pm) {
   selectedPM = pm;
   document.getElementById('pmRzp').classList.toggle('selected', pm === 'rzp');
-  document.getElementById('pmUpi').classList.toggle('selected', pm === 'upi');
   document.getElementById('panelRzp').style.display = pm === 'rzp' ? '' : 'none';
-  document.getElementById('panelUpi').style.display = pm === 'upi' ? '' : 'none';
 }
 
 /* ── Generate reference number ── */
@@ -636,7 +619,7 @@ async function sendConfirmation(refNum, paymentId) {
         'Devices / Users': document.getElementById('oDevices').value || 'N/A',
         'Description':     document.getElementById('oDesc').value || 'N/A',
         'Amount':          '₹' + document.getElementById('oAmount').value,
-        'Payment Method':  selectedPM === 'rzp' ? 'Razorpay (Card/UPI/NetBanking)' : 'UPI QR Scan',
+        'Payment Method':  'Razorpay (Card / Net Banking / UPI / Wallets)',
         'Razorpay Payment ID': paymentId || 'Pending / UPI',
         'Timestamp':       new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
         'Page':            window.location.href,
@@ -676,7 +659,6 @@ function payWithRazorpay() {
   if (RAZORPAY_KEY === 'rzp_test_YOUR_KEY_ID') {
     // Demo mode — show setup instructions
     if (confirm('⚠️  Razorpay Key not yet configured.\n\nTo enable card payments:\n1. Create account at razorpay.com\n2. Go to Settings → API Keys\n3. Copy your Key ID\n4. Replace rzp_test_YOUR_KEY_ID in order.html\n\nFor now, would you like to proceed with UPI payment instead?')) {
-      selectPM('upi');
       window.openUpiModal(amount);
     }
     return;

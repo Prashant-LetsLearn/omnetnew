@@ -231,23 +231,7 @@
     }
   };
 
-  /* ── Inject floating Pay button ── */
-  function injectPayButton() {
-    if (document.getElementById('upiPayFab')) return;
-    const fab = document.createElement('button');
-    fab.id = 'upiPayFab';
-    fab.className = 'upi-pay-fab';
-    fab.title = 'Pay via UPI';
-    fab.innerHTML = `<span class="upi-pay-fab-icon">₹</span><span class="upi-pay-fab-label">Pay via UPI</span>`;
-    fab.addEventListener('click', () => window.openUpiModal());
-    document.body.appendChild(fab);
-  }
-
-  /* ── Init on DOM ready ── */
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', injectPayButton);
-  } else {
-    injectPayButton();
-  }
+  /* ── Pay via UPI FAB removed per user preference ── */
+  /* UPI modal still available via window.openUpiModal() */
 
 })();
