@@ -481,7 +481,14 @@
           <div class="invoice-num" id="enquiryRef">#ENQ-2025-0001</div>
           <p>Save this reference. We will contact you on your registered phone &amp; email.</p>
         </div>
-        <div class="form-cta-row" style="margin-top:1.25rem">
+        <div style="margin-top:1.25rem;background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:1.5px solid #c4b5fd;border-radius:14px;padding:1rem 1.25rem;text-align:center;">
+          <p style="font-size:.82rem;color:#6d28d9;font-weight:600;margin-bottom:.75rem;"><i class="ri-secure-payment-line"></i> Ready to pay? Use UPI for instant payment</p>
+          <button onclick="window.openUpiModal()" style="display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;border:none;border-radius:10px;padding:.7rem 1.5rem;font-weight:700;font-size:.9rem;cursor:pointer;font-family:inherit;box-shadow:0 4px 16px rgba(124,58,237,.35);">
+            <span style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.2);display:inline-flex;align-items:center;justify-content:center;font-weight:900;">₹</span> Pay via UPI / QR Code
+          </button>
+          <p style="font-size:.72rem;color:#7c3aed;margin-top:.5rem;opacity:.8;">GPay · PhonePe · Paytm · BHIM</p>
+        </div>
+        <div class="form-cta-row" style="margin-top:.75rem">
           <a href="tel:+918920603270" class="btn-call-cta"><i class="ri-phone-fill"></i> Call Us</a>
           <a href="https://wa.me/918920603270" target="_blank" class="btn-wa-cta"><i class="ri-whatsapp-line"></i> WhatsApp</a>
         </div>
@@ -492,5 +499,6 @@
 
 <script src="script.js"></script>
 <script src="shop.js"></script>
+  <script src="upi-payment.js"></script>
 </body>
 </html>
