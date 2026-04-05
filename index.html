@@ -88,7 +88,7 @@
     /* ── HERO BANNER (proit style - dark professional) ── */
     .home-hero {
       background: linear-gradient(135deg, #0a2240 0%, #0d4f5c 40%, #0d7377 100%);
-      padding: 188px 0 80px; position: relative; overflow: hidden; color: #fff;
+      padding: 192px 0 80px; position: relative; overflow: hidden; color: #fff;
     }
     .home-hero::before {
       content: ''; position: absolute; inset: 0;
@@ -149,12 +149,14 @@
       left: 0; right: 0;
       z-index: 1001;
       background: linear-gradient(135deg, #061428 0%, #0a2e3a 50%, #0a2d2d 100%);
-      border-bottom: 1px solid rgba(94,234,212,.18);
+      border-bottom: 1px solid rgba(94,234,212,.22);
       overflow: hidden;
-      height: 32px;
+      height: 36px;
+      /* flex for vertical centering; flex-shrink:0 on the child prevents compression */
       display: flex;
       align-items: center;
     }
+    /* Soft fade masks – positioned so they sit above the scrolling text */
     .header-marquee-strip::before,
     .header-marquee-strip::after {
       content: '';
@@ -166,18 +168,28 @@
     }
     .header-marquee-strip::before {
       left: 0;
-      background: linear-gradient(to right, #061428 0%, transparent 100%);
+      background: linear-gradient(to right, #061428 85%, transparent 100%);
     }
     .header-marquee-strip::after {
       right: 0;
-      background: linear-gradient(to left, #0a2d2d 0%, transparent 100%);
+      background: linear-gradient(to left, #0a2d2d 85%, transparent 100%);
     }
+    /*
+      KEY RULES for correct scrolling:
+      • display:flex on the strip provides vertical centering.
+      • flex-shrink:0 + min-width:max-content on the TRACK stop the flex
+        parent from ever compressing the track — this is what was clipping text.
+      • translateX(-50%) works because we duplicate the 4 messages, so
+        -50% of the full track width equals exactly one full cycle.
+    */
     .header-marquee-track {
       display: flex;
-      white-space: nowrap;
-      animation: hdrMarqueeScroll 42s linear infinite;
-      will-change: transform;
       align-items: center;
+      white-space: nowrap;
+      flex-shrink: 0;           /* never let the flex parent compress this */
+      min-width: max-content;   /* size to full natural text width */
+      animation: hdrMarqueeScroll 55s linear infinite;
+      will-change: transform;
     }
     .header-marquee-track:hover { animation-play-state: paused; }
     @keyframes hdrMarqueeScroll {
@@ -187,14 +199,15 @@
     .header-marquee-msg {
       display: inline-flex;
       align-items: center;
-      gap: .45rem;
-      font-size: .74rem;
-      font-weight: 500;
-      color: rgba(255,255,255,.72);
-      line-height: 1;
-      padding: 0 3rem;
+      gap: .5rem;
+      font-size: .76rem;
+      font-weight: 600;                    /* slightly bolder for legibility */
+      color: rgba(255,255,255,.92);        /* high-contrast white */
+      line-height: 36px;                   /* match strip height exactly */
+      padding: 0 4rem;
       flex-shrink: 0;
-      letter-spacing: .01em;
+      white-space: nowrap;
+      letter-spacing: .014em;
     }
     .header-marquee-msg .m-dot {
       display: inline-block;
@@ -202,7 +215,6 @@
       border-radius: 50%;
       background: #5eead4;
       flex-shrink: 0;
-      opacity: .85;
     }
     .header-marquee-msg .m-city {
       color: #5eead4;
@@ -212,14 +224,13 @@
       color: #fcd34d;
       font-weight: 700;
     }
-    .header-marquee-msg .m-sep {
-      color: rgba(255,255,255,.25);
-      margin: 0 .2rem;
+    @media (max-width: 1024px) {
+      .header-marquee-track { animation-duration: 45s; }
     }
     @media (max-width: 768px) {
-      .header-marquee-strip { top: 32px; height: 28px; }
-      .header-marquee-msg { font-size: .69rem; padding: 0 2rem; }
-      .header-marquee-track { animation-duration: 32s; }
+      .header-marquee-strip { top: 32px; height: 30px; }
+      .header-marquee-msg   { font-size: .69rem; line-height: 30px; padding: 0 2.5rem; }
+      .header-marquee-track { animation-duration: 38s; }
     }
 
     /* ── STATS BAR ── */
@@ -338,9 +349,9 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
 }
 </style>
 <style>
-  /* ── Triple-strip offset: dual-action(36px) + marquee(32px) ── */
-  .site-header { top: 68px !important; }
-  @media (max-width: 768px) { .site-header { top: 60px !important; } }
+  /* ── Triple-strip offset: dual-action(36px) + marquee(36px) ── */
+  .site-header { top: 72px !important; }
+  @media (max-width: 768px) { .site-header { top: 62px !important; } }
 </style>
 </head>
 <body>
