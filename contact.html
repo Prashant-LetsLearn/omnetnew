@@ -70,6 +70,7 @@
   </script>
 
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="design-system.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" />
   <style>
     .quick-card{background:#fff;border-radius:20px;padding:2rem;text-align:center;border:2px solid var(--gray-200);transition:all .3s;text-decoration:none;display:block;cursor:pointer}
@@ -618,9 +619,9 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
       </div>
 
       <!-- Review cards -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem">
+      <div class="reviews-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem">
 
-        <div style="background:#fff;border:1px solid var(--gray-200);border-radius:12px;padding:1.25rem">
+        <div class="review-card" style="background:#fff;border:1px solid var(--gray-200);border-radius:12px;padding:1.25rem">
           <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.9rem">
             <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#06b6d4);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:.95rem;flex-shrink:0">R</div>
             <div>
@@ -634,7 +635,7 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
           <div style="margin-top:.75rem;font-size:.75rem;color:var(--gray-400)">Noida Sector 62 · IT Support</div>
         </div>
 
-        <div style="background:#fff;border:1px solid var(--gray-200);border-radius:12px;padding:1.25rem">
+        <div class="review-card" style="background:#fff;border:1px solid var(--gray-200);border-radius:12px;padding:1.25rem">
           <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.9rem">
             <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#10b981,#0d9488);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:.95rem;flex-shrink:0">P</div>
             <div>
@@ -648,7 +649,7 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
           <div style="margin-top:.75rem;font-size:.75rem;color:var(--gray-400)">Greater Noida · Managed IT</div>
         </div>
 
-        <div style="background:#fff;border:1px solid var(--gray-200);border-radius:12px;padding:1.25rem">
+        <div class="review-card" style="background:#fff;border:1px solid var(--gray-200);border-radius:12px;padding:1.25rem">
           <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.9rem">
             <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#6366f1);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:.95rem;flex-shrink:0">A</div>
             <div>
@@ -900,7 +901,8 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
 <button class="back-to-top" aria-label="Back to top"><i class="ri-arrow-up-line"></i></button>
 <script src="script.js"></script>
 <!-- ================================================================
-     ALL WIDGETS - paste just before   <script src="upi-payment.js"></script>
+     ALL WIDGETS - paste just before   <script src="carousel.js"></script>
+  <script src="upi-payment.js"></script>
 </body> on every page
      1. WhatsApp chatbot (bottom-left)
      2. Leave a Message (bottom-right)
