@@ -283,3 +283,74 @@
   syncUserState();
 
 })();
+
+/* ══ SHOP PAGE — Razorpay Payment ══
+   Called from checkout success screen.
+   Replace rzp_test_YOUR_KEY_ID with your real Razorpay Key ID.
+   Get it at: razorpay.com → Dashboard → Settings → API Keys
+═══════════════════════════════════ */
+window.shopPayRazorpay = function () {
+  const RAZORPAY_KEY = 'rzp_test_YOUR_KEY_ID';
+  // ↑ Replace this with your Key ID once your Razorpay account is ready
+
+  const refEl = document.getElementById('enquiryRef');
+  const ref   = refEl ? refEl.textContent : '#ENQ-0000';
+
+  if (RAZORPAY_KEY === 'rzp_test_YOUR_KEY_ID') {
+    if (confirm('⚠️  Razorpay not configured yet.\n\nTo enable card payments:\n1. Create account at razorpay.com\n2. Settings → API Keys → Generate Key\n3. Replace rzp_test_YOUR_KEY_ID in shop.js\n\nProceed with UPI payment instead?')) {
+      if (window.openUpiModal) window.openUpiModal();
+    }
+    return;
+  }
+
+  // Build amount from cart or prompt
+  let amount = 0;
+  try {
+    const cart = JSON.parse(localStorage.getItem('omnet_cart') || '[]');
+    if (cart.length === 0) {
+      alert('Your cart is empty.');
+      return;
+    }
+    // Prompt for amount since shop items have no price
+    const input = prompt('Enter total amount to pay (₹):', '');
+    amount = parseFloat(input);
+    if (!amount || amount < 100) { alert('Please enter a valid amount (min ₹100).'); return; }
+  } catch(e) { return; }
+
+  const options = {
+    key: RAZORPAY_KEY,
+    amount: Math.round(amount * 100),
+    currency: 'INR',
+    name: 'Omnet IT Solutions',
+    description: 'Software / IT Product Enquiry',
+    image: 'https://www.omnetit.in/og-banner.png',
+    notes: { enquiry_ref: ref },
+    theme: { color: '#14b8a6' },
+    handler: function(response) {
+      // Send email confirmation
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: '2af0c0f5-01fa-4349-b83c-fff623cb969b',
+          subject: 'Shop Payment — Omnet IT ' + ref,
+          'Enquiry Reference': ref,
+          'Amount Paid': '₹' + amount,
+          'Razorpay Payment ID': response.razorpay_payment_id,
+          'Timestamp': new Date().toLocaleString('en-IN',{timeZone:'Asia/Kolkata'}),
+        })
+      }).catch(() => {});
+      alert('✅ Payment of ₹' + amount + ' successful!\nPayment ID: ' + response.razorpay_payment_id + '\n\nRef: ' + ref + '\nOur team will contact you shortly.');
+    }
+  };
+
+  try {
+    const rzp = new Razorpay(options);
+    rzp.on('payment.failed', function(res) {
+      alert('Payment failed: ' + (res.error?.description || 'Please try again or use UPI.'));
+    });
+    rzp.open();
+  } catch(e) {
+    alert('Could not load Razorpay. Please use UPI payment or call +91-89206-03270');
+  }
+};

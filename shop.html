@@ -36,6 +36,7 @@
   .site-header { top: 36px !important; }
   @media (max-width: 768px) { .site-header { top: 32px !important; } }
 </style>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
 <!-- DUAL ACTION STRIP -->
@@ -482,12 +483,25 @@
           <div class="invoice-num" id="enquiryRef">#ENQ-2025-0001</div>
           <p>Save this reference. We will contact you on your registered phone &amp; email.</p>
         </div>
-        <div style="margin-top:1.25rem;background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:1.5px solid #c4b5fd;border-radius:14px;padding:1rem 1.25rem;text-align:center;">
-          <p style="font-size:.82rem;color:#6d28d9;font-weight:600;margin-bottom:.75rem;"><i class="ri-secure-payment-line"></i> Ready to pay? Use UPI for instant payment</p>
-          <button onclick="window.openUpiModal()" style="display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;border:none;border-radius:10px;padding:.7rem 1.5rem;font-weight:700;font-size:.9rem;cursor:pointer;font-family:inherit;box-shadow:0 4px 16px rgba(124,58,237,.35);">
-            <span style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.2);display:inline-flex;align-items:center;justify-content:center;font-weight:900;">₹</span> Pay via UPI / QR Code
-          </button>
-          <p style="font-size:.72rem;color:#7c3aed;margin-top:.5rem;opacity:.8;">GPay · PhonePe · Paytm · BHIM</p>
+        <div style="margin-top:1.25rem;border:1.5px solid var(--gray-200);border-radius:14px;padding:1.25rem;text-align:center;">
+          <p style="font-size:.82rem;color:var(--gray-700);font-weight:700;margin-bottom:1rem;"><i class="ri-secure-payment-line"></i> Complete your payment securely</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.75rem;">
+            <button onclick="shopPayRazorpay()" style="display:flex;align-items:center;justify-content:center;gap:.4rem;background:linear-gradient(135deg,#3395FF,#1a6ee0);color:#fff;border:none;border-radius:10px;padding:.75rem .5rem;font-weight:700;font-size:.82rem;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(51,149,255,.35);">
+              <i class="ri-bank-card-line"></i> Card / Net Banking
+            </button>
+            <button onclick="window.openUpiModal()" style="display:flex;align-items:center;justify-content:center;gap:.4rem;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;border:none;border-radius:10px;padding:.75rem .5rem;font-weight:700;font-size:.82rem;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(124,58,237,.35);">
+              <span style="font-weight:900;">₹</span> UPI / Scan QR
+            </button>
+          </div>
+          <a href="order.html" style="display:block;text-align:center;font-size:.75rem;color:var(--teal-600);font-weight:600;text-decoration:none;">Or go to full Order &amp; Payment page →</a>
+          <div style="display:flex;gap:.4rem;justify-content:center;margin-top:.6rem;flex-wrap:wrap;">
+            <span style="font-size:.65rem;background:var(--gray-100);color:var(--gray-500);padding:.15rem .55rem;border-radius:4px;">VISA</span>
+            <span style="font-size:.65rem;background:var(--gray-100);color:var(--gray-500);padding:.15rem .55rem;border-radius:4px;">Mastercard</span>
+            <span style="font-size:.65rem;background:var(--gray-100);color:var(--gray-500);padding:.15rem .55rem;border-radius:4px;">RuPay</span>
+            <span style="font-size:.65rem;background:var(--gray-100);color:var(--gray-500);padding:.15rem .55rem;border-radius:4px;">UPI</span>
+            <span style="font-size:.65rem;background:var(--gray-100);color:var(--gray-500);padding:.15rem .55rem;border-radius:4px;">Net Banking</span>
+            <span style="font-size:.65rem;background:var(--gray-100);color:var(--gray-500);padding:.15rem .55rem;border-radius:4px;">EMI</span>
+          </div>
         </div>
         <div class="form-cta-row" style="margin-top:.75rem">
           <a href="tel:+918920603270" class="btn-call-cta"><i class="ri-phone-fill"></i> Call Us</a>
