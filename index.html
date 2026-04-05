@@ -88,7 +88,7 @@
     /* ── HERO BANNER (proit style - dark professional) ── */
     .home-hero {
       background: linear-gradient(135deg, #0a2240 0%, #0d4f5c 40%, #0d7377 100%);
-      padding: 196px 0 80px; position: relative; overflow: hidden; color: #fff;
+      padding: 204px 0 80px; position: relative; overflow: hidden; color: #fff;
     }
     .home-hero::before {
       content: ''; position: absolute; inset: 0;
@@ -143,58 +143,57 @@
     }
 
     /* ══════════════════════════════════════════════════
-       HEADER MARQUEE  — three-layer architecture
-       Layer 1: .header-marquee-strip   → fixed position + visual background
-       Layer 2: .marquee-inner          → overflow clip + flex vertical centering
-       Layer 3: .header-marquee-track   → horizontal scroll animation
-       Separating overflow:hidden from display:flex onto different elements
-       stops sub-pixel flex rounding from clipping the text.
+       HEADER MARQUEE  — explicit-height approach
+       Every layer shares the same CSS variable --mq-h (48px).
+       strip / inner / track / msg all declare the same pixel height,
+       so overflow:hidden has zero vertical content to clip,
+       and align-items:center is lossless at every level.
     ══════════════════════════════════════════════════ */
+    :root { --mq-h: 48px; }
+
     .header-marquee-strip {
       position: fixed;
       top: 36px;
       left: 0; right: 0;
       z-index: 1001;
-      background: linear-gradient(90deg, #071a2e 0%, #0c3347 45%, #082a2a 100%);
-      border-top:    1px solid rgba(94,234,212,.10);
-      border-bottom: 1px solid rgba(94,234,212,.25);
-      height: 40px;
-      /* NO overflow:hidden here — that goes on .marquee-inner */
-    }
-    /* ── Layer 2: the actual clip + centering viewport ── */
-    .marquee-inner {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;          /* horizontal clip lives here */
-      position: relative;
+      background: linear-gradient(90deg, #071a2e 0%, #0c3347 50%, #082a2a 100%);
+      border-bottom: 1px solid rgba(94,234,212,.28);
+      height: var(--mq-h);
+      overflow: hidden;
       display: flex;
-      align-items: center;       /* vertical centering lives here */
+      align-items: center;
     }
-    /* Fade masks on the inner viewport so they stay above the text */
-    .marquee-inner::before,
-    .marquee-inner::after {
+    .header-marquee-strip::before,
+    .header-marquee-strip::after {
       content: '';
       position: absolute;
       top: 0; bottom: 0;
-      width: 100px;
-      z-index: 2;
+      width: 90px;
+      z-index: 3;
       pointer-events: none;
     }
-    .marquee-inner::before {
+    .header-marquee-strip::before {
       left: 0;
       background: linear-gradient(to right, #071a2e 0%, transparent 100%);
     }
-    .marquee-inner::after {
+    .header-marquee-strip::after {
       right: 0;
       background: linear-gradient(to left, #082a2a 0%, transparent 100%);
     }
-    /* ── Layer 3: the scrolling track ── */
+    .marquee-inner {
+      width: 100%;
+      height: var(--mq-h);
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
     .header-marquee-track {
       display: flex;
       align-items: center;
+      height: var(--mq-h);
       white-space: nowrap;
-      flex-shrink: 0;            /* flex parent must not compress this */
-      min-width: max-content;    /* size to all content naturally */
+      flex-shrink: 0;
+      min-width: max-content;
       animation: hdrMarqueeScroll 60s linear infinite;
       will-change: transform;
     }
@@ -203,19 +202,27 @@
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
     }
-    /* ── Individual messages ── */
     .header-marquee-msg {
       display: inline-flex;
       align-items: center;
+      height: var(--mq-h);
       gap: .55rem;
-      font-size: .8rem;
+      font-size: .82rem;
       font-weight: 600;
-      color: #e2f4ff;            /* bright, high-contrast off-white */
-      line-height: 1.2;          /* normal line-height; centering done by flex */
-      padding: 0 5rem;           /* wide gap between messages */
+      color: #e8f4ff;
+      line-height: 1;
+      padding: 0 5rem;
+      margin: 0;
       flex-shrink: 0;
       white-space: nowrap;
-      letter-spacing: .018em;
+      letter-spacing: .016em;
+      vertical-align: middle;
+    }
+    .header-marquee-msg .m-dot,
+    .header-marquee-msg .m-city,
+    .header-marquee-msg .m-svc {
+      vertical-align: middle;
+      line-height: 1;
     }
     .header-marquee-msg .m-dot {
       display: inline-block;
@@ -223,27 +230,23 @@
       border-radius: 50%;
       background: #5eead4;
       flex-shrink: 0;
-      box-shadow: 0 0 6px rgba(94,234,212,.6);  /* subtle glow */
+      box-shadow: 0 0 8px rgba(94,234,212,.7);
     }
-    .header-marquee-msg .m-city {
-      color: #5eead4;
-      font-weight: 700;
-    }
-    .header-marquee-msg .m-svc {
-      color: #fde68a;
-      font-weight: 700;
-    }
+    .header-marquee-msg .m-city { color: #5eead4; font-weight: 700; }
+    .header-marquee-msg .m-svc  { color: #fde68a; font-weight: 700; }
+
     @media (max-width: 1024px) {
       .header-marquee-track { animation-duration: 50s; }
-      .header-marquee-msg   { font-size: .77rem; padding: 0 4rem; }
+      .header-marquee-msg   { font-size: .78rem; padding: 0 4rem; }
     }
     @media (max-width: 768px) {
-      .header-marquee-strip { top: 32px; height: 34px; }
-      .header-marquee-msg   { font-size: .71rem; padding: 0 3rem; letter-spacing: .01em; }
+      :root { --mq-h: 38px; }
+      .header-marquee-strip { top: 32px; }
+      .header-marquee-msg   { font-size: .7rem; padding: 0 2.5rem; letter-spacing: .01em; }
       .header-marquee-track { animation-duration: 40s; }
     }
 
-    /* ── STATS BAR ── */
+        /* ── STATS BAR ── */
     .stats-bar-home {
       background: linear-gradient(135deg, var(--teal-700), var(--cyan-700)); padding: 0;
     }
@@ -359,9 +362,9 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
 }
 </style>
 <style>
-  /* ── Triple-strip offset: dual-action(36px) + marquee(40px) ── */
-  .site-header { top: 76px !important; }
-  @media (max-width: 768px) { .site-header { top: 66px !important; } }
+  /* ── Triple-strip offset: dual-action(36px) + marquee(48px) ── */
+  .site-header { top: 84px !important; }
+  @media (max-width: 768px) { .site-header { top: 70px !important; } }
 </style>
 </head>
 <body>
