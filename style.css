@@ -1065,3 +1065,51 @@ body { font-family: 'DM Sans', sans-serif; color: var(--gray-900); background: #
   font-size: .68rem; font-weight: 800; padding: .15rem .5rem;
   border-radius: 4px; margin-left: .3rem; vertical-align: middle;
 }
+
+/* ══ HARDWARE PRODUCTS — HP Products Section ══ */
+.filter-hw { border-left: 2px solid var(--teal-200); }
+.filter-hw:first-of-type { margin-left: .5rem; }
+
+/* Hardware section divider */
+.hw-divider {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #0a2240 0%, #0d4f5c 100%);
+  border-radius: 16px; padding: 1.5rem 2rem;
+  display: flex; align-items: center; margin: 1rem 0;
+}
+.hw-divider-inner {
+  display: flex; align-items: center; gap: 1rem;
+  color: #fff; flex-wrap: wrap;
+}
+.hw-divider-inner i { font-size: 1.8rem; color: #5eead4; }
+.hw-divider-inner span { font-size: 1.15rem; font-weight: 800; }
+.hw-divider-inner small { font-size: .78rem; color: rgba(255,255,255,.6); margin-left: .5rem; }
+
+/* Hardware card tweaks */
+.hw-img-wrap { height: 160px; }
+.hw-img-wrap img { max-height: 140px; max-width: 85%; }
+.prod-part-no {
+  font-size: .7rem; color: var(--gray-400); font-family: monospace;
+  background: var(--gray-50); padding: .2rem .5rem; border-radius: 4px;
+  margin-bottom: .25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.hw-price {
+  background: linear-gradient(135deg, #0a2240, #0d4f5c);
+  color: #5eead4 !important; border: none !important;
+  font-weight: 700; border-radius: 8px; padding: .5rem 1rem;
+  display: inline-flex; align-items: center; gap: .4rem; font-size: .85rem;
+}
+.hw-enquire {
+  flex: 1; background: linear-gradient(135deg, #0a2240, #0d4f5c) !important;
+  color: #fff !important; border: none !important; font-size: .82rem;
+  display: flex; align-items: center; justify-content: center; gap: .4rem;
+}
+.hw-enquire:hover { opacity: .9; transform: translateY(-1px); }
+.hw-view {
+  width: 40px; height: 40px; border-radius: 8px;
+  background: var(--gray-100) !important; color: var(--gray-600) !important;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; border: 1px solid var(--gray-200) !important;
+  font-size: 1rem; transition: all .2s;
+}
+.hw-view:hover { background: var(--teal-50) !important; color: var(--teal-600) !important; }
