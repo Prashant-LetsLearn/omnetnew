@@ -67,11 +67,36 @@
   ]
 }
   </script>
+<style>
+  /* ── Dual-strip offset ── */
+  .site-header { top: 36px !important; }
+  @media (max-width: 768px) { .site-header { top: 32px !important; } }
+</style>
 </head>
 <body>
 </head>
 <body>
 
+<!-- ═══ DUAL ACTION STRIP ═══ -->
+<div class="dual-action-strip">
+  <div class="dual-action-inner">
+    <div class="dual-action-left">
+      <i class="ri-shield-check-line"></i>
+      Trusted IT Partner for 500+ Delhi NCR Businesses
+    </div>
+    <div class="dual-action-right">
+      <a href="register.html" class="btn-register-hdr" id="regHdrBtn">
+        <i class="ri-user-add-line"></i> Register / Sign Up
+      </a>
+      <a href="managed-services.html" class="btn-managed">
+        <i class="ri-settings-4-line"></i> Managed Services
+      </a>
+      <a href="shop.html" class="btn-online-purchase">
+        <i class="ri-shopping-cart-2-line"></i> Online Purchase
+      </a>
+    </div>
+  </div>
+</div>
 <header class="site-header">
   <div class="header-inner">
     <a href="index.html" class="logo-wrap">
@@ -373,7 +398,11 @@
 
 <button class="back-to-top" aria-label="Back to top"><i class="ri-arrow-up-line"></i></button>
 <script src="script.js"></script>
-     ALL WIDGETS - paste just before </body> on every page
+     ALL WIDGETS - paste just before <!-- WhatsApp Float -->
+<a href="https://wa.me/918920603270?text=Hi%20Omnet%2C%20I%20need%20IT%20support" target="_blank"
+   style="position:fixed;bottom:5rem;right:1.25rem;z-index:9000;width:52px;height:52px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 4px 16px rgba(37,211,102,.5);text-decoration:none;"
+   title="Chat on WhatsApp"><i class="ri-whatsapp-line"></i></a>
+</body> on every page
      1. WhatsApp chatbot (bottom-left)
      2. Leave a Message (bottom-right)
      3. Support Ticket button (bottom-right, above Leave a Message)

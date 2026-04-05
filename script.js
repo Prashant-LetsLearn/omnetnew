@@ -154,3 +154,83 @@ async function sendToWeb3Forms(fields) {
 const _s = document.createElement('style');
 _s.textContent = '@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}';
 document.head.appendChild(_s);
+
+/* ═══ GLOBAL DUAL ACTION STRIP INJECTION ═══
+   Injects the strip on pages that don't have it already */
+(function () {
+  if (document.querySelector('.dual-action-strip')) return; // already present
+
+  const strip = document.createElement('div');
+  strip.className = 'dual-action-strip';
+  strip.innerHTML = `
+    <div class="dual-action-inner">
+      <div class="dual-action-left">
+        <i class="ri-shield-check-line"></i>
+        Trusted IT Partner for 500+ Delhi NCR Businesses
+      </div>
+      <div class="dual-action-right">
+        <a href="register.html" class="btn-register-hdr" id="regHdrBtn">
+          <i class="ri-user-add-line"></i> Register / Sign Up
+        </a>
+        <a href="managed-services.html" class="btn-managed">
+          <i class="ri-settings-4-line"></i> Managed Services
+        </a>
+        <a href="shop.html" class="btn-online-purchase">
+          <i class="ri-shopping-cart-2-line"></i> Online Purchase
+        </a>
+      </div>
+    </div>`;
+
+  const header = document.querySelector('.site-header');
+  if (header) {
+    document.body.insertBefore(strip, header);
+  } else {
+    document.body.insertBefore(strip, document.body.firstChild);
+  }
+
+  /* Update header padding to account for strip (~36px) */
+  if (header) header.style.top = '36px';
+
+  /* Sync user state in the injected strip */
+  try {
+    const user   = JSON.parse(localStorage.getItem('omnet_user') || 'null');
+    const regBtn = document.getElementById('regHdrBtn');
+    if (user && regBtn) {
+      regBtn.innerHTML = `<i class="ri-user-line"></i> ${user.name.split(' ')[0]}`;
+      regBtn.href      = 'register.html#dashboard';
+    }
+  } catch (e) { /* ignore */ }
+
+  /* Floating WhatsApp button (global) */
+  if (!document.querySelector('.float-actions')) {
+    const fab = document.createElement('div');
+    fab.className = 'float-actions';
+    fab.innerHTML = `
+      <a href="https://wa.me/918920603270?text=Hi%20Omnet%2C%20I%20need%20IT%20support" target="_blank" 
+         class="float-wa" title="Chat on WhatsApp">
+        <i class="ri-whatsapp-line"></i>
+      </a>`;
+    document.body.appendChild(fab);
+  }
+})();
+
+/* ═══ SCROLL REVEAL (global) ═══ */
+(function () {
+  if (!window.IntersectionObserver) return;
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity  = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => {
+    if (!el.style.opacity) {
+      el.style.opacity   = '0';
+      el.style.transform = 'translateY(22px)';
+      el.style.transition = 'opacity .5s ease, transform .5s ease';
+      obs.observe(el);
+    }
+  });
+})();
