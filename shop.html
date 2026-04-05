@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" />
   <style>
-    .shop-hero{background:linear-gradient(135deg,#0a2240 0%,#0d4f5c 50%,#0d7377 100%);padding:130px 0 50px;position:relative;overflow:hidden;color:#fff}
+    .shop-hero{background:linear-gradient(135deg,#0a2240 0%,#0d4f5c 50%,#0d7377 100%);padding:166px 0 50px;position:relative;overflow:hidden;color:#fff}
     .shop-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 15% 50%,rgba(20,184,166,.2) 0%,transparent 55%),radial-gradient(circle at 85% 30%,rgba(6,182,212,.15) 0%,transparent 55%)}
     .shop-hero-inner{max-width:1280px;margin:0 auto;padding:0 1.5rem;position:relative;z-index:1;text-align:center}
     .shop-hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#fff;margin-bottom:1rem;line-height:1.15}
@@ -30,6 +30,11 @@
     .btn-cfp-enquire{display:inline-flex;align-items:center;gap:.45rem;background:#fff;color:var(--teal-700);border:2px solid var(--teal-400);padding:.7rem 1.3rem;border-radius:9px;font-weight:800;font-size:.88rem;cursor:pointer;transition:all .25s}
     .btn-cfp-enquire:hover{background:var(--teal-50);transform:scale(1.04)}
   </style>
+<style>
+  /* ── Dual-strip offset ── */
+  .site-header { top: 36px !important; }
+  @media (max-width: 768px) { .site-header { top: 32px !important; } }
+</style>
 </head>
 <body>
 <!-- DUAL ACTION STRIP -->

@@ -188,8 +188,9 @@ document.head.appendChild(_s);
     document.body.insertBefore(strip, document.body.firstChild);
   }
 
-  /* Update header padding to account for strip (~36px) */
-  if (header) header.style.top = '36px';
+  /* Strip is position:fixed — body needs top padding to expose content beneath it */
+  document.body.style.paddingTop = '0'; // heroes handle their own offset via CSS padding
+  /* Header top is set via CSS !important — JS inline style is not needed */
 
   /* Sync user state in the injected strip */
   try {

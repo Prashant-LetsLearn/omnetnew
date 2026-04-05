@@ -420,15 +420,16 @@ body { font-family: 'DM Sans', sans-serif; color: var(--gray-900); background: #
   .header-nav-bar { display: none; }
 }
 
-/* Adjust hero/page padding for 2-row header (~110px total) */
-.hero { padding-top: 110px; }
-.page-hero { padding: 110px 0 3rem; }
-.home-hero { padding: 120px 0 60px; }
+/* Adjust hero/page padding for strip (36px) + 2-row header (~110px) = 146px total */
+.hero { padding-top: 146px; }
+.page-hero { padding: 146px 0 3rem; }
+.home-hero { padding: 156px 0 60px; }
 
 /* ═══════════════════════════════════════════════════════
    ENHANCED HEADER — DUAL ACTION BUTTONS
 ═══════════════════════════════════════════════════════ */
 .dual-action-strip {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1002;
   background: linear-gradient(135deg, #0a1f3d 0%, #0d4f5c 100%);
   padding: 6px 0;
   border-bottom: 1px solid rgba(255,255,255,.1);
@@ -693,7 +694,7 @@ body { font-family: 'DM Sans', sans-serif; color: var(--gray-900); background: #
 ═══════════════════════════════════════════════════════ */
 .shop-filter-bar {
   background: #fff; border-bottom: 1px solid var(--gray-200);
-  padding: .75rem 0; position: sticky; top: 110px; z-index: 100;
+  padding: .75rem 0; position: sticky; top: 146px; z-index: 100;
   box-shadow: 0 2px 12px rgba(0,0,0,.05);
 }
 .shop-filter-inner {
