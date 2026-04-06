@@ -34,7 +34,7 @@ body { font-family: 'DM Sans', sans-serif; color: var(--gray-900); background: #
 
 /* ── HEADER ── */
 .site-header {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  position: fixed; top: 36px; left: 0; right: 0; z-index: 1000;
   background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
   border-bottom: 1px solid transparent;
   transition: border-color .3s, box-shadow .3s;
@@ -55,7 +55,9 @@ body { font-family: 'DM Sans', sans-serif; color: var(--gray-900); background: #
 .header-nav-bar-inner {
   max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;
   display: flex; align-items: center; gap: .15rem;
+  overflow-x: auto; scrollbar-width: none;
 }
+.header-nav-bar-inner::-webkit-scrollbar { display: none; }
 
 /* Logo */
 .logo-wrap { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
@@ -509,6 +511,13 @@ body { font-family: 'DM Sans', sans-serif; color: var(--gray-900); background: #
   .dual-action-inner { justify-content: center; }
   .btn-managed, .btn-online-purchase { font-size: .72rem; padding: 5px 11px; }
   .btn-register-hdr { font-size: .7rem; }
+  .site-header { top: 32px; }
+}
+@media (max-width: 480px) {
+  .site-header { top: 30px; }
+}
+@media (max-width: 375px) {
+  .site-header { top: 28px; }
 }
 
 /* ═══════════════════════════════════════════════════════

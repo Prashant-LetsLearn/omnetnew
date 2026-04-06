@@ -249,6 +249,18 @@
       .header-marquee-track { animation-duration: 40s; }
     }
 
+    /* Header offset for marquee on homepage: strip(36) + marquee(48) = 84 */
+    .site-header { top: 84px !important; }
+    @media (max-width: 768px) {
+      .site-header { top: 70px !important; } /* 32 + 38 */
+    }
+    @media (max-width: 480px) {
+      .site-header { top: 66px !important; } /* 30 + 36 */
+    }
+    @media (max-width: 375px) {
+      .site-header { top: 64px !important; } /* 28 + 36 */
+    }
+
         /* ── STATS BAR ── */
     /* ── STATS BAR BELOW HERO ── */
     .stats-bar-home {
@@ -1306,7 +1318,7 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
         <li><a href="network-infrastructure.html"><i class="ri-arrow-right-s-line"></i>Network Infrastructure</a></li>
         <li><a href="devops-services.html"><i class="ri-arrow-right-s-line"></i>DevOps Services</a></li>
         <li><a href="repair-services.html"><i class="ri-arrow-right-s-line"></i>Computer AMC</a></li>
-        <li><a href="tally.html"><i class="ri-arrow-right-s-line"></i>Tally Solutions</a></li>
+        <li><a href="tally-provider-noida.html"><i class="ri-arrow-right-s-line"></i>Tally Solutions</a></li>
       </ul>
     </div>
     <div class="footer-col">
