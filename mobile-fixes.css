@@ -206,40 +206,12 @@ p,h1,h2,h3,h4,h5,h6,li,a,span,td,th,label { word-break: break-word; overflow-wra
   .home-hero-inner > div > div[style*="flex-wrap"] span { font-size: .72rem !important; padding: .25rem .6rem !important; }
 }
 
-/* ═══ 8. HERO STAT ROW — EQUAL 2×2 GRID FIX ═══ */
-@media (max-width: 1024px) {
-  /* Force a clean 2-column grid on ALL mobile/tablet sizes */
-  .hero-stat-row {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 1rem !important;
-  }
-  /* Every stat item: equal height, centred, no spanning */
-  .hero-stat-item {
-    grid-column: span 1 !important;   /* prevent any item from going full-width */
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-    background: rgba(255,255,255,.08) !important;
-    border-radius: 12px !important;
-    padding: 1rem .75rem !important;
-    border: 1px solid rgba(255,255,255,.12) !important;
-    min-height: 96px !important;       /* equal height across all 4 cards */
-  }
-}
+/* ═══ 8. HERO STAT ROW ═══ */
+@media (max-width: 768px) { .hero-stat-row { grid-template-columns: 1fr 1fr !important; gap: 1rem !important; } }
 @media (max-width: 480px) {
-  .hero-stat-row { gap: .65rem !important; padding-top: 1.25rem !important; }
-  .hero-stat-item { min-height: 88px !important; padding: .85rem .6rem !important; }
+  .hero-stat-row { gap: .75rem !important; padding-top: 1.25rem; }
   .hero-stat-item .val { font-size: 1.5rem !important; }
-  .hero-stat-item .lbl { font-size: .68rem !important; }
-}
-@media (max-width: 375px) {
-  .hero-stat-row { gap: .5rem !important; }
-  .hero-stat-item { min-height: 80px !important; padding: .75rem .5rem !important; border-radius: 10px !important; }
-  .hero-stat-item .val { font-size: 1.35rem !important; }
-  .hero-stat-item .lbl { font-size: .64rem !important; }
+  .hero-stat-item .lbl { font-size: .7rem !important; }
 }
 
 /* ═══ 9. HERO SERVICE CARDS ═══ */
@@ -264,27 +236,141 @@ p,h1,h2,h3,h4,h5,h6,li,a,span,td,th,label { word-break: break-word; overflow-wra
   .hero-svc-card .arrow { display: none !important; }
 }
 
-/* ═══ 10. STATS BAR ═══ */
+/* ═══ 10. STATS BAR — CLEAN 2×2 GRID ═══
+   NOTE: .sbar-divider elements sit between the 4 items in the DOM.
+   We must hide them first, then grid only the .sbar-item children.
+   Using CSS subgrid / display:contents trick to skip dividers.
+   ══════════════════════════════════════════════════════════════ */
+
+/* Desktop / large tablet: single row, dividers visible */
 @media (max-width: 1024px) {
-  .stats-bar-inner { flex-wrap: wrap !important; }
+  .stats-bar-inner {
+    flex-wrap: wrap !important;
+  }
   .sbar-divider { display: none !important; }
-  .sbar-item { flex: 0 0 33.333% !important; border-bottom: 1px solid rgba(255,255,255,.1); }
+  .sbar-item { flex: 0 0 25% !important; }
 }
+
+/* Tablet: still single row, 4 equal columns */
 @media (max-width: 768px) {
-  .stats-bar-inner { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; }
-  .sbar-item { flex: none !important; padding: 1.5rem .75rem !important; }
+  .stats-bar-inner {
+    display: grid !important;
+    /* 4 explicit columns — dividers are hidden so only items fill them */
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 0 !important;
+    padding: 0 !important;
+  }
+  .sbar-divider { display: none !important; }
+  .sbar-item {
+    flex: none !important;
+    padding: 1.25rem .5rem !important;
+    border-right: 1px solid rgba(255,255,255,.1) !important;
+    border-bottom: none !important;
+  }
+  .sbar-item:last-of-type { border-right: none !important; }
 }
-@media (max-width: 480px) {
-  .stats-bar-inner { grid-template-columns: 1fr 1fr !important; }
-  .sbar-item { padding: 1.1rem .75rem !important; border-right: 1px solid rgba(255,255,255,.15) !important; border-bottom: 1px solid rgba(255,255,255,.1) !important; }
-  .sbar-item:nth-child(even) { border-right: none !important; }
-  .sbar-item:nth-child(5) { grid-column: 1 / -1; border-right: none !important; border-bottom: none !important; }
-  .sbar-item .n { font-size: 1.35rem !important; }
-  .sbar-item .l { font-size: .72rem !important; }
+
+/* Mobile: proper 2×2 grid — top-left / top-right / bottom-left / bottom-right */
+@media (max-width: 600px) {
+  .stats-bar-home {
+    padding: 0 !important;
+  }
+
+  .stats-bar-inner {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* exactly 2 columns */
+    grid-template-rows: auto auto !important;  /* exactly 2 rows */
+    gap: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Kill the dividers completely — they must not occupy any grid cell */
+  .sbar-divider {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important; /* takes it fully out of grid flow */
+  }
+
+  /* Every stat item: equal size, centered content */
+  .sbar-item {
+    flex: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 20px 12px !important;
+    min-height: 110px !important;
+    /* Hairline borders to create the 4-quadrant look */
+    border-right: 1px solid rgba(255,255,255,.1) !important;
+    border-bottom: 1px solid rgba(255,255,255,.1) !important;
+    gap: 5px !important;
+  }
+
+  /* Right column — no right border */
+  .sbar-item:nth-of-type(2),
+  .sbar-item:nth-of-type(4) {
+    border-right: none !important;
+  }
+
+  /* Bottom row — no bottom border */
+  .sbar-item:nth-of-type(3),
+  .sbar-item:nth-of-type(4) {
+    border-bottom: none !important;
+  }
+
+  /* Icon */
+  .sbar-icon {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 9px !important;
+    background: rgba(94,234,212,.15) !important;
+    border: 1px solid rgba(94,234,212,.2) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 6px !important;
+  }
+  .sbar-icon i { font-size: 1rem !important; color: #5eead4 !important; }
+
+  /* Number */
+  .sbar-item .n {
+    font-size: 1.5rem !important;
+    font-weight: 900 !important;
+    display: block !important;
+    line-height: 1 !important;
+    letter-spacing: -.02em !important;
+  }
+
+  /* Label */
+  .sbar-item .l {
+    font-size: .68rem !important;
+    line-height: 1.35 !important;
+    letter-spacing: .05em !important;
+    color: rgba(255,255,255,.65) !important;
+    text-transform: uppercase !important;
+  }
 }
+
 @media (max-width: 375px) {
-  .sbar-item { padding: 1rem .6rem !important; }
-  .sbar-item .n { font-size: 1.2rem !important; }
+  .sbar-item {
+    padding: 16px 8px !important;
+    min-height: 100px !important;
+  }
+  .sbar-item .n { font-size: 1.3rem !important; }
+  .sbar-item .l { font-size: .62rem !important; }
+  .sbar-icon { width: 32px !important; height: 32px !important; border-radius: 8px !important; }
+  .sbar-icon i { font-size: .9rem !important; }
+}
+
+@media (max-width: 320px) {
+  .sbar-item { padding: 14px 6px !important; min-height: 90px !important; }
+  .sbar-item .n { font-size: 1.15rem !important; }
+  .sbar-item .l { font-size: .58rem !important; }
 }
 
 /* ═══ 11. PAGE HERO (inner pages) ═══ */
