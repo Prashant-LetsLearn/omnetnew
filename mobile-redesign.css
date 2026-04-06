@@ -1,0 +1,710 @@
+/*
+ * ═══════════════════════════════════════════════════════════════
+ *  OMNET IT — MOBILE REDESIGN v1.0
+ *  Load LAST — after style.css and mobile-fixes.css
+ *  Transforms mobile experience to match hi-fi design
+ *  Breakpoint: max-width 768px (phones + small tablets)
+ * ═══════════════════════════════════════════════════════════════
+ */
+
+/* ─── GOOGLE FONTS (Space Mono for stat numbers) ─── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+
+/* ════════════════════════════════════════════════════
+   1. ANNOUNCEMENT BAR
+   ════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .dual-action-strip {
+    background: linear-gradient(90deg, #0f766e, #0e7490) !important;
+    justify-content: center !important;
+  }
+  .dual-action-strip * { color: #fff !important; }
+  .btn-managed {
+    background: rgba(255,255,255,.15) !important;
+    border: 1px solid rgba(255,255,255,.3) !important;
+    color: #fff !important;
+    border-radius: 20px !important;
+  }
+  .btn-online-purchase, .btn-place-order {
+    background: rgba(251,191,36,.9) !important;
+    color: #111827 !important;
+    border-radius: 20px !important;
+    font-weight: 700 !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════
+   2. HERO SECTION — FULL MOBILE REDESIGN
+   ════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* Hero background — keep the teal gradient but tighten it */
+  .home-hero {
+    padding: 130px 0 0 !important;
+    background: linear-gradient(150deg, #0f4c5c 0%, #0d7377 40%, #134e4a 100%) !important;
+    overflow: hidden !important;
+  }
+
+  .home-hero-inner {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* LEFT column — text area */
+  .home-hero-inner > div:first-child {
+    padding: 0 20px 20px !important;
+  }
+
+  /* Hero badge pill */
+  .home-hero-inner .badge {
+    font-size: 11px !important;
+    padding: 5px 14px !important;
+    border-radius: 50px !important;
+    background: rgba(255,255,255,.14) !important;
+    border: 1px solid rgba(255,255,255,.2) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin-bottom: 14px !important;
+  }
+
+  /* Hero heading */
+  .home-hero h1 {
+    font-size: 26px !important;
+    line-height: 1.22 !important;
+    margin-bottom: 12px !important;
+    font-weight: 800 !important;
+  }
+
+  /* Hero body text */
+  .home-hero p {
+    font-size: 13px !important;
+    line-height: 1.65 !important;
+    margin-bottom: 16px !important;
+    color: rgba(255,255,255,.82) !important;
+  }
+
+  /* Mini badge chips (20 min / Same day / Trusted by) */
+  .home-hero-inner > div > div[style*="flex-wrap"] {
+    gap: 6px !important;
+    margin-bottom: 18px !important;
+  }
+  .home-hero-inner > div > div[style*="flex-wrap"] span {
+    font-size: 11px !important;
+    padding: 5px 10px !important;
+    border-radius: 20px !important;
+    background: rgba(255,255,255,.12) !important;
+    border: 1px solid rgba(255,255,255,.15) !important;
+  }
+
+  /* CTA buttons */
+  .home-hero-btns {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    margin-bottom: 20px !important;
+  }
+  .home-hero-btns .btn {
+    flex: 1 !important;
+    min-width: 140px !important;
+    justify-content: center !important;
+    text-align: center !important;
+    border-radius: 50px !important;
+    min-height: 48px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    padding: 12px 16px !important;
+  }
+
+  /* ── SLA STAT CARDS — 2×2 EQUAL GRID ── */
+  .hero-stat-row {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    border-top: none !important;
+    padding-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .hero-stat-item {
+    grid-column: span 1 !important;
+    background: rgba(255,255,255,.1) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255,255,255,.18) !important;
+    border-radius: 14px !important;
+    padding: 16px 10px !important;
+    min-height: 100px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 4px !important;
+  }
+
+  .hero-stat-item .val {
+    font-family: 'Space Mono', 'DM Sans', monospace !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    color: #5eead4 !important;
+    display: block !important;
+    line-height: 1.1 !important;
+    -webkit-text-fill-color: #5eead4 !important;
+    background: none !important;
+  }
+
+  .hero-stat-item .lbl {
+    font-size: 9.5px !important;
+    font-weight: 600 !important;
+    color: rgba(255,255,255,.75) !important;
+    text-transform: uppercase !important;
+    letter-spacing: .06em !important;
+    line-height: 1.3 !important;
+    margin-top: 2px !important;
+  }
+
+  /* ── HERO SERVICE CARDS (RIGHT COLUMN) ── */
+  /* On mobile: move below hero text, show as horizontal scrollable row */
+  .home-hero-inner > div:last-child {
+    padding: 16px 20px 24px !important;
+    background: rgba(0,0,0,.15) !important;
+    border-top: 1px solid rgba(255,255,255,.1) !important;
+  }
+
+  .hero-svc-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+
+  .hero-svc-card {
+    background: rgba(255,255,255,.09) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255,255,255,.15) !important;
+    border-radius: 12px !important;
+    padding: 14px 12px !important;
+    transition: all .2s !important;
+  }
+
+  .hero-svc-card:active {
+    transform: scale(.97) !important;
+    background: rgba(255,255,255,.15) !important;
+  }
+
+  .hsc-icon {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 10px !important;
+    font-size: 16px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .hero-svc-card h4 {
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    margin-bottom: 0 !important;
+  }
+
+  .hero-svc-card p { display: none !important; }
+
+  .hero-svc-card .arrow {
+    font-size: 10px !important;
+    color: #5eead4 !important;
+    margin-top: 4px !important;
+    display: block !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-hero h1 { font-size: 22px !important; }
+  .hero-stat-item { min-height: 90px !important; padding: 14px 8px !important; }
+  .hero-stat-item .val { font-size: 20px !important; }
+  .hero-stat-item .lbl { font-size: 9px !important; }
+}
+
+@media (max-width: 375px) {
+  .home-hero h1 { font-size: 20px !important; }
+  .hero-stat-item { min-height: 84px !important; border-radius: 10px !important; }
+  .hero-stat-item .val { font-size: 18px !important; }
+  .hero-svc-grid { grid-template-columns: 1fr 1fr !important; gap: 6px !important; }
+}
+
+/* ════════════════════════════════════════════════════
+   3. STATS BAR (dark trust strip below hero)
+   ════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  .stats-bar-home {
+    background: #111827 !important;
+    padding: 0 !important;
+  }
+
+  .stats-bar-inner {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 0 !important;
+    padding: 0 !important;
+  }
+
+  .sbar-divider { display: none !important; }
+
+  .sbar-item {
+    flex: none !important;
+    padding: 14px 8px !important;
+    border-right: 1px solid rgba(255,255,255,.08) !important;
+    border-bottom: none !important;
+  }
+
+  .sbar-item:last-child { border-right: none !important; }
+
+  .sbar-icon {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 7px !important;
+    margin-bottom: 5px !important;
+  }
+
+  .sbar-icon i { font-size: .85rem !important; }
+
+  .sbar-item .n {
+    font-family: 'Space Mono', monospace !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    -webkit-text-fill-color: #2dd4bf !important;
+    background: none !important;
+    color: #2dd4bf !important;
+    letter-spacing: -.01em !important;
+  }
+
+  .sbar-item .l {
+    font-size: 8px !important;
+    line-height: 1.3 !important;
+    letter-spacing: .04em !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-bar-inner { grid-template-columns: repeat(2, 1fr) !important; }
+  .sbar-item { border-bottom: 1px solid rgba(255,255,255,.06) !important; padding: 12px !important; }
+  .sbar-item:nth-child(even) { border-right: none !important; }
+  .sbar-item:nth-child(3), .sbar-item:nth-child(4) { border-bottom: none !important; }
+  .sbar-item .n { font-size: 16px !important; }
+  .sbar-item .l { font-size: 9px !important; }
+}
+
+/* ════════════════════════════════════════════════════
+   4. BRAND PARTNER SECTION
+   ════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .bpc-section { padding: 24px 0 20px !important; }
+  .bpc-top { margin-bottom: 16px !important; padding: 0 16px !important; }
+  .bpc-title { font-size: 16px !important; }
+  .bpc-sub { font-size: 12px !important; }
+  .bpc-trust { gap: 12px !important; margin-bottom: 16px !important; }
+  .bpc-trust-item { font-size: 11px !important; }
+}
+
+/* ════════════════════════════════════════════════════
+   5. SECTION HEADINGS & LAYOUT
+   ════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+
+  .section-header {
+    text-align: left !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* Section tag pill */
+  .section-header::before,
+  [class*="eyebrow"], [class*="label"] {
+    font-size: 10px !important;
+  }
+
+  .section-title {
+    font-size: 20px !important;
+    line-height: 1.25 !important;
+    letter-spacing: -.01em !important;
+    text-align: left !important;
+  }
+
+  .section-subtitle {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    text-align: left !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════
+   6. FLEXIBLE SUPPORT CARDS (fscard)
+   ════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .flex-support-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .fscard {
+    padding: 20px 18px !important;
+    border-radius: 16px !important;
+    text-align: left !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .fscard .ficon {
+    font-size: 28px !important;
+    margin-bottom: 12px !important;
+    align-self: flex-start !important;
+  }
+
+  .fscard h3 { font-size: 16px !important; margin-bottom: 8px !important; }
+  .fscard p  { font-size: 13px !important; line-height: 1.6 !important; margin-bottom: 14px !important; }
+
+  .fscard ul li {
+    font-size: 12px !important;
+    padding: 4px 0 !important;
+  }
+
+  .fscard .btn {
+    align-self: flex-start !important;
+    border-radius: 50px !important;
+    padding: 10px 20px !important;
+    font-size: 13px !important;
+    min-height: 44px !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════
+   7. SERVICE ROW CARDS
+   ════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .svc-row {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  .svc-card, [class*="svc-card"] {
+    border-radius: 14px !important;
+    padding: 16px 14px !important;
+  }
+
+  .svc-card h3, .svc-card h4 { font-size: 13px !important; }
+  .svc-card p { font-size: 11px !important; line-height: 1.5 !important; }
+}
+
+@media (max-width: 480px) {
+  .svc-row { grid-template-columns: 1fr !important; gap: 10px !important; }
+}
+
+/* ════════════════════════════════════════════════════
+   8. WHY-US / BENEFIT CARDS
+   ════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .why-grid-2x2 {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  .wg-item {
+    border-radius: 14px !important;
+    padding: 16px 14px !important;
+    border: 1.5px solid #e5e7eb !important;
+    box-shadow: 0 1px 6px rgba(0,0,0,.06) !important;
+    background: #fff !important;
+  }
+
+  .wg-item .wi { font-size: 20px !important; margin-bottom: 8px !important; }
+  .wg-item h4 { font-size: 13px !important; margin-bottom: 4px !important; }
+  .wg-item p  { font-size: 11px !important; line-height: 1.5 !important; }
+}
+
+@media (max-width: 480px) {
+  .why-grid-2x2 { grid-template-columns: 1fr !important; }
+  .wg-item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    padding: 14px !important;
+  }
+  .wg-item .wi { font-size: 22px !important; margin-bottom: 0 !important; flex-shrink: 0; }
+  .wg-item h4 { font-size: 14px !important; }
+  .wg-item p  { font-size: 12px !important; }
+}
+
+/* ════════════════════════════════════════════════════
+   9. CTA BANNER
+   ════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .cta-banner {
+    border-radius: 20px !important;
+    margin: 0 16px !important;
+    padding: 28px 20px !important;
+  }
+  .cta-banner h2 { font-size: 20px !important; text-align: center !important; }
+  .cta-banner p  { font-size: 13px !important; text-align: center !important; }
+  .cta-btns {
+    flex-direction: column !important;
+    gap: 10px !important;
+    align-items: stretch !important;
+  }
+  .cta-btns .btn {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    border-radius: 50px !important;
+    min-height: 52px !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════
+   10. REVIEW / TESTIMONIAL CARDS
+   ════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .review-card {
+    border-radius: 16px !important;
+    border: 1.5px solid #e5e7eb !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,.07) !important;
+  }
+
+  .review-text {
+    font-size: 13px !important;
+    line-height: 1.65 !important;
+    font-style: italic !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════
+   11. CONTACT FORM SECTION
+   ════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .book-meeting-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .contact-form, [class*="contact-form"] {
+    border-radius: 20px !important;
+    padding: 24px 20px !important;
+    box-shadow: 0 4px 24px rgba(0,0,0,.1) !important;
+    border: 1.5px solid #e5e7eb !important;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea,
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea {
+    border-radius: 10px !important;
+    border: 1.5px solid #e5e7eb !important;
+    padding: 12px 14px !important;
+    font-size: 14px !important;
+    min-height: 48px !important;
+    background: #f9fafb !important;
+    transition: border-color .2s, box-shadow .2s !important;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: #14b8a6 !important;
+    box-shadow: 0 0 0 3px rgba(20,184,166,.12) !important;
+    background: #fff !important;
+    outline: none !important;
+  }
+
+  textarea { height: 90px !important; resize: none !important; }
+
+  /* Submit button */
+  .contact-form .btn,
+  [type="submit"],
+  button[type="submit"] {
+    width: 100% !important;
+    border-radius: 50px !important;
+    min-height: 52px !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    background: linear-gradient(135deg, #14b8a6, #0891b2) !important;
+    color: #fff !important;
+    box-shadow: 0 4px 16px rgba(20,184,166,.4) !important;
+    border: none !important;
+    cursor: pointer !important;
+    margin-top: 4px !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════
+   12. FLOATING WHATSAPP BUTTON — REDESIGN
+   ════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .float-wa {
+    background: #25d366 !important;
+    box-shadow: 0 4px 18px rgba(37,211,102,.5) !important;
+    width: 52px !important;
+    height: 52px !important;
+    border-radius: 50% !important;
+    font-size: 26px !important;
+    bottom: 80px !important;
+    right: 16px !important;
+  }
+
+  .float-actions {
+    right: 16px !important;
+    bottom: 80px !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════
+   13. STICKY BOTTOM CALL BAR
+   ════════════════════════════════════════════════════ */
+.omnet-sticky-bar {
+  display: none; /* hidden on desktop */
+}
+
+@media (max-width: 768px) {
+  .omnet-sticky-bar {
+    display: flex !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999 !important;
+    background: #fff !important;
+    border-top: 1px solid #e5e7eb !important;
+    padding: 10px 16px !important;
+    padding-bottom: max(10px, env(safe-area-inset-bottom)) !important;
+    gap: 10px !important;
+    align-items: center !important;
+    box-shadow: 0 -4px 24px rgba(0,0,0,.12) !important;
+  }
+
+  .omnet-sticky-phone {
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    flex-shrink: 0 !important;
+    text-decoration: none !important;
+  }
+
+  .omnet-sticky-phone i {
+    font-size: 13px !important;
+    color: #14b8a6 !important;
+  }
+
+  .omnet-sticky-phone span {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: #374151 !important;
+    white-space: nowrap !important;
+  }
+
+  .omnet-sticky-call {
+    flex: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 7px !important;
+    background: linear-gradient(135deg, #14b8a6, #0891b2) !important;
+    color: #fff !important;
+    border-radius: 50px !important;
+    padding: 0 20px !important;
+    height: 48px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 14px rgba(20,184,166,.4) !important;
+    white-space: nowrap !important;
+  }
+
+  .omnet-sticky-call i { font-size: 15px !important; }
+
+  .omnet-sticky-wa {
+    width: 48px !important;
+    height: 48px !important;
+    flex-shrink: 0 !important;
+    border-radius: 50% !important;
+    background: #25d366 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 14px rgba(37,211,102,.4) !important;
+    font-size: 22px !important;
+    color: #fff !important;
+  }
+
+  /* Push footer up so sticky bar doesn't cover content */
+  body {
+    padding-bottom: 68px !important;
+  }
+
+  /* Push float buttons up above sticky bar */
+  .float-actions {
+    bottom: 76px !important;
+  }
+
+  .back-to-top {
+    bottom: 76px !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════
+   14. GENERAL CARD & BUTTON POLISH
+   ════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* All cards: consistent radius + shadow */
+  .card, .svc-card, .pricing-card, .industry-card {
+    border-radius: 16px !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,.07) !important;
+  }
+
+  /* All primary buttons: pill shape */
+  .btn-teal, .btn-primary, a.btn[href*="contact"], a.btn[href*="pricing"] {
+    border-radius: 50px !important;
+    min-height: 48px !important;
+    font-weight: 700 !important;
+  }
+
+  /* Icon boxes */
+  .icon-box {
+    border-radius: 12px !important;
+  }
+
+  /* Pricing cards */
+  .pricing-card {
+    padding: 20px 18px !important;
+  }
+
+  .pricing-card .popular-badge {
+    font-size: 10px !important;
+    padding: 4px 12px !important;
+    border-radius: 50px !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════
+   15. FOOTER MOBILE TIGHTENING
+   ════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .site-footer {
+    padding-bottom: max(20px, env(safe-area-inset-bottom)) !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════
+   16. HIDE DESKTOP-ONLY FLOATING WHATSAPP ON MOBILE
+       (we have it in the sticky bar now)
+   ════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Keep WA visible but nudge above sticky bar */
+  .float-wa, .float-cart {
+    bottom: 82px !important;
+    right: 14px !important;
+  }
+}
