@@ -126,7 +126,9 @@
       background: rgba(255,255,255,.08); backdrop-filter: blur(12px);
       border: 1px solid rgba(255,255,255,.14); border-radius: 16px; padding: 1.5rem 1.25rem;
       text-decoration: none; transition: all .3s; color: #fff;
+      display: flex; flex-direction: column;
     }
+    .hsc-content { flex: 1; display: flex; flex-direction: column; }
     .hero-svc-card:hover {
       background: rgba(255,255,255,.14); transform: translateY(-3px);
       box-shadow: 0 12px 32px rgba(0,0,0,.25);
@@ -364,7 +366,16 @@
     }
     @media(max-width:768px) {
       .hero-stat-row { grid-template-columns: 1fr 1fr; }
-      .hero-svc-grid { grid-template-columns: 1fr 1fr; }
+      .hero-svc-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: .65rem;
+      }
+      .hero-svc-card {
+        padding: 1rem .9rem;
+      }
+      .hero-svc-card h4 { font-size: .88rem; }
+      .hero-svc-card p { font-size: .75rem; }
+      .hero-svc-card .hsc-icon { width: 38px; height: 38px; font-size: 1.1rem; margin-bottom: .6rem; }
       .stats-bar-inner { flex-wrap: wrap; }
       .sbar-item { flex: 0 0 50%; }
       .sbar-divider { display: none; }
@@ -373,6 +384,27 @@
       .svc-row { grid-template-columns: 1fr; }
       .why-grid-2x2 { grid-template-columns: 1fr; }
       .ind-scroll { grid-template-columns: repeat(2,1fr); }
+    }
+    @media(max-width:480px) {
+      .hero-svc-grid {
+        grid-template-columns: 1fr;
+        gap: .6rem;
+      }
+      .hero-svc-card {
+        padding: 1rem 1.1rem;
+        display: flex;
+        align-items: flex-start;
+        gap: .85rem;
+      }
+      .hero-svc-card .hsc-icon {
+        width: 40px; height: 40px;
+        flex-shrink: 0;
+        margin-bottom: 0;
+      }
+      .hero-svc-card .hsc-content { flex: 1; }
+      .hero-svc-card h4 { font-size: .9rem; margin-bottom: .2rem; }
+      .hero-svc-card p { font-size: .78rem; margin-bottom: 0; }
+      .hero-svc-card .arrow { margin-top: .4rem; }
     }
   </style>
 <script>
@@ -678,45 +710,52 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
     <div class="hero-svc-grid">
       <a href="it-support.html" class="hero-svc-card">
         <div class="hsc-icon" style="background:linear-gradient(135deg,#14b8a6,#06b6d4)"><i class="ri-customer-service-2-line"></i></div>
-        <h4>IT Support</h4>
-        <p>24/7 helpdesk, onsite engineers &amp; AMC for Delhi NCR businesses.</p>
-        <div class="arrow">Learn More <i class="ri-arrow-right-line"></i></div>
+        <div class="hsc-content">
+          <h4>IT Support</h4>
+          <p>24/7 helpdesk, onsite engineers &amp; AMC for Delhi NCR businesses.</p>
+          <div class="arrow">Learn More <i class="ri-arrow-right-line"></i></div>
+        </div>
       </a>
       <a href="it-security.html" class="hero-svc-card">
         <div class="hsc-icon" style="background:linear-gradient(135deg,#7c3aed,#4338ca)"><i class="ri-shield-check-line"></i></div>
-        <h4>IT Security</h4>
-        <p>Firewall, endpoint protection, pen testing &amp; 24/7 threat monitoring.</p>
-        <div class="arrow">Learn More <i class="ri-arrow-right-line"></i></div>
+        <div class="hsc-content">
+          <h4>IT Security</h4>
+          <p>Firewall, endpoint protection, pen testing &amp; 24/7 threat monitoring.</p>
+          <div class="arrow">Learn More <i class="ri-arrow-right-line"></i></div>
+        </div>
       </a>
       <a href="managed-services.html" class="hero-svc-card">
         <div class="hsc-icon" style="background:linear-gradient(135deg,#0d7377,#14b8a6)"><i class="ri-settings-3-line"></i></div>
-        <h4>Managed IT</h4>
-        <p>Proactive monitoring, managed servers, network &amp; cloud under one fee.</p>
-        <div class="arrow">Learn More <i class="ri-arrow-right-line"></i></div>
+        <div class="hsc-content">
+          <h4>Managed IT</h4>
+          <p>Proactive monitoring, managed servers, network &amp; cloud under one fee.</p>
+          <div class="arrow">Learn More <i class="ri-arrow-right-line"></i></div>
+        </div>
       </a>
       <a href="infrastructure-services.html" class="hero-svc-card">
         <div class="hsc-icon" style="background:linear-gradient(135deg,#3b82f6,#6366f1)"><i class="ri-building-2-line"></i></div>
-        <h4>Infrastructure</h4>
-        <p>Cabling, CCTV, server rooms, access control &amp; smart office setup.</p>
-        <div class="arrow">Learn More <i class="ri-arrow-right-line"></i></div>
+        <div class="hsc-content">
+          <h4>Infrastructure</h4>
+          <p>Cabling, CCTV, server rooms, access control &amp; smart office setup.</p>
+          <div class="arrow">Learn More <i class="ri-arrow-right-line"></i></div>
+        </div>
       </a>
       <a href="cloud-services.html" class="hero-svc-card">
         <div class="hsc-icon" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)"><i class="ri-cloud-line"></i></div>
-        <h4>Cloud Services</h4>
-        <p>Azure, AWS, Microsoft 365 &amp; Google Workspace migration and management.</p>
-        <div class="arrow">Learn More <i class="ri-arrow-right-line"></i></div>
+        <div class="hsc-content">
+          <h4>Cloud Services</h4>
+          <p>Azure, AWS, Microsoft 365 &amp; Google Workspace migration and management.</p>
+          <div class="arrow">Learn More <i class="ri-arrow-right-line"></i></div>
+        </div>
       </a>
-      <a href="tally.html" class="hero-svc-card">
-        <div class="hsc-icon" style="background:linear-gradient(135deg,#0f766e,#0d9488)"><i class="ri-calculator-line"></i></div>
-        <h4>Tally Solutions</h4>
-        <p>Authorised TallyPrime partner — GST setup, data migration, AMC &amp; training across Delhi NCR.</p>
-        <div class="arrow">Learn More <i class="ri-arrow-right-line"></i></div>
-      </a>
+
       <a href="pricing.html" class="hero-svc-card">
         <div class="hsc-icon" style="background:linear-gradient(135deg,#f59e0b,#ef4444)"><i class="ri-phone-find-line"></i></div>
-        <h4>Get Quote</h4>
-        <p>Free IT assessment and tailored proposal for your business — within 24 hrs.</p>
-        <div class="arrow">Contact Us <i class="ri-arrow-right-line"></i></div>
+        <div class="hsc-content">
+          <h4>Get Quote</h4>
+          <p>Free IT assessment and tailored proposal for your business — within 24 hrs.</p>
+          <div class="arrow">Contact Us <i class="ri-arrow-right-line"></i></div>
+        </div>
       </a>
     </div>
   </div>
@@ -747,12 +786,6 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
       <div class="sbar-icon"><i class="ri-customer-service-2-line"></i></div>
       <span class="n">24/7</span>
       <span class="l">Helpdesk &amp; Monitoring</span>
-    </div>
-    <div class="sbar-divider"></div>
-    <div class="sbar-item">
-      <div class="sbar-icon"><i class="ri-file-list-3-line"></i></div>
-      <span class="n">GST</span>
-      <span class="l">Compliant Invoicing</span>
     </div>
   </div>
 </div>
