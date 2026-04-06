@@ -75,7 +75,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css"/>
   <style>
     .pg-hero{background:linear-gradient(135deg, var(--teal-900) 0%, #164e63 50%, var(--teal-900) 100%);padding:8rem 0 4rem;text-align:center;position:relative;overflow:hidden}
-    .pg-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 50%,rgba(20,184,166,.2) 0%,transparent 60%),radial-gradient(circle at 70% 70%,rgba(6,182,212,.2) 0%,transparent 60%)}
+    .pg-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 50%,rgba(10,132,255,.2) 0%,transparent 60%),radial-gradient(circle at 70% 70%,rgba(123,97,255,.2) 0%,transparent 60%)}
     .pg-hero-inner{max-width:900px;margin:0 auto;padding:0 1.5rem;position:relative;z-index:1}
     .pg-hero h1{font-size:3rem;font-weight:800;color:#fff;margin:1rem 0}
     .pg-hero p{font-size:1.1rem;color:rgba(255,255,255,.82);line-height:1.75;max-width:700px;margin:0 auto 2rem}
@@ -83,7 +83,7 @@
     .stats-strip{background:linear-gradient(135deg,var(--teal-600),var(--cyan-700));padding:2.5rem 0}
     .stats-strip .container{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.5rem;text-align:center}
     .sb{color:#fff}.sb .n{font-size:2rem;font-weight:800;display:block}.sb .l{font-size:.82rem;opacity:.82}
-    .ptag{background:#fff;border:1px solid var(--teal-200);color:var(--teal-700);padding:.45rem 1.1rem;border-radius:2rem;font-size:.85rem;font-weight:600;text-decoration:none;transition:all .3s;display:inline-block;margin:.25rem}
+    .ptag{background:var(--bg-section);border:1px solid var(--teal-200);color:var(--teal-700);padding:.45rem 1.1rem;border-radius:2rem;font-size:.85rem;font-weight:600;text-decoration:none;transition:all .3s;display:inline-block;margin:.25rem}
     .ptag:hover{background:var(--teal-600);color:#fff}
   </style>
 <script>
@@ -455,18 +455,18 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
     <div id="waMessages" style="padding:12px 10px;overflow-y:auto;max-height:220px;display:flex;flex-direction:column;gap:6px;">
       <div style="text-align:center;font-size:11px;color:#888;background:rgba(255,255,255,.6);padding:2px 10px;border-radius:8px;align-self:center;">Today</div>
       <div style="align-self:flex-start;max-width:82%;">
-        <div style="padding:9px 12px;border-radius:0 10px 10px 10px;background:#fff;font-size:13px;color:#111;line-height:1.5;box-shadow:0 1px 2px rgba(0,0,0,.1);">
+        <div style="padding:9px 12px;border-radius:0 10px 10px 10px;background:var(--bg-section);font-size:13px;color:#111;line-height:1.5;box-shadow:0 1px 2px rgba(0,0,0,.1);">
           👋 Hello! Welcome to <strong>Omnet IT Solutions</strong>.<br>How can we help you today?
         </div>
         <div id="waGreetTime" style="font-size:10px;color:#888;margin-top:2px;"></div>
       </div>
     </div>
-    <div id="waStep1" style="background:#fff;padding:10px 12px;border-top:1px solid #e0e0e0;">
+    <div id="waStep1" style="background:var(--bg-section);padding:10px 12px;border-top:1px solid #e0e0e0;">
       <p style="font-size:12px;color:#555;margin-bottom:7px;">Please select a department:</p>
       <button onclick="waSelectDept('IT Support','IT Support')" style="display:block;width:100%;margin-bottom:6px;padding:9px 14px;background:#f0fdf4;border:1.5px solid #25D366;border-radius:8px;color:#075E54;font-size:13px;font-weight:600;cursor:pointer;text-align:left;">IT Support</button>
       <button onclick="waSelectDept('Sales','Sales')" style="display:block;width:100%;padding:9px 14px;background:#f0fdf4;border:1.5px solid #25D366;border-radius:8px;color:#075E54;font-size:13px;font-weight:600;cursor:pointer;text-align:left;">Sales</button>
     </div>
-    <div id="waInputRow" style="display:none;background:#fff;padding:8px 10px;border-top:1px solid #e0e0e0;gap:8px;align-items:center;">
+    <div id="waInputRow" style="display:none;background:var(--bg-section);padding:8px 10px;border-top:1px solid #e0e0e0;gap:8px;align-items:center;">
       <input id="waInput" type="text" placeholder="Type your message..." maxlength="300" style="flex:1;padding:9px 12px;border:1px solid #d1d5db;border-radius:20px;font-size:13px;outline:none;font-family:inherit;background:#f9f9f9;width:100%;box-sizing:border-box;" />
       <button onclick="waSendMessage()" style="width:36px;height:36px;border-radius:50%;background:#25D366;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:6px;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -483,7 +483,7 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
 
 <!-- Support Ticket Modal -->
 <div id="stOverlay" style="display:none;position:fixed;inset:0;z-index:9010;background:rgba(0,0,0,.5);"></div>
-<div id="stModal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9011;width:420px;max-width:calc(100vw - 24px);background:#fff;border-radius:16px;box-shadow:0 12px 50px rgba(0,0,0,.2);overflow:hidden;font-family:inherit;">
+<div id="stModal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9011;width:420px;max-width:calc(100vw - 24px);background:var(--bg-section);border-radius:16px;box-shadow:0 12px 50px rgba(0,0,0,.2);overflow:hidden;font-family:inherit;">
   <!-- Header -->
   <div style="background:linear-gradient(135deg,#ef4444,#dc2626);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;">
     <div style="display:flex;align-items:center;gap:10px;">
@@ -515,7 +515,7 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px;">
         <div>
           <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Issue Category <span style="color:#e53935;">*</span></label>
-          <select name="category" required style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:#fff;appearance:none;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+          <select name="category" required style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:var(--bg-section);appearance:none;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
             <option value="" disabled selected>Select category</option>
             <option>Hardware Issue</option>
             <option>Software / OS Issue</option>
@@ -529,7 +529,7 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
         </div>
         <div>
           <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Priority <span style="color:#e53935;">*</span></label>
-          <select name="priority" required style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:#fff;appearance:none;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+          <select name="priority" required style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:var(--bg-section);appearance:none;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
             <option value="" disabled selected>Select priority</option>
             <option>🔴 Critical — System Down</option>
             <option>🟠 High — Major Impact</option>
@@ -566,7 +566,7 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
 </button>
 
 <div id="lamOverlay" style="display:none;position:fixed;inset:0;z-index:9001;background:rgba(0,0,0,.45);"></div>
-<div id="lamModal" style="display:none;position:fixed;bottom:90px;right:28px;z-index:9002;width:340px;max-width:calc(100vw - 32px);background:#fff;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.2);overflow:hidden;font-family:inherit;">
+<div id="lamModal" style="display:none;position:fixed;bottom:90px;right:28px;z-index:9002;width:340px;max-width:calc(100vw - 32px);background:var(--bg-section);border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.2);overflow:hidden;font-family:inherit;">
   <div style="background:#0d9488;padding:12px 16px;display:flex;align-items:center;gap:10px;">
     <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0d1b2a;border:2px solid #fff;border-radius:6px;padding:4px 8px;line-height:1;flex-shrink:0;">
       <span style="font-size:8px;font-weight:300;color:#90caf9;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1px;">OMNET</span>
@@ -581,7 +581,7 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
       <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Email address</label><input type="email" name="email" placeholder="Enter your email address" style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;"></div>
       <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Contact number</label><input type="tel" name="phone" placeholder="Enter your contact number" style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;"></div>
       <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Department <span style="color:#e53935;">*</span></label>
-        <select id="lamDept" name="department" required style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;appearance:none;background:#fff;">
+        <select id="lamDept" name="department" required style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;appearance:none;background:var(--bg-section);">
           <option value="" disabled selected>Choose a department</option>
           <option value="IT Support">IT Support</option>
           <option value="Sales">Sales</option>
@@ -725,7 +725,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 <!-- ═══ CALLBACK MODAL (global) ═══ -->
 <div id="cbOverlay" style="display:none;position:fixed;inset:0;z-index:9200;background:rgba(0,0,0,.5);" onclick="cbHide()"></div>
-<div id="cbModal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9201;width:430px;max-width:calc(100vw - 24px);background:#fff;border-radius:16px;box-shadow:0 12px 50px rgba(0,0,0,.22);overflow:hidden;font-family:inherit;">
+<div id="cbModal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9201;width:430px;max-width:calc(100vw - 24px);background:var(--bg-section);border-radius:16px;box-shadow:0 12px 50px rgba(0,0,0,.22);overflow:hidden;font-family:inherit;">
   <div style="background:linear-gradient(135deg,#f97316,#eab308);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;">
     <div style="display:flex;align-items:center;gap:10px;">
       <div style="width:38px;height:38px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="ri-calendar-check-fill" style="color:#fff;font-size:19px;"></i></div>
@@ -748,7 +748,7 @@ document.addEventListener('DOMContentLoaded', function(){
         <div><label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Preferred Date <span style="color:#e53935;">*</span></label>
           <input type="date" name="cb_date" required style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#f97316'" onblur="this.style.borderColor='#e5e7eb'"></div>
         <div><label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Preferred Time <span style="color:#e53935;">*</span></label>
-          <select name="cb_time" required style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:#fff;appearance:none;" onfocus="this.style.borderColor='#f97316'" onblur="this.style.borderColor='#e5e7eb'">
+          <select name="cb_time" required style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:var(--bg-section);appearance:none;" onfocus="this.style.borderColor='#f97316'" onblur="this.style.borderColor='#e5e7eb'">
             <option value="" disabled selected>Select time</option>
             <option>9:00 AM – 10:00 AM</option><option>10:00 AM – 11:00 AM</option>
             <option>11:00 AM – 12:00 PM</option><option>12:00 PM – 1:00 PM</option>
@@ -757,7 +757,7 @@ document.addEventListener('DOMContentLoaded', function(){
           </select></div>
       </div>
       <div style="margin-bottom:16px;"><label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Topic / Service</label>
-        <select name="cb_topic" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:#fff;appearance:none;">
+        <select name="cb_topic" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:var(--bg-section);appearance:none;">
           <option selected>General Enquiry</option><option>IT Support / AMC</option>
           <option>Managed IT Services</option><option>IT Security</option>
           <option>Cloud Services</option><option>Network Infrastructure</option>
