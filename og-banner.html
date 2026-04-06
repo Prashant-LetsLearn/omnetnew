@@ -7,19 +7,19 @@
   body {
     width:1200px; height:630px; overflow:hidden;
     font-family:'Segoe UI', Arial, sans-serif;
-    background:linear-gradient(135deg, #0f4c5c 0%, #0d7377 45%, #14b8a6 100%);
+    background:linear-gradient(135deg, #0f4c5c 0%, #1E1B4B 45%, #14b8a6 100%);
     display:flex; align-items:center; justify-content:space-between;
     padding:0 70px; position:relative;
   }
   /* Background circles */
   .blob { position:absolute; border-radius:50%; filter:blur(60px); }
   .b1 { width:400px; height:400px; background:rgba(255,255,255,.07); top:-80px; right:-60px; }
-  .b2 { width:300px; height:300px; background:rgba(20,184,166,.15); bottom:-60px; left:200px; }
+  .b2 { width:300px; height:300px; background:var(--teal-100); bottom:-60px; left:200px; }
   /* Left content */
   .left { flex:1; z-index:1; }
   .tag {
     display:inline-flex; align-items:center; gap:8px;
-    background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.25);
+    background:var(--gray-200); border:1px solid rgba(255,255,255,.25);
     border-radius:50px; padding:6px 16px; font-size:13px; font-weight:700;
     color:#fff; letter-spacing:.08em; text-transform:uppercase; margin-bottom:24px;
   }
@@ -28,11 +28,11 @@
     font-size:52px; font-weight:900; color:#fff; line-height:1.1;
     margin-bottom:18px; letter-spacing:-.02em;
   }
-  h1 span { color:#5eead4; }
+  h1 span { color:#2563EB; }
   .sub { font-size:18px; color:rgba(255,255,255,.82); line-height:1.5; margin-bottom:28px; max-width:520px; }
   .pills { display:flex; flex-wrap:wrap; gap:8px; }
   .pill {
-    background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2);
+    background:var(--gray-200); border:1px solid rgba(255,255,255,.2);
     border-radius:6px; padding:5px 12px; font-size:12px; font-weight:600; color:#fff;
   }
   /* Right: logo box */
@@ -49,9 +49,9 @@
     box-shadow:0 8px 24px rgba(0,0,0,.25); margin-bottom:14px;
   }
   .logo-name { font-size:28px; font-weight:900; color:#fff; letter-spacing:.04em; }
-  .logo-name span { color:#5eead4; }
+  .logo-name span { color:#2563EB; }
   .logo-tag { font-size:11px; font-weight:700; color:rgba(255,255,255,.6); letter-spacing:.15em; text-transform:uppercase; margin-top:4px; }
-  .divider { width:100%; height:1px; background:rgba(255,255,255,.15); margin:16px 0; }
+  .divider { width:100%; height:1px; background:var(--gray-200); margin:16px 0; }
   .phone { font-size:15px; font-weight:700; color:#fff; margin-bottom:4px; }
   .domain { font-size:13px; color:rgba(255,255,255,.6); }
   /* Bottom bar */
