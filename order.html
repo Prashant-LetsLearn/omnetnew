@@ -24,7 +24,7 @@
     /* ── Page layout ── */
     .order-page {
       min-height: 100vh;
-      background: linear-gradient(160deg, #0B1020 0%, #111827 45%, #0f7a6e 100%);
+      background: linear-gradient(160deg, #0a2240 0%, #0d4f5c 45%, #0f7a6e 100%);
       padding: 156px 1rem 4rem;
     }
     .order-shell {
@@ -38,7 +38,7 @@
 
     /* ── Order form card ── */
     .order-card {
-      background: var(--bg-section); border-radius: 24px; padding: 2.5rem;
+      background: #fff; border-radius: 24px; padding: 2.5rem;
       box-shadow: 0 32px 80px rgba(0,0,0,.3);
     }
     .order-card-title {
@@ -61,13 +61,13 @@
     .step-num {
       width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--gray-200);
       display: flex; align-items: center; justify-content: center;
-      font-size: .78rem; font-weight: 800; flex-shrink: 0; background: var(--bg-section);
+      font-size: .78rem; font-weight: 800; flex-shrink: 0; background: #fff;
       transition: all .3s;
     }
     .order-step.active   .step-num { border-color: var(--teal-500); color: var(--teal-600); background: var(--teal-50); }
     .order-step.complete .step-num { border-color: var(--teal-500); background: var(--teal-500); color: #fff; }
     .step-line { flex: 1; height: 2px; background: var(--gray-200); margin: 0 .5rem; }
-    .step-line.done { background: rgba(10,132,255,.3); }
+    .step-line.done { background: var(--teal-400); }
 
     /* Form fields */
     .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -81,10 +81,10 @@
     .form-input, .form-select, .form-textarea {
       width: 100%; padding: .7rem 1rem; border: 1.5px solid var(--gray-200);
       border-radius: 10px; font-size: .9rem; font-family: inherit; color: var(--gray-900);
-      outline: none; transition: border-color .2s, box-shadow .2s; background: var(--bg-section);
+      outline: none; transition: border-color .2s, box-shadow .2s; background: #fff;
     }
     .form-input:focus, .form-select:focus, .form-textarea:focus {
-      border-color: rgba(10,132,255,.3); box-shadow: 0 0 0 3px rgba(10,132,255,.12);
+      border-color: var(--teal-400); box-shadow: 0 0 0 3px rgba(20,184,166,.12);
     }
     .form-textarea { resize: vertical; min-height: 90px; }
     .form-hint { font-size: .74rem; color: var(--gray-400); }
@@ -116,7 +116,7 @@
     .pay-method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1.5rem; }
     .pay-method-btn {
       border: 2px solid var(--gray-200); border-radius: 12px; padding: 1rem .75rem;
-      background: var(--bg-section); cursor: pointer; text-align: center; transition: all .2s;
+      background: #fff; cursor: pointer; text-align: center; transition: all .2s;
       display: flex; flex-direction: column; align-items: center; gap: .4rem;
       font-family: inherit;
     }
@@ -127,15 +127,15 @@
     .pay-method-btn .pm-sub   { font-size: .68rem; color: var(--gray-400); }
     .pay-method-btn.selected .pm-label { color: var(--teal-700); }
     .pm-razorpay { border-color: #3395FF; }
-    .pm-razorpay.selected { border-color: #3395FF; background: rgba(10,132,255,.05); }
+    .pm-razorpay.selected { border-color: #3395FF; background: #eff6ff; }
     .pm-upi { border-color: #7c3aed; }
-    .pm-upi.selected { border-color: #7c3aed; background: rgba(123,97,255,.05); }
+    .pm-upi.selected { border-color: #7c3aed; background: #f5f3ff; }
 
     /* Nav buttons */
     .order-nav { display: flex; gap: .75rem; margin-top: 1.75rem; justify-content: flex-end; }
     .btn-order-back {
       padding: .75rem 1.5rem; border-radius: 10px; border: 1.5px solid var(--gray-200);
-      background: var(--bg-section); color: var(--gray-600); font-weight: 700; font-size: .9rem;
+      background: #fff; color: var(--gray-600); font-weight: 700; font-size: .9rem;
       cursor: pointer; font-family: inherit; transition: all .2s;
     }
     .btn-order-back:hover { border-color: var(--gray-400); color: var(--gray-800); }
@@ -144,9 +144,9 @@
       background: linear-gradient(135deg, var(--teal-500), var(--cyan-600));
       color: #fff; font-weight: 800; font-size: .95rem; cursor: pointer;
       font-family: inherit; display: flex; align-items: center; gap: .5rem;
-      box-shadow: 0 4px 14px rgba(10,132,255,.35); transition: all .25s;
+      box-shadow: 0 4px 14px rgba(20,184,166,.35); transition: all .25s;
     }
-    .btn-order-next:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(10,132,255,.45); }
+    .btn-order-next:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(20,184,166,.45); }
     .btn-pay-rzp {
       width: 100%; padding: .9rem; border-radius: 12px; border: none;
       background: linear-gradient(135deg, #3395FF, #1a6ee0);
@@ -171,10 +171,10 @@
     }
     .success-ring {
       width: 80px; height: 80px; border-radius: 50%;
-      background: linear-gradient(135deg, rgba(10,132,255,.3), var(--secondary));
+      background: linear-gradient(135deg, var(--teal-400), var(--cyan-500));
       display: flex; align-items: center; justify-content: center;
       font-size: 2.2rem; color: #fff; margin: 0 auto 1.5rem;
-      box-shadow: 0 8px 32px rgba(10,132,255,.4);
+      box-shadow: 0 8px 32px rgba(20,184,166,.4);
       animation: scaleIn .4s cubic-bezier(.34,1.56,.64,1);
     }
     @keyframes scaleIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
@@ -199,10 +199,10 @@
     .summary-val { color: #fff; font-weight: 600; text-align: right; max-width: 60%; }
     .summary-total { margin-top: 1rem; padding: 1rem; background: rgba(255,255,255,.1); border-radius: 12px; }
     .summary-total-label { font-size: .78rem; color: rgba(255,255,255,.6); margin-bottom: .25rem; }
-    .summary-total-amount { font-size: 2rem; font-weight: 900; color: #0A84FF; }
+    .summary-total-amount { font-size: 2rem; font-weight: 900; color: #5eead4; }
     .trust-pills { display: flex; flex-direction: column; gap: .5rem; margin-top: 1.5rem; }
     .trust-pill { display: flex; align-items: center; gap: .6rem; font-size: .78rem; color: rgba(255,255,255,.7); }
-    .trust-pill i { color: #0A84FF; font-size: 1rem; }
+    .trust-pill i { color: #5eead4; font-size: 1rem; }
   </style>
 </head>
 <body>
@@ -381,7 +381,7 @@
         <div class="order-card-sub">All payments are secure &amp; encrypted.</div>
 
         <!-- Amount summary strip -->
-        <div style="background:linear-gradient(135deg,var(--teal-50),rgba(123,97,255,.03));border:1.5px solid var(--teal-200);border-radius:14px;padding:1rem 1.25rem;margin-bottom:1.75rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;">
+        <div style="background:linear-gradient(135deg,var(--teal-50),#ecfeff);border:1.5px solid var(--teal-200);border-radius:14px;padding:1rem 1.25rem;margin-bottom:1.75rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;">
           <div>
             <div style="font-size:.72rem;font-weight:700;color:var(--teal-600);text-transform:uppercase;letter-spacing:.08em;">Order Total</div>
             <div style="font-size:1.75rem;font-weight:900;color:var(--gray-900);">₹<span id="amountDisplay3">0</span></div>

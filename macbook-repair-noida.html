@@ -69,8 +69,8 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
   <link rel="stylesheet" href="mobile-fixes.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" />
   <style>
-    .loc-hero{background:linear-gradient(135deg,#0f4c5c 0%,#1E1B4B 50%,#14b8a6 100%);padding:146px 0 60px;text-align:center;color:#fff;position:relative;overflow:hidden}
-    .loc-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 25% 50%,rgba(10,132,255,.18) 0%,transparent 60%),radial-gradient(circle at 75% 30%,rgba(123,97,255,.12) 0%,transparent 60%);pointer-events:none}
+    .loc-hero{background:linear-gradient(135deg,#0f4c5c 0%,#0d7377 50%,#14b8a6 100%);padding:146px 0 60px;text-align:center;color:#fff;position:relative;overflow:hidden}
+    .loc-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 25% 50%,rgba(20,184,166,.18) 0%,transparent 60%),radial-gradient(circle at 75% 30%,rgba(6,182,212,.12) 0%,transparent 60%);pointer-events:none}
     .loc-hero-inner{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:0 1.5rem}
     .loc-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:1rem;line-height:1.2}
     .loc-hero .sub{font-size:1.05rem;max-width:650px;margin:0 auto 2rem;color:rgba(255,255,255,.85);line-height:1.7}
@@ -79,7 +79,7 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
     .stats-strip{background:var(--gray-900);padding:22px 0}
     .stats-inner{max-width:1100px;margin:0 auto;padding:0 1.5rem;display:flex;gap:2rem;justify-content:center;flex-wrap:wrap}
     .stat-item{text-align:center;color:#fff}
-    .stat-item .n{display:block;font-size:1.5rem;font-weight:800;color:#0A84FF}
+    .stat-item .n{display:block;font-size:1.5rem;font-weight:800;color:#5eead4}
     .stat-item .l{font-size:.75rem;color:rgba(255,255,255,.6)}
     .sec{padding:70px 0}
     .si{max-width:1100px;margin:0 auto;padding:0 1.5rem}
@@ -89,24 +89,24 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
     .g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem}
     .g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:2rem}
     .g4{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem}
-    .scard{background:var(--bg-section);border:1px solid var(--gray-200);border-radius:1rem;padding:1.75rem 1.5rem;transition:all .3s}
-    .scard:hover{box-shadow:0 8px 30px rgba(10,132,255,.12);border-color:var(--teal-300);transform:translateY(-3px)}
+    .scard{background:#fff;border:1px solid var(--gray-200);border-radius:1rem;padding:1.75rem 1.5rem;transition:all .3s}
+    .scard:hover{box-shadow:0 8px 30px rgba(20,184,166,.12);border-color:var(--teal-300);transform:translateY(-3px)}
     .scard .ico{width:3rem;height:3rem;border-radius:.75rem;display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;font-size:1.4rem;background:var(--teal-50);color:var(--teal-600)}
     .scard h3{font-size:1.05rem;font-weight:700;color:var(--gray-900);margin-bottom:.5rem}
     .scard p{font-size:.9rem;color:var(--gray-600);line-height:1.6}
-    .why-dark{background:linear-gradient(135deg,#0f4c5c,#1E1B4B);color:#fff;padding:70px 0}
+    .why-dark{background:linear-gradient(135deg,#0f4c5c,#0d7377);color:#fff;padding:70px 0}
     .why-dark .ttl{color:#fff}
-    .why-dark .lbl{color:#0A84FF}
+    .why-dark .lbl{color:#5eead4}
     .why-dark .sub2{color:rgba(255,255,255,.75)}
     .wcard{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:1rem;padding:1.5rem}
     .wcard h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:.4rem}
     .wcard p{font-size:.875rem;color:rgba(255,255,255,.7);line-height:1.6}
-    .wcard .wi{font-size:1.6rem;color:#0A84FF;margin-bottom:.75rem;display:block}
-    .ind-card{background:var(--bg-section);border:1px solid var(--gray-200);border-radius:.75rem;padding:1.1rem 1.25rem;display:flex;align-items:center;gap:.75rem;font-weight:600;color:var(--gray-800);font-size:.9rem;transition:all .3s}
+    .wcard .wi{font-size:1.6rem;color:#5eead4;margin-bottom:.75rem;display:block}
+    .ind-card{background:#fff;border:1px solid var(--gray-200);border-radius:.75rem;padding:1.1rem 1.25rem;display:flex;align-items:center;gap:.75rem;font-weight:600;color:var(--gray-800);font-size:.9rem;transition:all .3s}
     .ind-card:hover{background:var(--teal-50);border-color:var(--teal-300);color:var(--teal-700)}
     .ind-card i{font-size:1.2rem;color:var(--teal-600)}
     .popular-grid{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
-    .ptag{background:var(--bg-section);border:1px solid var(--teal-200);color:var(--teal-700);padding:.45rem 1rem;border-radius:2rem;font-size:.875rem;font-weight:600;text-decoration:none;transition:all .3s}
+    .ptag{background:#fff;border:1px solid var(--teal-200);color:var(--teal-700);padding:.45rem 1rem;border-radius:2rem;font-size:.875rem;font-weight:600;text-decoration:none;transition:all .3s}
     .ptag:hover{background:var(--teal-600);color:#fff;border-color:var(--teal-600)}
     .cta-sec{background:linear-gradient(135deg,#14b8a6,#0891b2);padding:70px 0;text-align:center;color:#fff}
     .cta-sec h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:1rem}
@@ -154,161 +154,94 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
         <div class="logo-tagline">IT Solutions</div>
       </div>
     </a>
-
-    
-
     <div class="header-cta">
       <a href="tel:+918920603270" class="header-phone"><i class="ri-phone-line"></i> +91-89206-03270</a>
-      <button onclick="cbOpen()" style="display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(10,132,255,.08),rgba(123,97,255,.05)),var(--accent));color:#fff;border:none;border-radius:50px;padding:8px 15px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;animation:cbPulse 2s infinite;"><i class="ri-callback-line" style="font-size:15px;"></i> Request Callback</button>
+      <button onclick="cbOpen()" style="display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#f97316,#eab308);color:#fff;border:none;border-radius:50px;padding:8px 15px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;animation:cbPulse 2s infinite;"><i class="ri-callback-line" style="font-size:15px;"></i> Request Callback</button>
       <a href="pricing.html" class="btn-primary">Get Quote</a>
     </div>
     <button class="mobile-menu-btn" aria-label="Toggle menu"><i class="ri-menu-line" style="font-size:1.5rem"></i></button>
   </div>
-  <!-- Nav bar row -->
   <div class="header-nav-bar">
     <nav class="header-nav-bar-inner desktop-nav">
       <a href="index.html" class="nav-link">Home</a>
-
-      <!-- IT SUPPORT dropdown — proit.com structure -->
       <div class="nav-dropdown">
         <button class="dropdown-btn">IT Support <i class="ri-arrow-down-s-line"></i></button>
-        <div class="dropdown-menu">
-          <div class="dropdown-menu-inner" style="min-width:230px">
-            <a href="it-support.html"><i class="ri-customer-service-2-line"></i>IT Support Overview</a>
-            <a href="fixed-cost-it-support.html"><i class="ri-shield-star-line"></i>Fixed Cost IT Support</a>
-            <a href="prepaid-it-support.html"><i class="ri-coupon-3-line"></i>Prepaid IT Support</a>
-            <a href="casual-it-support.html"><i class="ri-phone-find-line"></i>Casual IT Support</a>
-          </div>
-        </div>
+        <div class="dropdown-menu"><div class="dropdown-menu-inner" style="min-width:230px">
+          <a href="it-support.html"><i class="ri-customer-service-2-line"></i>IT Support Overview</a>
+          <a href="fixed-cost-it-support.html"><i class="ri-shield-star-line"></i>Fixed Cost IT Support</a>
+          <a href="prepaid-it-support.html"><i class="ri-coupon-3-line"></i>Prepaid IT Support</a>
+          <a href="casual-it-support.html"><i class="ri-phone-find-line"></i>Casual IT Support</a>
+        </div></div>
       </div>
-
-      <!-- IT SECURITY -->
-      <!-- IT SECURITY dropdown -->
       <div class="nav-dropdown">
         <button class="dropdown-btn">IT Security <i class="ri-arrow-down-s-line"></i></button>
-        <div class="dropdown-menu">
-          <div class="dropdown-menu-inner" style="min-width:230px">
-            <a href="it-security.html"><i class="ri-shield-check-line"></i>IT Security Overview</a>
-            <a href="desktop-security.html"><i class="ri-computer-line"></i>Desktop Security</a>
-            <a href="server-infrastructure-security.html"><i class="ri-server-line"></i>Server Infrastructure</a>
-            <a href="cloud-security.html"><i class="ri-cloud-line"></i>Cloud Security</a>
-            <a href="risk-threat-assessment.html"><i class="ri-search-eye-line"></i>Risk &amp; Threat Assessment</a>
-            <a href="internet-content-security.html"><i class="ri-global-line"></i>Internet &amp; Content Security</a>
-          </div>
-        </div>
+        <div class="dropdown-menu"><div class="dropdown-menu-inner" style="min-width:230px">
+          <a href="it-security.html"><i class="ri-shield-check-line"></i>IT Security Overview</a>
+          <a href="desktop-security.html"><i class="ri-computer-line"></i>Desktop Security</a>
+          <a href="server-infrastructure-security.html"><i class="ri-server-line"></i>Server Infrastructure</a>
+          <a href="cloud-security.html"><i class="ri-cloud-line"></i>Cloud Security</a>
+          <a href="risk-threat-assessment.html"><i class="ri-search-eye-line"></i>Risk &amp; Threat Assessment</a>
+          <a href="internet-content-security.html"><i class="ri-global-line"></i>Internet &amp; Content Security</a>
+        </div></div>
       </div>
-
-      <!-- MANAGED IT dropdown — proit.com structure -->
       <div class="nav-dropdown">
         <button class="dropdown-btn">Managed IT <i class="ri-arrow-down-s-line"></i></button>
-        <div class="dropdown-menu">
-          <div class="dropdown-menu-inner" style="min-width:230px">
-            <a href="managed-services.html"><i class="ri-settings-3-line"></i>Managed IT Overview</a>
-            <a href="managed-servers.html"><i class="ri-server-line"></i>Managed Servers</a>
-            <a href="managed-security.html"><i class="ri-shield-check-line"></i>Managed Security</a>
-            <a href="managed-network.html"><i class="ri-global-line"></i>Managed Network</a>
-            <a href="managed-colocation.html"><i class="ri-database-2-line"></i>Managed Colocation</a>
-          </div>
-        </div>
+        <div class="dropdown-menu"><div class="dropdown-menu-inner" style="min-width:230px">
+          <a href="managed-services.html"><i class="ri-settings-3-line"></i>Managed IT Overview</a>
+          <a href="managed-servers.html"><i class="ri-server-line"></i>Managed Servers</a>
+          <a href="managed-security.html"><i class="ri-shield-check-line"></i>Managed Security</a>
+          <a href="managed-network.html"><i class="ri-global-line"></i>Managed Network</a>
+          <a href="managed-colocation.html"><i class="ri-database-2-line"></i>Managed Colocation</a>
+        </div></div>
       </div>
-
-      <!-- SERVICES dropdown -->
       <div class="nav-dropdown">
         <button class="dropdown-btn">Services <i class="ri-arrow-down-s-line"></i></button>
-        <div class="dropdown-menu">
-          <div class="dropdown-menu-inner" style="min-width:260px">
-            <a href="services.html"><i class="ri-service-line"></i>All Services</a>
-            <a href="infrastructure-services.html"><i class="ri-building-2-line"></i>Infrastructure Services</a>
-            <a href="cloud-services.html"><i class="ri-cloud-line"></i>Cloud Services</a>
-            <a href="network-infrastructure.html"><i class="ri-global-line"></i>Network Infrastructure</a>
-            <a href="devops-services.html"><i class="ri-git-merge-line"></i>DevOps Services</a>
-            <a href="email-solutions.html"><i class="ri-mail-line"></i>Email Solutions</a>
-            <a href="repair-services.html"><i class="ri-tools-line"></i>Repair &amp; AMC</a>
-            <a href="remote-onsite-support.html"><i class="ri-customer-service-2-line"></i>Remote &amp; Onsite Support</a>
-            <a href="professional-services.html"><i class="ri-building-4-line"></i>Professional Services</a>
-            <a href="it-hardware-rental.html"><i class="ri-computer-line"></i>IT Hardware Rental</a>
-          </div>
-        </div>
+        <div class="dropdown-menu"><div class="dropdown-menu-inner" style="min-width:260px">
+          <a href="services.html"><i class="ri-service-line"></i>All Services</a>
+          <a href="infrastructure-services.html"><i class="ri-building-2-line"></i>Infrastructure Services</a>
+          <a href="cloud-services.html"><i class="ri-cloud-line"></i>Cloud Services</a>
+          <a href="network-infrastructure.html"><i class="ri-global-line"></i>Network Infrastructure</a>
+          <a href="repair-services.html"><i class="ri-tools-line"></i>Repair &amp; AMC</a>
+          <a href="remote-onsite-support.html"><i class="ri-customer-service-2-line"></i>Remote &amp; Onsite Support</a>
+          <a href="it-hardware-rental.html"><i class="ri-computer-line"></i>IT Hardware Rental</a>
+        </div></div>
       </div>
-
       <a href="shop.html" class="nav-link" style="color:var(--teal-600);font-weight:700;"><i class="ri-store-2-line"></i> Shop</a>
       <a href="products.html" class="nav-link">Products</a>
       <a href="industry-expertise.html" class="nav-link">Industries</a>
-
       <div class="nav-dropdown">
         <button class="dropdown-btn">About <i class="ri-arrow-down-s-line"></i></button>
-        <div class="dropdown-menu">
-          <div class="dropdown-menu-inner">
-            <a href="about.html"><i class="ri-information-line"></i>About Us</a>
-            <a href="portfolio.html"><i class="ri-briefcase-line"></i>Portfolio</a>
-            <a href="pricing.html"><i class="ri-price-tag-3-line"></i>Pricing</a>
-          </div>
-        </div>
+        <div class="dropdown-menu"><div class="dropdown-menu-inner">
+          <a href="about.html"><i class="ri-information-line"></i>About Us</a>
+          <a href="portfolio.html"><i class="ri-briefcase-line"></i>Portfolio</a>
+          <a href="pricing.html"><i class="ri-price-tag-3-line"></i>Pricing</a>
+        </div></div>
       </div>
-
       <a href="contact.html" class="nav-link">Contact</a>
       <a href="blog.html" class="nav-link">Blog</a>
-    
     </nav>
   </div>
-
   <div class="mobile-nav">
     <div class="mobile-nav-inner">
       <a href="index.html">Home</a>
-      <div class="mobile-nav-section">
-        <div class="mobile-nav-label">IT Support</div>
-        <div class="mobile-nav-child">
-          <a href="it-support.html">IT Support Overview</a>
-          <a href="fixed-cost-it-support.html">Fixed Cost IT Support</a>
-          <a href="prepaid-it-support.html">Prepaid IT Support</a>
-          <a href="casual-it-support.html">Casual IT Support</a>
-        </div>
-      </div>
-      <div class="mobile-nav-section">
-        <div class="mobile-nav-label">IT Security</div>
-        <div class="mobile-nav-child">
-          <a href="it-security.html">IT Security Overview</a>
-          <a href="desktop-security.html">Desktop Security</a>
-          <a href="server-infrastructure-security.html">Server Infrastructure</a>
-          <a href="cloud-security.html">Cloud Security</a>
-          <a href="risk-threat-assessment.html">Risk &amp; Threat Assessment</a>
-          <a href="internet-content-security.html">Internet &amp; Content Security</a>
-        </div>
-      </div>
-      <div class="mobile-nav-section">
-        <div class="mobile-nav-label">Managed IT</div>
-        <div class="mobile-nav-child">
-          <a href="managed-services.html">Managed IT Overview</a>
-          <a href="managed-servers.html">Managed Servers</a>
-          <a href="managed-security.html">Managed Security</a>
-          <a href="managed-network.html">Managed Network</a>
-          <a href="managed-colocation.html">Managed Colocation</a>
-        </div>
-      </div>
-      <div class="mobile-nav-section">
-        <div class="mobile-nav-label">Services</div>
-        <div class="mobile-nav-child">
-          <a href="services.html">All Services</a>
-          <a href="infrastructure-services.html">Infrastructure Services</a>
-          <a href="cloud-services.html">Cloud Services</a>
-          <a href="network-infrastructure.html">Network Infrastructure</a>
-          <a href="email-solutions.html">Email Solutions</a>
-          <a href="repair-services.html">Repair &amp; AMC</a>
-        </div>
-      </div>
+      <div class="mobile-nav-section"><div class="mobile-nav-label">IT Support</div><div class="mobile-nav-child">
+        <a href="it-support.html">IT Support Overview</a><a href="fixed-cost-it-support.html">Fixed Cost IT Support</a>
+        <a href="prepaid-it-support.html">Prepaid IT Support</a><a href="casual-it-support.html">Casual IT Support</a>
+      </div></div>
+      <div class="mobile-nav-section"><div class="mobile-nav-label">Managed IT</div><div class="mobile-nav-child">
+        <a href="managed-services.html">Managed IT Overview</a><a href="managed-servers.html">Managed Servers</a>
+        <a href="managed-security.html">Managed Security</a><a href="managed-network.html">Managed Network</a>
+      </div></div>
+      <div class="mobile-nav-section"><div class="mobile-nav-label">Services</div><div class="mobile-nav-child">
+        <a href="services.html">All Services</a><a href="infrastructure-services.html">Infrastructure Services</a>
+        <a href="cloud-services.html">Cloud Services</a><a href="repair-services.html">Repair &amp; AMC</a>
+      </div></div>
       <a href="shop.html" style="color:var(--teal-600);font-weight:700;">🛒 Shop</a>
-      <a href="products.html">Products</a>
-      <a href="industry-expertise.html">Industries</a>
-      <div class="mobile-nav-section">
-        <div class="mobile-nav-label">About</div>
-        <div class="mobile-nav-child">
-          <a href="about.html">About Us</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="pricing.html">Pricing</a>
-        </div>
-      </div>
-      <a href="contact.html">Contact</a>
-      <a href="blog.html">Blog</a>
+      <a href="products.html">Products</a><a href="industry-expertise.html">Industries</a>
+      <div class="mobile-nav-section"><div class="mobile-nav-label">About</div><div class="mobile-nav-child">
+        <a href="about.html">About Us</a><a href="portfolio.html">Portfolio</a><a href="pricing.html">Pricing</a>
+      </div></div>
+      <a href="contact.html">Contact</a><a href="blog.html">Blog</a>
       <hr class="mobile-nav-divider"/>
       <a href="tel:+918920603270"><i class="ri-phone-line"></i> +91-89206-03270</a>
       <a href="pricing.html" style="background:linear-gradient(135deg,#14b8a6,#0891b2);color:#fff;text-align:center;font-weight:700;margin-top:.5rem">Get Quote</a>
@@ -466,45 +399,51 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
 <footer class="site-footer">
   <div class="footer-main">
     <div class="footer-brand">
-      <a href="index.html" class="logo-wrap" style="text-decoration:none;display:inline-flex">
+      <a href="index.html" class="logo-wrap">
         <div class="logo-icon"><span>ON</span></div>
         <div class="logo-text-wrap">
-          <div class="logo-name"><span style="color:#fff">OM</span><span class="net">NET</span></div>
+          <div class="logo-name"><span class="om">OM</span><span class="net">NET</span></div>
           <div class="logo-tagline">IT Solutions</div>
         </div>
       </a>
-      <p>Your trusted partner for Enterprise IT Solutions and Managed Services. Delivering reliable technology solutions across Delhi NCR.</p>
+      <p>Your trusted IT partner across Delhi NCR — delivering enterprise IT solutions, managed services, and 24/7 support.</p>
       <div class="footer-social">
-        <a href="https://www.linkedin.com/company/omnet-it-system/" target="_blank" rel="noopener"><i class="ri-linkedin-fill"></i></a>
-        <a href="https://x.com/omnetit" target="_blank" rel="noopener"><i class="ri-twitter-x-fill"></i></a>
-        <a href="https://www.facebook.com/OMNETITSYSTEMS" target="_blank" rel="noopener"><i class="ri-facebook-fill"></i></a>
+        <a href="https://www.linkedin.com/company/omnet-it-system/" aria-label="LinkedIn"><i class="ri-linkedin-box-fill"></i></a>
+        <a href="https://x.com/omnetit" aria-label="Twitter"><i class="ri-twitter-x-fill"></i></a>
+        <a href="https://www.facebook.com/OMNETITSYSTEMS" aria-label="Facebook"><i class="ri-facebook-box-fill"></i></a>
+        <a href="https://wa.me/918920603270" aria-label="WhatsApp"><i class="ri-whatsapp-fill"></i></a>
       </div>
     </div>
     <div class="footer-col">
-      <h4>IT Services</h4>
+      <h4>Services</h4>
       <ul>
         <li><a href="managed-services.html"><i class="ri-arrow-right-s-line"></i>Managed IT Services</a></li>
-        <li><a href="cloud-services.html"><i class="ri-arrow-right-s-line"></i>Cloud Solutions</a></li>
-        <li><a href="devops-services.html"><i class="ri-arrow-right-s-line"></i>DevOps Services</a></li>
+        <li><a href="cloud-services.html"><i class="ri-arrow-right-s-line"></i>Cloud Services</a></li>
         <li><a href="network-infrastructure.html"><i class="ri-arrow-right-s-line"></i>Network Infrastructure</a></li>
-        <li><a href="email-solutions.html"><i class="ri-arrow-right-s-line"></i>Email Solutions</a></li>
-        <li><a href="repair-services.html"><i class="ri-arrow-right-s-line"></i>Computer AMC</a></li>
+        <li><a href="remote-onsite-support.html"><i class="ri-arrow-right-s-line"></i>Remote &amp; Onsite Support</a></li>
+        <li><a href="repair-services.html"><i class="ri-arrow-right-s-line"></i>Computer &amp; Laptop AMC</a></li>
+        <li><a href="it-security.html"><i class="ri-arrow-right-s-line"></i>IT Security</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Company</h4>
+      <h4>Locations</h4>
       <ul>
-        <li><a href="about.html"><i class="ri-arrow-right-s-line"></i>About Us</a></li>
-        <li><a href="portfolio.html"><i class="ri-arrow-right-s-line"></i>Portfolio</a></li>
-        <li><a href="pricing.html"><i class="ri-arrow-right-s-line"></i>Pricing</a></li>
-        <li><a href="contact.html"><i class="ri-arrow-right-s-line"></i>Contact Us</a></li>
+        <li><a href="it-support-noida.html"><i class="ri-arrow-right-s-line"></i>IT Support Noida</a></li>
+        <li><a href="it-support-delhi.html"><i class="ri-arrow-right-s-line"></i>IT Support Delhi</a></li>
+        <li><a href="it-support-gurugram.html"><i class="ri-arrow-right-s-line"></i>IT Support Gurugram</a></li>
+        <li><a href="it-support-greater-noida.html"><i class="ri-arrow-right-s-line"></i>IT Support Greater Noida</a></li>
+        <li><a href="it-support-ghaziabad.html"><i class="ri-arrow-right-s-line"></i>IT Support Ghaziabad</a></li>
+        <li><a href="it-support-faridabad.html"><i class="ri-arrow-right-s-line"></i>IT Support Faridabad</a></li>
+        <li><a href="managed-it-services-noida.html"><i class="ri-arrow-right-s-line"></i>Managed IT Noida</a></li>
+        <li><a href="managed-it-services-delhi.html"><i class="ri-arrow-right-s-line"></i>Managed IT Delhi</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contact Us</h4>
       <div class="footer-contact-item"><i class="ri-smartphone-line"></i><div><div class="label">Mobile</div><div class="value">+91-89206-03270</div></div></div>
+      <div class="footer-contact-item"><i class="ri-phone-line"></i><div><div class="label">Landline</div><div class="value">+91-120-522-3376</div></div></div>
       <div class="footer-contact-item"><i class="ri-mail-line"></i><div><div class="label">Email</div><div class="value">omnetit@gmail.com</div></div></div>
-      <div class="footer-contact-item"><i class="ri-map-pin-line"></i><div><div class="label">Location</div><div class="value">Ghaziabad, UP, India</div></div></div>
+      <div class="footer-contact-item"><i class="ri-map-pin-line"></i><div><div class="label">Address</div><div class="value">Noida Sector 62, UP<br/><span style="color:var(--gray-400);font-size:.75rem">Serving all of Delhi NCR</span></div></div></div>
     </div>
   </div>
   <div class="footer-coverage">
@@ -514,7 +453,7 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
   </div>
   <div class="footer-bottom">
     <div class="footer-bottom-inner">
-      <p>© <script>document.write(new Date().getFullYear())</script> OMNET IT SYSTEM. All rights reserved.</p>
+      <p>&copy; <script>document.write(new Date().getFullYear())</script> OMNET IT SYSTEM. All rights reserved.</p>
       <div class="footer-legal"><a href="privacy-policy.html">Privacy Policy</a><a href="terms-of-service.html">Terms of Service</a></div>
     </div>
   </div>
