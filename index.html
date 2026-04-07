@@ -146,115 +146,7 @@
       font-size: .78rem; font-weight: 600; color: #5eead4; margin-top: .7rem;
     }
 
-    /* ══════════════════════════════════════════════════
-       HEADER MARQUEE  — explicit-height approach
-       Every layer shares the same CSS variable --mq-h (48px).
-       strip / inner / track / msg all declare the same pixel height,
-       so overflow:hidden has zero vertical content to clip,
-       and align-items:center is lossless at every level.
-    ══════════════════════════════════════════════════ */
-    :root { --mq-h: 48px; }
-
-    /* Header offset: strip(36px) + marquee(48px) = 84px */
-    .site-header { top: 84px !important; }
-    @media (max-width: 768px) { .site-header { top: 70px !important; } }
-    @media (max-width: 480px) { .site-header { top: 66px !important; } }
-    @media (max-width: 375px) { .site-header { top: 64px !important; } }
-
-    .header-marquee-strip {
-      position: fixed;
-      top: 36px;
-      left: 0; right: 0;
-      z-index: 1001;
-      background: linear-gradient(90deg, #071a2e 0%, #0c3347 50%, #082a2a 100%);
-      border-bottom: 1px solid rgba(94,234,212,.28);
-      height: var(--mq-h);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-    }
-    .header-marquee-strip::before,
-    .header-marquee-strip::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      width: 90px;
-      z-index: 3;
-      pointer-events: none;
-    }
-    .header-marquee-strip::before {
-      left: 0;
-      background: linear-gradient(to right, #071a2e 0%, transparent 100%);
-    }
-    .header-marquee-strip::after {
-      right: 0;
-      background: linear-gradient(to left, #082a2a 0%, transparent 100%);
-    }
-    .marquee-inner {
-      width: 100%;
-      height: var(--mq-h);
-      display: flex;
-      align-items: center;
-      flex-shrink: 0;
-    }
-    .header-marquee-track {
-      display: flex;
-      align-items: center;
-      height: var(--mq-h);
-      white-space: nowrap;
-      flex-shrink: 0;
-      min-width: max-content;
-      animation: hdrMarqueeScroll 60s linear infinite;
-      will-change: transform;
-    }
-    .header-marquee-track:hover { animation-play-state: paused; }
-    @keyframes hdrMarqueeScroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    .header-marquee-msg {
-      display: inline-flex;
-      align-items: center;
-      height: var(--mq-h);
-      gap: .55rem;
-      font-size: .82rem;
-      font-weight: 600;
-      color: #e8f4ff;
-      line-height: 1;
-      padding: 0 5rem;
-      margin: 0;
-      flex-shrink: 0;
-      white-space: nowrap;
-      letter-spacing: .016em;
-      vertical-align: middle;
-    }
-    .header-marquee-msg .m-dot,
-    .header-marquee-msg .m-city,
-    .header-marquee-msg .m-svc {
-      vertical-align: middle;
-      line-height: 1;
-    }
-    .header-marquee-msg .m-dot {
-      display: inline-block;
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: #5eead4;
-      flex-shrink: 0;
-      box-shadow: 0 0 8px rgba(94,234,212,.7);
-    }
-    .header-marquee-msg .m-city { color: #5eead4; font-weight: 700; }
-    .header-marquee-msg .m-svc  { color: #fde68a; font-weight: 700; }
-
-    @media (max-width: 1024px) {
-      .header-marquee-track { animation-duration: 50s; }
-      .header-marquee-msg   { font-size: .78rem; padding: 0 4rem; }
-    }
-    @media (max-width: 768px) {
-      :root { --mq-h: 38px; }
-      .header-marquee-strip { top: 32px; }
-      .header-marquee-msg   { font-size: .7rem; padding: 0 2.5rem; letter-spacing: .01em; }
-      .header-marquee-track { animation-duration: 40s; }
-    }
+    
 
         /* ── STATS BAR ── */
     /* ── STATS BAR BELOW HERO ── */
@@ -439,9 +331,9 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
 }
 </style>
 <style>
-  /* ── Triple-strip offset: dual-action(36px) + marquee(48px) ── */
-  .site-header { top: 84px !important; }
-  @media (max-width: 768px) { .site-header { top: 70px !important; } }
+  /* ── Header offset: dual-action strip (36px) ── */
+  .site-header { top: 36px !important; }
+  @media (max-width: 768px) { .site-header { top: 32px !important; } }
 </style>
 
 </head>
@@ -471,50 +363,7 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
   </div>
 </div>
 
-<!-- ═══ HEADER MARQUEE STRIP ═══ -->
-<div class="header-marquee-strip" aria-label="Service coverage regions">
-  <div class="marquee-inner">
-    <div class="header-marquee-track" id="headerMarqueeTrack">
-    <!-- Message 1 -->
-    <span class="header-marquee-msg">
-      <span class="m-dot"></span>
-      Providing reliable <span class="m-svc">IT Support</span>, <span class="m-svc">Managed IT Services</span>, and <span class="m-svc">IT Products</span> across <span class="m-city">Bihar</span>, <span class="m-city">Jharkhand</span>, <span class="m-city">Uttar Pradesh</span>, <span class="m-city">West Bengal</span>, <span class="m-city">Delhi</span>, <span class="m-city">Haryana</span>, <span class="m-city">Punjab</span>, <span class="m-city">Gujarat</span>, <span class="m-city">Maharashtra</span>, <span class="m-city">Rajasthan</span>, <span class="m-city">Noida</span>, <span class="m-city">Gurugram</span>, <span class="m-city">Faridabad</span>, and throughout <span class="m-city">Delhi NCR</span>.
-    </span>
-    <!-- Message 2 -->
-    <span class="header-marquee-msg">
-      <span class="m-dot"></span>
-      From <span class="m-city">Delhi NCR</span>, <span class="m-city">Noida</span>, <span class="m-city">Gurugram</span>, and <span class="m-city">Faridabad</span> to <span class="m-city">Bihar</span>, <span class="m-city">Jharkhand</span>, <span class="m-city">Uttar Pradesh</span>, <span class="m-city">West Bengal</span>, <span class="m-city">Punjab</span>, <span class="m-city">Haryana</span>, <span class="m-city">Gujarat</span>, <span class="m-city">Maharashtra</span>, and <span class="m-city">Rajasthan</span> — we deliver trusted technology solutions and project execution.
-    </span>
-    <!-- Message 3 -->
-    <span class="header-marquee-msg">
-      <span class="m-dot"></span>
-      Expanding our <span class="m-svc">IT Services</span> footprint across North and West India with successful projects in <span class="m-city">Bihar</span>, <span class="m-city">Jharkhand</span>, <span class="m-city">Uttar Pradesh</span>, <span class="m-city">West Bengal</span>, <span class="m-city">Delhi</span>, <span class="m-city">Haryana</span>, <span class="m-city">Punjab</span>, <span class="m-city">Gujarat</span>, <span class="m-city">Maharashtra</span>, <span class="m-city">Rajasthan</span>, <span class="m-city">Noida</span>, <span class="m-city">Gurugram</span>, <span class="m-city">Faridabad</span>, and <span class="m-city">Delhi NCR</span>.
-    </span>
-    <!-- Message 4 -->
-    <span class="header-marquee-msg">
-      <span class="m-dot"></span>
-      Supporting businesses with <span class="m-svc">Managed IT Services</span>, <span class="m-svc">IT Infrastructure</span>, and <span class="m-svc">Product Solutions</span> across <span class="m-city">Delhi NCR</span>, <span class="m-city">Noida</span>, <span class="m-city">Gurugram</span>, <span class="m-city">Faridabad</span>, <span class="m-city">Bihar</span>, <span class="m-city">Jharkhand</span>, <span class="m-city">Uttar Pradesh</span>, <span class="m-city">West Bengal</span>, <span class="m-city">Haryana</span>, <span class="m-city">Punjab</span>, <span class="m-city">Gujarat</span>, <span class="m-city">Maharashtra</span>, and <span class="m-city">Rajasthan</span>.
-    </span>
-    <!-- Duplicate set for seamless loop -->
-    <span class="header-marquee-msg">
-      <span class="m-dot"></span>
-      Providing reliable <span class="m-svc">IT Support</span>, <span class="m-svc">Managed IT Services</span>, and <span class="m-svc">IT Products</span> across <span class="m-city">Bihar</span>, <span class="m-city">Jharkhand</span>, <span class="m-city">Uttar Pradesh</span>, <span class="m-city">West Bengal</span>, <span class="m-city">Delhi</span>, <span class="m-city">Haryana</span>, <span class="m-city">Punjab</span>, <span class="m-city">Gujarat</span>, <span class="m-city">Maharashtra</span>, <span class="m-city">Rajasthan</span>, <span class="m-city">Noida</span>, <span class="m-city">Gurugram</span>, <span class="m-city">Faridabad</span>, and throughout <span class="m-city">Delhi NCR</span>.
-    </span>
-    <span class="header-marquee-msg">
-      <span class="m-dot"></span>
-      From <span class="m-city">Delhi NCR</span>, <span class="m-city">Noida</span>, <span class="m-city">Gurugram</span>, and <span class="m-city">Faridabad</span> to <span class="m-city">Bihar</span>, <span class="m-city">Jharkhand</span>, <span class="m-city">Uttar Pradesh</span>, <span class="m-city">West Bengal</span>, <span class="m-city">Punjab</span>, <span class="m-city">Haryana</span>, <span class="m-city">Gujarat</span>, <span class="m-city">Maharashtra</span>, and <span class="m-city">Rajasthan</span> — we deliver trusted technology solutions and project execution.
-    </span>
-    <span class="header-marquee-msg">
-      <span class="m-dot"></span>
-      Expanding our <span class="m-svc">IT Services</span> footprint across North and West India with successful projects in <span class="m-city">Bihar</span>, <span class="m-city">Jharkhand</span>, <span class="m-city">Uttar Pradesh</span>, <span class="m-city">West Bengal</span>, <span class="m-city">Delhi</span>, <span class="m-city">Haryana</span>, <span class="m-city">Punjab</span>, <span class="m-city">Gujarat</span>, <span class="m-city">Maharashtra</span>, <span class="m-city">Rajasthan</span>, <span class="m-city">Noida</span>, <span class="m-city">Gurugram</span>, <span class="m-city">Faridabad</span>, and <span class="m-city">Delhi NCR</span>.
-    </span>
-    <span class="header-marquee-msg">
-      <span class="m-dot"></span>
-      Supporting businesses with <span class="m-svc">Managed IT Services</span>, <span class="m-svc">IT Infrastructure</span>, and <span class="m-svc">Product Solutions</span> across <span class="m-city">Delhi NCR</span>, <span class="m-city">Noida</span>, <span class="m-city">Gurugram</span>, <span class="m-city">Faridabad</span>, <span class="m-city">Bihar</span>, <span class="m-city">Jharkhand</span>, <span class="m-city">Uttar Pradesh</span>, <span class="m-city">West Bengal</span>, <span class="m-city">Haryana</span>, <span class="m-city">Punjab</span>, <span class="m-city">Gujarat</span>, <span class="m-city">Maharashtra</span>, and <span class="m-city">Rajasthan</span>.
-    </span>
-  </div><!-- /.header-marquee-track -->
-  </div><!-- /.marquee-inner -->
-</div><!-- /.header-marquee-strip -->
+
 
 <header class="site-header">
   <div class="header-inner">
@@ -1147,33 +996,7 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
   </div>
 </section>
 
-<!-- ── INDUSTRIES ── -->
-<section class="section" style="background:var(--gray-50)">
-  <div class="container">
-    <div class="text-center mb-12">
-      <div class="badge badge-teal mb-4"><i class="ri-building-2-line"></i> Industries</div>
-      <h2 class="section-title">IT Support for <span class="gradient">Every Industry</span></h2>
-      <p class="section-subtitle">Omnet IT Solutions delivers tailored IT solutions to every major industry sector across Delhi NCR — understanding your compliance requirements, operational demands, and technology environment.</p>
-    </div>
-    <div class="ind-scroll reveal">
-      <div class="ind-tile"><i class="ri-building-2-line"></i>Manufacturing</div>
-      <div class="ind-tile"><i class="ri-hospital-line"></i>Healthcare &amp; Clinics</div>
-      <div class="ind-tile"><i class="ri-bank-line"></i>Finance &amp; Banking</div>
-      <div class="ind-tile"><i class="ri-store-2-line"></i>Retail &amp; E-Commerce</div>
-      <div class="ind-tile"><i class="ri-graduation-cap-line"></i>Education</div>
-      <div class="ind-tile"><i class="ri-government-line"></i>Government &amp; PSUs</div>
-      <div class="ind-tile"><i class="ri-building-4-line"></i>Real Estate</div>
-      <div class="ind-tile"><i class="ri-briefcase-4-line"></i>Legal &amp; CA Firms</div>
-      <div class="ind-tile"><i class="ri-car-line"></i>Logistics &amp; Auto</div>
-      <div class="ind-tile"><i class="ri-restaurant-line"></i>Hospitality &amp; F&amp;B</div>
-      <div class="ind-tile"><i class="ri-capsule-line"></i>Pharma &amp; Biotech</div>
-      <div class="ind-tile"><i class="ri-tv-line"></i>Media &amp; Advertising</div>
-    </div>
-    <div class="text-center mt-8">
-      <a href="industry-expertise.html" class="btn btn-teal">View All Industries <i class="ri-arrow-right-line"></i></a>
-    </div>
-  </div>
-</section>
+
 
 <!-- ── CTA ── -->
 
@@ -1311,7 +1134,7 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
   </div>
   <div class="footer-bottom">
     <div class="footer-bottom-inner">
-      <p>© <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> OMNET IT SYSTEM. All rights reserved.</p>
+      <p>© <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> OMNET IT SOLUTIONS. All rights reserved.</p>
       <div class="footer-legal" style="display:none"><a href="privacy-policy.html">Privacy Policy</a><a href="terms-of-service.html">Terms of Service</a></div>
     </div>
   </div>
@@ -1404,7 +1227,7 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
       <div style="text-align:center;font-size:11px;color:#888;background:rgba(255,255,255,.6);padding:2px 10px;border-radius:8px;align-self:center;">Today</div>
       <div style="align-self:flex-start;max-width:82%;">
         <div style="padding:9px 12px;border-radius:0 10px 10px 10px;background:#fff;font-size:13px;color:#111;line-height:1.5;box-shadow:0 1px 2px rgba(0,0,0,.1);">
-          👋 Hello! Welcome to <strong>OMNET IT System</strong>.<br>How can we help you today?
+          👋 Hello! Welcome to <strong>OMNET IT SOLUTIONS</strong>.<br>How can we help you today?
         </div>
         <div id="waGreetTime" style="font-size:10px;color:#888;margin-top:2px;"></div>
       </div>
