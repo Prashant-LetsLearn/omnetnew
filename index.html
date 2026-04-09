@@ -543,15 +543,6 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
 
 <!-- ── HERO ── -->
 <section class="home-hero">
-
- <!-- TEXT IN BLANK SPACE: absolutely positioned to sit in the 204px top padding area -->
- <div style="position:absolute;top:0;left:0;right:0;height:204px;display:flex;flex-direction:column;justify-content:center;padding:0 calc((100% - 1280px)/2 + 1.5rem);z-index:2;pointer-events:none;">
-  <p style="font-size:clamp(.7rem,1vw,.85rem);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin:0 0 .6rem;font-family:'Inter','Segoe UI',sans-serif;">Future-Ready IT Solutions for a Connected World.</p>
-  <div style="font-size:clamp(1.6rem,4vw,3.4rem);font-weight:800;line-height:1.15;color:#fff;font-family:'Inter','Segoe UI',sans-serif;letter-spacing:-.02em;white-space:nowrap;">
-   Smart <span style="color:#5eead4;">.</span> Secure <span style="color:#5eead4;">.</span> Scalable &nbsp;·&nbsp; Next-Gen IT Solutions by <span style="color:#5eead4;">OmnetIT</span>
-  </div>
- </div>
-
  <div class="home-hero-inner">
  <!-- LEFT: headline + stats -->
  <div>
@@ -888,112 +879,6 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
  </div>
 </section>
 
-<!-- ── EXPLORE OUR SERVICES (Security Grid) ── -->
-<section class="section" style="background:#f0f4ff">
- <div class="container">
-  <div class="text-center mb-12">
-   <div style="display:inline-flex;align-items:center;gap:.6rem;margin-bottom:.5rem">
-    <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:.35"><circle cx="21" cy="14" r="12" stroke="#1e3a8a" stroke-width="2"/><path d="M10 28c0-6 22-6 22 0" stroke="#1e3a8a" stroke-width="2"/><circle cx="21" cy="14" r="5" fill="#1e3a8a" opacity=".3"/></svg>
-    <div>
-     <p style="font-size:.82rem;color:#64748b;margin:0;letter-spacing:.05em">explore our</p>
-     <h2 style="font-size:clamp(2rem,5vw,3.2rem);font-weight:900;color:#0f172a;margin:0;letter-spacing:-.02em;line-height:1">SERVICES</h2>
-    </div>
-   </div>
-  </div>
-
-  <style>
-   .esvc-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:1.2rem; }
-   .esvc-card {
-    background:#fff; border-radius:18px; padding:1.6rem 1.2rem 1.4rem;
-    border:1px solid #e2e8f0; position:relative; overflow:hidden;
-    transition:box-shadow .25s,transform .25s; cursor:default;
-    display:flex; flex-direction:column; gap:.9rem;
-   }
-   .esvc-card::after {
-    content:''; position:absolute; bottom:0; left:10%; right:10%; height:3px;
-    background:linear-gradient(90deg,#3b82f6,#6366f1); border-radius:4px 4px 0 0;
-   }
-   .esvc-card:hover { box-shadow:0 12px 32px rgba(59,130,246,.15); transform:translateY(-3px); }
-   .esvc-card .eicon {
-    width:40px; height:40px; display:flex; align-items:center; justify-content:center;
-    font-size:1.4rem; color:#3b82f6;
-   }
-   .esvc-card h4 { font-size:.9rem; font-weight:700; color:#1e293b; line-height:1.35; margin:0; flex:1; }
-   .esvc-dot-bg {
-    position:absolute; top:8px; right:8px; width:80px; height:60px;
-    background-image:radial-gradient(circle,#cbd5e1 1px,transparent 1px);
-    background-size:8px 8px; opacity:.5; pointer-events:none;
-   }
-   @media(max-width:1024px){.esvc-grid{grid-template-columns:repeat(3,1fr)}}
-   @media(max-width:640px){.esvc-grid{grid-template-columns:repeat(2,1fr)}}
-  </style>
-
-  <div class="esvc-grid reveal">
-
-   <div class="esvc-card">
-    <div class="esvc-dot-bg"></div>
-    <div class="eicon"><i class="ri-focus-3-line"></i></div>
-    <h4>Extended &amp; Endpoint Detection</h4>
-   </div>
-
-   <div class="esvc-card">
-    <div class="esvc-dot-bg"></div>
-    <div class="eicon"><i class="ri-lock-password-line"></i></div>
-    <h4>Security Operations Management</h4>
-   </div>
-
-   <div class="esvc-card">
-    <div class="esvc-dot-bg"></div>
-    <div class="eicon"><i class="ri-file-shield-2-line"></i></div>
-    <h4>DLP – Data Loss Prevention</h4>
-   </div>
-
-   <div class="esvc-card">
-    <div class="esvc-dot-bg"></div>
-    <div class="eicon"><i class="ri-key-2-line"></i></div>
-    <h4>Network and Web Application Firewall</h4>
-   </div>
-
-   <div class="esvc-card">
-    <div class="esvc-dot-bg"></div>
-    <div class="eicon"><i class="ri-user-shield-line"></i></div>
-    <h4>Access Management</h4>
-   </div>
-
-   <div class="esvc-card">
-    <div class="esvc-dot-bg"></div>
-    <div class="eicon"><i class="ri-lock-2-line"></i></div>
-    <h4>Network Access Control</h4>
-   </div>
-
-   <div class="esvc-card">
-    <div class="esvc-dot-bg"></div>
-    <div class="eicon"><i class="ri-mail-forbid-line"></i></div>
-    <h4>Deep Web / Dark Web Monitoring</h4>
-   </div>
-
-   <div class="esvc-card">
-    <div class="esvc-dot-bg"></div>
-    <div class="eicon"><i class="ri-time-line"></i></div>
-    <h4>Vulnerability Testing</h4>
-   </div>
-
-   <div class="esvc-card">
-    <div class="esvc-dot-bg"></div>
-    <div class="eicon"><i class="ri-cloud-check-line"></i></div>
-    <h4>Cloud Access Security Broker</h4>
-   </div>
-
-   <div class="esvc-card">
-    <div class="esvc-dot-bg"></div>
-    <div class="eicon"><i class="ri-smartphone-line"></i></div>
-    <h4>Endpoint Security</h4>
-   </div>
-
-  </div>
- </div>
-</section>
-
 <!-- ── CORE SERVICES ── -->
 <section class="section" style="background:var(--gray-50)">
  <div class="container">
@@ -1187,7 +1072,7 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
 
 <section class="cta-banner">
  <div class="container">
- <h2>Contact for Reliable IT Support in Delhi NCR?</h2>
+ <h2>Ready for Reliable IT Support in Delhi NCR?</h2>
  <p>Contact Omnet IT Solutions today — free IT assessment and a tailored proposal within 24 hours. No obligation, no hidden costs.</p>
  <div class="cta-btns">
  
