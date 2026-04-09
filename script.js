@@ -207,7 +207,7 @@ document.head.appendChild(_s);
     const fab = document.createElement('div');
     fab.className = 'float-actions';
     fab.innerHTML = `
-      <a href="https://wa.me/919717270865?text=Hi%20Omnet%20IT%20Solutions%2C%20I%20need%20IT%20support." target="_blank" 
+      <a href="https://wa.me/919717270865?text=Hi%2C%20I%20am%20interested%20in%20your%20services" target="_blank" 
          class="float-wa" title="Chat on WhatsApp">
         <i class="ri-whatsapp-line"></i>
       </a>`;
