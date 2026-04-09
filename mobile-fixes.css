@@ -593,12 +593,12 @@ p,h1,h2,h3,h4,h5,h6,li,a,span,td,th,label { word-break: break-word; overflow-wra
 
 /* ═══ 27. FLOATING ACTIONS ═══ */
 @media (max-width: 768px) {
-  .float-actions { right: 1rem !important; bottom: 5.5rem !important; gap: .5rem !important; }
+  .float-actions { left: 1rem !important; bottom: 5.5rem !important; gap: .5rem !important; }
   .float-wa,.float-cart { width: 46px !important; height: 46px !important; font-size: 1.4rem !important; }
   .back-to-top { right: 1rem !important; bottom: 1.25rem !important; width: 42px !important; height: 42px !important; font-size: 1.1rem !important; }
 }
 @media (max-width: 375px) {
-  .float-actions { right: .75rem !important; bottom: 5rem !important; }
+  .float-actions { left: .75rem !important; bottom: 5rem !important; }
   .float-wa,.float-cart { width: 42px !important; height: 42px !important; font-size: 1.25rem !important; }
   .back-to-top { right: .75rem !important; width: 40px !important; height: 40px !important; }
 }
@@ -795,7 +795,7 @@ p,h1,h2,h3,h4,h5,h6,li,a,span,td,th,label { word-break: break-word; overflow-wra
   .dual-action-strip { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
   .site-header { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
   .site-footer { padding-bottom: env(safe-area-inset-bottom); }
-  .float-actions { right: calc(1rem + env(safe-area-inset-right)) !important; bottom: calc(5rem + env(safe-area-inset-bottom)) !important; }
+  .float-actions { left: calc(1rem + env(safe-area-inset-left)) !important; bottom: calc(5rem + env(safe-area-inset-bottom)) !important; }
   .back-to-top { right: calc(1rem + env(safe-area-inset-right)) !important; bottom: calc(1.25rem + env(safe-area-inset-bottom)) !important; }
 }
 

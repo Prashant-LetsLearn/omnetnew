@@ -113,7 +113,7 @@ body {
   align-items: center;
   height: 44px;
   gap: 0.25rem;
-  overflow-x: auto;
+  overflow: visible; /* CRITICAL: was overflow-x:auto — was clipping dropdown menus */
   scrollbar-width: none;
 }
 .header-nav-bar-inner::-webkit-scrollbar { display: none; }
