@@ -11,7 +11,7 @@
 img,video,iframe,svg { max-width: 100%; height: auto; }
 body { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
 p,h1,h2,h3,h4,h5,h6,li,a,span,td,th,label { word-break: break-word; overflow-wrap: break-word; }
-.hero,.home-hero,.page-hero,.pg-hero,.loc-hero,.cta-banner,.cta-strip,section { overflow-x: hidden; }
+.hero,.home-hero,.page-hero,.pg-hero,.loc-hero,.cta-banner,.cta-strip { overflow-x: hidden; } /* section removed — was clipping desktop dropdowns */
 
 /* ═══ 1. INLINE GRID OVERRIDES ═══ */
 @media (max-width: 768px) {
