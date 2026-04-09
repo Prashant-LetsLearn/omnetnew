@@ -90,26 +90,7 @@
  /* ── HERO BANNER (proit style - dark professional) ── */
  .home-hero {
  background: linear-gradient(135deg, #0a2240 0%, #0d4f5c 40%, #0d7377 100%);
- padding: 100px 0 80px; position: relative; overflow: hidden; color: #fff;
- }
- .hero-top-banner {
- text-align: left; padding: 0 0 2.5rem; position: relative; z-index: 1;
- max-width: 1280px; margin: 0 auto; padding-left: 1.5rem; padding-right: 1.5rem; padding-bottom: 2.5rem;
- }
- .hero-top-tagline {
- font-size: clamp(.75rem, 1.2vw, .95rem); font-weight: 600; letter-spacing: .18em;
- text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 1rem; display: block;
- }
- .hero-top-title {
- font-size: clamp(2.6rem, 6vw, 5.2rem); font-weight: 800; line-height: 1.1;
- color: #fff; letter-spacing: -.01em; margin: 0;
- font-family: 'Inter', 'Segoe UI', sans-serif;
- }
- .hero-top-title .dot-sep { color: #5eead4; margin: 0 .3em; }
- .hero-top-title .brand-highlight { color: #5eead4; }
- .hero-top-divider {
- border: none; border-top: 1px solid rgba(255,255,255,.12);
- margin: 2rem 0 0; max-width: 1280px; margin-left: auto; margin-right: auto;
+ padding: 204px 0 80px; position: relative; overflow: hidden; color: #fff;
  }
  .home-hero::before {
  content: ''; position: absolute; inset: 0;
@@ -563,16 +544,13 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
 <!-- ── HERO ── -->
 <section class="home-hero">
 
- <!-- TOP BANNER: Future-Ready tagline -->
- <div class="hero-top-banner">
-  <span class="hero-top-tagline">Future-Ready IT Solutions for a Connected World.</span>
-  <h2 class="hero-top-title">
-   Smart <span class="dot-sep">.</span> Secure <span class="dot-sep">.</span> Scalable<br>
-   Next-Gen IT Solutions<br>
-   by <span class="brand-highlight">OmnetIT</span>
-  </h2>
+ <!-- TEXT IN BLANK SPACE: absolutely positioned to sit in the 204px top padding area -->
+ <div style="position:absolute;top:0;left:0;right:0;height:204px;display:flex;flex-direction:column;justify-content:center;padding:0 calc((100% - 1280px)/2 + 1.5rem);z-index:2;pointer-events:none;">
+  <p style="font-size:clamp(.7rem,1vw,.85rem);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin:0 0 .6rem;font-family:'Inter','Segoe UI',sans-serif;">Future-Ready IT Solutions for a Connected World.</p>
+  <div style="font-size:clamp(1.6rem,4vw,3.4rem);font-weight:800;line-height:1.15;color:#fff;font-family:'Inter','Segoe UI',sans-serif;letter-spacing:-.02em;white-space:nowrap;">
+   Smart <span style="color:#5eead4;">.</span> Secure <span style="color:#5eead4;">.</span> Scalable &nbsp;·&nbsp; Next-Gen IT Solutions by <span style="color:#5eead4;">OmnetIT</span>
+  </div>
  </div>
- <hr style="border:none;border-top:1px solid rgba(255,255,255,.12);margin:0 1.5rem 3rem;position:relative;z-index:1;">
 
  <div class="home-hero-inner">
  <!-- LEFT: headline + stats -->
@@ -1209,7 +1187,7 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
 
 <section class="cta-banner">
  <div class="container">
- <h2>Ready for Reliable IT Support in Delhi NCR?</h2>
+ <h2>Contact for Reliable IT Support in Delhi NCR?</h2>
  <p>Contact Omnet IT Solutions today — free IT assessment and a tailored proposal within 24 hours. No obligation, no hidden costs.</p>
  <div class="cta-btns">
  
