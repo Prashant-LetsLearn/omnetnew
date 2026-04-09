@@ -53,6 +53,7 @@
  @media (max-width: 768px) { .site-header { top: 32px !important; } }
 </style>
   <link rel="stylesheet" href="omnet-improvements.css" />
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 <!-- ═══ DUAL ACTION STRIP ═══ -->
@@ -665,15 +666,22 @@ document.addEventListener('DOMContentLoaded', function(){
           priority:fd.get('priority')||'N/A',issue:fd.get('issue')||'N/A'})});
       var json=await res.json();
       if(json.success){
-        /* ── Send auto-reply to customer ── */
-        if(customerEmail){
-          await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json'},
-            body:JSON.stringify({access_key:'2af0c0f5-01fa-4349-b83c-fff623cb969b',
-              subject:'Support Ticket Received: '+ticketNum+' | Omnet IT Solutions',
-              from_name:'Omnet IT Solutions Support',
-              to:customerEmail,
-              email:customerEmail,
-              message:'Dear '+(fd.get('name')||'Customer')+',\n\nThank you for reaching out to Omnet IT Solutions.\n\nYour support ticket has been successfully created. Our team will review your issue and get in touch with you shortly.\n\n─────────────────────────────\nTicket Number : '+ticketNum+'\nCategory      : '+(fd.get('category')||'N/A')+'\nPriority      : '+(fd.get('priority')||'N/A')+'\nIssue Summary : '+(fd.get('issue')||'N/A')+'\n─────────────────────────────\n\nOur team will connect with you soon.\n\nFor urgent matters, please call us at +91 97172 70865.\n\nBest regards,\nSupport Team\nOmnet IT Solutions\nhello@omnetit.in | +91-120-522-3376\nhttps://omnetit.in'})});
+        /* ── Send auto-reply to customer via EmailJS ── */
+        /* REPLACE the 3 placeholder values below with your real EmailJS credentials */
+        var EMAILJS_SERVICE_ID  = 'service_bgf345i';
+        var EMAILJS_TEMPLATE_ID = 'template_5bj7joh';
+        var EMAILJS_PUBLIC_KEY  = 'pWP-yxZPWj9aR6ld0';
+        if(customerEmail && EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID'){
+          await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+            to_email      : customerEmail,
+            customer_name : fd.get('name')||'Customer',
+            ticket_number : ticketNum,
+            category      : fd.get('category')||'N/A',
+            priority      : fd.get('priority')||'N/A',
+            issue         : fd.get('issue')||'N/A',
+            phone         : fd.get('phone')||'N/A',
+            company       : fd.get('company')||'N/A'
+          }, EMAILJS_PUBLIC_KEY);
         }
         /* ── Show success with ticket number ── */
         if(stSuccess){
