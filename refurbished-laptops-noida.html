@@ -619,10 +619,10 @@
       <input type="hidden" name="access_key" value="2af0c0f5-01fa-4349-b83c-fff623cb969b">
       <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Email address</label><input type="email" name="email" placeholder="Enter your email address" style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;"></div>
       <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Contact number</label><input type="tel" name="phone" placeholder="Enter your contact number" style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;"></div>
-      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Department <span style="color:#e53935;">*</span></label>
-        <select id="lamDept" name="department" required style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;appearance:none;background:#fff;">
+      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Inquiry For <span style="color:#e53935;">*</span></label>
+        <select id="lamDept" name="inquiry_for" required style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;appearance:none;background:#fff;">
           <option value="" disabled selected>Choose a department</option>
-          <option value="IT Support">IT Support</option>
+          <option value="Support">Support</option>
           <option value="Sales">Sales</option>
         </select></div>
       <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Message</label><textarea name="message" placeholder="Type your message..." rows="3" style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;resize:vertical;"></textarea></div>
@@ -726,9 +726,26 @@ document.addEventListener('DOMContentLoaded', function(){
         body:JSON.stringify({access_key:'2af0c0f5-01fa-4349-b83c-fff623cb969b',
           subject:'OMNET IT - Leave a Message',from_name:'OMNET IT Website',page:page,
           email:fd.get('email')||'N/A',phone:fd.get('phone')||'N/A',
-          department:fd.get('department')||'N/A',message:fd.get('message')||'N/A'})});
+          inquiry_for:fd.get('inquiry_for')||'N/A',message:fd.get('message')||'N/A'})});
       var json=await res.json();
-      if(json.success){ if(lamSuccess) lamSuccess.style.display='block'; lamForm.reset(); }
+      if(json.success){
+        /* ── Send auto-reply to sender via EmailJS ── */
+        var LAM_EMAILJS_SERVICE_ID  = 'service_bgf345i';
+        var LAM_EMAILJS_TEMPLATE_ID = 'template_5gbzl7h';
+        var LAM_EMAILJS_PUBLIC_KEY  = 'pWP-yxZPWj9aR6ld0';
+        var lamEmail = fd.get('email')||'';
+        if(lamEmail && LAM_EMAILJS_TEMPLATE_ID !== 'YOUR_LAM_TEMPLATE_ID'){
+          await emailjs.send(LAM_EMAILJS_SERVICE_ID, LAM_EMAILJS_TEMPLATE_ID, {
+            to_email      : lamEmail,
+            customer_name : lamEmail,
+            inquiry_for   : fd.get('inquiry_for')||'N/A',
+            phone         : fd.get('phone')||'N/A',
+            message       : fd.get('message')||'N/A'
+          }, LAM_EMAILJS_PUBLIC_KEY);
+        }
+        if(lamSuccess) lamSuccess.style.display='block';
+        lamForm.reset();
+      }
       else{ throw new Error(); }
     }catch(err){ if(lamError) lamError.style.display='block'; }
     if(lamSubmit){ lamSubmit.disabled=false; lamSubmit.textContent='Submit Message'; }
