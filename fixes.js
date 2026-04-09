@@ -132,7 +132,7 @@
       if (!document.querySelector('.float-actions')) {
         var fab = document.createElement('div');
         fab.className = 'float-actions';
-        fab.style.cssText = 'position:fixed;right:1.25rem;bottom:5rem;z-index:99998;display:flex;flex-direction:column;gap:.6rem;align-items:flex-end;';
+        fab.style.cssText = 'position:fixed;left:1.25rem;bottom:5rem;z-index:99998;display:flex;flex-direction:column;gap:.6rem;align-items:flex-start;';
         fab.innerHTML = '<a href="https://wa.me/919717270865?text=Hi%2C%20I%20am%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer" class="float-wa" title="Chat on WhatsApp" style="width:52px;height:52px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 4px 16px rgba(37,211,102,.5);text-decoration:none;"><i class="ri-whatsapp-line"></i></a>';
         document.body.appendChild(fab);
       }
