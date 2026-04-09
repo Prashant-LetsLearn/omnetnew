@@ -5,154 +5,154 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OmNet IT — Mobile UI Redesign</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=DM+Serif+Display&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9.40,300;9.40,400;9.40,500;9.40,600;9.40,700;9.40,800&family=DM+Serif+Display&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 /* ═══════════════════════════════════════════════
-   DESIGN SYSTEM — TOKENS
-   ═══════════════════════════════════════════════ */
+ DESIGN SYSTEM — TOKENS
+ ═══════════════════════════════════════════════ */
 :root {
-  /* Primary Palette */
-  --teal-50:  #f0fdfa;
-  --teal-100: #ccfbf1;
-  --teal-400: #2dd4bf;
-  --teal-500: #14b8a6;
-  --teal-600: #0d9488;
-  --teal-700: #0f766e;
-  --cyan-400: #22d3ee;
-  --cyan-500: #06b6d4;
-  --cyan-600: #0891b2;
+ /* Primary Palette */
+ --teal-50: #f0fdfa;
+ --teal-100: #ccfbf1;
+ --teal-400: #2dd4bf;
+ --teal-500: #14b8a6;
+ --teal-600: #0d9488;
+ --teal-700: #0f766e;
+ --cyan-400: #22d3ee;
+ --cyan-500: #06b6d4;
+ --cyan-600: #0891b2;
 
-  /* Accent */
-  --amber-400: #fbbf24;
-  --amber-500: #f59e0b;
-  --green-400: #4ade80;
-  --green-500: #22c55e;
+ /* Accent */
+ --amber-400: #fbbf24;
+ --amber-500: #f59e0b;
+ --green-400: #4ade80;
+ --green-500: #22c55e;
 
-  /* Neutrals */
-  --gray-50:  #f9fafb;
-  --gray-100: #f3f4f6;
-  --gray-200: #e5e7eb;
-  --gray-300: #d1d5db;
-  --gray-400: #9ca3af;
-  --gray-500: #6b7280;
-  --gray-600: #4b5563;
-  --gray-700: #374151;
-  --gray-800: #1f2937;
-  --gray-900: #111827;
-  --white: #ffffff;
+ /* Neutrals */
+ --gray-50: #f9fafb;
+ --gray-100: #f3f4f6;
+ --gray-200: #e5e7eb;
+ --gray-300: #d1d5db;
+ --gray-400: #9ca3af;
+ --gray-500: #6b7280;
+ --gray-600: #4b5563;
+ --gray-700: #374151;
+ --gray-800: #1f2937;
+ --gray-900: #111827;
+ --white: #ffffff;
 
-  /* Semantic */
-  --primary: var(--teal-500);
-  --primary-dark: var(--teal-700);
-  --primary-gradient: linear-gradient(135deg, var(--teal-500), var(--cyan-600));
-  --primary-gradient-glow: linear-gradient(135deg, var(--teal-400), var(--cyan-500));
-  --surface: var(--white);
-  --surface-alt: var(--gray-50);
-  --text-primary: var(--gray-900);
-  --text-secondary: var(--gray-500);
-  --text-muted: var(--gray-400);
-  --border: var(--gray-200);
+ /* Semantic */
+ --primary: var(--teal-500);
+ --primary-dark: var(--teal-700);
+ --primary-gradient: linear-gradient(135deg, var(--teal-500), var(--cyan-600));
+ --primary-gradient-glow: linear-gradient(135deg, var(--teal-400), var(--cyan-500));
+ --surface: var(--white);
+ --surface-alt: var(--gray-50);
+ --text-primary: var(--gray-900);
+ --text-secondary: var(--gray-500);
+ --text-muted: var(--gray-400);
+ --border: var(--gray-200);
 
-  /* Typography */
-  --font-display: 'DM Serif Display', serif;
-  --font-sans: 'DM Sans', sans-serif;
-  --font-mono: 'Space Mono', monospace;
+ /* Typography */
+ --font-display: 'DM Serif Display', serif;
+ --font-sans: 'DM Sans', sans-serif;
+ --font-mono: 'Space Mono', monospace;
 
-  /* Spacing */
-  --sp-2: 8px;
-  --sp-3: 12px;
-  --sp-4: 16px;
-  --sp-5: 20px;
-  --sp-6: 24px;
-  --sp-8: 32px;
-  --sp-10: 40px;
-  --sp-12: 48px;
-  --sp-16: 64px;
+ /* Spacing */
+ --sp-2: 8px;
+ --sp-3: 12px;
+ --sp-4: 16px;
+ --sp-5: 20px;
+ --sp-6: 24px;
+ --sp-8: 32px;
+ --sp-10: 40px;
+ --sp-12: 48px;
+ --sp-16: 64px;
 
-  /* Radius */
-  --r-sm: 8px;
-  --r-md: 12px;
-  --r-lg: 16px;
-  --r-xl: 20px;
-  --r-full: 9999px;
+ /* Radius */
+ --r-sm: 8px;
+ --r-md: 12px;
+ --r-lg: 16px;
+ --r-xl: 20px;
+ --r-full: 9999px;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
-  --shadow-md: 0 4px 16px rgba(0,0,0,.1);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,.12);
-  --shadow-teal: 0 4px 20px rgba(20,184,166,.35);
-  --shadow-teal-lg: 0 8px 32px rgba(20,184,166,.45);
+ /* Shadows */
+ --shadow-sm: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+ --shadow-md: 0 4px 16px rgba(0,0,0,.1);
+ --shadow-lg: 0 8px 32px rgba(0,0,0,.12);
+ --shadow-teal: 0 4px 20px rgba(20,184,166,.35);
+ --shadow-teal-lg: 0 8px 32px rgba(20,184,166,.45);
 }
 
 /* ═══════════════════════════════════════════════
-   RESET & BASE
-   ═══════════════════════════════════════════════ */
+ RESET & BASE
+ ═══════════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
-  font-family: var(--font-sans);
-  background: #e8e8e8;
-  color: var(--text-primary);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 16px 100px;
+ font-family: var(--font-sans);
+ background: #e8e8e8;
+ color: var(--text-primary);
+ min-height: 100vh;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ padding: 40px 16px 100px;
 }
 
 /* ═══════════════════════════════════════════════
-   DESIGN SYSTEM PANEL (top of page)
-   ═══════════════════════════════════════════════ */
+ DESIGN SYSTEM PANEL (top of page)
+ ═══════════════════════════════════════════════ */
 .ds-panel {
-  width: 100%;
-  max-width: 960px;
-  background: var(--white);
-  border-radius: 24px;
-  padding: 32px;
-  margin-bottom: 40px;
-  box-shadow: var(--shadow-lg);
+ width: 100%;
+ max-width: 960px;
+ background: var(--white);
+ border-radius: 24px;
+ padding: 32px;
+ margin-bottom: 40px;
+ box-shadow: var(--shadow-lg);
 }
 .ds-panel h1 {
-  font-family: var(--font-display);
-  font-size: 28px;
-  color: var(--gray-900);
-  margin-bottom: 6px;
+ font-family: var(--font-display);
+ font-size: 28px;
+ color: var(--gray-900);
+ margin-bottom: 6px;
 }
 .ds-panel .subtitle {
-  color: var(--gray-500);
-  font-size: 14px;
-  margin-bottom: 32px;
+ color: var(--gray-500);
+ font-size: 14px;
+ margin-bottom: 32px;
 }
 .ds-section-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  color: var(--teal-600);
-  margin-bottom: 12px;
+ font-size: 11px;
+ font-weight: 700;
+ letter-spacing: .15em;
+ text-transform: uppercase;
+ color: var(--teal-600);
+ margin-bottom: 12px;
 }
 .ds-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-bottom: 28px; }
 .ds-color-chip {
-  border-radius: var(--r-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
+ border-radius: var(--r-md);
+ overflow: hidden;
+ box-shadow: var(--shadow-sm);
 }
 .ds-color-swatch { height: 56px; }
 .ds-color-info { padding: 8px 10px; background: var(--gray-50); }
 .ds-color-info .name { font-size: 12px; font-weight: 600; color: var(--gray-700); }
-.ds-color-info .hex  { font-size: 11px; font-family: var(--font-mono); color: var(--gray-500); }
+.ds-color-info .hex { font-size: 11px; font-family: var(--font-mono); color: var(--gray-500); }
 
 .ds-type-row { margin-bottom: 16px; }
 .ds-type-row .label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 4px; }
 
 .ds-btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; align-items: center; }
 .ds-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 12px 22px; border-radius: var(--r-full);
-  font-family: var(--font-sans); font-weight: 600; font-size: 14px;
-  border: none; cursor: pointer; text-decoration: none;
-  transition: all .2s;
+ display: inline-flex; align-items: center; gap: 8px;
+ padding: 12px 22px; border-radius: var(--r-full);
+ font-family: var(--font-sans); font-weight: 600; font-size: 14px;
+ border: none; cursor: pointer; text-decoration: none;
+ transition: all .2s;
 }
 .ds-btn-primary { background: var(--primary-gradient); color: var(--white); box-shadow: var(--shadow-teal); }
 .ds-btn-primary:hover { box-shadow: var(--shadow-teal-lg); transform: translateY(-1px); }
@@ -163,112 +163,112 @@ body {
 .ds-btn-danger { background: linear-gradient(135deg,#ef4444,#dc2626); color: var(--white); box-shadow: 0 4px 16px rgba(239,68,68,.35); }
 
 /* ═══════════════════════════════════════════════
-   PHONE FRAME
-   ═══════════════════════════════════════════════ */
+ PHONE FRAME
+ ═══════════════════════════════════════════════ */
 .phone-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  justify-content: center;
-  width: 100%;
-  max-width: 1200px;
+ display: flex;
+ flex-wrap: wrap;
+ gap: 40px;
+ justify-content: center;
+ width: 100%;
+ max-width: 1200px;
 }
 .phone-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 16px;
 }
 .phone-label {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--gray-500);
-  background: var(--white);
-  padding: 6px 16px;
-  border-radius: var(--r-full);
-  box-shadow: var(--shadow-sm);
+ font-size: 13px;
+ font-weight: 600;
+ letter-spacing: .08em;
+ text-transform: uppercase;
+ color: var(--gray-500);
+ background: var(--white);
+ padding: 6px 16px;
+ border-radius: var(--r-full);
+ box-shadow: var(--shadow-sm);
 }
 .phone-frame {
-  width: 375px;
-  background: var(--gray-900);
-  border-radius: 44px;
-  padding: 14px;
-  box-shadow:
-    0 0 0 2px var(--gray-700),
-    0 30px 80px rgba(0,0,0,.35),
-    0 8px 24px rgba(0,0,0,.2);
-  position: relative;
+ width: 375px;
+ background: var(--gray-900);
+ border-radius: 44px;
+ padding: 14px;
+ box-shadow:
+ 0 0 0 2px var(--gray-700),
+ 0 30px 80px rgba(0,0,0,.35),
+ 0 8px 24px rgba(0,0,0,.2);
+ position: relative;
 }
 .phone-frame::before {
-  content: '';
-  position: absolute;
-  top: 14px; left: 50%; transform: translateX(-50%);
-  width: 120px; height: 32px;
-  background: var(--gray-900);
-  border-radius: 0 0 20px 20px;
-  z-index: 10;
+ content: '';
+ position: absolute;
+ top: 14px; left: 50%; transform: translateX(-50%);
+ width: 120px; height: 32px;
+ background: var(--gray-900);
+ border-radius: 0 0 20px 20px;
+ z-index: 10;
 }
 .phone-screen {
-  border-radius: 32px;
-  overflow: hidden;
-  background: var(--white);
-  height: 780px;
-  overflow-y: auto;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  position: relative;
+ border-radius: 32px;
+ overflow: hidden;
+ background: var(--white);
+ height: 780px;
+ overflow-y: auto;
+ scroll-behavior: smooth;
+ -webkit-overflow-scrolling: touch;
+ scrollbar-width: none;
+ position: relative;
 }
 .phone-screen::-webkit-scrollbar { display: none; }
 
 /* ═══════════════════════════════════════════════
-   MOBILE STATUS BAR
-   ═══════════════════════════════════════════════ */
+ MOBILE STATUS BAR
+ ═══════════════════════════════════════════════ */
 .status-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 20px 8px;
-  background: var(--white);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 14px 20px 8px;
+ background: var(--white);
+ position: sticky;
+ top: 0;
+ z-index: 100;
 }
 .status-bar .time { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--gray-900); }
 .status-icons { display: flex; align-items: center; gap: 6px; }
 .status-icons i { font-size: 11px; color: var(--gray-900); }
 
 /* ═══════════════════════════════════════════════
-   MOBILE HEADER / NAV
-   ═══════════════════════════════════════════════ */
+ MOBILE HEADER / NAV
+ ═══════════════════════════════════════════════ */
 .m-header {
-  background: var(--white);
-  padding: 0 16px 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--gray-100);
-  position: sticky;
-  top: 38px;
-  z-index: 99;
-  backdrop-filter: blur(12px);
+ background: var(--white);
+ padding: 0 16px 10px;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ border-bottom: 1px solid var(--gray-100);
+ position: sticky;
+ top: 38px;
+ z-index: 99;
+ backdrop-filter: blur(12px);
 }
 .m-logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+ display: flex;
+ align-items: center;
+ gap: 8px;
 }
 .m-logo-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: var(--primary-gradient);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-teal);
+ width: 36px;
+ height: 36px;
+ border-radius: 10px;
+ background: var(--primary-gradient);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ box-shadow: var(--shadow-teal);
 }
 .m-logo-icon span { color: var(--white); font-weight: 900; font-size: 13px; }
 .m-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
@@ -278,477 +278,477 @@ body {
 .m-logo-sub { font-size: 8px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--teal-600); }
 .m-header-cta { display: flex; align-items: center; gap: 8px; }
 .m-call-btn {
-  display: flex; align-items: center; gap: 5px;
-  background: var(--primary-gradient);
-  color: var(--white); border-radius: var(--r-full);
-  padding: 8px 14px; font-size: 12px; font-weight: 700;
-  text-decoration: none; box-shadow: var(--shadow-teal);
-  min-height: 36px;
+ display: flex; align-items: center; gap: 5px;
+ background: var(--primary-gradient);
+ color: var(--white); border-radius: var(--r-full);
+ padding: 8px 14px; font-size: 12px; font-weight: 700;
+ text-decoration: none; box-shadow: var(--shadow-teal);
+ min-height: 36px;
 }
 .m-call-btn i { font-size: 10px; }
 .m-menu-btn {
-  width: 36px; height: 36px; border-radius: var(--r-sm);
-  background: var(--gray-100); border: none; cursor: pointer;
-  display: flex; flex-direction: column; align-items: center;
-  justify-content: center; gap: 4px;
+ width: 36px; height: 36px; border-radius: var(--r-sm);
+ background: var(--gray-100); border: none; cursor: pointer;
+ display: flex; flex-direction: column; align-items: center;
+ justify-content: center; gap: 4px;
 }
 .m-menu-btn span {
-  display: block; width: 18px; height: 2px;
-  background: var(--gray-700); border-radius: 2px;
-  transition: all .2s;
+ display: block; width: 18px; height: 2px;
+ background: var(--gray-700); border-radius: 2px;
+ transition: all .2s;
 }
 .m-menu-btn span:last-child { width: 12px; }
 
 /* ═══════════════════════════════════════════════
-   ANNOUNCEMENT BAR
-   ═══════════════════════════════════════════════ */
+ ANNOUNCEMENT BAR
+ ═══════════════════════════════════════════════ */
 .m-announce {
-  background: linear-gradient(90deg, var(--teal-700), var(--cyan-700));
-  color: var(--white);
-  text-align: center;
-  padding: 8px 16px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .02em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+ background: linear-gradient(90deg, var(--teal-700), var(--cyan-700));
+ color: var(--white);
+ text-align: center;
+ padding: 8px 16px;
+ font-size: 11px;
+ font-weight: 600;
+ letter-spacing: .02em;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 8px;
 }
 .m-announce .badge {
-  background: var(--amber-400);
-  color: var(--gray-900);
-  border-radius: var(--r-full);
-  padding: 2px 8px;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: .06em;
-  text-transform: uppercase;
+ background: var(--amber-400);
+ color: var(--gray-900);
+ border-radius: var(--r-full);
+ padding: 2px 8px;
+ font-size: 9px;
+ font-weight: 800;
+ letter-spacing: .06em;
+ text-transform: uppercase;
 }
 
 /* ═══════════════════════════════════════════════
-   HERO SECTION
-   ═══════════════════════════════════════════════ */
+ HERO SECTION
+ ═══════════════════════════════════════════════ */
 .m-hero {
-  padding: 28px 20px 0;
-  background: linear-gradient(160deg, var(--white) 0%, var(--teal-50) 100%);
-  position: relative;
-  overflow: hidden;
+ padding: 28px 20px 0;
+ background: linear-gradient(160deg, var(--white) 0%, var(--teal-50) 100%);
+ position: relative;
+ overflow: hidden;
 }
 .m-hero::before {
-  content: '';
-  position: absolute;
-  top: -80px; right: -60px;
-  width: 260px; height: 260px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(20,184,166,.12) 0%, transparent 70%);
+ content: '';
+ position: absolute;
+ top: -80px; right: -60px;
+ width: 260px; height: 260px;
+ border-radius: 50%;
+ background: radial-gradient(circle, rgba(20,184,166,.12) 0%, transparent 70%);
 }
 .m-hero::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: -40px;
-  width: 180px; height: 180px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(6,182,212,.1) 0%, transparent 70%);
+ content: '';
+ position: absolute;
+ bottom: 0; left: -40px;
+ width: 180px; height: 180px;
+ border-radius: 50%;
+ background: radial-gradient(circle, rgba(6,182,212,.1) 0%, transparent 70%);
 }
 .m-hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--teal-100);
-  color: var(--teal-700);
-  border-radius: var(--r-full);
-  padding: 5px 12px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .04em;
-  margin-bottom: 14px;
+ display: inline-flex;
+ align-items: center;
+ gap: 6px;
+ background: var(--teal-100);
+ color: var(--teal-700);
+ border-radius: var(--r-full);
+ padding: 5px 12px;
+ font-size: 11px;
+ font-weight: 700;
+ letter-spacing: .04em;
+ margin-bottom: 14px;
 }
 .m-hero-badge .dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--green-500);
-  animation: pulse-dot 1.5s ease infinite;
+ width: 6px; height: 6px;
+ border-radius: 50%;
+ background: var(--green-500);
+ animation: pulse-dot 1.5s ease infinite;
 }
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: .6; transform: scale(1.3); }
+ 0%, 100% { opacity: 1; transform: scale(1); }
+ 50% { opacity: .6; transform: scale(1.3); }
 }
 .m-hero h1 {
-  font-family: var(--font-display);
-  font-size: 28px;
-  line-height: 1.2;
-  color: var(--gray-900);
-  margin-bottom: 12px;
+ font-family: var(--font-display);
+ font-size: 28px;
+ line-height: 1.2;
+ color: var(--gray-900);
+ margin-bottom: 12px;
 }
 .m-hero h1 .highlight {
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+ background: var(--primary-gradient);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+ background-clip: text;
 }
 .m-hero p {
-  font-size: 14px;
-  line-height: 1.65;
-  color: var(--gray-600);
-  margin-bottom: 20px;
+ font-size: 14px;
+ line-height: 1.65;
+ color: var(--gray-600);
+ margin-bottom: 20px;
 }
 .m-hero-ctas {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 24px;
+ display: flex;
+ gap: 10px;
+ margin-bottom: 24px;
 }
 .m-btn-primary {
-  flex: 1;
-  display: flex; align-items: center; justify-content: center; gap: 6px;
-  background: var(--primary-gradient);
-  color: var(--white);
-  border-radius: var(--r-full);
-  padding: 13px 18px;
-  font-size: 14px; font-weight: 700;
-  text-decoration: none;
-  box-shadow: var(--shadow-teal);
-  min-height: 48px;
-  transition: all .2s;
+ flex: 1;
+ display: flex; align-items: center; justify-content: center; gap: 6px;
+ background: var(--primary-gradient);
+ color: var(--white);
+ border-radius: var(--r-full);
+ padding: 13px 18px;
+ font-size: 14px; font-weight: 700;
+ text-decoration: none;
+ box-shadow: var(--shadow-teal);
+ min-height: 48px;
+ transition: all .2s;
 }
 .m-btn-secondary {
-  display: flex; align-items: center; justify-content: center; gap: 6px;
-  background: var(--white);
-  color: var(--teal-600);
-  border-radius: var(--r-full);
-  padding: 13px 18px;
-  font-size: 14px; font-weight: 700;
-  text-decoration: none;
-  border: 2px solid var(--teal-200);
-  min-height: 48px;
-  white-space: nowrap;
+ display: flex; align-items: center; justify-content: center; gap: 6px;
+ background: var(--white);
+ color: var(--teal-600);
+ border-radius: var(--r-full);
+ padding: 13px 18px;
+ font-size: 14px; font-weight: 700;
+ text-decoration: none;
+ border: 2px solid var(--teal-200);
+ min-height: 48px;
+ white-space: nowrap;
 }
 .m-hero-image-wrap {
-  margin: 0 -20px;
-  background: linear-gradient(180deg, transparent 0%, var(--teal-50) 100%);
-  border-radius: 24px 24px 0 0;
-  overflow: hidden;
-  position: relative;
+ margin: 0 -20px;
+ background: linear-gradient(180deg, transparent 0%, var(--teal-50) 100%);
+ border-radius: 24px 24px 0 0;
+ overflow: hidden;
+ position: relative;
 }
 .m-hero-visual {
-  background: linear-gradient(135deg, var(--teal-700) 0%, var(--cyan-700) 100%);
-  height: 160px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
+ background: linear-gradient(135deg, var(--teal-700) 0%, var(--cyan-700) 100%);
+ height: 160px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ position: relative;
+ overflow: hidden;
 }
 .m-hero-visual::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+ content: '';
+ position: absolute;
+ inset: 0;
+ background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 .hero-icon-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  padding: 20px;
-  position: relative;
-  z-index: 1;
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ gap: 10px;
+ padding: 20px;
+ position: relative;
+ z-index: 1;
 }
 .hero-icon-chip {
-  background: rgba(255,255,255,.15);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,.2);
-  border-radius: var(--r-md);
-  padding: 12px 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  color: var(--white);
+ background: rgba(255,255,255,.15);
+ backdrop-filter: blur(8px);
+ border: 1px solid rgba(255,255,255,.2);
+ border-radius: var(--r-md);
+ padding: 12px 8px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 5px;
+ color: var(--white);
 }
 .hero-icon-chip i { font-size: 18px; }
 .hero-icon-chip span { font-size: 9px; font-weight: 600; text-align: center; opacity: .9; }
 
 /* ═══════════════════════════════════════════════
-   TRUST STRIP
-   ═══════════════════════════════════════════════ */
+ TRUST STRIP
+ ═══════════════════════════════════════════════ */
 .m-trust-strip {
-  background: var(--gray-900);
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 4px;
+ background: var(--gray-900);
+ padding: 16px;
+ display: flex;
+ align-items: center;
+ justify-content: space-around;
+ gap: 4px;
 }
 .m-trust-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 2px;
 }
 .m-trust-item .val {
-  font-family: var(--font-mono);
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--teal-400);
-  line-height: 1;
+ font-family: var(--font-mono);
+ font-size: 16px;
+ font-weight: 700;
+ color: var(--teal-400);
+ line-height: 1;
 }
 .m-trust-item .lbl {
-  font-size: 9px;
-  font-weight: 600;
-  color: var(--gray-400);
-  text-transform: uppercase;
-  letter-spacing: .04em;
-  text-align: center;
+ font-size: 9px;
+ font-weight: 600;
+ color: var(--gray-400);
+ text-transform: uppercase;
+ letter-spacing: .04em;
+ text-align: center;
 }
 .m-trust-divider {
-  width: 1px;
-  height: 32px;
-  background: var(--gray-700);
+ width: 1px;
+ height: 32px;
+ background: var(--gray-700);
 }
 
 /* ═══════════════════════════════════════════════
-   SECTION STYLES
-   ═══════════════════════════════════════════════ */
+ SECTION STYLES
+ ═══════════════════════════════════════════════ */
 .m-section {
-  padding: 28px 16px;
+ padding: 28px 16px;
 }
 .m-section-alt {
-  background: var(--gray-50);
+ background: var(--gray-50);
 }
 .m-section-dark {
-  background: var(--gray-900);
+ background: var(--gray-900);
 }
 .m-section-header {
-  margin-bottom: 20px;
+ margin-bottom: 20px;
 }
 .m-section-tag {
-  display: inline-block;
-  background: var(--teal-100);
-  color: var(--teal-700);
-  border-radius: var(--r-full);
-  padding: 4px 12px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  margin-bottom: 8px;
+ display: inline-block;
+ background: var(--teal-100);
+ color: var(--teal-700);
+ border-radius: var(--r-full);
+ padding: 4px 12px;
+ font-size: 11px;
+ font-weight: 700;
+ letter-spacing: .06em;
+ text-transform: uppercase;
+ margin-bottom: 8px;
 }
 .m-section-tag-dark {
-  background: rgba(20,184,166,.2);
-  color: var(--teal-400);
+ background: rgba(20,184,166,.2);
+ color: var(--teal-400);
 }
 .m-section h2 {
-  font-family: var(--font-display);
-  font-size: 22px;
-  line-height: 1.25;
-  color: var(--gray-900);
-  margin-bottom: 8px;
+ font-family: var(--font-display);
+ font-size: 22px;
+ line-height: 1.25;
+ color: var(--gray-900);
+ margin-bottom: 8px;
 }
 .m-section-dark h2 { color: var(--white); }
 .m-section p.lead {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--gray-500);
+ font-size: 14px;
+ line-height: 1.6;
+ color: var(--gray-500);
 }
 .m-section-dark p.lead { color: var(--gray-400); }
 
 /* ═══════════════════════════════════════════════
-   SLA STATS CARDS (2×2 GRID)
-   ═══════════════════════════════════════════════ */
+ SLA STATS CARDS (2×2 GRID)
+ ═══════════════════════════════════════════════ */
 .m-stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 12px;
 }
 .m-stat-card {
-  background: var(--white);
-  border-radius: var(--r-lg);
-  padding: 20px 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 10px;
-  box-shadow: var(--shadow-sm);
-  border: 1.5px solid var(--gray-100);
-  position: relative;
-  overflow: hidden;
-  transition: transform .2s, box-shadow .2s;
+ background: var(--white);
+ border-radius: var(--r-lg);
+ padding: 20px 16px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ text-align: center;
+ gap: 10px;
+ box-shadow: var(--shadow-sm);
+ border: 1.5px solid var(--gray-100);
+ position: relative;
+ overflow: hidden;
+ transition: transform .2s, box-shadow .2s;
 }
 .m-stat-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  border-radius: var(--r-lg) var(--r-lg) 0 0;
+ content: '';
+ position: absolute;
+ top: 0; left: 0; right: 0;
+ height: 3px;
+ border-radius: var(--r-lg) var(--r-lg) 0 0;
 }
-.m-stat-card.teal::before  { background: var(--primary-gradient); }
+.m-stat-card.teal::before { background: var(--primary-gradient); }
 .m-stat-card.amber::before { background: linear-gradient(90deg, var(--amber-400), var(--amber-500)); }
 .m-stat-card.green::before { background: linear-gradient(90deg, var(--green-400), var(--green-500)); }
-.m-stat-card.cyan::before  { background: linear-gradient(90deg, var(--cyan-400), var(--cyan-600)); }
+.m-stat-card.cyan::before { background: linear-gradient(90deg, var(--cyan-400), var(--cyan-600)); }
 .m-stat-icon {
-  width: 44px; height: 44px;
-  border-radius: var(--r-md);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px;
+ width: 44px; height: 44px;
+ border-radius: var(--r-md);
+ display: flex; align-items: center; justify-content: center;
+ font-size: 18px;
 }
-.m-stat-card.teal  .m-stat-icon { background: var(--teal-50); color: var(--teal-600); }
+.m-stat-card.teal .m-stat-icon { background: var(--teal-50); color: var(--teal-600); }
 .m-stat-card.amber .m-stat-icon { background: #fffbeb; color: var(--amber-500); }
 .m-stat-card.green .m-stat-icon { background: #f0fdf4; color: var(--green-500); }
-.m-stat-card.cyan  .m-stat-icon { background: #ecfeff; color: var(--cyan-600); }
+.m-stat-card.cyan .m-stat-icon { background: #ecfeff; color: var(--cyan-600); }
 .m-stat-val {
-  font-family: var(--font-mono);
-  font-size: 26px;
-  font-weight: 700;
-  line-height: 1;
-  color: var(--gray-900);
+ font-family: var(--font-mono);
+ font-size: 26px;
+ font-weight: 700;
+ line-height: 1;
+ color: var(--gray-900);
 }
 .m-stat-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--gray-500);
-  line-height: 1.35;
-  text-transform: uppercase;
-  letter-spacing: .04em;
+ font-size: 11px;
+ font-weight: 600;
+ color: var(--gray-500);
+ line-height: 1.35;
+ text-transform: uppercase;
+ letter-spacing: .04em;
 }
 
 /* ═══════════════════════════════════════════════
-   SERVICE CARDS
-   ═══════════════════════════════════════════════ */
+ SERVICE CARDS
+ ═══════════════════════════════════════════════ */
 .m-services-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 12px;
 }
 .m-service-card {
-  background: var(--white);
-  border-radius: var(--r-lg);
-  padding: 18px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  box-shadow: var(--shadow-sm);
-  border: 1.5px solid var(--gray-100);
-  text-decoration: none;
-  color: inherit;
-  transition: all .2s;
-  position: relative;
-  overflow: hidden;
+ background: var(--white);
+ border-radius: var(--r-lg);
+ padding: 18px 14px;
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+ box-shadow: var(--shadow-sm);
+ border: 1.5px solid var(--gray-100);
+ text-decoration: none;
+ color: inherit;
+ transition: all .2s;
+ position: relative;
+ overflow: hidden;
 }
 .m-service-card:active { transform: scale(.98); }
 .m-service-icon {
-  width: 42px; height: 42px;
-  border-radius: var(--r-sm);
-  background: var(--teal-50);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--teal-600);
-  font-size: 18px;
+ width: 42px; height: 42px;
+ border-radius: var(--r-sm);
+ background: var(--teal-50);
+ display: flex; align-items: center; justify-content: center;
+ color: var(--teal-600);
+ font-size: 18px;
 }
 .m-service-card h3 {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--gray-800);
-  line-height: 1.3;
+ font-size: 13px;
+ font-weight: 700;
+ color: var(--gray-800);
+ line-height: 1.3;
 }
 .m-service-card p {
-  font-size: 11px;
-  color: var(--gray-500);
-  line-height: 1.45;
+ font-size: 11px;
+ color: var(--gray-500);
+ line-height: 1.45;
 }
 .m-service-arrow {
-  align-self: flex-end;
-  margin-top: auto;
-  color: var(--teal-500);
-  font-size: 12px;
-  font-weight: 700;
+ align-self: flex-end;
+ margin-top: auto;
+ color: var(--teal-500);
+ font-size: 12px;
+ font-weight: 700;
 }
 
 /* Featured service (full-width) */
 .m-service-card.featured {
-  grid-column: 1 / -1;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 14px;
-  background: linear-gradient(135deg, var(--teal-700), var(--cyan-700));
-  border-color: transparent;
-  color: var(--white);
+ grid-column: 1 / -1;
+ flex-direction: row;
+ align-items: flex-start;
+ gap: 14px;
+ background: linear-gradient(135deg, var(--teal-700), var(--cyan-700));
+ border-color: transparent;
+ color: var(--white);
 }
 .m-service-card.featured .m-service-icon {
-  background: rgba(255,255,255,.2);
-  color: var(--white);
-  flex-shrink: 0;
+ background: rgba(255,255,255,.2);
+ color: var(--white);
+ flex-shrink: 0;
 }
 .m-service-card.featured h3 { color: var(--white); font-size: 15px; }
-.m-service-card.featured p  { color: rgba(255,255,255,.8); }
+.m-service-card.featured p { color: rgba(255,255,255,.8); }
 .m-service-card.featured .m-service-arrow { color: var(--teal-200); }
 
 /* ═══════════════════════════════════════════════
-   WHY CHOOSE US
-   ═══════════════════════════════════════════════ */
+ WHY CHOOSE US
+ ═══════════════════════════════════════════════ */
 .m-why-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+ display: flex;
+ flex-direction: column;
+ gap: 12px;
 }
 .m-why-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  background: var(--white);
-  border-radius: var(--r-lg);
-  padding: 14px 16px;
-  box-shadow: var(--shadow-sm);
-  border: 1.5px solid var(--gray-100);
+ display: flex;
+ align-items: flex-start;
+ gap: 12px;
+ background: var(--white);
+ border-radius: var(--r-lg);
+ padding: 14px 16px;
+ box-shadow: var(--shadow-sm);
+ border: 1.5px solid var(--gray-100);
 }
 .m-why-icon {
-  width: 40px; height: 40px;
-  border-radius: var(--r-md);
-  background: var(--primary-gradient);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--white);
-  font-size: 16px;
-  flex-shrink: 0;
-  box-shadow: var(--shadow-teal);
+ width: 40px; height: 40px;
+ border-radius: var(--r-md);
+ background: var(--primary-gradient);
+ display: flex; align-items: center; justify-content: center;
+ color: var(--white);
+ font-size: 16px;
+ flex-shrink: 0;
+ box-shadow: var(--shadow-teal);
 }
 .m-why-text h4 { font-size: 14px; font-weight: 700; color: var(--gray-800); margin-bottom: 2px; }
-.m-why-text p  { font-size: 12px; color: var(--gray-500); line-height: 1.45; }
+.m-why-text p { font-size: 12px; color: var(--gray-500); line-height: 1.45; }
 
 /* ═══════════════════════════════════════════════
-   TESTIMONIAL CARD
-   ═══════════════════════════════════════════════ */
+ TESTIMONIAL CARD
+ ═══════════════════════════════════════════════ */
 .m-testimonial {
-  background: var(--white);
-  border-radius: var(--r-xl);
-  padding: 20px;
-  box-shadow: var(--shadow-md);
-  border: 1.5px solid var(--gray-100);
-  margin-bottom: 12px;
+ background: var(--white);
+ border-radius: var(--r-xl);
+ padding: 20px;
+ box-shadow: var(--shadow-md);
+ border: 1.5px solid var(--gray-100);
+ margin-bottom: 12px;
 }
 .m-testimonial .stars {
-  display: flex;
-  gap: 2px;
-  margin-bottom: 10px;
+ display: flex;
+ gap: 2px;
+ margin-bottom: 10px;
 }
 .m-testimonial .stars i { color: var(--amber-400); font-size: 13px; }
 .m-testimonial blockquote {
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--gray-700);
-  margin-bottom: 14px;
-  font-style: italic;
+ font-size: 13px;
+ line-height: 1.6;
+ color: var(--gray-700);
+ margin-bottom: 14px;
+ font-style: italic;
 }
 .m-testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+ display: flex;
+ align-items: center;
+ gap: 10px;
 }
 .m-avatar {
-  width: 38px; height: 38px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 14px;
-  color: var(--white);
-  flex-shrink: 0;
+ width: 38px; height: 38px;
+ border-radius: 50%;
+ display: flex; align-items: center; justify-content: center;
+ font-weight: 700; font-size: 14px;
+ color: var(--white);
+ flex-shrink: 0;
 }
 .m-avatar.teal { background: var(--primary-gradient); }
 .m-avatar.cyan { background: linear-gradient(135deg, var(--cyan-500), var(--cyan-700)); }
@@ -756,277 +756,277 @@ body {
 .m-testimonial-author .info .role { font-size: 11px; color: var(--gray-500); }
 
 /* ═══════════════════════════════════════════════
-   CONTACT / CTA SECTION
-   ═══════════════════════════════════════════════ */
+ CONTACT / CTA SECTION
+ ═══════════════════════════════════════════════ */
 .m-contact-section {
-  padding: 28px 16px;
-  background: linear-gradient(160deg, var(--teal-50), var(--white));
+ padding: 28px 16px;
+ background: linear-gradient(160deg, var(--teal-50), var(--white));
 }
 .m-cta-card {
-  background: var(--primary-gradient);
-  border-radius: var(--r-xl);
-  padding: 24px 20px;
-  text-align: center;
-  box-shadow: var(--shadow-teal-lg);
-  margin-bottom: 20px;
-  position: relative;
-  overflow: hidden;
+ background: var(--primary-gradient);
+ border-radius: var(--r-xl);
+ padding: 24px 20px;
+ text-align: center;
+ box-shadow: var(--shadow-teal-lg);
+ margin-bottom: 20px;
+ position: relative;
+ overflow: hidden;
 }
 .m-cta-card::before {
-  content: '';
-  position: absolute;
-  top: -40px; right: -40px;
-  width: 160px; height: 160px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.08);
+ content: '';
+ position: absolute;
+ top: -40px; right: -40px;
+ width: 160px; height: 160px;
+ border-radius: 50%;
+ background: rgba(255,255,255,.08);
 }
 .m-cta-card::after {
-  content: '';
-  position: absolute;
-  bottom: -30px; left: -30px;
-  width: 120px; height: 120px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.06);
+ content: '';
+ position: absolute;
+ bottom: -30px; left: -30px;
+ width: 120px; height: 120px;
+ border-radius: 50%;
+ background: rgba(255,255,255,.06);
 }
 .m-cta-card h3 {
-  font-family: var(--font-display);
-  font-size: 20px;
-  color: var(--white);
-  margin-bottom: 8px;
-  position: relative;
-  z-index: 1;
+ font-family: var(--font-display);
+ font-size: 20px;
+ color: var(--white);
+ margin-bottom: 8px;
+ position: relative;
+ z-index: 1;
 }
 .m-cta-card p {
-  font-size: 13px;
-  color: rgba(255,255,255,.85);
-  margin-bottom: 20px;
-  position: relative;
-  z-index: 1;
+ font-size: 13px;
+ color: rgba(255,255,255,.85);
+ margin-bottom: 20px;
+ position: relative;
+ z-index: 1;
 }
 .m-cta-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  position: relative;
-  z-index: 1;
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+ position: relative;
+ z-index: 1;
 }
 .m-btn-white {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  background: var(--white);
-  color: var(--teal-700);
-  border-radius: var(--r-full);
-  padding: 14px 20px;
-  font-size: 15px; font-weight: 700;
-  text-decoration: none;
-  min-height: 52px;
-  box-shadow: 0 4px 16px rgba(0,0,0,.15);
+ display: flex; align-items: center; justify-content: center; gap: 8px;
+ background: var(--white);
+ color: var(--teal-700);
+ border-radius: var(--r-full);
+ padding: 14px 20px;
+ font-size: 15px; font-weight: 700;
+ text-decoration: none;
+ min-height: 52px;
+ box-shadow: 0 4px 16px rgba(0,0,0,.15);
 }
 
 
 /* Form */
 .m-form-card {
-  background: var(--white);
-  border-radius: var(--r-xl);
-  padding: 24px 20px;
-  box-shadow: var(--shadow-md);
-  border: 1.5px solid var(--gray-100);
+ background: var(--white);
+ border-radius: var(--r-xl);
+ padding: 24px 20px;
+ box-shadow: var(--shadow-md);
+ border: 1.5px solid var(--gray-100);
 }
 .m-form-card h4 {
-  font-family: var(--font-display);
-  font-size: 18px;
-  color: var(--gray-900);
-  margin-bottom: 4px;
+ font-family: var(--font-display);
+ font-size: 18px;
+ color: var(--gray-900);
+ margin-bottom: 4px;
 }
 .m-form-card .form-sub {
-  font-size: 12px;
-  color: var(--gray-500);
-  margin-bottom: 20px;
+ font-size: 12px;
+ color: var(--gray-500);
+ margin-bottom: 20px;
 }
 .m-form-group { margin-bottom: 14px; }
 .m-form-label {
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--gray-700);
-  margin-bottom: 5px;
-  letter-spacing: .02em;
+ display: block;
+ font-size: 12px;
+ font-weight: 600;
+ color: var(--gray-700);
+ margin-bottom: 5px;
+ letter-spacing: .02em;
 }
 .m-form-input {
-  width: 100%;
-  height: 48px;
-  border-radius: var(--r-md);
-  border: 1.5px solid var(--gray-200);
-  padding: 0 14px;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  color: var(--gray-900);
-  background: var(--gray-50);
-  transition: border-color .2s, box-shadow .2s;
-  outline: none;
+ width: 100%;
+ height: 48px;
+ border-radius: var(--r-md);
+ border: 1.5px solid var(--gray-200);
+ padding: 0 14px;
+ font-family: var(--font-sans);
+ font-size: 14px;
+ color: var(--gray-900);
+ background: var(--gray-50);
+ transition: border-color .2s, box-shadow .2s;
+ outline: none;
 }
 .m-form-input:focus {
-  border-color: var(--teal-500);
-  box-shadow: 0 0 0 3px rgba(20,184,166,.12);
-  background: var(--white);
+ border-color: var(--teal-500);
+ box-shadow: 0 0 0 3px rgba(20,184,166,.12);
+ background: var(--white);
 }
 .m-form-textarea {
-  width: 100%;
-  height: 90px;
-  border-radius: var(--r-md);
-  border: 1.5px solid var(--gray-200);
-  padding: 12px 14px;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  color: var(--gray-900);
-  background: var(--gray-50);
-  resize: none;
-  outline: none;
-  transition: border-color .2s, box-shadow .2s;
+ width: 100%;
+ height: 90px;
+ border-radius: var(--r-md);
+ border: 1.5px solid var(--gray-200);
+ padding: 12px 14px;
+ font-family: var(--font-sans);
+ font-size: 14px;
+ color: var(--gray-900);
+ background: var(--gray-50);
+ resize: none;
+ outline: none;
+ transition: border-color .2s, box-shadow .2s;
 }
 .m-form-textarea:focus {
-  border-color: var(--teal-500);
-  box-shadow: 0 0 0 3px rgba(20,184,166,.12);
-  background: var(--white);
+ border-color: var(--teal-500);
+ box-shadow: 0 0 0 3px rgba(20,184,166,.12);
+ background: var(--white);
 }
 .m-form-submit {
-  width: 100%;
-  height: 52px;
-  background: var(--primary-gradient);
-  color: var(--white);
-  border: none;
-  border-radius: var(--r-full);
-  font-family: var(--font-sans);
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: var(--shadow-teal);
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  margin-top: 6px;
-  transition: all .2s;
+ width: 100%;
+ height: 52px;
+ background: var(--primary-gradient);
+ color: var(--white);
+ border: none;
+ border-radius: var(--r-full);
+ font-family: var(--font-sans);
+ font-size: 15px;
+ font-weight: 700;
+ cursor: pointer;
+ box-shadow: var(--shadow-teal);
+ display: flex; align-items: center; justify-content: center; gap: 8px;
+ margin-top: 6px;
+ transition: all .2s;
 }
 .m-form-submit:active { transform: scale(.98); }
 
 /* ═══════════════════════════════════════════════
-   FOOTER
-   ═══════════════════════════════════════════════ */
+ FOOTER
+ ═══════════════════════════════════════════════ */
 .m-footer {
-  background: var(--gray-900);
-  padding: 28px 20px 20px;
-  color: var(--white);
+ background: var(--gray-900);
+ padding: 28px 20px 20px;
+ color: var(--white);
 }
 .m-footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ margin-bottom: 14px;
 }
 .m-footer-tagline {
-  font-size: 12px;
-  color: var(--gray-400);
-  line-height: 1.55;
-  margin-bottom: 20px;
+ font-size: 12px;
+ color: var(--gray-400);
+ line-height: 1.55;
+ margin-bottom: 20px;
 }
 .m-footer-links {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-bottom: 20px;
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 8px;
+ margin-bottom: 20px;
 }
 .m-footer-links a {
-  font-size: 12px;
-  color: var(--gray-400);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: color .2s;
+ font-size: 12px;
+ color: var(--gray-400);
+ text-decoration: none;
+ display: flex;
+ align-items: center;
+ gap: 6px;
+ transition: color .2s;
 }
 .m-footer-links a i { color: var(--teal-500); font-size: 10px; }
 .m-footer-divider { height: 1px; background: var(--gray-800); margin-bottom: 16px; }
 .m-footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ gap: 8px;
 }
 .m-footer-bottom .copy { font-size: 10px; color: var(--gray-600); }
 .m-social { display: flex; gap: 8px; }
 .m-social a {
-  width: 30px; height: 30px;
-  border-radius: 50%;
-  background: var(--gray-800);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--gray-400);
-  font-size: 12px;
-  text-decoration: none;
-  transition: all .2s;
+ width: 30px; height: 30px;
+ border-radius: 50%;
+ background: var(--gray-800);
+ display: flex; align-items: center; justify-content: center;
+ color: var(--gray-400);
+ font-size: 12px;
+ text-decoration: none;
+ transition: all .2s;
 }
 
 /* ═══════════════════════════════════════════════
-   STICKY BOTTOM BAR
-   ═══════════════════════════════════════════════ */
+ STICKY BOTTOM BAR
+ ═══════════════════════════════════════════════ */
 .m-sticky-bar {
-  position: sticky;
-  bottom: 0;
-  left: 0; right: 0;
-  background: var(--white);
-  border-top: 1px solid var(--gray-100);
-  padding: 10px 16px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  box-shadow: 0 -4px 20px rgba(0,0,0,.1);
-  z-index: 200;
+ position: sticky;
+ bottom: 0;
+ left: 0; right: 0;
+ background: var(--white);
+ border-top: 1px solid var(--gray-100);
+ padding: 10px 16px;
+ display: flex;
+ gap: 10px;
+ align-items: center;
+ box-shadow: 0 -4px 20px rgba(0,0,0,.1);
+ z-index: 200;
 }
 .m-sticky-call {
-  flex: 1;
-  display: flex; align-items: center; justify-content: center; gap: 7px;
-  background: var(--primary-gradient);
-  color: var(--white);
-  border-radius: var(--r-full);
-  padding: 13px 16px;
-  font-size: 14px; font-weight: 700;
-  text-decoration: none;
-  min-height: 48px;
-  box-shadow: var(--shadow-teal);
+ flex: 1;
+ display: flex; align-items: center; justify-content: center; gap: 7px;
+ background: var(--primary-gradient);
+ color: var(--white);
+ border-radius: var(--r-full);
+ padding: 13px 16px;
+ font-size: 14px; font-weight: 700;
+ text-decoration: none;
+ min-height: 48px;
+ box-shadow: var(--shadow-teal);
 }
 
 .m-sticky-tel {
-  display: flex; align-items: center; gap: 5px;
-  font-size: 11px;
-  color: var(--gray-500);
-  white-space: nowrap;
-  flex-shrink: 0;
+ display: flex; align-items: center; gap: 5px;
+ font-size: 11px;
+ color: var(--gray-500);
+ white-space: nowrap;
+ flex-shrink: 0;
 }
 .m-sticky-tel i { color: var(--teal-500); font-size: 10px; }
 .m-sticky-tel a { color: var(--gray-700); font-weight: 700; text-decoration: none; font-size: 12px; }
 
 /* ═══════════════════════════════════════════════
-   WIREFRAME SCREEN
-   ═══════════════════════════════════════════════ */
+ WIREFRAME SCREEN
+ ═══════════════════════════════════════════════ */
 .wireframe-screen {
-  width: 100%;
-  height: 100%;
-  background: #f5f5f5;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+ width: 100%;
+ height: 100%;
+ background: #f5f5f5;
+ padding: 12px;
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
 }
 .wf-bar { background: #d1d5db; border-radius: 4px; }
 .wf-block {
-  background: #e5e7eb;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #9ca3af;
-  font-size: 10px;
-  font-family: var(--font-mono);
-  letter-spacing: .04em;
-  text-align: center;
-  padding: 8px;
+ background: #e5e7eb;
+ border-radius: 8px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ color: #9ca3af;
+ font-size: 10px;
+ font-family: var(--font-mono);
+ letter-spacing: .04em;
+ text-align: center;
+ padding: 8px;
 }
 .wf-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .wf-accent { background: #ccfbf1; color: #0f766e; }
@@ -1035,766 +1035,793 @@ body {
 .wf-row .wf-block { flex: 1; }
 
 /* ═══════════════════════════════════════════════
-   TABLET ADAPTATION NOTE
-   ═══════════════════════════════════════════════ */
+ TABLET ADAPTATION NOTE
+ ═══════════════════════════════════════════════ */
 .note-card {
-  background: var(--white);
-  border-radius: var(--r-xl);
-  padding: 24px;
-  box-shadow: var(--shadow-md);
-  margin-bottom: 32px;
-  max-width: 960px;
-  width: 100%;
+ background: var(--white);
+ border-radius: var(--r-xl);
+ padding: 24px;
+ box-shadow: var(--shadow-md);
+ margin-bottom: 32px;
+ max-width: 960px;
+ width: 100%;
 }
 .note-card h3 {
-  font-family: var(--font-display);
-  font-size: 20px;
-  color: var(--gray-900);
-  margin-bottom: 14px;
+ font-family: var(--font-display);
+ font-size: 20px;
+ color: var(--gray-900);
+ margin-bottom: 14px;
 }
 .note-item {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  margin-bottom: 12px;
+ display: flex;
+ gap: 12px;
+ align-items: flex-start;
+ margin-bottom: 12px;
 }
 .note-num {
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  background: var(--primary-gradient);
-  color: var(--white);
-  font-size: 11px;
-  font-weight: 700;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  margin-top: 1px;
+ width: 24px; height: 24px;
+ border-radius: 50%;
+ background: var(--primary-gradient);
+ color: var(--white);
+ font-size: 11px;
+ font-weight: 700;
+ display: flex; align-items: center; justify-content: center;
+ flex-shrink: 0;
+ margin-top: 1px;
 }
 .note-item p { font-size: 13px; color: var(--gray-700); line-height: 1.5; }
 .note-item strong { color: var(--gray-900); }
 
 /* Responsive: phone frames side-by-side on large screens */
 @media (max-width: 860px) {
-  .phone-frame { width: 320px; }
-  .phone-frame .m-hero h1 { font-size: 22px; }
+ .phone-frame { width: 320px; }
+ .phone-frame .m-hero h1 { font-size: 22px; }
 }
 @media (max-width: 600px) {
-  .ds-panel { padding: 20px 16px; }
-  .phone-container { gap: 24px; }
-  .phone-frame { width: 100%; max-width: 375px; }
+ .ds-panel { padding: 20px 16px; }
+ .phone-container { gap: 24px; }
+ .phone-frame { width: 100%; max-width: 375px; }
 }
 </style>
 </head>
 <body>
 
 <!-- ═══════════════════════════════════════
-     DESIGN SYSTEM PANEL
-     ═══════════════════════════════════════ -->
+ DESIGN SYSTEM PANEL
+ ═══════════════════════════════════════ -->
 <div class="ds-panel">
-  <h1>OmNet IT — Mobile Design System</h1>
-  <p class="subtitle">Mobile-first redesign for omnetit.in · 375px base · Figma-ready tokens</p>
+ <h1>OmNet IT — Mobile Design System</h1>
+ <p class="subtitle">Mobile-first redesign for omnetit.in · 375px base · Figma-ready tokens</p>
 
-  <!-- Colors -->
-  <div class="ds-section-label">🎨 Color Palette</div>
-  <div class="ds-grid">
-    <div class="ds-color-chip">
-      <div class="ds-color-swatch" style="background:linear-gradient(135deg,#14b8a6,#0891b2)"></div>
-      <div class="ds-color-info"><div class="name">Primary Gradient</div><div class="hex">#14b8a6 → #0891b2</div></div>
-    </div>
-    <div class="ds-color-chip">
-      <div class="ds-color-swatch" style="background:#0f766e"></div>
-      <div class="ds-color-info"><div class="name">Teal 700</div><div class="hex">#0f766e</div></div>
-    </div>
-    <div class="ds-color-chip">
-      <div class="ds-color-swatch" style="background:#2dd4bf"></div>
-      <div class="ds-color-info"><div class="name">Teal 400</div><div class="hex">#2dd4bf</div></div>
-    </div>
-    <div class="ds-color-chip">
-      <div class="ds-color-swatch" style="background:#f0fdfa"></div>
-      <div class="ds-color-info"><div class="name">Teal 50 (Surface)</div><div class="hex">#f0fdfa</div></div>
-    </div>
-    <div class="ds-color-chip">
-      <div class="ds-color-swatch" style="background:#111827"></div>
-      <div class="ds-color-info"><div class="name">Gray 900 (Text)</div><div class="hex">#111827</div></div>
-    </div>
-    <div class="ds-color-chip">
-      <div class="ds-color-swatch" style="background:#6b7280"></div>
-      <div class="ds-color-info"><div class="name">Gray 500 (Muted)</div><div class="hex">#6b7280</div></div>
-    </div>
-    <div class="ds-color-chip">
-      <div class="ds-color-swatch" style="background:#fbbf24"></div>
-      <div class="ds-color-info"><div class="name">Amber 400 (Accent)</div><div class="hex">#fbbf24</div></div>
-    </div>
-    <div class="ds-color-chip">
-      <div class="ds-color-swatch" style="background:#25d366"></div></div>
-    </div>
-  </div>
+ <!-- Colors -->
+ <div class="ds-section-label">🎨 Color Palette</div>
+ <div class="ds-grid">
+ <div class="ds-color-chip">
+ <div class="ds-color-swatch" style="background:linear-gradient(135deg,#14b8a6,#0891b2)"></div>
+ <div class="ds-color-info"><div class="name">Primary Gradient</div><div class="hex">#14b8a6 → #0891b2</div></div>
+ </div>
+ <div class="ds-color-chip">
+ <div class="ds-color-swatch" style="background:#0f766e"></div>
+ <div class="ds-color-info"><div class="name">Teal 700</div><div class="hex">#0f766e</div></div>
+ </div>
+ <div class="ds-color-chip">
+ <div class="ds-color-swatch" style="background:#2dd4bf"></div>
+ <div class="ds-color-info"><div class="name">Teal 400</div><div class="hex">#2dd4bf</div></div>
+ </div>
+ <div class="ds-color-chip">
+ <div class="ds-color-swatch" style="background:#f0fdfa"></div>
+ <div class="ds-color-info"><div class="name">Teal 50 (Surface)</div><div class="hex">#f0fdfa</div></div>
+ </div>
+ <div class="ds-color-chip">
+ <div class="ds-color-swatch" style="background:#111827"></div>
+ <div class="ds-color-info"><div class="name">Gray 900 (Text)</div><div class="hex">#111827</div></div>
+ </div>
+ <div class="ds-color-chip">
+ <div class="ds-color-swatch" style="background:#6b7280"></div>
+ <div class="ds-color-info"><div class="name">Gray 500 (Muted)</div><div class="hex">#6b7280</div></div>
+ </div>
+ <div class="ds-color-chip">
+ <div class="ds-color-swatch" style="background:#fbbf24"></div>
+ <div class="ds-color-info"><div class="name">Amber 400 (Accent)</div><div class="hex">#fbbf24</div></div>
+ </div>
+ <div class="ds-color-chip">
+ <div class="ds-color-swatch" style="background:#25d366"></div></div>
+ </div>
+ </div>
 
-  <!-- Typography -->
-  <div class="ds-section-label">✍️ Typography Scale</div>
-  <div style="margin-bottom:24px;">
-    <div class="ds-type-row"><div class="label">H1 · DM Serif Display · 28px / 700</div><div style="font-family:'DM Serif Display',serif;font-size:28px;color:#111827;line-height:1.2">Expert IT Support NCR</div></div>
-    <div class="ds-type-row"><div class="label">H2 · DM Serif Display · 22px</div><div style="font-family:'DM Serif Display',serif;font-size:22px;color:#111827;line-height:1.25">Our Services</div></div>
-    <div class="ds-type-row"><div class="label">H3 · DM Sans · 16px / 700</div><div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;color:#111827">Managed IT Services</div></div>
-    <div class="ds-type-row"><div class="label">Body · DM Sans · 14px / 400</div><div style="font-family:'DM Sans',sans-serif;font-size:14px;color:#4b5563;line-height:1.6">Fast, reliable IT support for businesses across Noida, Ghaziabad, and Delhi NCR.</div></div>
-    <div class="ds-type-row"><div class="label">Caption · DM Sans · 11px / 600 · Uppercase</div><div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#6b7280">Response Time SLA</div></div>
-    <div class="ds-type-row"><div class="label">Mono Stat · Space Mono · 26px / 700</div><div style="font-family:'Space Mono',monospace;font-size:26px;font-weight:700;color:#111827;line-height:1">20 MIN</div></div>
-  </div>
+ <!-- Typography -->
+ <div class="ds-section-label">✍️ Typography Scale</div>
+ <div style="margin-bottom:24px;">
+ <div class="ds-type-row"><div class="label">H1 · DM Serif Display · 28px / 700</div><div style="font-family:'DM Serif Display',serif;font-size:28px;color:#111827;line-height:1.2">Expert IT Support NCR</div></div>
+ <div class="ds-type-row"><div class="label">H2 · DM Serif Display · 22px</div><div style="font-family:'DM Serif Display',serif;font-size:22px;color:#111827;line-height:1.25">Our Services</div></div>
+ <div class="ds-type-row"><div class="label">H3 · DM Sans · 16px / 700</div><div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;color:#111827">Managed IT Services</div></div>
+ <div class="ds-type-row"><div class="label">Body · DM Sans · 14px / 400</div><div style="font-family:'DM Sans',sans-serif;font-size:14px;color:#4b5563;line-height:1.6">Fast, reliable IT support for businesses across Noida, Ghaziabad, and Delhi NCR.</div></div>
+ <div class="ds-type-row"><div class="label">Caption · DM Sans · 11px / 600 · Uppercase</div><div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#6b7280">Response Time SLA</div></div>
+ <div class="ds-type-row"><div class="label">Mono Stat · Space Mono · 26px / 700</div><div style="font-family:'Space Mono',monospace;font-size:26px;font-weight:700;color:#111827;line-height:1">20 MIN</div></div>
+ </div>
 
-  <!-- Buttons -->
-  <div class="ds-section-label">🔘 Button System</div>
-  <div class="ds-btn-row">
-    <a class="ds-btn ds-btn-primary" href="#"><i class="fas fa-phone"></i> Call Now</a>
-    <a class="ds-btn ds-btn-outline" href="#"><i class="fas fa-headset"></i> Get Support</a>
-    <a class="ds-btn ds-btn-ghost" href="#"><i class="fas fa-info-circle"></i> Learn More</a>
-    <a class="ds-btn ds-btn-danger" href="#"><i class="fas fa-bolt"></i> Urgent Request</a>
-  </div>
-  <p style="font-size:12px;color:#6b7280;margin-top:-16px;margin-bottom:20px">Min touch target: 48px height · Border radius: 9999px (pill) · Font: 14px 700</p>
+ <!-- Buttons -->
+ <div class="ds-section-label">🔘 Button System</div>
+ <div class="ds-btn-row">
+ <a class="ds-btn ds-btn-primary" href="#"><i class="fas fa-phone"></i> Call Now</a>
+ <a class="ds-btn ds-btn-outline" href="#"><i class="fas fa-headset"></i> Get Support</a>
+ <a class="ds-btn ds-btn-ghost" href="#"><i class="fas fa-info-circle"></i> Learn More</a>
+ <a class="ds-btn ds-btn-danger" href="#"><i class="fas fa-bolt"></i> Urgent Request</a>
+ </div>
+ <p style="font-size:12px;color:#6b7280;margin-top:-16px;margin-bottom:20px">Min touch target: 48px height · Border radius: 9999px (pill) · Font: 14px 700</p>
 
-  <!-- Spacing -->
-  <div class="ds-section-label">📐 Spacing & Radius</div>
-  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;align-items:flex-end">
-    <div style="text-align:center"><div style="width:8px;height:8px;background:#14b8a6;border-radius:2px;margin:0 auto"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">8px</div></div>
-    <div style="text-align:center"><div style="width:12px;height:12px;background:#14b8a6;border-radius:2px;margin:0 auto"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">12px</div></div>
-    <div style="text-align:center"><div style="width:16px;height:16px;background:#14b8a6;border-radius:2px;margin:0 auto"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">16px</div></div>
-    <div style="text-align:center"><div style="width:20px;height:20px;background:#14b8a6;border-radius:2px;margin:0 auto"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">20px</div></div>
-    <div style="text-align:center"><div style="width:24px;height:24px;background:#14b8a6;border-radius:2px;margin:0 auto"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">24px</div></div>
-    <div style="text-align:center"><div style="width:32px;height:32px;background:#14b8a6;border-radius:2px;margin:0 auto"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">32px</div></div>
-    <div style="text-align:center"><div style="width:48px;height:48px;background:#14b8a6;border-radius:2px;margin:0 auto"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">48px</div></div>
-    <div style="margin-left:16px;display:flex;gap:8px;align-items:flex-end">
-      <div style="text-align:center"><div style="width:40px;height:40px;background:#ccfbf1;border:2px solid #14b8a6;border-radius:8px"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">r-sm 8px</div></div>
-      <div style="text-align:center"><div style="width:40px;height:40px;background:#ccfbf1;border:2px solid #14b8a6;border-radius:12px"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">r-md 12px</div></div>
-      <div style="text-align:center"><div style="width:40px;height:40px;background:#ccfbf1;border:2px solid #14b8a6;border-radius:16px"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">r-lg 16px</div></div>
-      <div style="text-align:center"><div style="width:40px;height:40px;background:#ccfbf1;border:2px solid #14b8a6;border-radius:9999px"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">pill</div></div>
-    </div>
-  </div>
+ <!-- Spacing -->
+ <div class="ds-section-label">📐 Spacing & Radius</div>
+ <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;align-items:flex-end">
+ <div style="text-align:center"><div style="width:8px;height:8px;background:#14b8a6;border-radius:2px;margin:0 auto"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">8px</div></div>
+ <div style="text-align:center"><div style="width:12px;height:12px;background:#14b8a6;border-radius:2px;margin:0 auto"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">12px</div></div>
+ <div style="text-align:center"><div style="width:16px;height:16px;background:#14b8a6;border-radius:2px;margin:0 auto"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">16px</div></div>
+ <div style="text-align:center"><div style="width:20px;height:20px;background:#14b8a6;border-radius:2px;margin:0 auto"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">20px</div></div>
+ <div style="text-align:center"><div style="width:24px;height:24px;background:#14b8a6;border-radius:2px;margin:0 auto"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">24px</div></div>
+ <div style="text-align:center"><div style="width:32px;height:32px;background:#14b8a6;border-radius:2px;margin:0 auto"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">32px</div></div>
+ <div style="text-align:center"><div style="width:48px;height:48px;background:#14b8a6;border-radius:2px;margin:0 auto"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">48px</div></div>
+ <div style="margin-left:16px;display:flex;gap:8px;align-items:flex-end">
+ <div style="text-align:center"><div style="width:40px;height:40px;background:#ccfbf1;border:2px solid #14b8a6;border-radius:8px"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">r-sm 8px</div></div>
+ <div style="text-align:center"><div style="width:40px;height:40px;background:#ccfbf1;border:2px solid #14b8a6;border-radius:12px"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">r-md 12px</div></div>
+ <div style="text-align:center"><div style="width:40px;height:40px;background:#ccfbf1;border:2px solid #14b8a6;border-radius:16px"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">r-lg 16px</div></div>
+ <div style="text-align:center"><div style="width:40px;height:40px;background:#ccfbf1;border:2px solid #14b8a6;border-radius:9999px"></div><div style="font-size:10px;color:#6b7280;margin-top:4px;font-family:monospace">pill</div></div>
+ </div>
+ </div>
 </div>
 
 <!-- ═══════════════════════════════════════
-     IMPLEMENTATION NOTES
-     ═══════════════════════════════════════ -->
+ IMPLEMENTATION NOTES
+ ═══════════════════════════════════════ -->
 <div class="note-card">
-  <h3>🔧 UX Improvement Notes</h3>
-  <div class="note-item"><div class="note-num">1</div><p><strong>Thumb Zone:</strong> All primary CTAs placed in lower 60% of screen. Sticky bar keeps "Call Now" always reachable without scrolling.</p></div>
-  <div class="note-item"><div class="note-num">2</div><p><strong>2×2 SLA Grid:</strong> Replaced uneven layout with perfectly equal stat cards — same height, same padding, center-aligned icon + mono stat number + uppercase label.</p></div>
-  <div class="note-item"><div class="note-num">3</div><p><strong>Visual Hierarchy:</strong> Space Mono for numbers (creates instant scan anchor), DM Serif Display for section headings (premium feel), DM Sans for body (readability).</p></div>
-  <div class="note-item"><div class="note-num">4</div><p><strong>Conversion Stack:</strong> Announce bar → Hero dual CTA → Trust strip → Sticky bar → Floating WhatsApp → Contact form. Multiple touchpoints for different intent levels.</p></div>
-  <div class="note-item"><div class="note-num">5</div><p><strong>Service Cards:</strong> 2-column grid with consistent height. Featured card spans full width with gradient treatment to highlight the flagship Managed IT service.</p></div>
-  <div class="note-item"><div class="note-num">6</div><p><strong>Accessibility:</strong> All touch targets ≥ 44px. Color contrast ratios meet WCAG AA. Form labels always visible (no placeholder-only labels).</p></div>
+ <h3>🔧 UX Improvement Notes</h3>
+ <div class="note-item"><div class="note-num">1</div><p><strong>Thumb Zone:</strong> All primary CTAs placed in lower 60% of screen. Sticky bar keeps "Call Now" always reachable without scrolling.</p></div>
+ <div class="note-item"><div class="note-num">2</div><p><strong>2×2 SLA Grid:</strong> Replaced uneven layout with perfectly equal stat cards — same height, same padding, center-aligned icon + mono stat number + uppercase label.</p></div>
+ <div class="note-item"><div class="note-num">3</div><p><strong>Visual Hierarchy:</strong> Space Mono for numbers (creates instant scan anchor), DM Serif Display for section headings (premium feel), DM Sans for body (readability).</p></div>
+ <div class="note-item"><div class="note-num">4</div><p><strong>Conversion Stack:</strong> Announce bar → Hero dual CTA → Trust strip → Sticky bar → Floating CTA → Contact form. Multiple touchpoints for different intent levels.</p></div>
+ <div class="note-item"><div class="note-num">5</div><p><strong>Service Cards:</strong> 2-column grid with consistent height. Featured card spans full width with gradient treatment to highlight the flagship Managed IT service.</p></div>
+ <div class="note-item"><div class="note-num">6</div><p><strong>Accessibility:</strong> All touch targets ≥ 44px. Color contrast ratios meet WCAG AA. Form labels always visible (no placeholder-only labels).</p></div>
 </div>
 
 <!-- ═══════════════════════════════════════
-     PHONE FRAMES
-     ═══════════════════════════════════════ -->
+ PHONE FRAMES
+ ═══════════════════════════════════════ -->
 <div class="phone-container">
 
-  <!-- SCREEN 1: Low-fidelity Wireframe -->
-  <div class="phone-wrap">
-    <div class="phone-label">📐 Wireframe — Low Fidelity</div>
-    <div class="phone-frame">
-      <div class="phone-screen">
-        <div class="wireframe-screen">
-          <!-- Status -->
-          <div class="wf-bar" style="height:10px;width:80%;align-self:center"></div>
-          <!-- Header -->
-          <div class="wf-block wf-accent" style="height:44px;flex-direction:row;justify-content:space-between;padding:0 12px">
-            <span>LOGO</span><span>[ CALL NOW ]</span>
-          </div>
-          <!-- Announce -->
-          <div class="wf-block wf-dark" style="height:28px">📢 Announcement Bar</div>
-          <!-- Hero -->
-          <div class="wf-block" style="height:140px;gap:8px">
-            <div class="wf-bar" style="height:8px;width:60%"></div>
-            <div class="wf-bar" style="height:6px;width:85%"></div>
-            <div class="wf-bar" style="height:6px;width:75%"></div>
-            <div style="display:flex;gap:8px;width:100%;justify-content:center;margin-top:4px">
-              <div class="wf-block wf-accent" style="height:36px;width:120px;margin:0">[ CTA Primary ]</div>
-              <div class="wf-block" style="height:36px;width:100px;margin:0">[ Secondary ]</div>
-            </div>
-          </div>
-          <!-- Hero Image -->
-          <div class="wf-block wf-dark" style="height:80px">🖼 Hero Visual / Icon Grid</div>
-          <!-- Trust Strip -->
-          <div class="wf-block wf-dark" style="height:48px;flex-direction:row;justify-content:space-around">
-            <span>|20M|</span><span>|4HR|</span><span>|99%|</span><span>|24/7|</span>
-          </div>
-          <!-- SLA Cards -->
-          <div class="wf-block" style="height:14px;align-self:flex-start;width:40%"></div>
-          <div class="wf-grid-2">
-            <div class="wf-block" style="height:90px">SLA<br>Card 1</div>
-            <div class="wf-block" style="height:90px">SLA<br>Card 2</div>
-            <div class="wf-block" style="height:90px">SLA<br>Card 3</div>
-            <div class="wf-block" style="height:90px">SLA<br>Card 4</div>
-          </div>
-          <!-- Services -->
-          <div class="wf-block" style="height:14px;align-self:flex-start;width:40%;margin-top:6px"></div>
-          <div class="wf-block wf-accent" style="height:64px">⭐ Featured Service (Full-width)</div>
-          <div class="wf-grid-2">
-            <div class="wf-block" style="height:80px">Svc 1</div>
-            <div class="wf-block" style="height:80px">Svc 2</div>
-            <div class="wf-block" style="height:80px">Svc 3</div>
-            <div class="wf-block" style="height:80px">Svc 4</div>
-          </div>
-          <!-- Why Us -->
-          <div class="wf-block" style="height:14px;align-self:flex-start;width:40%;margin-top:6px"></div>
-          <div class="wf-block" style="height:54px;flex-direction:row;justify-content:flex-start;gap:8px;padding:8px">
-            <div style="width:36px;height:36px;background:#d1d5db;border-radius:8px;flex-shrink:0"></div>
-            <div style="flex:1;display:flex;flex-direction:column;gap:4px;justify-content:center">
-              <div class="wf-bar" style="height:6px;width:70%"></div>
-              <div class="wf-bar" style="height:5px;width:90%"></div>
-            </div>
-          </div>
-          <div class="wf-block" style="height:54px;flex-direction:row;justify-content:flex-start;gap:8px;padding:8px">
-            <div style="width:36px;height:36px;background:#d1d5db;border-radius:8px;flex-shrink:0"></div>
-            <div style="flex:1;display:flex;flex-direction:column;gap:4px;justify-content:center">
-              <div class="wf-bar" style="height:6px;width:60%"></div>
-              <div class="wf-bar" style="height:5px;width:85%"></div>
-            </div>
-          </div>
-          <!-- Testimonial -->
-          <div class="wf-block" style="height:100px;gap:6px">
-            ⭐⭐⭐⭐⭐
-            <div class="wf-bar" style="height:5px;width:95%"></div>
-            <div class="wf-bar" style="height:5px;width:80%"></div>
-            <div style="display:flex;gap:6px;align-items:center;margin-top:4px">
-              <div style="width:28px;height:28px;background:#d1d5db;border-radius:50%;flex-shrink:0"></div>
-              <div class="wf-bar" style="height:5px;width:50%"></div>
-            </div>
-          </div>
-          <!-- CTA Card -->
-          <div class="wf-block wf-accent" style="height:120px;gap:8px">
-            <div class="wf-bar" style="height:8px;width:60%"></div>
-            <div class="wf-bar" style="height:6px;width:75%"></div>
-            <div class="wf-block wf-dark" style="height:40px;width:90%;margin:4px 0">[ Call Now Button ]</div>
-          </div>
-          <!-- Form -->
-          <div class="wf-block" style="height:200px;gap:6px;padding:10px">
-            <div class="wf-bar" style="height:8px;width:50%"></div>
-            <div class="wf-bar" style="height:5px;width:70%"></div>
-            <div class="wf-bar" style="height:40px;width:100%;border-radius:6px;background:#d1d5db"></div>
-            <div class="wf-bar" style="height:40px;width:100%;border-radius:6px;background:#d1d5db"></div>
-            <div class="wf-bar" style="height:60px;width:100%;border-radius:6px;background:#d1d5db"></div>
-            <div class="wf-block wf-accent" style="height:44px;width:100%;margin:0">[ Submit ]</div>
-          </div>
-          <!-- Footer -->
-          <div class="wf-block wf-dark" style="height:100px">Footer</div>
-          <!-- Sticky bar -->
-          <div class="wf-block wf-accent" style="height:52px;flex-direction:row;justify-content:space-between;padding:0 12px">
-            <span>📞 +91-XXXXX</span><span>[ CALL NOW ]</span><span>💬</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+ <!-- SCREEN 1: Low-fidelity Wireframe -->
+ <div class="phone-wrap">
+ <div class="phone-label">📐 Wireframe — Low Fidelity</div>
+ <div class="phone-frame">
+ <div class="phone-screen">
+ <div class="wireframe-screen">
+ <!-- Status -->
+ <div class="wf-bar" style="height:10px;width:80%;align-self:center"></div>
+ <!-- Header -->
+ <div class="wf-block wf-accent" style="height:44px;flex-direction:row;justify-content:space-between;padding:0 12px">
+ <span>LOGO</span><span>[ CALL NOW ]</span>
+ </div>
+ <!-- Announce -->
+ <div class="wf-block wf-dark" style="height:28px">📢 Announcement Bar</div>
+ <!-- Hero -->
+ <div class="wf-block" style="height:140px;gap:8px">
+ <div class="wf-bar" style="height:8px;width:60%"></div>
+ <div class="wf-bar" style="height:6px;width:85%"></div>
+ <div class="wf-bar" style="height:6px;width:75%"></div>
+ <div style="display:flex;gap:8px;width:100%;justify-content:center;margin-top:4px">
+ <div class="wf-block wf-accent" style="height:36px;width:120px;margin:0">[ CTA Primary ]</div>
+ <div class="wf-block" style="height:36px;width:100px;margin:0">[ Secondary ]</div>
+ </div>
+ </div>
+ <!-- Hero Image -->
+ <div class="wf-block wf-dark" style="height:80px">🖼 Hero Visual / Icon Grid</div>
+ <!-- Trust Strip -->
+ <div class="wf-block wf-dark" style="height:48px;flex-direction:row;justify-content:space-around">
+ <span>|20M|</span><span>|4HR|</span><span>|99%|</span><span>|24/7|</span>
+ </div>
+ <!-- SLA Cards -->
+ <div class="wf-block" style="height:14px;align-self:flex-start;width:40%"></div>
+ <div class="wf-grid-2">
+ <div class="wf-block" style="height:90px">SLA<br>Card 1</div>
+ <div class="wf-block" style="height:90px">SLA<br>Card 2</div>
+ <div class="wf-block" style="height:90px">SLA<br>Card 3</div>
+ <div class="wf-block" style="height:90px">SLA<br>Card 4</div>
+ </div>
+ <!-- Services -->
+ <div class="wf-block" style="height:14px;align-self:flex-start;width:40%;margin-top:6px"></div>
+ <div class="wf-block wf-accent" style="height:64px">⭐ Featured Service (Full-width)</div>
+ <div class="wf-grid-2">
+ <div class="wf-block" style="height:80px">Svc 1</div>
+ <div class="wf-block" style="height:80px">Svc 2</div>
+ <div class="wf-block" style="height:80px">Svc 3</div>
+ <div class="wf-block" style="height:80px">Svc 4</div>
+ </div>
+ <!-- Why Us -->
+ <div class="wf-block" style="height:14px;align-self:flex-start;width:40%;margin-top:6px"></div>
+ <div class="wf-block" style="height:54px;flex-direction:row;justify-content:flex-start;gap:8px;padding:8px">
+ <div style="width:36px;height:36px;background:#d1d5db;border-radius:8px;flex-shrink:0"></div>
+ <div style="flex:1;display:flex;flex-direction:column;gap:4px;justify-content:center">
+ <div class="wf-bar" style="height:6px;width:70%"></div>
+ <div class="wf-bar" style="height:5px;width:90%"></div>
+ </div>
+ </div>
+ <div class="wf-block" style="height:54px;flex-direction:row;justify-content:flex-start;gap:8px;padding:8px">
+ <div style="width:36px;height:36px;background:#d1d5db;border-radius:8px;flex-shrink:0"></div>
+ <div style="flex:1;display:flex;flex-direction:column;gap:4px;justify-content:center">
+ <div class="wf-bar" style="height:6px;width:60%"></div>
+ <div class="wf-bar" style="height:5px;width:85%"></div>
+ </div>
+ </div>
+ <!-- Testimonial -->
+ <div class="wf-block" style="height:100px;gap:6px">
+ ⭐⭐⭐⭐⭐
+ <div class="wf-bar" style="height:5px;width:95%"></div>
+ <div class="wf-bar" style="height:5px;width:80%"></div>
+ <div style="display:flex;gap:6px;align-items:center;margin-top:4px">
+ <div style="width:28px;height:28px;background:#d1d5db;border-radius:50%;flex-shrink:0"></div>
+ <div class="wf-bar" style="height:5px;width:50%"></div>
+ </div>
+ </div>
+ <!-- CTA Card -->
+ <div class="wf-block wf-accent" style="height:120px;gap:8px">
+ <div class="wf-bar" style="height:8px;width:60%"></div>
+ <div class="wf-bar" style="height:6px;width:75%"></div>
+ <div class="wf-block wf-dark" style="height:40px;width:90%;margin:4px 0">[ Call Now Button ]</div>
+ </div>
+ <!-- Form -->
+ <div class="wf-block" style="height:200px;gap:6px;padding:10px">
+ <div class="wf-bar" style="height:8px;width:50%"></div>
+ <div class="wf-bar" style="height:5px;width:70%"></div>
+ <div class="wf-bar" style="height:40px;width:100%;border-radius:6px;background:#d1d5db"></div>
+ <div class="wf-bar" style="height:40px;width:100%;border-radius:6px;background:#d1d5db"></div>
+ <div class="wf-bar" style="height:60px;width:100%;border-radius:6px;background:#d1d5db"></div>
+ <div class="wf-block wf-accent" style="height:44px;width:100%;margin:0">[ Submit ]</div>
+ </div>
+ <!-- Footer -->
+ <div class="wf-block wf-dark" style="height:100px">Footer</div>
+ <!-- Sticky bar -->
+ <div class="wf-block wf-accent" style="height:52px;flex-direction:row;justify-content:space-between;padding:0 12px">
+ <span>📞 +91-XXXXX</span><span>[ CALL NOW ]</span><span>💬</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
 
-  <!-- SCREEN 2: High-Fidelity — Home -->
-  <div class="phone-wrap">
-    <div class="phone-label">🎨 High-Fidelity — Home Screen</div>
-    <div class="phone-frame">
-      <div class="phone-screen" id="screen-home">
+ <!-- SCREEN 2: High-Fidelity — Home -->
+ <div class="phone-wrap">
+ <div class="phone-label">🎨 High-Fidelity — Home Screen</div>
+ <div class="phone-frame">
+ <div class="phone-screen" id="screen-home">
 
-        <!-- Status Bar -->
-        <div class="status-bar" style="padding-top:36px">
-          <span class="time">9:41</span>
-          <div class="status-icons">
-            <i class="fas fa-signal"></i>
-            <i class="fas fa-wifi"></i>
-            <i class="fas fa-battery-three-quarters"></i>
-          </div>
-        </div>
+ <!-- Status Bar -->
+ <div class="status-bar" style="padding-top:36px">
+ <span class="time">9:41</span>
+ <div class="status-icons">
+ <i class="fas fa-signal"></i>
+ <i class="fas fa-wifi"></i>
+ <i class="fas fa-battery-three-quarters"></i>
+ </div>
+ </div>
 
-        <!-- Announcement Bar -->
-        <div class="m-announce">
-          <span class="badge">NEW</span>
-          Free IT Audit for NCR Businesses — Limited Slots!
-        </div>
+ <!-- Announcement Bar -->
+ <div class="m-announce">
+ <span class="badge">NEW</span>
+ Free IT Audit for NCR Businesses — Limited Slots!
+ </div>
 
-        <!-- Header -->
-        <div class="m-header">
-          <div class="m-logo">
-            <div class="m-logo-icon"><span>ON</span></div>
-            <div class="m-logo-text">
-              <div class="m-logo-name"><span class="om">Om</span><span class="net">Net</span></div>
-              <div class="m-logo-sub">IT Solutions</div>
-            </div>
-          </div>
-          <div class="m-header-cta">
-            <a class="m-call-btn" href="tel:+911234567890">
-              <i class="fas fa-phone"></i> Call Now
-            </a>
-            <button class="m-menu-btn">
-              <span></span><span></span><span style="width:12px"></span>
-            </button>
-          </div>
-        </div>
+ <!-- Header -->
+ <div class="m-header">
+ <div class="m-logo">
+ <div class="m-logo-icon"><span>ON</span></div>
+ <div class="m-logo-text">
+ <div class="m-logo-name"><span class="om">Om</span><span class="net">Net</span></div>
+ <div class="m-logo-sub">IT Solutions</div>
+ </div>
+ </div>
+ <div class="m-header-cta">
+ <a class="m-call-btn" href="tel:+911234567890">
+ <i class="fas fa-phone"></i> Call Now
+ </a>
+ <button class="m-menu-btn">
+ <span></span><span></span><span style="width:12px"></span>
+ </button>
+ </div>
+ </div>
 
-        <!-- Hero -->
-        <div class="m-hero">
-          <div class="m-hero-badge">
-            <span class="dot"></span>
-            Available 24/7 · NCR Region
-          </div>
-          <h1>
-            <span class="highlight">Expert IT Support</span><br>
-            for Your Business
-          </h1>
-          <p>Fast onsite & remote IT services across Noida, Ghaziabad & Delhi NCR. No downtime. No headaches.</p>
-          <div class="m-hero-ctas">
-            <a class="m-btn-primary" href="tel:+911234567890">
-              <i class="fas fa-phone"></i> Get Support Now
-            </a>
-            <a class="m-btn-secondary" href="#">
-              Our Services
-            </a>
-          </div>
-          <!-- Hero Visual -->
-          <div class="m-hero-image-wrap">
-            <div class="m-hero-visual">
-              <div class="hero-icon-grid">
-                <div class="hero-icon-chip"><i class="fas fa-server"></i><span>Server Mgmt</span></div>
-                <div class="hero-icon-chip"><i class="fas fa-shield-alt"></i><span>Cybersec</span></div>
-                <div class="hero-icon-chip"><i class="fas fa-cloud"></i><span>Cloud</span></div>
-                <div class="hero-icon-chip"><i class="fas fa-headset"></i><span>24/7 Help</span></div>
-                <div class="hero-icon-chip"><i class="fas fa-laptop"></i><span>End-user IT</span></div>
-                <div class="hero-icon-chip"><i class="fas fa-network-wired"></i><span>Networking</span></div>
-                <div class="hero-icon-chip"><i class="fas fa-database"></i><span>Backup</span></div>
-                <div class="hero-icon-chip"><i class="fas fa-tools"></i><span>On-Site</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
+ <!-- Hero -->
+ <div class="m-hero">
+ <div class="m-hero-badge">
+ <span class="dot"></span>
+ Available 24/7 · NCR Region
+ </div>
+ <h1>
+ <span class="highlight">Expert IT Support</span><br>
+ for Your Business
+ </h1>
+ <p>Fast onsite & remote IT services across Noida, Ghaziabad & Delhi NCR. No downtime. No headaches.</p>
+ <div class="m-hero-ctas">
+ <a class="m-btn-primary" href="tel:+911234567890">
+ <i class="fas fa-phone"></i> Get Support Now
+ </a>
+ <a class="m-btn-secondary" href="#">
+ Our Services
+ </a>
+ </div>
+ <!-- Hero Visual -->
+ <div class="m-hero-image-wrap">
+ <div class="m-hero-visual">
+ <div class="hero-icon-grid">
+ <div class="hero-icon-chip"><i class="fas fa-server"></i><span>Server Mgmt</span></div>
+ <div class="hero-icon-chip"><i class="fas fa-shield-alt"></i><span>Cybersec</span></div>
+ <div class="hero-icon-chip"><i class="fas fa-cloud"></i><span>Cloud</span></div>
+ <div class="hero-icon-chip"><i class="fas fa-headset"></i><span>24/7 Help</span></div>
+ <div class="hero-icon-chip"><i class="fas fa-laptop"></i><span>End-user IT</span></div>
+ <div class="hero-icon-chip"><i class="fas fa-network-wired"></i><span>Networking</span></div>
+ <div class="hero-icon-chip"><i class="fas fa-database"></i><span>Backup</span></div>
+ <div class="hero-icon-chip"><i class="fas fa-tools"></i><span>On-Site</span></div>
+ </div>
+ </div>
+ </div>
+ </div>
 
-        <!-- Trust Strip (SLA Numbers) -->
-        <div class="m-trust-strip">
-          <div class="m-trust-item">
-            <div class="val">20 MIN</div>
-            <div class="lbl">Remote Response</div>
-          </div>
-          <div class="m-trust-divider"></div>
-          <div class="m-trust-item">
-            <div class="val">4 HRS</div>
-            <div class="lbl">Onsite NCR</div>
-          </div>
-          <div class="m-trust-divider"></div>
-          <div class="m-trust-item">
-            <div class="val">99%</div>
-            <div class="lbl">Uptime SLA</div>
-          </div>
-          <div class="m-trust-divider"></div>
-          <div class="m-trust-item">
-            <div class="val">24/7</div>
-            <div class="lbl">Monitoring</div>
-          </div>
-        </div>
+ <!-- Trust Strip (SLA Numbers) -->
+ <div class="m-trust-strip">
+ <div class="m-trust-item">
+ <div class="val">20 MIN</div>
+ <div class="lbl">Remote Response</div>
+ </div>
+ <div class="m-trust-divider"></div>
+ <div class="m-trust-item">
+ <div class="val">4 HRS</div>
+ <div class="lbl">Onsite NCR</div>
+ </div>
+ <div class="m-trust-divider"></div>
+ <div class="m-trust-item">
+ <div class="val">99%</div>
+ <div class="lbl">Uptime SLA</div>
+ </div>
+ <div class="m-trust-divider"></div>
+ <div class="m-trust-item">
+ <div class="val">24/7</div>
+ <div class="lbl">Monitoring</div>
+ </div>
+ </div>
 
-        <!-- SLA Cards (2×2 Grid) -->
-        <div class="m-section">
-          <div class="m-section-header">
-            <span class="m-section-tag">Our Promise</span>
-            <h2>Guaranteed Response Times</h2>
-            <p class="lead">Every service level commitment — backed in writing.</p>
-          </div>
-          <div class="m-stats-grid">
-            <div class="m-stat-card teal">
-              <div class="m-stat-icon"><i class="fas fa-bolt"></i></div>
-              <div class="m-stat-val">20 MIN</div>
-              <div class="m-stat-label">Remote Response Time</div>
-            </div>
-            <div class="m-stat-card amber">
-              <div class="m-stat-icon"><i class="fas fa-truck"></i></div>
-              <div class="m-stat-val">4 HRS</div>
-              <div class="m-stat-label">Onsite Support NCR</div>
-            </div>
-            <div class="m-stat-card green">
-              <div class="m-stat-icon"><i class="fas fa-check-circle"></i></div>
-              <div class="m-stat-val">99%</div>
-              <div class="m-stat-label">System Uptime Guarantee</div>
-            </div>
-            <div class="m-stat-card cyan">
-              <div class="m-stat-icon"><i class="fas fa-headset"></i></div>
-              <div class="m-stat-val">24/7</div>
-              <div class="m-stat-label">Support & Monitoring</div>
-            </div>
-          </div>
-        </div>
+ <!-- SLA Cards (2×2 Grid) -->
+ <div class="m-section">
+ <div class="m-section-header">
+ <span class="m-section-tag">Our Promise</span>
+ <h2>Guaranteed Response Times</h2>
+ <p class="lead">Every service level commitment — backed in writing.</p>
+ </div>
+ <div class="m-stats-grid">
+ <div class="m-stat-card teal">
+ <div class="m-stat-icon"><i class="fas fa-bolt"></i></div>
+ <div class="m-stat-val">20 MIN</div>
+ <div class="m-stat-label">Remote Response Time</div>
+ </div>
+ <div class="m-stat-card amber">
+ <div class="m-stat-icon"><i class="fas fa-truck"></i></div>
+ <div class="m-stat-val">4 HRS</div>
+ <div class="m-stat-label">Onsite Support NCR</div>
+ </div>
+ <div class="m-stat-card green">
+ <div class="m-stat-icon"><i class="fas fa-check-circle"></i></div>
+ <div class="m-stat-val">99%</div>
+ <div class="m-stat-label">System Uptime Guarantee</div>
+ </div>
+ <div class="m-stat-card cyan">
+ <div class="m-stat-icon"><i class="fas fa-headset"></i></div>
+ <div class="m-stat-val">24/7</div>
+ <div class="m-stat-label">Support & Monitoring</div>
+ </div>
+ </div>
+ </div>
 
-        <!-- Services -->
-        <div class="m-section m-section-alt">
-          <div class="m-section-header">
-            <span class="m-section-tag">What We Do</span>
-            <h2>IT Services Tailored for NCR Businesses</h2>
-          </div>
-          <div class="m-services-grid">
-            <!-- Featured -->
-            <div class="m-service-card featured">
-              <div class="m-service-icon"><i class="fas fa-cogs"></i></div>
-              <div style="flex:1">
-                <h3>Managed IT Services</h3>
-                <p>Complete IT management — infrastructure, security, helpdesk & more. One fixed monthly fee.</p>
-                <div class="m-service-arrow" style="margin-top:8px">Learn More →</div>
-              </div>
-            </div>
-            <div class="m-service-card">
-              <div class="m-service-icon"><i class="fas fa-shield-alt"></i></div>
-              <h3>Cybersecurity</h3>
-              <p>Protect your data and networks from threats.</p>
-              <div class="m-service-arrow">→</div>
-            </div>
-            <div class="m-service-card">
-              <div class="m-service-icon"><i class="fas fa-cloud"></i></div>
-              <h3>Cloud Services</h3>
-              <p>Microsoft 365, Azure & cloud migrations.</p>
-              <div class="m-service-arrow">→</div>
-            </div>
-            <div class="m-service-card">
-              <div class="m-service-icon"><i class="fas fa-server"></i></div>
-              <h3>Server & Infra</h3>
-              <p>On-prem servers, racks & network setup.</p>
-              <div class="m-service-arrow">→</div>
-            </div>
-            <div class="m-service-card">
-              <div class="m-service-icon"><i class="fas fa-laptop-medical"></i></div>
-              <h3>IT Hardware</h3>
-              <p>Repair, rental & refurbished laptops/desktops.</p>
-              <div class="m-service-arrow">→</div>
-            </div>
-          </div>
-        </div>
+ <!-- Services -->
+ <div class="m-section m-section-alt">
+ <div class="m-section-header">
+ <span class="m-section-tag">What We Do</span>
+ <h2>IT Services Tailored for NCR Businesses</h2>
+ </div>
+ <div class="m-services-grid">
+ <!-- Featured -->
+ <div class="m-service-card featured">
+ <div class="m-service-icon"><i class="fas fa-cogs"></i></div>
+ <div style="flex:1">
+ <h3>Managed IT Services</h3>
+ <p>Complete IT management — infrastructure, security, helpdesk & more. One fixed monthly fee.</p>
+ <div class="m-service-arrow" style="margin-top:8px">Learn More →</div>
+ </div>
+ </div>
+ <div class="m-service-card">
+ <div class="m-service-icon"><i class="fas fa-shield-alt"></i></div>
+ <h3>Cybersecurity</h3>
+ <p>Protect your data and networks from threats.</p>
+ <div class="m-service-arrow">→</div>
+ </div>
+ <div class="m-service-card">
+ <div class="m-service-icon"><i class="fas fa-cloud"></i></div>
+ <h3>Cloud Services</h3>
+ <p>Microsoft 365, Azure & cloud migrations.</p>
+ <div class="m-service-arrow">→</div>
+ </div>
+ <div class="m-service-card">
+ <div class="m-service-icon"><i class="fas fa-server"></i></div>
+ <h3>Server & Infra</h3>
+ <p>On-prem servers, racks & network setup.</p>
+ <div class="m-service-arrow">→</div>
+ </div>
+ <div class="m-service-card">
+ <div class="m-service-icon"><i class="fas fa-laptop-medical"></i></div>
+ <h3>IT Hardware</h3>
+ <p>Repair, rental & refurbished laptops/desktops.</p>
+ <div class="m-service-arrow">→</div>
+ </div>
+ </div>
+ </div>
 
-        <!-- Why OmNet -->
-        <div class="m-section">
-          <div class="m-section-header">
-            <span class="m-section-tag">Why OmNet</span>
-            <h2>The NCR IT Partner You Can Trust</h2>
-          </div>
-          <div class="m-why-list">
-            <div class="m-why-item">
-              <div class="m-why-icon"><i class="fas fa-map-marker-alt"></i></div>
-              <div class="m-why-text">
-                <h4>Local NCR Coverage</h4>
-                <p>Serving Noida, Ghaziabad, Indirapuram & Delhi with engineers always nearby.</p>
-              </div>
-            </div>
-            <div class="m-why-item">
-              <div class="m-why-icon"><i class="fas fa-file-contract"></i></div>
-              <div class="m-why-text">
-                <h4>Contractual SLA Commitments</h4>
-                <p>Response times in writing — not just promises. Miss SLA, get a credit.</p>
-              </div>
-            </div>
-            <div class="m-why-item">
-              <div class="m-why-icon"><i class="fas fa-users"></i></div>
-              <div class="m-why-text">
-                <h4>Certified Engineers</h4>
-                <p>Microsoft, Cisco & CompTIA certified team with 10+ years experience.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+ <!-- Why OmNet -->
+ <div class="m-section">
+ <div class="m-section-header">
+ <span class="m-section-tag">Why OmNet</span>
+ <h2>The NCR IT Partner You Can Trust</h2>
+ </div>
+ <div class="m-why-list">
+ <div class="m-why-item">
+ <div class="m-why-icon"><i class="fas fa-map-marker-alt"></i></div>
+ <div class="m-why-text">
+ <h4>Local NCR Coverage</h4>
+ <p>Serving Noida, Ghaziabad, Indirapuram & Delhi with engineers always nearby.</p>
+ </div>
+ </div>
+ <div class="m-why-item">
+ <div class="m-why-icon"><i class="fas fa-file-contract"></i></div>
+ <div class="m-why-text">
+ <h4>Contractual SLA Commitments</h4>
+ <p>Response times in writing — not just promises. Miss SLA, get a credit.</p>
+ </div>
+ </div>
+ <div class="m-why-item">
+ <div class="m-why-icon"><i class="fas fa-users"></i></div>
+ <div class="m-why-text">
+ <h4>Certified Engineers</h4>
+ <p>Microsoft, Cisco & CompTIA certified team with 10+ years experience.</p>
+ </div>
+ </div>
+ </div>
+ </div>
 
-        <!-- Testimonials -->
-        <div class="m-section m-section-alt">
-          <div class="m-section-header">
-            <span class="m-section-tag">Reviews</span>
-            <h2>Trusted by 200+ NCR Businesses</h2>
-          </div>
-          <div class="m-testimonial">
-            <div class="stars">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <blockquote>"OmNet resolved our server crash in under 25 minutes remotely. Saved us a full day of lost revenue. Highly recommended for any business in Noida."</blockquote>
-            <div class="m-testimonial-author">
-              <div class="m-avatar teal">RK</div>
-              <div class="info">
-                <div class="name">Rajesh Kumar</div>
-                <div class="role">Director, Sunrise Exports · Noida Sec 62</div>
-              </div>
-            </div>
-          </div>
-          <div class="m-testimonial">
-            <div class="stars">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <blockquote>"Best IT AMC provider in Ghaziabad. They proactively fix issues before we even notice them. 24/7 support is genuinely 24/7."</blockquote>
-            <div class="m-testimonial-author">
-              <div class="m-avatar cyan">PS</div>
-              <div class="info">
-                <div class="name">Priya Sharma</div>
-                <div class="role">IT Head, MedPlus · Indirapuram</div>
-              </div>
-            </div>
-          </div>
-        </div>
+ <!-- Testimonials -->
+ <div class="m-section m-section-alt">
+ <div class="m-section-header">
+ <span class="m-section-tag">Reviews</span>
+ <h2>Trusted by 200+ NCR Businesses</h2>
+ </div>
+ <div class="m-testimonial">
+ <div class="stars">
+ <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+ </div>
+ <blockquote>"OmNet resolved our server crash in under 25 minutes remotely. Saved us a full day of lost revenue. Highly recommended for any business in Noida."</blockquote>
+ <div class="m-testimonial-author">
+ <div class="m-avatar teal">RK</div>
+ <div class="info">
+ <div class="name">Rajesh Kumar</div>
+ <div class="role">Director, Sunrise Exports · Noida Sec 62</div>
+ </div>
+ </div>
+ </div>
+ <div class="m-testimonial">
+ <div class="stars">
+ <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+ </div>
+ <blockquote>"Best IT AMC provider in Ghaziabad. They proactively fix issues before we even notice them. 24/7 support is genuinely 24/7."</blockquote>
+ <div class="m-testimonial-author">
+ <div class="m-avatar cyan">PS</div>
+ <div class="info">
+ <div class="name">Priya Sharma</div>
+ <div class="role">IT Head, MedPlus · Indirapuram</div>
+ </div>
+ </div>
+ </div>
+ </div>
 
-        <!-- Contact CTA -->
-        <div class="m-contact-section">
-          <div class="m-cta-card">
-            <h3>Need IT Help Right Now?</h3>
-            <p>Our engineers are standing by. Average first response under 20 minutes.</p>
-            <div class="m-cta-actions">
-              <a class="m-btn-white" href="tel:+911234567890">
-                <i class="fas fa-phone" style="color:var(--teal-600)"></i>
-                Call +91-9999-XXX-XXX
-              </a>
-            </div>
-          </div>
+ <!-- Contact CTA -->
+ <div class="m-contact-section">
+ <div class="m-cta-card">
+ <h3>Need IT Help Right Now?</h3>
+ <p>Our engineers are standing by. Average first response under 20 minutes.</p>
+ <div class="m-cta-actions">
+ <a class="m-btn-white" href="tel:+911234567890">
+ <i class="fas fa-phone" style="color:var(--teal-600)"></i>
+ Call +91-9999-XXX-XXX
+ </a>
+ </div>
+ </div>
 
-          <!-- Contact Form -->
-          <div class="m-form-card">
-            <h4>Request a Callback</h4>
-            <p class="form-sub">We'll call you back within 20 minutes during business hours.</p>
-            <div class="m-form-group">
-              <label class="m-form-label">Your Name</label>
-              <input class="m-form-input" type="text" placeholder="E.g. Rajesh Kumar">
-            </div>
-            <div class="m-form-group">
-              <label class="m-form-label">Phone Number</label>
-              <input class="m-form-input" type="tel" placeholder="+91 98XXX XXXXX">
-            </div>
-            <div class="m-form-group">
-              <label class="m-form-label">How can we help?</label>
-              <textarea class="m-form-textarea" placeholder="Describe your IT issue briefly…"></textarea>
-            </div>
-            <button class="m-form-submit">
-              <i class="fas fa-paper-plane"></i> Get Support Now
-            </button>
-          </div>
-        </div>
+ <!-- Contact Form -->
+ <div class="m-form-card">
+ <h4>Request a Callback</h4>
+ <p class="form-sub">We'll call you back within 20 minutes during business hours.</p>
+ <div class="m-form-group">
+ <label class="m-form-label">Your Name</label>
+ <input class="m-form-input" type="text" placeholder="E.g. Rajesh Kumar">
+ </div>
+ <div class="m-form-group">
+ <label class="m-form-label">Phone Number</label>
+ <input class="m-form-input" type="tel" placeholder="+91 98XXX XXXXX">
+ </div>
+ <div class="m-form-group">
+ <label class="m-form-label">How can we help?</label>
+ <textarea class="m-form-textarea" placeholder="Describe your IT issue briefly…"></textarea>
+ </div>
+ <button class="m-form-submit">
+ <i class="fas fa-paper-plane"></i> Get Support Now
+ </button>
+ </div>
+ </div>
 
-        <!-- Footer -->
-        <div class="m-footer">
-          <div class="m-footer-logo">
-            <div class="m-logo-icon"><span>ON</span></div>
-            <div class="m-logo-text">
-              <div class="m-logo-name"><span class="om" style="color:#fff">Om</span><span class="net">Net</span></div>
-              <div class="m-logo-sub">IT Solutions · NCR</div>
-            </div>
-          </div>
-          <p class="m-footer-tagline">Your trusted IT partner across Noida, Ghaziabad, Indirapuram and Delhi NCR. RBI-rated MSME-friendly services.</p>
-          <div class="m-footer-links">
-            <a href="#"><i class="fas fa-chevron-right"></i> Managed IT</a>
-            <a href="#"><i class="fas fa-chevron-right"></i> Cybersecurity</a>
-            <a href="#"><i class="fas fa-chevron-right"></i> Cloud Services</a>
-            <a href="#"><i class="fas fa-chevron-right"></i> IT Hardware</a>
-            <a href="#"><i class="fas fa-chevron-right"></i> AMC Plans</a>
-            <a href="#"><i class="fas fa-chevron-right"></i> About Us</a>
-          </div>
-          <div class="m-footer-divider"></div>
-          <div class="m-footer-bottom">
-            <span class="copy">© 2025 OmNet IT Solutions</span>
-            <div class="m-social">
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-            </div>
-          </div>
-        </div>
+ <!-- Footer -->
+ <div class="m-footer">
+ <div class="m-footer-logo">
+ <div class="m-logo-icon"><span>ON</span></div>
+ <div class="m-logo-text">
+ <div class="m-logo-name"><span class="om" style="color:#fff">Om</span><span class="net">Net</span></div>
+ <div class="m-logo-sub">IT Solutions · NCR</div>
+ </div>
+ </div>
+ <p class="m-footer-tagline">Your trusted IT partner across Noida, Ghaziabad, Indirapuram and Delhi NCR. RBI-rated MSME-friendly services.</p>
+ <div class="m-footer-links">
+ <a href="#"><i class="fas fa-chevron-right"></i> Managed IT</a>
+ <a href="#"><i class="fas fa-chevron-right"></i> Cybersecurity</a>
+ <a href="#"><i class="fas fa-chevron-right"></i> Cloud Services</a>
+ <a href="#"><i class="fas fa-chevron-right"></i> IT Hardware</a>
+ <a href="#"><i class="fas fa-chevron-right"></i> AMC Plans</a>
+ <a href="#"><i class="fas fa-chevron-right"></i> About Us</a>
+ </div>
+ <div class="m-footer-divider"></div>
+ <div class="m-footer-bottom">
+ <span class="copy">© 2025 OmNet IT Solutions</span>
+ <div class="m-social">
+ <a href="#"><i class="fab fa-linkedin-in"></i></a>
+ <a href="#"><i class="fab fa-twitter"></i></a>
+ <a href="#"><i class="fab fa-facebook-f"></i></a>
+ </div>
+ </div>
+ </div>
 
-        <!-- Sticky Bottom Bar -->
-        <div class="m-sticky-bar">
-          <div class="m-sticky-tel">
-            <i class="fas fa-phone"></i>
-            <a href="tel:+911234567890">+91-9999-XXX-XXX</a>
-          </div>
-          <a class="m-sticky-call" href="tel:+911234567890">
-            <i class="fas fa-phone-alt"></i> Call Now
-          </a>
-        </div>
+ <!-- Sticky Bottom Bar -->
+ <div class="m-sticky-bar">
+ <div class="m-sticky-tel">
+ <i class="fas fa-phone"></i>
+ <a href="tel:+911234567890">+91-9999-XXX-XXX</a>
+ </div>
+ <a class="m-sticky-call" href="tel:+911234567890">
+ <i class="fas fa-phone-alt"></i> Call Now
+ </a>
+ </div>
 
-      </div><!-- /phone-screen -->
-    </div><!-- /phone-frame -->
-  </div>
+ </div><!-- /phone-screen -->
+ </div><!-- /phone-frame -->
+ </div>
 
-  <!-- SCREEN 3: High-Fidelity — Contact / Services Detail -->
-  <div class="phone-wrap">
-    <div class="phone-label">📱 Services & Contact Focused View</div>
-    <div class="phone-frame">
-      <div class="phone-screen">
+ <!-- SCREEN 3: High-Fidelity — Contact / Services Detail -->
+ <div class="phone-wrap">
+ <div class="phone-label">📱 Services & Contact Focused View</div>
+ <div class="phone-frame">
+ <div class="phone-screen">
 
-        <!-- Status Bar -->
-        <div class="status-bar" style="padding-top:36px">
-          <span class="time">9:41</span>
-          <div class="status-icons">
-            <i class="fas fa-signal"></i><i class="fas fa-wifi"></i><i class="fas fa-battery-three-quarters"></i>
-          </div>
-        </div>
+ <!-- Status Bar -->
+ <div class="status-bar" style="padding-top:36px">
+ <span class="time">9:41</span>
+ <div class="status-icons">
+ <i class="fas fa-signal"></i><i class="fas fa-wifi"></i><i class="fas fa-battery-three-quarters"></i>
+ </div>
+ </div>
 
-        <!-- Header (compact) -->
-        <div class="m-header">
-          <div class="m-logo">
-            <div class="m-logo-icon"><span>ON</span></div>
-            <div class="m-logo-text">
-              <div class="m-logo-name"><span class="om">Om</span><span class="net">Net</span></div>
-              <div class="m-logo-sub">IT Solutions</div>
-            </div>
-          </div>
-          <div class="m-header-cta">
-            <a class="m-call-btn" href="tel:+911234567890">
-              <i class="fas fa-phone"></i> Call Now
-            </a>
-          </div>
-        </div>
+ <!-- Header (compact) -->
+ <div class="m-header">
+ <div class="m-logo">
+ <div class="m-logo-icon"><span>ON</span></div>
+ <div class="m-logo-text">
+ <div class="m-logo-name"><span class="om">Om</span><span class="net">Net</span></div>
+ <div class="m-logo-sub">IT Solutions</div>
+ </div>
+ </div>
+ <div class="m-header-cta">
+ <a class="m-call-btn" href="tel:+911234567890">
+ <i class="fas fa-phone"></i> Call Now
+ </a>
+ </div>
+ </div>
 
-        <!-- Service Categories horizontal scroll feel -->
-        <div style="padding:16px 16px 0;background:#fff">
-          <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:12px;scrollbar-width:none">
-            <div style="flex-shrink:0;padding:8px 16px;background:var(--primary-gradient);color:#fff;border-radius:9999px;font-size:12px;font-weight:700;white-space:nowrap">All Services</div>
-            <div style="flex-shrink:0;padding:8px 16px;background:#f3f4f6;color:#374151;border-radius:9999px;font-size:12px;font-weight:600;white-space:nowrap">Managed IT</div>
-            <div style="flex-shrink:0;padding:8px 16px;background:#f3f4f6;color:#374151;border-radius:9999px;font-size:12px;font-weight:600;white-space:nowrap">Security</div>
-            <div style="flex-shrink:0;padding:8px 16px;background:#f3f4f6;color:#374151;border-radius:9999px;font-size:12px;font-weight:600;white-space:nowrap">Cloud</div>
-            <div style="flex-shrink:0;padding:8px 16px;background:#f3f4f6;color:#374151;border-radius:9999px;font-size:12px;font-weight:600;white-space:nowrap">Hardware</div>
-          </div>
-        </div>
+ <!-- Service Categories horizontal scroll feel -->
+ <div style="padding:16px 16px 0;background:#fff">
+ <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:12px;scrollbar-width:none">
+ <div style="flex-shrink:0;padding:8px 16px;background:var(--primary-gradient);color:#fff;border-radius:9999px;font-size:12px;font-weight:700;white-space:nowrap">All Services</div>
+ <div style="flex-shrink:0;padding:8px 16px;background:#f3f4f6;color:#374151;border-radius:9999px;font-size:12px;font-weight:600;white-space:nowrap">Managed IT</div>
+ <div style="flex-shrink:0;padding:8px 16px;background:#f3f4f6;color:#374151;border-radius:9999px;font-size:12px;font-weight:600;white-space:nowrap">Security</div>
+ <div style="flex-shrink:0;padding:8px 16px;background:#f3f4f6;color:#374151;border-radius:9999px;font-size:12px;font-weight:600;white-space:nowrap">Cloud</div>
+ <div style="flex-shrink:0;padding:8px 16px;background:#f3f4f6;color:#374151;border-radius:9999px;font-size:12px;font-weight:600;white-space:nowrap">Hardware</div>
+ </div>
+ </div>
 
-        <!-- Service Detail Cards -->
-        <div class="m-section" style="padding-top:12px">
-          <!-- Managed IT featured -->
-          <div style="background:linear-gradient(135deg,var(--teal-700),var(--cyan-700));border-radius:16px;padding:20px;margin-bottom:12px;color:#fff;position:relative;overflow:hidden">
-            <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.08)"></div>
-            <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:12px">
-              <div style="width:48px;height:48px;border-radius:12px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                <i class="fas fa-cogs" style="font-size:20px;color:#fff"></i>
-              </div>
-              <div>
-                <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:4px">Most Popular</div>
-                <div style="font-size:17px;font-weight:700;line-height:1.2">Managed IT Services</div>
-              </div>
-            </div>
-            <p style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.55;margin-bottom:16px">Complete IT outsourcing — infrastructure, helpdesk, security patches, monitoring & vendor management. One monthly fee, zero surprises.</p>
-            <div style="display:flex;gap:8px">
-              <a href="tel:+911234567890" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;background:#fff;color:#0f766e;border-radius:9999px;padding:11px;font-size:13px;font-weight:700;text-decoration:none;min-height:44px">
-                <i class="fas fa-phone"></i> Enquire Now
-              </a>
-              <a href="#" style="display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(255,255,255,.2);color:#fff;border-radius:9999px;padding:11px 16px;font-size:13px;font-weight:600;text-decoration:none;min-height:44px">
-                Details →
-              </a>
-            </div>
-          </div>
+ <!-- Service Detail Cards -->
+ <div class="m-section" style="padding-top:12px">
+ <!-- Managed IT featured -->
+ <div style="background:linear-gradient(135deg,var(--teal-700),var(--cyan-700));border-radius:16px;padding:20px;margin-bottom:12px;color:#fff;position:relative;overflow:hidden">
+ <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.08)"></div>
+ <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:12px">
+ <div style="width:48px;height:48px;border-radius:12px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+ <i class="fas fa-cogs" style="font-size:20px;color:#fff"></i>
+ </div>
+ <div>
+ <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:4px">Most Popular</div>
+ <div style="font-size:17px;font-weight:700;line-height:1.2">Managed IT Services</div>
+ </div>
+ </div>
+ <p style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.55;margin-bottom:16px">Complete IT outsourcing — infrastructure, helpdesk, security patches, monitoring & vendor management. One monthly fee, zero surprises.</p>
+ <div style="display:flex;gap:8px">
+ <a href="tel:+911234567890" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;background:#fff;color:#0f766e;border-radius:9999px;padding:11px;font-size:13px;font-weight:700;text-decoration:none;min-height:44px">
+ <i class="fas fa-phone"></i> Enquire Now
+ </a>
+ <a href="#" style="display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(255,255,255,.2);color:#fff;border-radius:9999px;padding:11px 16px;font-size:13px;font-weight:600;text-decoration:none;min-height:44px">
+ Details →
+ </a>
+ </div>
+ </div>
 
-          <!-- Other service cards -->
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-            <div style="background:#fff;border-radius:14px;padding:16px;box-shadow:0 1px 6px rgba(0,0,0,.08);border:1.5px solid #f3f4f6">
-              <div style="width:40px;height:40px;border-radius:10px;background:#fef3c7;display:flex;align-items:center;justify-content:center;margin-bottom:10px">
-                <i class="fas fa-shield-alt" style="color:#d97706;font-size:16px"></i>
-              </div>
-              <div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:4px">Cybersecurity</div>
-              <div style="font-size:11px;color:#6b7280;line-height:1.45;margin-bottom:10px">Threat detection, firewall, antivirus & compliance.</div>
-              <a href="#" style="font-size:12px;font-weight:700;color:#0d9488;text-decoration:none">View Plans →</a>
-            </div>
-            <div style="background:#fff;border-radius:14px;padding:16px;box-shadow:0 1px 6px rgba(0,0,0,.08);border:1.5px solid #f3f4f6">
-              <div style="width:40px;height:40px;border-radius:10px;background:#ecfeff;display:flex;align-items:center;justify-content:center;margin-bottom:10px">
-                <i class="fas fa-cloud" style="color:#0891b2;font-size:16px"></i>
-              </div>
-              <div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:4px">Cloud & M365</div>
-              <div style="font-size:11px;color:#6b7280;line-height:1.45;margin-bottom:10px">Migration, setup & ongoing support.</div>
-              <a href="#" style="font-size:12px;font-weight:700;color:#0d9488;text-decoration:none">View Plans →</a>
-            </div>
-            <div style="background:#fff;border-radius:14px;padding:16px;box-shadow:0 1px 6px rgba(0,0,0,.08);border:1.5px solid #f3f4f6">
-              <div style="width:40px;height:40px;border-radius:10px;background:#f0fdf4;display:flex;align-items:center;justify-content:center;margin-bottom:10px">
-                <i class="fas fa-server" style="color:#16a34a;font-size:16px"></i>
-              </div>
-              <div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:4px">Server & Infra</div>
-              <div style="font-size:11px;color:#6b7280;line-height:1.45;margin-bottom:10px">Setup, maintenance & monitoring.</div>
-              <a href="#" style="font-size:12px;font-weight:700;color:#0d9488;text-decoration:none">View Plans →</a>
-            </div>
-            <div style="background:#fff;border-radius:14px;padding:16px;box-shadow:0 1px 6px rgba(0,0,0,.08);border:1.5px solid #f3f4f6">
-              <div style="width:40px;height:40px;border-radius:10px;background:#fdf4ff;display:flex;align-items:center;justify-content:center;margin-bottom:10px">
-                <i class="fas fa-laptop" style="color:#9333ea;font-size:16px"></i>
-              </div>
-              <div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:4px">IT Hardware</div>
-              <div style="font-size:11px;color:#6b7280;line-height:1.45;margin-bottom:10px">Rental, repair & refurbished devices.</div>
-              <a href="#" style="font-size:12px;font-weight:700;color:#0d9488;text-decoration:none">View Plans →</a>
-            </div>
-          </div>
-        </div>
+ <!-- Other service cards -->
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+ <div style="background:#fff;border-radius:14px;padding:16px;box-shadow:0 1px 6px rgba(0,0,0,.08);border:1.5px solid #f3f4f6">
+ <div style="width:40px;height:40px;border-radius:10px;background:#fef3c7;display:flex;align-items:center;justify-content:center;margin-bottom:10px">
+ <i class="fas fa-shield-alt" style="color:#d97706;font-size:16px"></i>
+ </div>
+ <div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:4px">Cybersecurity</div>
+ <div style="font-size:11px;color:#6b7280;line-height:1.45;margin-bottom:10px">Threat detection, firewall, antivirus & compliance.</div>
+ <a href="#" style="font-size:12px;font-weight:700;color:#0d9488;text-decoration:none">View Plans →</a>
+ </div>
+ <div style="background:#fff;border-radius:14px;padding:16px;box-shadow:0 1px 6px rgba(0,0,0,.08);border:1.5px solid #f3f4f6">
+ <div style="width:40px;height:40px;border-radius:10px;background:#ecfeff;display:flex;align-items:center;justify-content:center;margin-bottom:10px">
+ <i class="fas fa-cloud" style="color:#0891b2;font-size:16px"></i>
+ </div>
+ <div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:4px">Cloud & M365</div>
+ <div style="font-size:11px;color:#6b7280;line-height:1.45;margin-bottom:10px">Migration, setup & ongoing support.</div>
+ <a href="#" style="font-size:12px;font-weight:700;color:#0d9488;text-decoration:none">View Plans →</a>
+ </div>
+ <div style="background:#fff;border-radius:14px;padding:16px;box-shadow:0 1px 6px rgba(0,0,0,.08);border:1.5px solid #f3f4f6">
+ <div style="width:40px;height:40px;border-radius:10px;background:#f0fdf4;display:flex;align-items:center;justify-content:center;margin-bottom:10px">
+ <i class="fas fa-server" style="color:#16a34a;font-size:16px"></i>
+ </div>
+ <div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:4px">Server & Infra</div>
+ <div style="font-size:11px;color:#6b7280;line-height:1.45;margin-bottom:10px">Setup, maintenance & monitoring.</div>
+ <a href="#" style="font-size:12px;font-weight:700;color:#0d9488;text-decoration:none">View Plans →</a>
+ </div>
+ <div style="background:#fff;border-radius:14px;padding:16px;box-shadow:0 1px 6px rgba(0,0,0,.08);border:1.5px solid #f3f4f6">
+ <div style="width:40px;height:40px;border-radius:10px;background:#fdf4ff;display:flex;align-items:center;justify-content:center;margin-bottom:10px">
+ <i class="fas fa-laptop" style="color:#9333ea;font-size:16px"></i>
+ </div>
+ <div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:4px">IT Hardware</div>
+ <div style="font-size:11px;color:#6b7280;line-height:1.45;margin-bottom:10px">Rental, repair & refurbished devices.</div>
+ <a href="#" style="font-size:12px;font-weight:700;color:#0d9488;text-decoration:none">View Plans →</a>
+ </div>
+ </div>
+ </div>
 
-        <!-- AMC Pricing CTA -->
-        <div style="margin:0 16px 24px;background:var(--gray-900);border-radius:16px;padding:20px;text-align:center">
-          <div style="display:inline-block;background:rgba(20,184,166,.2);color:#2dd4bf;border-radius:9999px;padding:4px 12px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">AMC Plans</div>
-          <h3 style="font-family:'DM Serif Display',serif;font-size:18px;color:#fff;margin-bottom:8px">Fixed Monthly IT Support</h3>
-          <p style="font-size:12px;color:#9ca3af;margin-bottom:16px;line-height:1.5">Predictable IT costs. No surprise bills. Starting ₹4,999/month for small businesses.</p>
-          <div style="display:flex;gap:8px">
-            <a href="#" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;background:linear-gradient(135deg,#14b8a6,#0891b2);color:#fff;border-radius:9999px;padding:13px;font-size:14px;font-weight:700;text-decoration:none;min-height:48px;box-shadow:0 4px 16px rgba(20,184,166,.4)">
-              View Plans
-            </a>
-          </div>
-        </div>
+ <!-- AMC Pricing CTA -->
+ <div style="margin:0 16px 24px;background:var(--gray-900);border-radius:16px;padding:20px;text-align:center">
+ <div style="display:inline-block;background:rgba(20,184,166,.2);color:#2dd4bf;border-radius:9999px;padding:4px 12px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">AMC Plans</div>
+ <h3 style="font-family:'DM Serif Display',serif;font-size:18px;color:#fff;margin-bottom:8px">Fixed Monthly IT Support</h3>
+ <p style="font-size:12px;color:#9ca3af;margin-bottom:16px;line-height:1.5">Predictable IT costs. No surprise bills. Starting ₹4,999/month for small businesses.</p>
+ <div style="display:flex;gap:8px">
+ <a href="#" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;background:linear-gradient(135deg,#14b8a6,#0891b2);color:#fff;border-radius:9999px;padding:13px;font-size:14px;font-weight:700;text-decoration:none;min-height:48px;box-shadow:0 4px 16px rgba(20,184,166,.4)">
+ View Plans
+ </a>
+ </div>
+ </div>
 
-        <!-- Quick Contact -->
-        <div class="m-contact-section" style="padding-top:0">
-          <div class="m-form-card">
-            <h4>Get Support Now</h4>
-            <p class="form-sub">Callback guaranteed within 20 minutes. 24/7 availability.</p>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
-              <div class="m-form-group" style="margin-bottom:0">
-                <label class="m-form-label">Name</label>
-                <input class="m-form-input" type="text" placeholder="Your name">
-              </div>
-              <div class="m-form-group" style="margin-bottom:0">
-                <label class="m-form-label">Phone</label>
-                <input class="m-form-input" type="tel" placeholder="+91">
-              </div>
-            </div>
-            <div class="m-form-group">
-              <label class="m-form-label">Issue / Message</label>
-              <textarea class="m-form-textarea" style="height:72px" placeholder="Describe your IT issue…"></textarea>
-            </div>
-            <button class="m-form-submit">
-              <i class="fas fa-headset"></i> Request Callback
-            </button>
-            <div style="display:flex;align-items:center;gap:8px;margin-top:12px">
-              <div style="flex:1;height:1px;background:#e5e7eb"></div>
-              <span style="font-size:11px;color:#9ca3af;font-weight:600">OR</span>
-              <div style="flex:1;height:1px;background:#e5e7eb"></div>
-            </div>
-          </div>
-        </div>
+ <!-- Quick Contact -->
+ <div class="m-contact-section" style="padding-top:0">
+ <div class="m-form-card">
+ <h4>Get Support Now</h4>
+ <p class="form-sub">Callback guaranteed within 20 minutes. 24/7 availability.</p>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+ <div class="m-form-group" style="margin-bottom:0">
+ <label class="m-form-label">Name</label>
+ <input class="m-form-input" type="text" placeholder="Your name">
+ </div>
+ <div class="m-form-group" style="margin-bottom:0">
+ <label class="m-form-label">Phone</label>
+ <input class="m-form-input" type="tel" placeholder="+91">
+ </div>
+ </div>
+ <div class="m-form-group">
+ <label class="m-form-label">Issue / Message</label>
+ <textarea class="m-form-textarea" style="height:72px" placeholder="Describe your IT issue…"></textarea>
+ </div>
+ <button class="m-form-submit">
+ <i class="fas fa-headset"></i> Request Callback
+ </button>
+ <div style="display:flex;align-items:center;gap:8px;margin-top:12px">
+ <div style="flex:1;height:1px;background:#e5e7eb"></div>
+ <span style="font-size:11px;color:#9ca3af;font-weight:600">OR</span>
+ <div style="flex:1;height:1px;background:#e5e7eb"></div>
+ </div>
+ </div>
+ </div>
 
-        <!-- Footer compact -->
-        <div class="m-footer">
-          <div class="m-footer-bottom">
-            <span class="copy">© 2025 OmNet IT Solutions · Noida, NCR</span>
-            <div class="m-social">
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-            </div>
-          </div>
-        </div>
+ <!-- Footer compact -->
+ <div class="m-footer">
+ <div class="m-footer-bottom">
+ <span class="copy">© 2025 OmNet IT Solutions · Noida, NCR</span>
+ <div class="m-social">
+ <a href="#"><i class="fab fa-linkedin-in"></i></a>
+ <a href="#"><i class="fab fa-twitter"></i></a>
+ </div>
+ </div>
+ </div>
 
-        <!-- Sticky Bottom Bar -->
-        <div class="m-sticky-bar">
-          <div class="m-sticky-tel">
-            <i class="fas fa-phone"></i>
-            <a href="tel:+911234567890">+91-9999-XXX</a>
-          </div>
-          <a class="m-sticky-call" href="tel:+911234567890">
-            <i class="fas fa-phone-alt"></i> Call Now
-          </a>
-        </div>
+ <!-- Sticky Bottom Bar -->
+ <div class="m-sticky-bar">
+ <div class="m-sticky-tel">
+ <i class="fas fa-phone"></i>
+ <a href="tel:+911234567890">+91-9999-XXX</a>
+ </div>
+ <a class="m-sticky-call" href="tel:+911234567890">
+ <i class="fas fa-phone-alt"></i> Call Now
+ </a>
+ </div>
 
-      </div>
-    </div>
-  </div>
+ </div>
+ </div>
+ </div>
 
 </div><!-- /phone-container -->
 
 <!-- Microcopy Reference -->
 <div class="note-card" style="margin-top:40px">
-  <h3>💬 Microcopy Improvements</h3>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-    <div>
-      <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#ef4444;margin-bottom:8px">❌ Old Copy</div>
-      <div style="background:#fef2f2;border-radius:8px;padding:12px;font-size:12px;color:#991b1b;line-height:1.8">
-        "Contact Us"<br>"Submit"<br>"IT Services"<br>"Learn More"<br>"Home"<br>"About"
-      </div>
-    </div>
-    <div>
-      <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#16a34a;margin-bottom:8px">✅ Improved Copy</div>
-      <div style="background:#f0fdf4;border-radius:8px;padding:12px;font-size:12px;color:#166534;line-height:1.8">
-        "Get Support Now" / "Request a Callback"<br>"Get Support Now" (action-led)<br>"Expert IT for NCR Businesses"<br>"View Plans →" (specific)<br>"Available 24/7 · NCR Region"<br>"The NCR IT Partner You Can Trust"
-      </div>
-    </div>
-  </div>
+ <h3>💬 Microcopy Improvements</h3>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+ <div>
+ <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#ef4444;margin-bottom:8px">❌ Old Copy</div>
+ <div style="background:#fef2f2;border-radius:8px;padding:12px;font-size:12px;color:#991b1b;line-height:1.8">
+ "Contact Us"<br>"Submit"<br>"IT Services"<br>"Learn More"<br>"Home"<br>"About"
+ </div>
+ </div>
+ <div>
+ <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#16a34a;margin-bottom:8px">✅ Improved Copy</div>
+ <div style="background:#f0fdf4;border-radius:8px;padding:12px;font-size:12px;color:#166534;line-height:1.8">
+ "Get Support Now" / "Request a Callback"<br>"Get Support Now" (action-led)<br>"Expert IT for NCR Businesses"<br>"View Plans →" (specific)<br>"Available 24/7 · NCR Region"<br>"The NCR IT Partner You Can Trust"
+ </div>
+ </div>
+ </div>
 </div>
+
+
+<!-- ═══ FLOATING CONTACT WIDGET ═══ -->
+<div id="floatContact" style="position:fixed;bottom:28px;right:24px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
+ <!-- Email button -->
+ <a href="mailto:hello@omnetit.in" id="floatEmail" title="Email Us" style="display:flex;align-items:center;gap:8px;background:#fff;color:#0f766e;border:2px solid #14b8a6;border-radius:50px;padding:9px 16px;font-size:13px;font-weight:700;text-decoration:none;box-shadow:0 4px 16px rgba(20,184,166,.2);transition:all .25s;white-space:nowrap;">
+ <i class="ri-mail-line" style="font-size:16px;"></i> hello@omnetit.in
+ </a>
+ <!-- Call button -->
+ <a href="tel:+918920603270" id="floatCall" title="Call Us" style="display:flex;align-items:center;gap:9px;background:linear-gradient(135deg,#14b8a6,#0891b2);color:#fff;border:none;border-radius:50px;padding:13px 20px;font-size:14px;font-weight:700;text-decoration:none;box-shadow:0 6px 24px rgba(20,184,166,.4);animation:floatPulse 2.8s ease-in-out infinite;white-space:nowrap;">
+ <i class="ri-phone-fill" style="font-size:17px;"></i> Call Now
+ </a>
+</div>
+<style>
+@keyframes floatPulse {
+ 0%,100%{box-shadow:0 6px 24px rgba(20,184,166,.4),0 0 0 0 rgba(20,184,166,.3)}
+ 50%{box-shadow:0 6px 24px rgba(20,184,166,.5),0 0 0 10px rgba(20,184,166,0)}
+}
+#floatEmail:hover{background:#f0fdfa;box-shadow:0 6px 20px rgba(20,184,166,.3);}
+#floatCall:hover{transform:scale(1.04);animation:none;box-shadow:0 10px 30px rgba(20,184,166,.55);}
+@media(max-width:600px){
+ #floatContact{bottom:80px;right:14px;gap:8px;}
+ #floatEmail{display:none;}
+ #floatCall{padding:12px 18px;font-size:13px;}
+}
+</style>
+<!-- ═══ END FLOATING CONTACT WIDGET ═══ -->
 
 </body>
 </html>

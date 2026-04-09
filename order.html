@@ -1,483 +1,483 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Place Order | Omnet IT Solutions — IT Services Delhi NCR</title>
-  <meta name="description" content="Place a service order with Omnet IT Solutions. Pay securely by credit card, debit card, UPI, net banking or scan QR. Noida, Greater Noida, Gurugram, Delhi NCR." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://www.omnetit.in/order.html" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="design-system.css" />
-  <link rel="stylesheet" href="mobile-fixes.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" />
-  <!-- Google tag -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GWE61BMZN1"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GWE61BMZN1');</script>
-  <!-- Razorpay SDK -->
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-  <style>
-    /* ── Dual-strip offset ── */
-    .site-header { top: 36px !important; }
-    @media (max-width: 768px) { .site-header { top: 32px !important; } }
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Place Order | Omnet IT Solutions — IT Services Delhi NCR</title>
+ <meta name="description" content="Place a service order with Omnet IT Solutions. Pay securely by credit card, debit card, UPI, net banking or scan QR. Noida, Greater Noida, Gurugram, Delhi NCR." />
+ <meta name="robots" content="index, follow" />
+ <link rel="canonical" href="https://www.omnetit.in/order.html" />
+ <link rel="stylesheet" href="style.css" />
+ <link rel="stylesheet" href="design-system.css" />
+ <link rel="stylesheet" href="mobile-fixes.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" />
+ <!-- Google tag -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-GWE61BMZN1"></script>
+ <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GWE61BMZN1');</script>
+ <!-- Razorpay SDK -->
+ <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+ <style>
+ /* ── Dual-strip offset ── */
+ .site-header { top: 36px !important; }
+ @media (max-width: 768px) { .site-header { top: 32px !important; } }
 
-    /* ── Page layout ── */
-    .order-page {
-      min-height: 100vh;
-      background: linear-gradient(160deg, #0a2240 0%, #0d4f5c 45%, #0f7a6e 100%);
-      padding: 156px 1rem 4rem;
-    }
-    .order-shell {
-      max-width: 920px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 380px; gap: 2rem; align-items: start;
-    }
-    @media (max-width: 860px) {
-      .order-shell { grid-template-columns: 1fr; }
-      .order-summary-col { order: -1; }
-    }
+ /* ── Page layout ── */
+ .order-page {
+ min-height: 100vh;
+ background: linear-gradient(160deg, #0a2240 0%, #0d4f5c 45%, #0f7a6e 100%);
+ padding: 156px 1rem 4rem;
+ }
+ .order-shell {
+ max-width: 920px; margin: 0 auto;
+ display: grid; grid-template-columns: 1fr 380px; gap: 2rem; align-items: start;
+ }
+ @media (max-width: 860px) {
+ .order-shell { grid-template-columns: 1fr; }
+ .order-summary-col { order: -1; }
+ }
 
-    /* ── Order form card ── */
-    .order-card {
-      background: #fff; border-radius: 24px; padding: 2.5rem;
-      box-shadow: 0 32px 80px rgba(0,0,0,.3);
-    }
-    .order-card-title {
-      font-size: 1.4rem; font-weight: 800; color: var(--gray-900); margin-bottom: .3rem;
-    }
-    .order-card-sub { font-size: .875rem; color: var(--gray-500); margin-bottom: 2rem; }
+ /* ── Order form card ── */
+ .order-card {
+ background: #fff; border-radius: 24px; padding: 2.5rem;
+ box-shadow: 0 32px 80px rgba(0,0,0,.3);
+ }
+ .order-card-title {
+ font-size: 1.4rem; font-weight: 800; color: var(--gray-900); margin-bottom: .3rem;
+ }
+ .order-card-sub { font-size: .875rem; color: var(--gray-500); margin-bottom: 2rem; }
 
-    /* Progress steps */
-    .order-steps {
-      display: flex; align-items: center; margin-bottom: 2.25rem;
-      gap: 0;
-    }
-    .order-step {
-      display: flex; align-items: center; gap: .5rem;
-      font-size: .78rem; font-weight: 700; color: var(--gray-400);
-      flex: 1;
-    }
-    .order-step.active   { color: var(--teal-600); }
-    .order-step.complete { color: var(--teal-500); }
-    .step-num {
-      width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--gray-200);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .78rem; font-weight: 800; flex-shrink: 0; background: #fff;
-      transition: all .3s;
-    }
-    .order-step.active   .step-num { border-color: var(--teal-500); color: var(--teal-600); background: var(--teal-50); }
-    .order-step.complete .step-num { border-color: var(--teal-500); background: var(--teal-500); color: #fff; }
-    .step-line { flex: 1; height: 2px; background: var(--gray-200); margin: 0 .5rem; }
-    .step-line.done { background: var(--teal-400); }
+ /* Progress steps */
+ .order-steps {
+ display: flex; align-items: center; margin-bottom: 2.25rem;
+ gap: 0;
+ }
+ .order-step {
+ display: flex; align-items: center; gap: .5rem;
+ font-size: .78rem; font-weight: 700; color: var(--gray-400);
+ flex: 1;
+ }
+ .order-step.active { color: var(--teal-600); }
+ .order-step.complete { color: var(--teal-500); }
+ .step-num {
+ width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--gray-200);
+ display: flex; align-items: center; justify-content: center;
+ font-size: .78rem; font-weight: 800; flex-shrink: 0; background: #fff;
+ transition: all .3s;
+ }
+ .order-step.active .step-num { border-color: var(--teal-500); color: var(--teal-600); background: var(--teal-50); }
+ .order-step.complete .step-num { border-color: var(--teal-500); background: var(--teal-500); color: #fff; }
+ .step-line { flex: 1; height: 2px; background: var(--gray-200); margin: 0 .5rem; }
+ .step-line.done { background: var(--teal-400); }
 
-    /* Form fields */
-    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    @media (max-width: 520px) { .form-grid-2 { grid-template-columns: 1fr; } }
-    .form-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
-    .form-label {
-      font-size: .8rem; font-weight: 700; color: var(--gray-700);
-      display: flex; align-items: center; gap: .3rem;
-    }
-    .form-label .req { color: #ef4444; }
-    .form-input, .form-select, .form-textarea {
-      width: 100%; padding: .7rem 1rem; border: 1.5px solid var(--gray-200);
-      border-radius: 10px; font-size: .9rem; font-family: inherit; color: var(--gray-900);
-      outline: none; transition: border-color .2s, box-shadow .2s; background: #fff;
-    }
-    .form-input:focus, .form-select:focus, .form-textarea:focus {
-      border-color: var(--teal-400); box-shadow: 0 0 0 3px rgba(20,184,166,.12);
-    }
-    .form-textarea { resize: vertical; min-height: 90px; }
-    .form-hint { font-size: .74rem; color: var(--gray-400); }
+ /* Form fields */
+ .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+ @media (max-width: 520px) { .form-grid-2 { grid-template-columns: 1fr; } }
+ .form-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
+ .form-label {
+ font-size: .8rem; font-weight: 700; color: var(--gray-700);
+ display: flex; align-items: center; gap: .3rem;
+ }
+ .form-label .req { color: #ef4444; }
+ .form-input, .form-select, .form-textarea {
+ width: 100%; padding: .7rem 1rem; border: 1.5px solid var(--gray-200);
+ border-radius: 10px; font-size: .9rem; font-family: inherit; color: var(--gray-900);
+ outline: none; transition: border-color .2s, box-shadow .2s; background: #fff;
+ }
+ .form-input:focus, .form-select:focus, .form-textarea:focus {
+ border-color: var(--teal-400); box-shadow: 0 0 0 3px rgba(20,184,166,.12);
+ }
+ .form-textarea { resize: vertical; min-height: 90px; }
+ .form-hint { font-size: .74rem; color: var(--gray-400); }
 
-    /* Amount display */
-    .amount-row {
-      display: flex; align-items: center;
-      border: 1.5px solid var(--gray-200); border-radius: 10px; overflow: hidden;
-    }
-    .amount-prefix {
-      padding: 0 .85rem; font-size: 1.1rem; font-weight: 800;
-      color: var(--gray-500); background: var(--gray-50);
-      border-right: 1.5px solid var(--gray-200); height: 46px;
-      display: flex; align-items: center;
-    }
-    .amount-input {
-      flex: 1; border: none !important; box-shadow: none !important;
-      font-size: 1.2rem; font-weight: 700; color: var(--teal-700);
-      padding: 0 .85rem; height: 46px; outline: none; background: transparent;
-    }
-    .amount-gst {
-      font-size: .72rem; color: var(--gray-400); padding: 0 .75rem;
-      background: var(--gray-50); height: 46px; display: flex; align-items: center;
-      border-left: 1.5px solid var(--gray-200); white-space: nowrap;
-    }
+ /* Amount display */
+ .amount-row {
+ display: flex; align-items: center;
+ border: 1.5px solid var(--gray-200); border-radius: 10px; overflow: hidden;
+ }
+ .amount-prefix {
+ padding: 0 .85rem; font-size: 1.1rem; font-weight: 800;
+ color: var(--gray-500); background: var(--gray-50);
+ border-right: 1.5px solid var(--gray-200); height: 46px;
+ display: flex; align-items: center;
+ }
+ .amount-input {
+ flex: 1; border: none !important; box-shadow: none !important;
+ font-size: 1.2rem; font-weight: 700; color: var(--teal-700);
+ padding: 0 .85rem; height: 46px; outline: none; background: transparent;
+ }
+ .amount-gst {
+ font-size: .72rem; color: var(--gray-400); padding: 0 .75rem;
+ background: var(--gray-50); height: 46px; display: flex; align-items: center;
+ border-left: 1.5px solid var(--gray-200); white-space: nowrap;
+ }
 
-    /* Payment method selection */
-    .pay-method-title { font-size: .9rem; font-weight: 700; color: var(--gray-800); margin-bottom: .85rem; }
-    .pay-method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1.5rem; }
-    .pay-method-btn {
-      border: 2px solid var(--gray-200); border-radius: 12px; padding: 1rem .75rem;
-      background: #fff; cursor: pointer; text-align: center; transition: all .2s;
-      display: flex; flex-direction: column; align-items: center; gap: .4rem;
-      font-family: inherit;
-    }
-    .pay-method-btn:hover { border-color: var(--teal-300); background: var(--teal-50); }
-    .pay-method-btn.selected { border-color: var(--teal-500); background: var(--teal-50); }
-    .pay-method-btn .pm-icon { font-size: 1.6rem; }
-    .pay-method-btn .pm-label { font-size: .78rem; font-weight: 700; color: var(--gray-700); }
-    .pay-method-btn .pm-sub   { font-size: .68rem; color: var(--gray-400); }
-    .pay-method-btn.selected .pm-label { color: var(--teal-700); }
-    .pm-razorpay { border-color: #3395FF; }
-    .pm-razorpay.selected { border-color: #3395FF; background: #eff6ff; }
-    .pm-upi { border-color: #7c3aed; }
-    .pm-upi.selected { border-color: #7c3aed; background: #f5f3ff; }
+ /* Payment method selection */
+ .pay-method-title { font-size: .9rem; font-weight: 700; color: var(--gray-800); margin-bottom: .85rem; }
+ .pay-method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1.5rem; }
+ .pay-method-btn {
+ border: 2px solid var(--gray-200); border-radius: 12px; padding: 1rem .75rem;
+ background: #fff; cursor: pointer; text-align: center; transition: all .2s;
+ display: flex; flex-direction: column; align-items: center; gap: .4rem;
+ font-family: inherit;
+ }
+ .pay-method-btn:hover { border-color: var(--teal-300); background: var(--teal-50); }
+ .pay-method-btn.selected { border-color: var(--teal-500); background: var(--teal-50); }
+ .pay-method-btn .pm-icon { font-size: 1.6rem; }
+ .pay-method-btn .pm-label { font-size: .78rem; font-weight: 700; color: var(--gray-700); }
+ .pay-method-btn .pm-sub { font-size: .68rem; color: var(--gray-400); }
+ .pay-method-btn.selected .pm-label { color: var(--teal-700); }
+ .pm-razorpay { border-color: #3395FF; }
+ .pm-razorpay.selected { border-color: #3395FF; background: #eff6ff; }
+ .pm-upi { border-color: #7c3aed; }
+ .pm-upi.selected { border-color: #7c3aed; background: #f5f3ff; }
 
-    /* Nav buttons */
-    .order-nav { display: flex; gap: .75rem; margin-top: 1.75rem; justify-content: flex-end; }
-    .btn-order-back {
-      padding: .75rem 1.5rem; border-radius: 10px; border: 1.5px solid var(--gray-200);
-      background: #fff; color: var(--gray-600); font-weight: 700; font-size: .9rem;
-      cursor: pointer; font-family: inherit; transition: all .2s;
-    }
-    .btn-order-back:hover { border-color: var(--gray-400); color: var(--gray-800); }
-    .btn-order-next {
-      padding: .75rem 1.75rem; border-radius: 10px; border: none;
-      background: linear-gradient(135deg, var(--teal-500), var(--cyan-600));
-      color: #fff; font-weight: 800; font-size: .95rem; cursor: pointer;
-      font-family: inherit; display: flex; align-items: center; gap: .5rem;
-      box-shadow: 0 4px 14px rgba(20,184,166,.35); transition: all .25s;
-    }
-    .btn-order-next:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(20,184,166,.45); }
-    .btn-pay-rzp {
-      width: 100%; padding: .9rem; border-radius: 12px; border: none;
-      background: linear-gradient(135deg, #3395FF, #1a6ee0);
-      color: #fff; font-weight: 800; font-size: 1rem; cursor: pointer;
-      font-family: inherit; display: flex; align-items: center; justify-content: center;
-      gap: .5rem; box-shadow: 0 4px 18px rgba(51,149,255,.4); transition: all .25s;
-      margin-bottom: .75rem;
-    }
-    .btn-pay-rzp:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(51,149,255,.55); }
-    .btn-pay-upi {
-      width: 100%; padding: .9rem; border-radius: 12px; border: none;
-      background: linear-gradient(135deg, #7c3aed, #4f46e5);
-      color: #fff; font-weight: 800; font-size: 1rem; cursor: pointer;
-      font-family: inherit; display: flex; align-items: center; justify-content: center;
-      gap: .5rem; box-shadow: 0 4px 18px rgba(124,58,237,.4); transition: all .25s;
-    }
-    .btn-pay-upi:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(124,58,237,.55); }
+ /* Nav buttons */
+ .order-nav { display: flex; gap: .75rem; margin-top: 1.75rem; justify-content: flex-end; }
+ .btn-order-back {
+ padding: .75rem 1.5rem; border-radius: 10px; border: 1.5px solid var(--gray-200);
+ background: #fff; color: var(--gray-600); font-weight: 700; font-size: .9rem;
+ cursor: pointer; font-family: inherit; transition: all .2s;
+ }
+ .btn-order-back:hover { border-color: var(--gray-400); color: var(--gray-800); }
+ .btn-order-next {
+ padding: .75rem 1.75rem; border-radius: 10px; border: none;
+ background: linear-gradient(135deg, var(--teal-500), var(--cyan-600));
+ color: #fff; font-weight: 800; font-size: .95rem; cursor: pointer;
+ font-family: inherit; display: flex; align-items: center; gap: .5rem;
+ box-shadow: 0 4px 14px rgba(20,184,166,.35); transition: all .25s;
+ }
+ .btn-order-next:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(20,184,166,.45); }
+ .btn-pay-rzp {
+ width: 100%; padding: .9rem; border-radius: 12px; border: none;
+ background: linear-gradient(135deg, #3395FF, #1a6ee0);
+ color: #fff; font-weight: 800; font-size: 1rem; cursor: pointer;
+ font-family: inherit; display: flex; align-items: center; justify-content: center;
+ gap: .5rem; box-shadow: 0 4px 18px rgba(51,149,255,.4); transition: all .25s;
+ margin-bottom: .75rem;
+ }
+ .btn-pay-rzp:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(51,149,255,.55); }
+ .btn-pay-upi {
+ width: 100%; padding: .9rem; border-radius: 12px; border: none;
+ background: linear-gradient(135deg, #7c3aed, #4f46e5);
+ color: #fff; font-weight: 800; font-size: 1rem; cursor: pointer;
+ font-family: inherit; display: flex; align-items: center; justify-content: center;
+ gap: .5rem; box-shadow: 0 4px 18px rgba(124,58,237,.4); transition: all .25s;
+ }
+ .btn-pay-upi:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(124,58,237,.55); }
 
-    /* Success screen */
-    .order-success {
-      display: none; text-align: center; padding: 1rem 0;
-    }
-    .success-ring {
-      width: 80px; height: 80px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--teal-400), var(--cyan-500));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2.2rem; color: #fff; margin: 0 auto 1.5rem;
-      box-shadow: 0 8px 32px rgba(20,184,166,.4);
-      animation: scaleIn .4s cubic-bezier(.34,1.56,.64,1);
-    }
-    @keyframes scaleIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-    .order-ref-box {
-      background: var(--teal-50); border: 1.5px solid var(--teal-200);
-      border-radius: 14px; padding: 1.25rem; margin: 1.5rem 0; text-align: left;
-    }
-    .order-ref-label { font-size: .72rem; font-weight: 700; color: var(--teal-600); text-transform: uppercase; letter-spacing: .1em; }
-    .order-ref-num { font-size: 1.5rem; font-weight: 900; color: var(--gray-900); font-family: monospace; margin: .25rem 0; }
-    .order-ref-sub { font-size: .78rem; color: var(--gray-500); }
+ /* Success screen */
+ .order-success {
+ display: none; text-align: center; padding: 1rem 0;
+ }
+ .success-ring {
+ width: 80px; height: 80px; border-radius: 50%;
+ background: linear-gradient(135deg, var(--teal-400), var(--cyan-500));
+ display: flex; align-items: center; justify-content: center;
+ font-size: 2.2rem; color: #fff; margin: 0 auto 1.5rem;
+ box-shadow: 0 8px 32px rgba(20,184,166,.4);
+ animation: scaleIn .4s cubic-bezier(.34,1.56,.64,1);
+ }
+ @keyframes scaleIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+ .order-ref-box {
+ background: var(--teal-50); border: 1.5px solid var(--teal-200);
+ border-radius: 14px; padding: 1.25rem; margin: 1.5rem 0; text-align: left;
+ }
+ .order-ref-label { font-size: .72rem; font-weight: 700; color: var(--teal-600); text-transform: uppercase; letter-spacing: .1em; }
+ .order-ref-num { font-size: 1.5rem; font-weight: 900; color: var(--gray-900); font-family: monospace; margin: .25rem 0; }
+ .order-ref-sub { font-size: .78rem; color: var(--gray-500); }
 
-    /* Summary card (right column) */
-    .summary-card {
-      background: rgba(255,255,255,.08); backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,.15); border-radius: 20px;
-      padding: 2rem; color: #fff; position: sticky; top: 160px;
-    }
-    .summary-title { font-size: 1rem; font-weight: 800; color: #fff; margin-bottom: 1.25rem; display: flex; align-items: center; gap: .5rem; }
-    .summary-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; padding: .65rem 0; border-bottom: 1px solid rgba(255,255,255,.1); font-size: .85rem; }
-    .summary-row:last-child { border-bottom: none; }
-    .summary-key { color: rgba(255,255,255,.6); }
-    .summary-val { color: #fff; font-weight: 600; text-align: right; max-width: 60%; }
-    .summary-total { margin-top: 1rem; padding: 1rem; background: rgba(255,255,255,.1); border-radius: 12px; }
-    .summary-total-label { font-size: .78rem; color: rgba(255,255,255,.6); margin-bottom: .25rem; }
-    .summary-total-amount { font-size: 2rem; font-weight: 900; color: #5eead4; }
-    .trust-pills { display: flex; flex-direction: column; gap: .5rem; margin-top: 1.5rem; }
-    .trust-pill { display: flex; align-items: center; gap: .6rem; font-size: .78rem; color: rgba(255,255,255,.7); }
-    .trust-pill i { color: #5eead4; font-size: 1rem; }
-  </style>
+ /* Summary card (right column) */
+ .summary-card {
+ background: rgba(255,255,255,.08); backdrop-filter: blur(12px);
+ border: 1px solid rgba(255,255,255,.15); border-radius: 20px;
+ padding: 2rem; color: #fff; position: sticky; top: 160px;
+ }
+ .summary-title { font-size: 1rem; font-weight: 800; color: #fff; margin-bottom: 1.25rem; display: flex; align-items: center; gap: .5rem; }
+ .summary-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; padding: .65rem 0; border-bottom: 1px solid rgba(255,255,255,.1); font-size: .85rem; }
+ .summary-row:last-child { border-bottom: none; }
+ .summary-key { color: rgba(255,255,255,.6); }
+ .summary-val { color: #fff; font-weight: 600; text-align: right; max-width: 60%; }
+ .summary-total { margin-top: 1rem; padding: 1rem; background: rgba(255,255,255,.1); border-radius: 12px; }
+ .summary-total-label { font-size: .78rem; color: rgba(255,255,255,.6); margin-bottom: .25rem; }
+ .summary-total-amount { font-size: 2rem; font-weight: 900; color: #5eead4; }
+ .trust-pills { display: flex; flex-direction: column; gap: .5rem; margin-top: 1.5rem; }
+ .trust-pill { display: flex; align-items: center; gap: .6rem; font-size: .78rem; color: rgba(255,255,255,.7); }
+ .trust-pill i { color: #5eead4; font-size: 1rem; }
+ </style>
 </head>
 <body>
 
 <!-- ═══ DUAL ACTION STRIP ═══ -->
 <div class="dual-action-strip">
-  <div class="dual-action-inner">
-    <div class="dual-action-left"><i class="ri-shield-check-line"></i> Trusted IT Partner for 500+ Delhi NCR Businesses</div>
-    <div class="dual-action-right">
-      <a href="register.html" class="btn-register-hdr" id="regHdrBtn"><i class="ri-user-add-line"></i> Register / Sign Up</a>
-      <a href="managed-services.html" class="btn-managed"><i class="ri-settings-4-line"></i> Managed Services</a>
-      <a href="shop.html" class="btn-online-purchase"><i class="ri-shopping-cart-2-line"></i> Online Purchase</a>
-    </div>
-  </div>
+ <div class="dual-action-inner">
+ <div class="dual-action-left"><i class="ri-shield-check-line"></i> Trusted IT Partner for 500+ Delhi NCR Businesses</div>
+ <div class="dual-action-right">
+ <a href="register.html" class="btn-register-hdr" id="regHdrBtn"><i class="ri-user-add-line"></i> Register / Sign Up</a>
+ <a href="managed-services.html" class="btn-managed"><i class="ri-settings-4-line"></i> Managed Services</a>
+ <a href="shop.html" class="btn-online-purchase"><i class="ri-shopping-cart-2-line"></i> Online Purchase</a>
+ </div>
+ </div>
 </div>
 
 <header class="site-header">
-  <div class="header-inner">
-    <a href="index.html" class="logo-wrap">
-      <div class="logo-icon"><span>ON</span></div>
-      <div class="logo-text-wrap">
-        <div class="logo-name"><span class="om">OM</span><span class="net">NET</span></div>
-        <div class="logo-tagline">IT Solutions</div>
-      </div>
-    </a>
-    <div class="header-cta">
-      <a href="tel:+918920603270" class="header-phone"><i class="ri-phone-line"></i> </a>
-      <a href="index.html" class="btn-primary"><i class="ri-home-line"></i> Home</a>
-    </div>
-    <button class="mobile-menu-btn"><i class="ri-menu-line"></i></button>
-  </div>
+ <div class="header-inner">
+ <a href="index.html" class="logo-wrap">
+ <div class="logo-icon"><span>ON</span></div>
+ <div class="logo-text-wrap">
+ <div class="logo-name"><span class="om">OM</span><span class="net">NET</span></div>
+ <div class="logo-tagline">IT Solutions</div>
+ </div>
+ </a>
+ <div class="header-cta">
+ <a href="tel:+918920603270" class="header-phone"><i class="ri-phone-line"></i> Call Us</a>
+ <a href="index.html" class="btn-primary"><i class="ri-home-line"></i> Home</a>
+ </div>
+ <button class="mobile-menu-btn"><i class="ri-menu-line"></i></button>
+ </div>
 </header>
 
 <!-- ═══ ORDER PAGE ═══ -->
 <div class="order-page">
-  <div class="order-shell">
+ <div class="order-shell">
 
-    <!-- Left: Form -->
-    <div class="order-card">
+ <!-- Left: Form -->
+ <div class="order-card">
 
-      <!-- Progress -->
-      <div class="order-steps" id="orderSteps">
-        <div class="order-step active" id="stepLabel1">
-          <div class="step-num">1</div>
-          <span>Your Details</span>
-        </div>
-        <div class="step-line" id="stepLine1"></div>
-        <div class="order-step" id="stepLabel2">
-          <div class="step-num">2</div>
-          <span>Service Info</span>
-        </div>
-        <div class="step-line" id="stepLine2"></div>
-        <div class="order-step" id="stepLabel3">
-          <div class="step-num">3</div>
-          <span>Pay &amp; Confirm</span>
-        </div>
-      </div>
+ <!-- Progress -->
+ <div class="order-steps" id="orderSteps">
+ <div class="order-step active" id="stepLabel1">
+ <div class="step-num">1</div>
+ <span>Your Details</span>
+ </div>
+ <div class="step-line" id="stepLine1"></div>
+ <div class="order-step" id="stepLabel2">
+ <div class="step-num">2</div>
+ <span>Service Info</span>
+ </div>
+ <div class="step-line" id="stepLine2"></div>
+ <div class="order-step" id="stepLabel3">
+ <div class="step-num">3</div>
+ <span>Pay &amp; Confirm</span>
+ </div>
+ </div>
 
-      <!-- ── STEP 1: Personal details ── -->
-      <div id="orderStep1">
-        <div class="order-card-title">Your Contact Details</div>
-        <div class="order-card-sub">We'll use this to send your order confirmation.</div>
+ <!-- ── STEP 1: Personal details ── -->
+ <div id="orderStep1">
+ <div class="order-card-title">Your Contact Details</div>
+ <div class="order-card-sub">We'll use this to send your order confirmation.</div>
 
-        <div class="form-grid-2">
-          <div class="form-group">
-            <label class="form-label">Full Name <span class="req">*</span></label>
-            <input type="text" id="oName" class="form-input" placeholder="Rahul Sharma" />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Phone Number <span class="req">*</span></label>
-            <input type="tel" id="oPhone" class="form-input" placeholder="+91 98XXX XXXXX" />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email Address <span class="req">*</span></label>
-          <input type="email" id="oEmail" class="form-input" placeholder="you@company.com" />
-        </div>
-        <div class="form-grid-2">
-          <div class="form-group">
-            <label class="form-label">Company / Organisation</label>
-            <input type="text" id="oCompany" class="form-input" placeholder="Acme Pvt Ltd" />
-          </div>
-          <div class="form-group">
-            <label class="form-label">City / Area <span class="req">*</span></label>
-            <input type="text" id="oCity" class="form-input" placeholder="Noida Sector 62" />
-          </div>
-        </div>
+ <div class="form-grid-2">
+ <div class="form-group">
+ <label class="form-label">Full Name <span class="req">*</span></label>
+ <input type="text" id="oName" class="form-input" placeholder="Rahul Sharma" />
+ </div>
+ <div class="form-group">
+ <label class="form-label">Phone Number <span class="req">*</span></label>
+ <input type="tel" id="oPhone" class="form-input" placeholder="+91 98XXX XXXXX" />
+ </div>
+ </div>
+ <div class="form-group">
+ <label class="form-label">Email Address <span class="req">*</span></label>
+ <input type="email" id="oEmail" class="form-input" placeholder="you@company.com" />
+ </div>
+ <div class="form-grid-2">
+ <div class="form-group">
+ <label class="form-label">Company / Organisation</label>
+ <input type="text" id="oCompany" class="form-input" placeholder="Acme Pvt Ltd" />
+ </div>
+ <div class="form-group">
+ <label class="form-label">City / Area <span class="req">*</span></label>
+ <input type="text" id="oCity" class="form-input" placeholder="Noida Sector 62" />
+ </div>
+ </div>
 
-        <div class="order-nav">
-          <button class="btn-order-next" onclick="goStep(2)">
-            Continue <i class="ri-arrow-right-line"></i>
-          </button>
-        </div>
-      </div>
+ <div class="order-nav">
+ <button class="btn-order-next" onclick="goStep(2)">
+ Continue <i class="ri-arrow-right-line"></i>
+ </button>
+ </div>
+ </div>
 
-      <!-- ── STEP 2: Service details ── -->
-      <div id="orderStep2" style="display:none">
-        <div class="order-card-title">Service &amp; Order Details</div>
-        <div class="order-card-sub">Tell us what you need and the agreed amount.</div>
+ <!-- ── STEP 2: Service details ── -->
+ <div id="orderStep2" style="display:none">
+ <div class="order-card-title">Service &amp; Order Details</div>
+ <div class="order-card-sub">Tell us what you need and the agreed amount.</div>
 
-        <div class="form-group">
-          <label class="form-label">Service Required <span class="req">*</span></label>
-          <select id="oService" class="form-select">
-            <option value="">— Select a service —</option>
-            <optgroup label="Repair & Hardware">
-              <option>Laptop Repair</option>
-              <option>Desktop / PC Repair</option>
-              <option>MacBook / Apple Repair</option>
-              <option>Printer Repair</option>
-              <option>SSD / RAM Upgrade</option>
-              <option>Screen Replacement</option>
-              <option>Data Recovery</option>
-              <option>Spare Parts</option>
-            </optgroup>
-            <optgroup label="Managed IT">
-              <option>Computer AMC (Annual Maintenance)</option>
-              <option>Managed IT Services</option>
-              <option>IT Support Contract</option>
-              <option>Server Management</option>
-              <option>Network / WiFi Setup</option>
-              <option>Structured Cabling</option>
-              <option>Firewall Installation</option>
-            </optgroup>
-            <optgroup label="Cloud & Software">
-              <option>Google Workspace Setup / Migration</option>
-              <option>Microsoft 365 Setup / Migration</option>
-              <option>Tally / TallyPrime Setup</option>
-              <option>JumpCloud Setup</option>
-              <option>Cloud Services</option>
-            </optgroup>
-            <optgroup label="Security">
-              <option>Cybersecurity Assessment</option>
-              <option>Antivirus / Endpoint Protection</option>
-              <option>Email Security</option>
-            </optgroup>
-            <optgroup label="Other">
-              <option>IT Hardware Rental</option>
-              <option>Refurbished Laptop Purchase</option>
-              <option>Software License Purchase</option>
-              <option>Other / Custom Requirement</option>
-            </optgroup>
-          </select>
-        </div>
+ <div class="form-group">
+ <label class="form-label">Service Required <span class="req">*</span></label>
+ <select id="oService" class="form-select">
+ <option value="">— Select a service —</option>
+ <optgroup label="Repair & Hardware">
+ <option>Laptop Repair</option>
+ <option>Desktop / PC Repair</option>
+ <option>MacBook / Apple Repair</option>
+ <option>Printer Repair</option>
+ <option>SSD / RAM Upgrade</option>
+ <option>Screen Replacement</option>
+ <option>Data Recovery</option>
+ <option>Spare Parts</option>
+ </optgroup>
+ <optgroup label="Managed IT">
+ <option>Computer AMC (Annual Maintenance)</option>
+ <option>Managed IT Services</option>
+ <option>IT Support Contract</option>
+ <option>Server Management</option>
+ <option>Network / WiFi Setup</option>
+ <option>Structured Cabling</option>
+ <option>Firewall Installation</option>
+ </optgroup>
+ <optgroup label="Cloud & Software">
+ <option>Google Workspace Setup / Migration</option>
+ <option>Microsoft 365 Setup / Migration</option>
+ <option>Tally / TallyPrime Setup</option>
+ <option>JumpCloud Setup</option>
+ <option>Cloud Services</option>
+ </optgroup>
+ <optgroup label="Security">
+ <option>Cybersecurity Assessment</option>
+ <option>Antivirus / Endpoint Protection</option>
+ <option>Email Security</option>
+ </optgroup>
+ <optgroup label="Other">
+ <option>IT Hardware Rental</option>
+ <option>Refurbished Laptop Purchase</option>
+ <option>Software License Purchase</option>
+ <option>Other / Custom Requirement</option>
+ </optgroup>
+ </select>
+ </div>
 
-        <div class="form-group">
-          <label class="form-label">Number of Devices / Users</label>
-          <input type="number" id="oDevices" class="form-input" placeholder="e.g. 5" min="1" />
-        </div>
+ <div class="form-group">
+ <label class="form-label">Number of Devices / Users</label>
+ <input type="number" id="oDevices" class="form-input" placeholder="e.g. 5" min="1" />
+ </div>
 
-        <div class="form-group">
-          <label class="form-label">Brief Description</label>
-          <textarea id="oDesc" class="form-textarea" placeholder="Describe what needs to be done, any specific issues, timeline, etc."></textarea>
-        </div>
+ <div class="form-group">
+ <label class="form-label">Brief Description</label>
+ <textarea id="oDesc" class="form-textarea" placeholder="Describe what needs to be done, any specific issues, timeline, etc."></textarea>
+ </div>
 
-        <div class="form-group">
-          <label class="form-label">Order Amount (₹) <span class="req">*</span></label>
-          <div class="amount-row">
-            <span class="amount-prefix">₹</span>
-            <input type="number" id="oAmount" class="amount-input" placeholder="0" min="1" oninput="updateSummary()" />
-            <span class="amount-gst">incl. GST</span>
-          </div>
-          <span class="form-hint">Enter the amount agreed with our team. Minimum ₹100.</span>
-        </div>
+ <div class="form-group">
+ <label class="form-label">Order Amount (₹) <span class="req">*</span></label>
+ <div class="amount-row">
+ <span class="amount-prefix">₹</span>
+ <input type="number" id="oAmount" class="amount-input" placeholder="0" min="1" oninput="updateSummary()" />
+ <span class="amount-gst">incl. GST</span>
+ </div>
+ <span class="form-hint">Enter the amount agreed with our team. Minimum ₹100.</span>
+ </div>
 
-        <div class="order-nav">
-          <button class="btn-order-back" onclick="goStep(1)"><i class="ri-arrow-left-line"></i> Back</button>
-          <button class="btn-order-next" onclick="goStep(3)">
-            Proceed to Pay <i class="ri-secure-payment-line"></i>
-          </button>
-        </div>
-      </div>
+ <div class="order-nav">
+ <button class="btn-order-back" onclick="goStep(1)"><i class="ri-arrow-left-line"></i> Back</button>
+ <button class="btn-order-next" onclick="goStep(3)">
+ Proceed to Pay <i class="ri-secure-payment-line"></i>
+ </button>
+ </div>
+ </div>
 
-      <!-- ── STEP 3: Payment ── -->
-      <div id="orderStep3" style="display:none">
-        <div class="order-card-title">Choose Payment Method</div>
-        <div class="order-card-sub">All payments are secure &amp; encrypted.</div>
+ <!-- ── STEP 3: Payment ── -->
+ <div id="orderStep3" style="display:none">
+ <div class="order-card-title">Choose Payment Method</div>
+ <div class="order-card-sub">All payments are secure &amp; encrypted.</div>
 
-        <!-- Amount summary strip -->
-        <div style="background:linear-gradient(135deg,var(--teal-50),#ecfeff);border:1.5px solid var(--teal-200);border-radius:14px;padding:1rem 1.25rem;margin-bottom:1.75rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;">
-          <div>
-            <div style="font-size:.72rem;font-weight:700;color:var(--teal-600);text-transform:uppercase;letter-spacing:.08em;">Order Total</div>
-            <div style="font-size:1.75rem;font-weight:900;color:var(--gray-900);">₹<span id="amountDisplay3">0</span></div>
-          </div>
-          <div style="font-size:.8rem;color:var(--gray-500);">
-            <div id="summaryService3" style="font-weight:600;color:var(--gray-700);"></div>
-            <div id="summaryName3"></div>
-          </div>
-        </div>
+ <!-- Amount summary strip -->
+ <div style="background:linear-gradient(135deg,var(--teal-50),#ecfeff);border:1.5px solid var(--teal-200);border-radius:14px;padding:1rem 1.25rem;margin-bottom:1.75rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;">
+ <div>
+ <div style="font-size:.72rem;font-weight:700;color:var(--teal-600);text-transform:uppercase;letter-spacing:.08em;">Order Total</div>
+ <div style="font-size:1.75rem;font-weight:900;color:var(--gray-900);">₹<span id="amountDisplay3">0</span></div>
+ </div>
+ <div style="font-size:.8rem;color:var(--gray-500);">
+ <div id="summaryService3" style="font-weight:600;color:var(--gray-700);"></div>
+ <div id="summaryName3"></div>
+ </div>
+ </div>
 
-        <!-- Payment method tabs -->
-        <div class="pay-method-title">Select how you'd like to pay:</div>
-        <div style="background:var(--teal-50);border:1px solid var(--teal-200);border-radius:12px;padding:.85rem 1.1rem;display:flex;align-items:center;gap:.6rem;margin-bottom:1.5rem;">
-          <i class="ri-shield-check-line" style="color:var(--teal-500);font-size:1.2rem;"></i>
-          <span style="font-size:.82rem;color:var(--teal-700);font-weight:600;">Pay securely via Razorpay — Cards, Net Banking, UPI, Wallets & EMI</span>
-        </div>
+ <!-- Payment method tabs -->
+ <div class="pay-method-title">Select how you'd like to pay:</div>
+ <div style="background:var(--teal-50);border:1px solid var(--teal-200);border-radius:12px;padding:.85rem 1.1rem;display:flex;align-items:center;gap:.6rem;margin-bottom:1.5rem;">
+ <i class="ri-shield-check-line" style="color:var(--teal-500);font-size:1.2rem;"></i>
+ <span style="font-size:.82rem;color:var(--teal-700);font-weight:600;">Pay securely via Razorpay — Cards, Net Banking, UPI, Wallets & EMI</span>
+ </div>
 
-        <!-- Razorpay panel -->
-        <div id="panelRzp">
-          <button class="btn-pay-rzp" onclick="payWithRazorpay()">
-            <i class="ri-bank-card-line"></i>
-            Pay ₹<span id="rzpAmountBtn">0</span> via Razorpay
-          </button>
-          <div style="text-align:center;margin-bottom:1rem;">
-            <div style="display:flex;align-items:center;gap:.4rem;justify-content:center;flex-wrap:wrap;">
-              <img src="https://cdn.razorpay.com/static/assets/logo/rzp.svg" alt="Razorpay" style="height:18px;opacity:.7;" onerror="this.style.display='none'" />
-              <span style="font-size:.72rem;color:var(--gray-400);">Secured by Razorpay · 256-bit SSL</span>
-            </div>
-            <div style="display:flex;gap:.5rem;justify-content:center;margin-top:.5rem;flex-wrap:wrap;">
-              <span style="font-size:.68rem;background:var(--gray-100);color:var(--gray-500);padding:.2rem .6rem;border-radius:4px;">VISA</span>
-              <span style="font-size:.68rem;background:var(--gray-100);color:var(--gray-500);padding:.2rem .6rem;border-radius:4px;">Mastercard</span>
-              <span style="font-size:.68rem;background:var(--gray-100);color:var(--gray-500);padding:.2rem .6rem;border-radius:4px;">RuPay</span>
-              <span style="font-size:.68rem;background:var(--gray-100);color:var(--gray-500);padding:.2rem .6rem;border-radius:4px;">Net Banking</span>
-              <span style="font-size:.68rem;background:var(--gray-100);color:var(--gray-500);padding:.2rem .6rem;border-radius:4px;">UPI</span>
-              <span style="font-size:.68rem;background:var(--gray-100);color:var(--gray-500);padding:.2rem .6rem;border-radius:4px;">EMI</span>
-            </div>
-          </div>
-        </div>
+ <!-- Razorpay panel -->
+ <div id="panelRzp">
+ <button class="btn-pay-rzp" onclick="payWithRazorpay()">
+ <i class="ri-bank-card-line"></i>
+ Pay ₹<span id="rzpAmountBtn">0</span> via Razorpay
+ </button>
+ <div style="text-align:center;margin-bottom:1rem;">
+ <div style="display:flex;align-items:center;gap:.4rem;justify-content:center;flex-wrap:wrap;">
+ <img src="https://cdn.razorpay.com/static/assets/logo/rzp.svg" alt="Razorpay" style="height:18px;opacity:.7;" onerror="this.style.display='none'" />
+ <span style="font-size:.72rem;color:var(--gray-400);">Secured by Razorpay · 256-bit SSL</span>
+ </div>
+ <div style="display:flex;gap:.5rem;justify-content:center;margin-top:.5rem;flex-wrap:wrap;">
+ <span style="font-size:.68rem;background:var(--gray-100);color:var(--gray-500);padding:.2rem .6rem;border-radius:4px;">VISA</span>
+ <span style="font-size:.68rem;background:var(--gray-100);color:var(--gray-500);padding:.2rem .6rem;border-radius:4px;">Mastercard</span>
+ <span style="font-size:.68rem;background:var(--gray-100);color:var(--gray-500);padding:.2rem .6rem;border-radius:4px;">RuPay</span>
+ <span style="font-size:.68rem;background:var(--gray-100);color:var(--gray-500);padding:.2rem .6rem;border-radius:4px;">Net Banking</span>
+ <span style="font-size:.68rem;background:var(--gray-100);color:var(--gray-500);padding:.2rem .6rem;border-radius:4px;">UPI</span>
+ <span style="font-size:.68rem;background:var(--gray-100);color:var(--gray-500);padding:.2rem .6rem;border-radius:4px;">EMI</span>
+ </div>
+ </div>
+ </div>
 
 
 
-        <div class="order-nav">
-          <button class="btn-order-back" onclick="goStep(2)"><i class="ri-arrow-left-line"></i> Back</button>
-        </div>
+ <div class="order-nav">
+ <button class="btn-order-back" onclick="goStep(2)"><i class="ri-arrow-left-line"></i> Back</button>
+ </div>
 
-        <div style="display:flex;align-items:center;gap:.5rem;margin-top:1.25rem;padding:1rem;background:var(--gray-50);border-radius:10px;">
-          <i class="ri-lock-line" style="color:var(--teal-500);font-size:1.2rem;flex-shrink:0;"></i>
-          <p style="font-size:.75rem;color:var(--gray-500);margin:0;line-height:1.6;">Your payment is fully encrypted. We never store your card details. All transactions processed by Razorpay (PCI DSS certified).</p>
-        </div>
-      </div>
+ <div style="display:flex;align-items:center;gap:.5rem;margin-top:1.25rem;padding:1rem;background:var(--gray-50);border-radius:10px;">
+ <i class="ri-lock-line" style="color:var(--teal-500);font-size:1.2rem;flex-shrink:0;"></i>
+ <p style="font-size:.75rem;color:var(--gray-500);margin:0;line-height:1.6;">Your payment is fully encrypted. We never store your card details. All transactions processed by Razorpay (PCI DSS certified).</p>
+ </div>
+ </div>
 
-      <!-- ── SUCCESS SCREEN ── -->
-      <div class="order-success" id="orderSuccess">
-        <div class="success-ring"><i class="ri-check-double-line"></i></div>
-        <h2 style="font-size:1.6rem;font-weight:800;color:var(--gray-900);margin-bottom:.5rem;">Order Confirmed!</h2>
-        <p style="color:var(--gray-500);font-size:.9rem;">Thank you. Payment received &amp; your order is registered.</p>
-        <div class="order-ref-box">
-          <div class="order-ref-label"><i class="ri-receipt-line"></i> Your Order Reference</div>
-          <div class="order-ref-num" id="orderRefNum">#OMN-2025-0001</div>
-          <div class="order-ref-sub">Save this number. Our team will contact you within 1 business hour.</div>
-        </div>
-        <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-top:1.25rem;">
-          <a href="tel:+918920603270" class="btn-order-next" style="text-decoration:none;font-size:.875rem;">
-            <i class="ri-phone-fill"></i> Call Us
-          </a>
-          <a href="index.html" style="padding:.75rem 1.25rem;border-radius:10px;border:1.5px solid var(--gray-200);color:var(--gray-600);font-weight:700;font-size:.875rem;text-decoration:none;">
-            <i class="ri-home-line"></i> Home
-          </a>
-        </div>
-      </div>
+ <!-- ── SUCCESS SCREEN ── -->
+ <div class="order-success" id="orderSuccess">
+ <div class="success-ring"><i class="ri-check-double-line"></i></div>
+ <h2 style="font-size:1.6rem;font-weight:800;color:var(--gray-900);margin-bottom:.5rem;">Order Confirmed!</h2>
+ <p style="color:var(--gray-500);font-size:.9rem;">Thank you. Payment received &amp; your order is registered.</p>
+ <div class="order-ref-box">
+ <div class="order-ref-label"><i class="ri-receipt-line"></i> Your Order Reference</div>
+ <div class="order-ref-num" id="orderRefNum">#OMN-2025-0001</div>
+ <div class="order-ref-sub">Save this number. Our team will contact you within 1 business hour.</div>
+ </div>
+ <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-top:1.25rem;">
+ <a href="tel:+918920603270" class="btn-order-next" style="text-decoration:none;font-size:.875rem;">
+ <i class="ri-phone-fill"></i> Call Us
+ </a>
+ <a href="index.html" style="padding:.75rem 1.25rem;border-radius:10px;border:1.5px solid var(--gray-200);color:var(--gray-600);font-weight:700;font-size:.875rem;text-decoration:none;">
+ <i class="ri-home-line"></i> Home
+ </a>
+ </div>
+ </div>
 
-    </div><!-- /order-card -->
+ </div><!-- /order-card -->
 
-    <!-- Right: Summary -->
-    <div class="order-summary-col">
-      <div class="summary-card">
-        <div class="summary-title"><i class="ri-file-list-3-line"></i> Order Summary</div>
-        <div class="summary-row"><span class="summary-key">Customer</span><span class="summary-val" id="sumName">—</span></div>
-        <div class="summary-row"><span class="summary-key">Phone</span><span class="summary-val" id="sumPhone">—</span></div>
-        <div class="summary-row"><span class="summary-key">Service</span><span class="summary-val" id="sumService">—</span></div>
-        <div class="summary-row"><span class="summary-key">Location</span><span class="summary-val" id="sumCity">—</span></div>
-        <div class="summary-total">
-          <div class="summary-total-label">Order Total</div>
-          <div class="summary-total-amount">₹<span id="sumAmount">0</span></div>
-        </div>
-        <div class="trust-pills">
-          <div class="trust-pill"><i class="ri-shield-check-line"></i> 100% Secure Checkout</div>
-          <div class="trust-pill"><i class="ri-bank-card-line"></i> Card · UPI · Net Banking · EMI</div>
-          <div class="trust-pill"><i class="ri-time-line"></i> Response within 1 business hour</div>
-          <div class="trust-pill"><i class="ri-refund-line"></i> GST invoice provided</div>
-          <div class="trust-pill"><i class="ri-customer-service-2-line"></i> </div>
-        </div>
-      </div>
-    </div>
+ <!-- Right: Summary -->
+ <div class="order-summary-col">
+ <div class="summary-card">
+ <div class="summary-title"><i class="ri-file-list-3-line"></i> Order Summary</div>
+ <div class="summary-row"><span class="summary-key">Customer</span><span class="summary-val" id="sumName">—</span></div>
+ <div class="summary-row"><span class="summary-key">Phone</span><span class="summary-val" id="sumPhone">—</span></div>
+ <div class="summary-row"><span class="summary-key">Service</span><span class="summary-val" id="sumService">—</span></div>
+ <div class="summary-row"><span class="summary-key">Location</span><span class="summary-val" id="sumCity">—</span></div>
+ <div class="summary-total">
+ <div class="summary-total-label">Order Total</div>
+ <div class="summary-total-amount">₹<span id="sumAmount">0</span></div>
+ </div>
+ <div class="trust-pills">
+ <div class="trust-pill"><i class="ri-shield-check-line"></i> 100% Secure Checkout</div>
+ <div class="trust-pill"><i class="ri-bank-card-line"></i> Card · UPI · Net Banking · EMI</div>
+ <div class="trust-pill"><i class="ri-time-line"></i> Response within 1 business hour</div>
+ <div class="trust-pill"><i class="ri-refund-line"></i> GST invoice provided</div>
+ <div class="trust-pill"><i class="ri-customer-service-2-line"></i> </div>
+ </div>
+ </div>
+ </div>
 
-  </div><!-- /order-shell -->
+ </div><!-- /order-shell -->
 </div><!-- /order-page -->
 
 <button class="back-to-top" aria-label="Back to top"><i class="ri-arrow-up-line"></i></button>
@@ -487,7 +487,7 @@
 <script src="upi-payment.js"></script>
 <script>
 /* ══════════════════════════════════════════════════════
-   ORDER PAGE LOGIC
+ ORDER PAGE LOGIC
 ══════════════════════════════════════════════════════ */
 
 // ── Razorpay Key — REPLACE with your live key once account is ready ──
@@ -502,203 +502,230 @@ let selectedPM = 'rzp';
 
 /* ── Step navigation ── */
 function goStep(step) {
-  // Validate before advancing
-  if (step > currentStep) {
-    if (!validateStep(currentStep)) return;
-  }
+ // Validate before advancing
+ if (step > currentStep) {
+ if (!validateStep(currentStep)) return;
+ }
 
-  // Hide all steps
-  [1,2,3].forEach(s => {
-    const el = document.getElementById('orderStep' + s);
-    if (el) el.style.display = 'none';
-  });
+ // Hide all steps
+ [1,2,3].forEach(s => {
+ const el = document.getElementById('orderStep' + s);
+ if (el) el.style.display = 'none';
+ });
 
-  // Show target
-  const target = document.getElementById('orderStep' + step);
-  if (target) target.style.display = '';
+ // Show target
+ const target = document.getElementById('orderStep' + step);
+ if (target) target.style.display = '';
 
-  // Update step indicator
-  [1,2,3].forEach(s => {
-    const label = document.getElementById('stepLabel' + s);
-    if (!label) return;
-    label.classList.remove('active','complete');
-    if (s < step) label.classList.add('complete');
-    else if (s === step) label.classList.add('active');
-    // Update step numbers for complete
-    const num = label.querySelector('.step-num');
-    if (s < step) num.innerHTML = '<i class="ri-check-line"></i>';
-    else num.textContent = s;
-  });
-  [1,2].forEach(s => {
-    const line = document.getElementById('stepLine' + s);
-    if (line) line.classList.toggle('done', s < step);
-  });
+ // Update step indicator
+ [1,2,3].forEach(s => {
+ const label = document.getElementById('stepLabel' + s);
+ if (!label) return;
+ label.classList.remove('active','complete');
+ if (s < step) label.classList.add('complete');
+ else if (s === step) label.classList.add('active');
+ // Update step numbers for complete
+ const num = label.querySelector('.step-num');
+ if (s < step) num.innerHTML = '<i class="ri-check-line"></i>';
+ else num.textContent = s;
+ });
+ [1,2].forEach(s => {
+ const line = document.getElementById('stepLine' + s);
+ if (line) line.classList.toggle('done', s < step);
+ });
 
-  currentStep = step;
-  updateSummary();
-  updateAmountButtons();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+ currentStep = step;
+ updateSummary();
+ updateAmountButtons();
+ window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 /* ── Validation ── */
 function validateStep(step) {
-  if (step === 1) {
-    const name  = document.getElementById('oName').value.trim();
-    const phone = document.getElementById('oPhone').value.trim();
-    const email = document.getElementById('oEmail').value.trim();
-    const city  = document.getElementById('oCity').value.trim();
-    if (!name)  { alert('Please enter your name.'); document.getElementById('oName').focus(); return false; }
-    if (!phone) { alert('Please enter your phone number.'); document.getElementById('oPhone').focus(); return false; }
-    if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); document.getElementById('oEmail').focus(); return false; }
-    if (!city)  { alert('Please enter your city / area.'); document.getElementById('oCity').focus(); return false; }
-  }
-  if (step === 2) {
-    const svc = document.getElementById('oService').value;
-    const amt = parseFloat(document.getElementById('oAmount').value);
-    if (!svc)      { alert('Please select a service.'); document.getElementById('oService').focus(); return false; }
-    if (!amt || amt < 100) { alert('Please enter a valid amount (minimum ₹100).'); document.getElementById('oAmount').focus(); return false; }
-  }
-  return true;
+ if (step === 1) {
+ const name = document.getElementById('oName').value.trim();
+ const phone = document.getElementById('oPhone').value.trim();
+ const email = document.getElementById('oEmail').value.trim();
+ const city = document.getElementById('oCity').value.trim();
+ if (!name) { alert('Please enter your name.'); document.getElementById('oName').focus(); return false; }
+ if (!phone) { alert('Please enter your phone number.'); document.getElementById('oPhone').focus(); return false; }
+ if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); document.getElementById('oEmail').focus(); return false; }
+ if (!city) { alert('Please enter your city / area.'); document.getElementById('oCity').focus(); return false; }
+ }
+ if (step === 2) {
+ const svc = document.getElementById('oService').value;
+ const amt = parseFloat(document.getElementById('oAmount').value);
+ if (!svc) { alert('Please select a service.'); document.getElementById('oService').focus(); return false; }
+ if (!amt || amt < 100) { alert('Please enter a valid amount (minimum ₹100).'); document.getElementById('oAmount').focus(); return false; }
+ }
+ return true;
 }
 
 /* ── Summary update ── */
 function updateSummary() {
-  const name    = document.getElementById('oName')?.value || '—';
-  const phone   = document.getElementById('oPhone')?.value || '—';
-  const service = document.getElementById('oService')?.value || '—';
-  const city    = document.getElementById('oCity')?.value || '—';
-  const amount  = document.getElementById('oAmount')?.value || '0';
+ const name = document.getElementById('oName')?.value || '—';
+ const phone = document.getElementById('oPhone')?.value || '—';
+ const service = document.getElementById('oService')?.value || '—';
+ const city = document.getElementById('oCity')?.value || '—';
+ const amount = document.getElementById('oAmount')?.value || '0';
 
-  setText('sumName',    name);
-  setText('sumPhone',   phone);
-  setText('sumService', service);
-  setText('sumCity',    city);
-  setText('sumAmount',  amount ? Number(amount).toLocaleString('en-IN') : '0');
+ setText('sumName', name);
+ setText('sumPhone', phone);
+ setText('sumService', service);
+ setText('sumCity', city);
+ setText('sumAmount', amount ? Number(amount).toLocaleString('en-IN') : '0');
 }
 function setText(id, val) { const el = document.getElementById(id); if(el) el.textContent = val; }
 
 function updateAmountButtons() {
-  const raw = document.getElementById('oAmount')?.value || '0';
-  const fmt = Number(raw).toLocaleString('en-IN');
-  ['amountDisplay3','rzpAmountBtn','upiAmountBtn'].forEach(id => setText(id, fmt));
-  setText('summaryService3', document.getElementById('oService')?.value || '');
-  setText('summaryName3', document.getElementById('oName')?.value || '');
+ const raw = document.getElementById('oAmount')?.value || '0';
+ const fmt = Number(raw).toLocaleString('en-IN');
+ ['amountDisplay3','rzpAmountBtn','upiAmountBtn'].forEach(id => setText(id, fmt));
+ setText('summaryService3', document.getElementById('oService')?.value || '');
+ setText('summaryName3', document.getElementById('oName')?.value || '');
 }
 
 /* ── Payment method toggle ── */
 function selectPM(pm) {
-  selectedPM = pm;
-  document.getElementById('pmRzp').classList.toggle('selected', pm === 'rzp');
-  document.getElementById('panelRzp').style.display = pm === 'rzp' ? '' : 'none';
+ selectedPM = pm;
+ document.getElementById('pmRzp').classList.toggle('selected', pm === 'rzp');
+ document.getElementById('panelRzp').style.display = pm === 'rzp' ? '' : 'none';
 }
 
 /* ── Generate reference number ── */
 function genRef() {
-  const now = new Date();
-  return '#OMN-' + now.getFullYear() + '-' + String(Math.floor(Math.random()*9000)+1000);
+ const now = new Date();
+ return '#OMN-' + now.getFullYear() + '-' + String(Math.floor(Math.random()*9000)+1000);
 }
 
 /* ── Send confirmation email ── */
 async function sendConfirmation(refNum, paymentId) {
-  try {
-    await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        access_key: WEB3FORMS_KEY,
-        subject: `New Order ${refNum} — Omnet IT Solutions`,
-        'Order Reference': refNum,
-        'Customer Name':   document.getElementById('oName').value,
-        'Phone':           document.getElementById('oPhone').value,
-        'Email':           document.getElementById('oEmail').value,
-        'Company':         document.getElementById('oCompany').value || 'N/A',
-        'City / Area':     document.getElementById('oCity').value,
-        'Service':         document.getElementById('oService').value,
-        'Devices / Users': document.getElementById('oDevices').value || 'N/A',
-        'Description':     document.getElementById('oDesc').value || 'N/A',
-        'Amount':          '₹' + document.getElementById('oAmount').value,
-        'Payment Method':  'Razorpay (Card / Net Banking / UPI / Wallets)',
-        'Razorpay Payment ID': paymentId || 'Pending / UPI',
-        'Timestamp':       new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-        'Page':            window.location.href,
-      })
-    });
-  } catch(e) { /* silent — payment already successful */ }
+ try {
+ await fetch('https://api.web3forms.com/submit', {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify({
+ access_key: WEB3FORMS_KEY,
+ subject: `New Order ${refNum} — Omnet IT Solutions`,
+ 'Order Reference': refNum,
+ 'Customer Name': document.getElementById('oName').value,
+ 'Phone': document.getElementById('oPhone').value,
+ 'Email': document.getElementById('oEmail').value,
+ 'Company': document.getElementById('oCompany').value || 'N/A',
+ 'City / Area': document.getElementById('oCity').value,
+ 'Service': document.getElementById('oService').value,
+ 'Devices / Users': document.getElementById('oDevices').value || 'N/A',
+ 'Description': document.getElementById('oDesc').value || 'N/A',
+ 'Amount': '₹' + document.getElementById('oAmount').value,
+ 'Payment Method': 'Razorpay (Card / Net Banking / UPI / Wallets)',
+ 'Razorpay Payment ID': paymentId || 'Pending / UPI',
+ 'Timestamp': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+ 'Page': window.location.href,
+ })
+ });
+ } catch(e) { /* silent — payment already successful */ }
 }
 
 /* ── Show success screen ── */
 function showSuccess(refNum) {
-  document.getElementById('orderSteps').style.display = 'none';
-  [1,2,3].forEach(s => {
-    const el = document.getElementById('orderStep' + s);
-    if (el) el.style.display = 'none';
-  });
-  const suc = document.getElementById('orderSuccess');
-  suc.style.display = 'block';
-  document.getElementById('orderRefNum').textContent = refNum;
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+ document.getElementById('orderSteps').style.display = 'none';
+ [1,2,3].forEach(s => {
+ const el = document.getElementById('orderStep' + s);
+ if (el) el.style.display = 'none';
+ });
+ const suc = document.getElementById('orderSuccess');
+ suc.style.display = 'block';
+ document.getElementById('orderRefNum').textContent = refNum;
+ window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 /* ── Razorpay payment ── */
 function payWithRazorpay() {
-  const amount = parseFloat(document.getElementById('oAmount').value);
-  if (!amount || amount < 100) {
-    alert('Please go back and enter a valid amount (minimum ₹100).');
-    return;
-  }
+ const amount = parseFloat(document.getElementById('oAmount').value);
+ if (!amount || amount < 100) {
+ alert('Please go back and enter a valid amount (minimum ₹100).');
+ return;
+ }
 
-  const name    = document.getElementById('oName').value;
-  const email   = document.getElementById('oEmail').value;
-  const phone   = document.getElementById('oPhone').value;
-  const service = document.getElementById('oService').value;
-  const refNum  = genRef();
+ const name = document.getElementById('oName').value;
+ const email = document.getElementById('oEmail').value;
+ const phone = document.getElementById('oPhone').value;
+ const service = document.getElementById('oService').value;
+ const refNum = genRef();
 
-  // Check if Razorpay key is configured
-  if (RAZORPAY_KEY === 'rzp_test_YOUR_KEY_ID') {
-    // Demo mode — show setup instructions
-    return;
-  }
+ // Check if Razorpay key is configured
+ if (RAZORPAY_KEY === 'rzp_test_YOUR_KEY_ID') {
+ // Demo mode — show setup instructions
+ return;
+ }
 
-  const options = {
-    key: RAZORPAY_KEY,
-    amount: Math.round(amount * 100), // paise
-    currency: 'INR',
-    name: 'Omnet IT Solutions',
-    description: service,
-    image: 'https://www.omnetit.in/og-banner.png',
-    notes: {
-      order_ref: refNum,
-      customer_name: name,
-      service: service,
-      city: document.getElementById('oCity').value,
-    },
-    prefill: { name, email, contact: phone },
-    theme: { color: '#14b8a6' },
-    modal: {
-      ondismiss: function() {
-        console.log('Payment cancelled by user');
-      }
-    },
-    handler: async function(response) {
-      // Payment successful
-      await sendConfirmation(refNum, response.razorpay_payment_id);
-      showSuccess(refNum);
-    }
-  };
+ const options = {
+ key: RAZORPAY_KEY,
+ amount: Math.round(amount * 100), // paise
+ currency: 'INR',
+ name: 'Omnet IT Solutions',
+ description: service,
+ image: 'https://www.omnetit.in/og-banner.png',
+ notes: {
+ order_ref: refNum,
+ customer_name: name,
+ service: service,
+ city: document.getElementById('oCity').value,
+ },
+ prefill: { name, email, contact: phone },
+ theme: { color: '#14b8a6' },
+ modal: {
+ ondismiss: function() {
+ console.log('Payment cancelled by user');
+ }
+ },
+ handler: async function(response) {
+ // Payment successful
+ await sendConfirmation(refNum, response.razorpay_payment_id);
+ showSuccess(refNum);
+ }
+ };
 
-  try {
-    const rzp = new Razorpay(options);
-    rzp.on('payment.failed', function(res) {
-      alert('Payment failed: ' + (res.error?.description || 'Unknown error') + '\n\nPlease try again or use UPI payment.');
-    });
-    rzp.open();
-  } catch(e) {
-    alert('Could not load payment gateway. Please use UPI payment or call us at ');
-  }
+ try {
+ const rzp = new Razorpay(options);
+ rzp.on('payment.failed', function(res) {
+ alert('Payment failed: ' + (res.error?.description || 'Unknown error') + '\n\nPlease try again or use UPI payment.');
+ });
+ rzp.open();
+ } catch(e) {
+ alert('Could not load payment gateway. Please use UPI payment or call us at ');
+ }
 }
 
 // Init summary on load
 updateSummary();
 </script>
+
+<!-- ═══ FLOATING CONTACT WIDGET ═══ -->
+<div id="floatContact" style="position:fixed;bottom:28px;right:24px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
+ <!-- Email button -->
+ <a href="mailto:hello@omnetit.in" id="floatEmail" title="Email Us" style="display:flex;align-items:center;gap:8px;background:#fff;color:#0f766e;border:2px solid #14b8a6;border-radius:50px;padding:9px 16px;font-size:13px;font-weight:700;text-decoration:none;box-shadow:0 4px 16px rgba(20,184,166,.2);transition:all .25s;white-space:nowrap;">
+ <i class="ri-mail-line" style="font-size:16px;"></i> hello@omnetit.in
+ </a>
+ <!-- Call button -->
+ <a href="tel:+918920603270" id="floatCall" title="Call Us" style="display:flex;align-items:center;gap:9px;background:linear-gradient(135deg,#14b8a6,#0891b2);color:#fff;border:none;border-radius:50px;padding:13px 20px;font-size:14px;font-weight:700;text-decoration:none;box-shadow:0 6px 24px rgba(20,184,166,.4);animation:floatPulse 2.8s ease-in-out infinite;white-space:nowrap;">
+ <i class="ri-phone-fill" style="font-size:17px;"></i> Call Now
+ </a>
+</div>
+<style>
+@keyframes floatPulse {
+ 0%,100%{box-shadow:0 6px 24px rgba(20,184,166,.4),0 0 0 0 rgba(20,184,166,.3)}
+ 50%{box-shadow:0 6px 24px rgba(20,184,166,.5),0 0 0 10px rgba(20,184,166,0)}
+}
+#floatEmail:hover{background:#f0fdfa;box-shadow:0 6px 20px rgba(20,184,166,.3);}
+#floatCall:hover{transform:scale(1.04);animation:none;box-shadow:0 10px 30px rgba(20,184,166,.55);}
+@media(max-width:600px){
+ #floatContact{bottom:80px;right:14px;gap:8px;}
+ #floatEmail{display:none;}
+ #floatCall{padding:12px 18px;font-size:13px;}
+}
+</style>
+<!-- ═══ END FLOATING CONTACT WIDGET ═══ -->
+
 </body>
 </html>
