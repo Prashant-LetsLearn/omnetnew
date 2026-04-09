@@ -711,31 +711,196 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
 
-<!-- ═══ FLOATING CONTACT WIDGET ═══ -->
-<div id="floatContact" style="position:fixed;bottom:28px;right:24px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
- <!-- Email button -->
- <a href="mailto:hello@omnetit.in" id="floatEmail" title="Email Us" style="display:flex;align-items:center;gap:8px;background:#fff;color:#0f766e;border:2px solid #14b8a6;border-radius:50px;padding:9px 16px;font-size:13px;font-weight:700;text-decoration:none;box-shadow:0 4px 16px rgba(20,184,166,.2);transition:all .25s;white-space:nowrap;">
- <i class="ri-mail-line" style="font-size:16px;"></i> hello@omnetit.in
- </a>
- <!-- Call button -->
- <a href="tel:+918920603270" id="floatCall" title="Call Us" style="display:flex;align-items:center;gap:9px;background:linear-gradient(135deg,#14b8a6,#0891b2);color:#fff;border:none;border-radius:50px;padding:13px 20px;font-size:14px;font-weight:700;text-decoration:none;box-shadow:0 6px 24px rgba(20,184,166,.4);animation:floatPulse 2.8s ease-in-out infinite;white-space:nowrap;">
- <i class="ri-phone-fill" style="font-size:17px;"></i> Call Now
- </a>
+
+
+<!-- ═══ 2. SUPPORT TICKET (bottom-right, higher) ═══ -->
+<button id="stTrigger" style="position:fixed;bottom:92px;right:28px;z-index:9000;background:#ef4444;color:#fff;border:none;border-radius:50px;padding:11px 18px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;cursor:pointer;box-shadow:0 4px 18px rgba(239,68,68,.45);">
+  <i class="ri-customer-service-2-line" style="font-size:17px;"></i>
+  <span>Technical Support</span>
+</button>
+
+<!-- Support Ticket Modal -->
+<div id="stOverlay" style="display:none;position:fixed;inset:0;z-index:9010;background:rgba(0,0,0,.5);"></div>
+<div id="stModal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9011;width:420px;max-width:calc(100vw - 24px);background:#fff;border-radius:16px;box-shadow:0 12px 50px rgba(0,0,0,.2);overflow:hidden;font-family:inherit;">
+  <div style="background:linear-gradient(135deg,#ef4444,#dc2626);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div style="width:38px;height:38px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="ri-customer-service-2-line" style="color:#fff;font-size:19px;"></i></div>
+      <div>
+        <div style="color:#fff;font-size:15px;font-weight:700;line-height:1.2;">Log a Support Ticket</div>
+        <div style="color:rgba(255,255,255,.85);font-size:12px;">Our team will contact you within 20 minutes.</div>
+      </div>
+    </div>
+    <button id="stClose" style="color:#fff;background:none;border:none;font-size:24px;cursor:pointer;line-height:1;opacity:.85;">&times;</button>
+  </div>
+  <div style="padding:20px;max-height:80vh;overflow-y:auto;">
+    <form id="stForm">
+      <input type="hidden" name="access_key" value="2af0c0f5-01fa-4349-b83c-fff623cb969b">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px;">
+        <div>
+          <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Full Name <span style="color:#e53935;">*</span></label>
+          <input type="text" name="name" required placeholder="Your name" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+        </div>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Phone <span style="color:#e53935;">*</span></label>
+          <input type="tel" name="phone" required placeholder="+91 XXXXX XXXXX" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+        </div>
+      </div>
+      <div style="margin-bottom:13px;">
+        <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Email Address <span style="color:#e53935;">*</span></label>
+        <input type="email" name="email" required placeholder="your@email.com" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px;">
+        <div>
+          <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Issue Category <span style="color:#e53935;">*</span></label>
+          <select name="category" required style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:#fff;appearance:none;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+            <option value="" disabled selected>Select category</option>
+            <option>Hardware Issue</option>
+            <option>Software / OS Issue</option>
+            <option>Network / Internet</option>
+            <option>Email Issue</option>
+            <option>Server / Cloud</option>
+            <option>Security / Virus</option>
+            <option>Printer / Peripheral</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Priority <span style="color:#e53935;">*</span></label>
+          <select name="priority" required style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:#fff;appearance:none;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+            <option value="" disabled selected>Select priority</option>
+            <option>🔴 Critical — System Down</option>
+            <option>🟠 High — Major Impact</option>
+            <option>🟡 Medium — Partial Impact</option>
+            <option>🟢 Low — Minor Issue</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-bottom:13px;">
+        <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Company / Organisation</label>
+        <input type="text" name="company" placeholder="Your company name" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+      </div>
+      <div style="margin-bottom:16px;">
+        <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Describe Your Issue <span style="color:#e53935;">*</span></label>
+        <textarea name="issue" required placeholder="Please describe the issue in detail — what happened, when it started, and what you have already tried..." rows="4" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;resize:vertical;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'"></textarea>
+      </div>
+      <button type="submit" id="stSubmitBtn" style="width:100%;padding:12px;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.3px;">
+        <i class="ri-send-plane-line"></i> Submit Support Ticket
+      </button>
+      <div id="stSuccess" style="display:none;margin-top:12px;padding:12px 14px;background:#ecfdf5;color:#065f46;border-radius:8px;font-size:13px;text-align:center;">
+        <i class="ri-checkbox-circle-line"></i> <strong>Ticket submitted!</strong> Our team will connect with you soon.
+      </div>
+      <div id="stError" style="display:none;margin-top:12px;padding:12px 14px;background:#fef2f2;color:#991b1b;border-radius:8px;font-size:13px;text-align:center;">
+        Something went wrong. Please email us at <strong>hello@omnetit.in</strong>.
+      </div>
+    </form>
+  </div>
 </div>
-<style>
-@keyframes floatPulse {
- 0%,100%{box-shadow:0 6px 24px rgba(20,184,166,.4),0 0 0 0 rgba(20,184,166,.3)}
- 50%{box-shadow:0 6px 24px rgba(20,184,166,.5),0 0 0 10px rgba(20,184,166,0)}
-}
-#floatEmail:hover{background:#f0fdfa;box-shadow:0 6px 20px rgba(20,184,166,.3);}
-#floatCall:hover{transform:scale(1.04);animation:none;box-shadow:0 10px 30px rgba(20,184,166,.55);}
-@media(max-width:600px){
- #floatContact{bottom:80px;right:14px;gap:8px;}
- #floatEmail{display:none;}
- #floatCall{padding:12px 18px;font-size:13px;}
-}
-</style>
-<!-- ═══ END FLOATING CONTACT WIDGET ═══ -->
+
+<!-- ═══ 3. LEAVE A MESSAGE (bottom-right, lower) ═══ -->
+<button id="lamTrigger" style="position:fixed;bottom:28px;right:28px;z-index:9000;background:#0d9488;color:#fff;border:none;border-radius:50px;padding:13px 20px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;cursor:pointer;box-shadow:0 4px 18px rgba(13,148,136,.45);">
+  <i class="ri-message-3-line" style="font-size:18px;"></i>
+  <span>Leave a Message</span>
+</button>
+
+<div id="lamOverlay" style="display:none;position:fixed;inset:0;z-index:9001;background:rgba(0,0,0,.45);"></div>
+<div id="lamModal" style="display:none;position:fixed;bottom:90px;right:28px;z-index:9002;width:340px;max-width:calc(100vw - 32px);background:#fff;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.2);overflow:hidden;font-family:inherit;">
+  <div style="background:#0d9488;padding:12px 16px;display:flex;align-items:center;gap:10px;">
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0d1b2a;border:2px solid #fff;border-radius:6px;padding:4px 8px;line-height:1;flex-shrink:0;">
+      <span style="font-size:8px;font-weight:300;color:#90caf9;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1px;">OMNET</span>
+      <span style="font-size:12px;font-weight:800;color:#fff;letter-spacing:2px;">IT</span>
+    </div>
+    <span style="color:#fff;font-size:15px;font-weight:600;flex:1;">Leave a message</span>
+    <button id="lamClose" style="color:#fff;background:none;border:none;font-size:24px;cursor:pointer;line-height:1;">&times;</button>
+  </div>
+  <div style="padding:16px;">
+    <form id="lamForm">
+      <input type="hidden" name="access_key" value="2af0c0f5-01fa-4349-b83c-fff623cb969b">
+      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Email address</label><input type="email" name="email" placeholder="Enter your email address" style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;"></div>
+      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Contact number</label><input type="tel" name="phone" placeholder="Enter your contact number" style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;"></div>
+      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Department <span style="color:#e53935;">*</span></label>
+        <select id="lamDept" name="department" required style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;appearance:none;background:#fff;">
+          <option value="" disabled selected>Choose a department</option>
+          <option value="IT Support">IT Support</option>
+          <option value="Sales">Sales</option>
+        </select></div>
+      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Message</label><textarea name="message" placeholder="Type your message..." rows="3" style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;resize:vertical;"></textarea></div>
+      <button type="submit" id="lamSubmitBtn" style="width:100%;padding:11px;background:#0d9488;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;">Submit Message</button>
+      <div id="lamSuccess" style="display:none;margin-top:10px;padding:10px;background:#ecfdf5;color:#065f46;border-radius:8px;font-size:13px;text-align:center;">&#10003; Message received! Our team will connect with you soon.</div>
+      <div id="lamError" style="display:none;margin-top:10px;padding:10px;background:#fef2f2;color:#991b1b;border-radius:8px;font-size:13px;text-align:center;">Something went wrong. Please try again.</div>
+    </form>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  /* ── Support Ticket ── */
+  var stTrigger=document.getElementById('stTrigger'),stModal=document.getElementById('stModal'),
+      stOverlay=document.getElementById('stOverlay'),stClose2=document.getElementById('stClose'),
+      stForm=document.getElementById('stForm'),stSubmit=document.getElementById('stSubmitBtn'),
+      stSuccess=document.getElementById('stSuccess'),stError=document.getElementById('stError');
+  function stOpen(){ if(stModal) stModal.style.display='block'; if(stOverlay) stOverlay.style.display='block'; }
+  function stHide(){ if(stModal) stModal.style.display='none'; if(stOverlay) stOverlay.style.display='none'; }
+  if(stTrigger) stTrigger.addEventListener('click',stOpen);
+  if(stClose2)  stClose2.addEventListener('click',stHide);
+  if(stOverlay) stOverlay.addEventListener('click',stHide);
+  if(stForm){ stForm.addEventListener('submit',async function(e){
+    e.preventDefault();
+    if(stSubmit){ stSubmit.disabled=true; stSubmit.innerHTML='Submitting...'; }
+    if(stSuccess) stSuccess.style.display='none';
+    if(stError)   stError.style.display='none';
+    try{
+      var fd=new FormData(stForm);
+      var page=window.location.pathname.split('/').pop()||'index.html';
+      var res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({access_key:'2af0c0f5-01fa-4349-b83c-fff623cb969b',
+          subject:'Support Ticket - '+(fd.get('priority')||'')+' | '+(fd.get('category')||''),
+          from_name:'OMNET IT Support Ticket',page:page,
+          name:fd.get('name')||'N/A',phone:fd.get('phone')||'N/A',email:fd.get('email')||'N/A',
+          company:fd.get('company')||'N/A',category:fd.get('category')||'N/A',
+          priority:fd.get('priority')||'N/A',issue:fd.get('issue')||'N/A'})});
+      var json=await res.json();
+      if(json.success){ if(stSuccess) stSuccess.style.display='block'; stForm.reset();
+        setTimeout(function(){ stHide(); if(stSuccess) stSuccess.style.display='none'; },4000);
+      } else { throw new Error(); }
+    }catch(err){ if(stError) stError.style.display='block'; }
+    if(stSubmit){ stSubmit.disabled=false; stSubmit.innerHTML='<i class="ri-send-plane-line"></i> Submit Support Ticket'; }
+  }); }
+
+  /* ── Leave a Message ── */
+  var lamTrigger=document.getElementById('lamTrigger'),lamModal=document.getElementById('lamModal'),
+      lamOverlay=document.getElementById('lamOverlay'),lamClose2=document.getElementById('lamClose'),
+      lamForm=document.getElementById('lamForm'),lamSubmit=document.getElementById('lamSubmitBtn'),
+      lamSuccess=document.getElementById('lamSuccess'),lamError=document.getElementById('lamError');
+  function lamOpen(){ if(lamModal) lamModal.style.display='block'; if(lamOverlay) lamOverlay.style.display='block'; }
+  function lamHide(){ if(lamModal) lamModal.style.display='none'; if(lamOverlay) lamOverlay.style.display='none'; }
+  if(lamTrigger) lamTrigger.addEventListener('click',lamOpen);
+  if(lamClose2)  lamClose2.addEventListener('click',lamHide);
+  if(lamOverlay) lamOverlay.addEventListener('click',lamHide);
+  if(lamForm){ lamForm.addEventListener('submit',async function(e){
+    e.preventDefault();
+    var deptEl=document.getElementById('lamDept');
+    if(deptEl && !deptEl.value){ deptEl.style.borderColor='#e53935'; return; }
+    if(deptEl) deptEl.style.borderColor='';
+    if(lamSubmit){ lamSubmit.disabled=true; lamSubmit.textContent='Sending...'; }
+    if(lamSuccess) lamSuccess.style.display='none';
+    if(lamError)   lamError.style.display='none';
+    try{
+      var fd=new FormData(lamForm);
+      var page=window.location.pathname.split('/').pop()||'index.html';
+      var res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({access_key:'2af0c0f5-01fa-4349-b83c-fff623cb969b',
+          subject:'OMNET IT - Leave a Message',from_name:'OMNET IT Website',page:page,
+          email:fd.get('email')||'N/A',phone:fd.get('phone')||'N/A',
+          department:fd.get('department')||'N/A',message:fd.get('message')||'N/A'})});
+      var json=await res.json();
+      if(json.success){ if(lamSuccess) lamSuccess.style.display='block'; lamForm.reset(); }
+      else{ throw new Error(); }
+    }catch(err){ if(lamError) lamError.style.display='block'; }
+    if(lamSubmit){ lamSubmit.disabled=false; lamSubmit.textContent='Submit Message'; }
+  }); }
+});
+</script>
+<!-- ═══ END SUPPORT WIDGETS ═══ -->
 
 <!-- ═══ END ALL WIDGETS ═══ -->
 
