@@ -611,16 +611,42 @@ document.addEventListener('DOMContentLoaded', function(){
     try{
       var fd=new FormData(stForm);
       var page=window.location.pathname.split('/').pop()||'index.html';
+      /* ── Generate unique ticket number ── */
+      var now=new Date();
+      var ymd=now.getFullYear().toString()+
+              String(now.getMonth()+1).padStart(2,'0')+
+              String(now.getDate()).padStart(2,'0');
+      var rand=Math.floor(10000+Math.random()*90000);
+      var ticketNum='OMT-'+ymd+'-'+rand;
+      var customerEmail=fd.get('email')||'';
+      /* ── Submit ticket to OMNET team ── */
       var res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json'},
         body:JSON.stringify({access_key:'2af0c0f5-01fa-4349-b83c-fff623cb969b',
-          subject:'Support Ticket - '+(fd.get('priority')||'')+' | '+(fd.get('category')||''),
+          subject:'['+ticketNum+'] Support Ticket - '+(fd.get('priority')||'')+' | '+(fd.get('category')||''),
           from_name:'OMNET IT Support Ticket',page:page,
-          name:fd.get('name')||'N/A',phone:fd.get('phone')||'N/A',email:fd.get('email')||'N/A',
+          ticket_number:ticketNum,
+          name:fd.get('name')||'N/A',phone:fd.get('phone')||'N/A',email:customerEmail||'N/A',
           company:fd.get('company')||'N/A',category:fd.get('category')||'N/A',
           priority:fd.get('priority')||'N/A',issue:fd.get('issue')||'N/A'})});
       var json=await res.json();
-      if(json.success){ if(stSuccess) stSuccess.style.display='block'; stForm.reset();
-        setTimeout(function(){ stHide(); if(stSuccess) stSuccess.style.display='none'; },4000);
+      if(json.success){
+        /* ── Send auto-reply to customer ── */
+        if(customerEmail){
+          await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({access_key:'2af0c0f5-01fa-4349-b83c-fff623cb969b',
+              subject:'Support Ticket Received: '+ticketNum+' | Omnet IT Solutions',
+              from_name:'Omnet IT Solutions Support',
+              to:customerEmail,
+              email:customerEmail,
+              message:'Dear '+(fd.get('name')||'Customer')+',\n\nThank you for reaching out to Omnet IT Solutions.\n\nYour support ticket has been successfully created. Our team will review your issue and get in touch with you shortly.\n\n─────────────────────────────\nTicket Number : '+ticketNum+'\nCategory      : '+(fd.get('category')||'N/A')+'\nPriority      : '+(fd.get('priority')||'N/A')+'\nIssue Summary : '+(fd.get('issue')||'N/A')+'\n─────────────────────────────\n\nOur team will connect with you soon.\n\nFor urgent matters, please call us at +91 97172 70865.\n\nBest regards,\nSupport Team\nOmnet IT Solutions\nhello@omnetit.in | +91-120-522-3376\nhttps://omnetit.in'})});
+        }
+        /* ── Show success with ticket number ── */
+        if(stSuccess){
+          stSuccess.innerHTML='<i class="ri-checkbox-circle-line"></i> <strong>Ticket #'+ticketNum+' Created!</strong> A confirmation has been sent to your email. Our team will connect with you soon.';
+          stSuccess.style.display='block';
+        }
+        stForm.reset();
+        setTimeout(function(){ stHide(); if(stSuccess) stSuccess.style.display='none'; },6000);
       } else { throw new Error(); }
     }catch(err){ if(stError) stError.style.display='block'; }
     if(stSubmit){ stSubmit.disabled=false; stSubmit.innerHTML='<i class="ri-send-plane-line"></i> Submit Support Ticket'; }
