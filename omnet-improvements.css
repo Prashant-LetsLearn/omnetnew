@@ -1,0 +1,963 @@
+/* ═══════════════════════════════════════════════════════════════
+   OMNET IT SOLUTIONS — COMPREHENSIVE IMPROVEMENTS CSS
+   Fixes: Mobile responsiveness, Contact display, WhatsApp,
+          Navigation, Typography, Footer, Spacing, CTA
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 1. GLOBAL FONT & BASE ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── 2. DUAL ACTION STRIP — Mobile fix ── */
+.dual-action-strip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  background: linear-gradient(135deg, #0a2240 0%, #0d4f5c 100%);
+  padding: 0 1rem;
+  height: 36px;
+  display: flex;
+  align-items: center;
+}
+.dual-action-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.dual-action-left {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.85);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.dual-action-right {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.dual-action-right::-webkit-scrollbar { display: none; }
+.btn-register-hdr,
+.btn-managed,
+.btn-place-order,
+.btn-online-purchase {
+  font-size: 0.7rem !important;
+  padding: 0.25rem 0.6rem !important;
+  border-radius: 4px !important;
+  white-space: nowrap;
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+.btn-register-hdr { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+.btn-managed { background: rgba(20,184,166,0.25); color: #5eead4; border: 1px solid rgba(20,184,166,0.4); }
+.btn-place-order { background: rgba(249,115,22,0.25); color: #fb923c; border: 1px solid rgba(249,115,22,0.4); }
+.btn-online-purchase { background: rgba(99,102,241,0.25); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.4); }
+
+@media (max-width: 768px) {
+  .dual-action-strip { height: 32px; padding: 0 0.75rem; }
+  .dual-action-left { display: none; }
+  .dual-action-right { justify-content: flex-end; width: 100%; }
+  .btn-register-hdr, .btn-managed, .btn-place-order, .btn-online-purchase {
+    font-size: 0.65rem !important;
+    padding: 0.2rem 0.5rem !important;
+  }
+}
+
+/* ── 3. HEADER — Mobile fix ── */
+.site-header {
+  position: fixed !important;
+  left: 0; right: 0;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+}
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  gap: 1rem;
+}
+.header-nav-bar {
+  background: #f8fafc;
+  border-top: 1px solid #e5e7eb;
+}
+.header-nav-bar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  gap: 0.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.header-nav-bar-inner::-webkit-scrollbar { display: none; }
+
+/* Mobile nav improvements */
+@media (max-width: 1024px) {
+  .header-nav-bar { display: none; }
+}
+@media (max-width: 768px) {
+  .header-inner { height: 54px; padding: 0 1rem; }
+  .header-cta .btn-primary { display: none; }
+  .header-cta .header-phone { font-size: 0.8rem; }
+}
+@media (max-width: 480px) {
+  .header-cta button[onclick="cbOpen()"] { display: none !important; }
+}
+
+/* Mobile nav panel */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 86px;
+  left: 0; right: 0;
+  bottom: 0;
+  background: #fff;
+  z-index: 999;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+.mobile-nav.active { display: block; }
+.mobile-nav-inner {
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.mobile-nav-inner a {
+  display: block;
+  padding: 0.7rem 1rem;
+  color: #1f2937;
+  text-decoration: none;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.mobile-nav-inner a:hover { background: #f0fdfa; color: #0d9488; }
+.mobile-nav-section { margin: 0.25rem 0; }
+.mobile-nav-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9ca3af;
+  padding: 0.5rem 1rem 0.25rem;
+}
+.mobile-nav-child { padding-left: 0.75rem; }
+.mobile-nav-child a { font-size: 0.875rem; }
+.mobile-nav-divider { border: none; border-top: 1px solid #e5e7eb; margin: 0.5rem 0; }
+
+@media (max-width: 768px) {
+  .site-header { top: 32px !important; }
+}
+@media (min-width: 1025px) {
+  .mobile-menu-btn { display: none !important; }
+  .mobile-nav { display: none !important; }
+}
+
+/* ── 4. WHATSAPP — Fixed z-index, visibility & redirect ── */
+#waWrap {
+  position: fixed !important;
+  bottom: 28px !important;
+  left: 28px !important;
+  z-index: 9500 !important;
+  font-family: inherit;
+}
+#waBubble {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+#waBubble > div {
+  transition: transform 0.2s, box-shadow 0.2s !important;
+}
+#waBubble:hover > div {
+  transform: scale(1.04) !important;
+  box-shadow: 0 6px 28px rgba(37,211,102,0.65) !important;
+}
+#waChat {
+  position: absolute !important;
+  bottom: 68px !important;
+  left: 0 !important;
+  z-index: 9501 !important;
+}
+
+@media (max-width: 768px) {
+  #waWrap { bottom: 80px !important; left: 16px !important; }
+  #waBubble > div > div:last-child { display: none; } /* hide "Chat with us" text on small screens */
+  #waBubble > div {
+    border-radius: 50% !important;
+    padding: 0 !important;
+  }
+  #waBubble > div > div:first-child {
+    border-radius: 50% !important;
+    width: 52px !important; height: 52px !important;
+  }
+  #waChat { width: calc(100vw - 32px) !important; max-width: 310px !important; }
+}
+
+/* ── 5. SUPPORT & MESSAGE BUTTONS — Mobile fix ── */
+#stTrigger, #lamTrigger {
+  z-index: 9400 !important;
+}
+@media (max-width: 768px) {
+  #stTrigger { bottom: 140px !important; right: 16px !important; font-size: 12px !important; padding: 9px 14px !important; }
+  #lamTrigger { bottom: 80px !important; right: 16px !important; font-size: 12px !important; padding: 10px 16px !important; }
+  #lamModal { right: 16px !important; width: calc(100vw - 32px) !important; bottom: 140px !important; }
+}
+@media (max-width: 480px) {
+  #stTrigger span, #lamTrigger span { display: none; }
+  #stTrigger, #lamTrigger {
+    border-radius: 50% !important;
+    padding: 14px !important;
+    width: 50px !important; height: 50px !important;
+    justify-content: center !important;
+  }
+  #stTrigger i, #lamTrigger i { font-size: 20px !important; }
+}
+
+/* ── 6. MOBILE STICKY BAR — Enhanced ── */
+.omnet-sticky-bar {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 9300;
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  gap: 0.75rem;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .omnet-sticky-bar {
+    display: flex !important;
+  }
+  body { padding-bottom: 64px; }
+}
+.omnet-sticky-phone {
+  display: flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px;
+  background: #f0fdfa;
+  border-radius: 50%;
+  color: #0d9488;
+  font-size: 1.2rem;
+  text-decoration: none;
+  flex-shrink: 0;
+  border: 1.5px solid #ccfbf1;
+}
+.omnet-sticky-call {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #0d9488, #06b6d4);
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+/* Add WhatsApp to sticky bar */
+.omnet-sticky-wa {
+  display: flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px;
+  background: #25D366;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.25rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+/* ── 7. MAIN CONTENT — Top padding to clear fixed header ── */
+main, .page-main {
+  padding-top: 140px;
+}
+@media (max-width: 1024px) {
+  main, .page-main { padding-top: 100px; }
+}
+@media (max-width: 768px) {
+  main, .page-main { padding-top: 90px; }
+}
+
+/* ── 8. HERO SECTION — Mobile improvements ── */
+.home-hero {
+  padding-top: 5rem !important;
+  padding-bottom: 4rem !important;
+}
+@media (max-width: 768px) {
+  .home-hero { padding: 3rem 0 2.5rem !important; }
+  .home-hero h1 { font-size: 2rem !important; }
+  .home-hero p { font-size: 0.95rem !important; }
+  .home-hero-btns { gap: 0.75rem !important; }
+}
+@media (max-width: 480px) {
+  .home-hero h1 { font-size: 1.7rem !important; }
+  .hero-stat-row { grid-template-columns: 1fr 1fr !important; }
+  .hero-stat-item .val { font-size: 1.5rem !important; }
+}
+
+/* ── 9. STATS BAR — Mobile ── */
+@media (max-width: 640px) {
+  .stats-bar-inner { flex-wrap: wrap !important; }
+  .sbar-item { flex: 0 0 50% !important; border-right: 1px solid rgba(255,255,255,0.1); }
+  .sbar-item:nth-child(2n) { border-right: none; }
+}
+
+/* ── 10. SECTIONS & CONTAINERS ── */
+.section { padding: 5rem 0; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+
+@media (max-width: 1024px) {
+  .section { padding: 4rem 0; }
+  .grid-2 { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 768px) {
+  .section { padding: 3rem 0; }
+  .container { padding: 0 1rem; }
+}
+@media (max-width: 480px) {
+  .section { padding: 2.5rem 0; }
+}
+
+/* ── 11. CARDS ── */
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid #e5e7eb;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+}
+@media (max-width: 768px) {
+  .card { padding: 1.5rem; border-radius: 12px; }
+}
+
+/* ── 12. FOOTER — Major improvements ── */
+.site-footer {
+  background: linear-gradient(135deg, #0a1628 0%, #0d2b47 100%);
+  color: #fff;
+  padding: 0;
+}
+.footer-main {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1.3fr;
+  gap: 2.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 3rem;
+}
+.footer-brand p {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.875rem;
+  line-height: 1.75;
+  margin: 1rem 0 1.5rem;
+  max-width: 300px;
+}
+.footer-social {
+  display: flex;
+  gap: 0.75rem;
+}
+.footer-social a {
+  width: 38px; height: 38px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.75);
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.footer-social a:hover {
+  background: rgba(20,184,166,0.2);
+  color: #5eead4;
+  border-color: rgba(20,184,166,0.4);
+}
+.footer-col h4 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer-col ul {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.footer-col ul li a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: color 0.2s;
+  line-height: 1.5;
+}
+.footer-col ul li a:hover { color: #5eead4; }
+.footer-col ul li a i { font-size: 0.85rem; flex-shrink: 0; }
+
+/* CONTACT ITEMS in footer */
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.2s;
+}
+.footer-contact-item:hover { background: rgba(20,184,166,0.08); }
+.footer-contact-item > i {
+  font-size: 1.1rem;
+  color: #5eead4;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.footer-contact-item .label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 0.2rem;
+}
+.footer-contact-item .value {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+.footer-contact-item .value a {
+  color: #5eead4 !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+}
+.footer-contact-item .value a:hover { text-decoration: underline !important; }
+
+/* Footer coverage strip */
+.footer-coverage {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.footer-coverage .label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 0.5rem;
+}
+.footer-coverage p {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* Footer bottom bar */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.footer-bottom-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.footer-bottom-inner p {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.45);
+  margin: 0;
+}
+.footer-legal {
+  display: flex !important; /* Force visible — was display:none */
+  gap: 1.25rem;
+}
+.footer-legal a {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-legal a:hover { color: #5eead4; }
+
+/* Footer responsive */
+@media (max-width: 1024px) {
+  .footer-main { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+@media (max-width: 640px) {
+  .footer-main { grid-template-columns: 1fr; gap: 1.5rem; padding: 2.5rem 1rem 2rem; }
+  .footer-coverage { padding: 1rem; }
+  .footer-bottom-inner { padding: 1rem; flex-direction: column; text-align: center; }
+  .footer-legal { justify-content: center; }
+}
+
+/* ── 13. CONTACT PAGE — Specific improvements ── */
+.contact-info-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1.5px solid #e5e7eb;
+  margin-bottom: 1.5rem;
+}
+.contact-detail-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+.contact-detail-row:last-child { border-bottom: none; }
+.contact-detail-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.contact-detail-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+  margin-bottom: 0.2rem;
+}
+.contact-detail-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+.contact-detail-value a {
+  color: #0d9488;
+  text-decoration: none;
+}
+.contact-detail-value a:hover { text-decoration: underline; }
+.contact-detail-sub {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 0.1rem;
+}
+
+/* ── 14. BUTTONS ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-decoration: none;
+  border: 2px solid transparent;
+  white-space: nowrap;
+}
+.btn-teal {
+  background: linear-gradient(135deg, #14b8a6, #06b6d4);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 20px rgba(20,184,166,0.35);
+}
+.btn-teal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(20,184,166,0.45);
+}
+.btn-white {
+  background: #fff;
+  color: #0d9488;
+  border-color: #0d9488;
+}
+.btn-white:hover {
+  background: #f0fdfa;
+  transform: translateY(-2px);
+}
+.btn-outline-white {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255,255,255,0.6);
+}
+.btn-outline-white:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: #fff;
+}
+.btn-primary {
+  background: linear-gradient(135deg, #14b8a6, #06b6d4);
+  color: #fff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 0.2s;
+  border: none;
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(20,184,166,0.4); }
+
+@media (max-width: 480px) {
+  .btn { padding: 0.65rem 1.25rem; font-size: 0.85rem; }
+}
+
+/* ── 15. NAVIGATION ── */
+.nav-link {
+  color: #374151;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 0.6rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+.nav-link:hover { color: #0d9488; background: #f0fdfa; }
+.nav-link.active { color: #0d9488; font-weight: 700; }
+
+.dropdown-btn {
+  background: none;
+  border: none;
+  color: #374151;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.dropdown-btn:hover { color: #0d9488; background: #f0fdfa; }
+.nav-dropdown { position: relative; }
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.14);
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.2s;
+  z-index: 100;
+  min-width: 220px;
+}
+.dropdown-menu-inner {
+  display: flex;
+  flex-direction: column;
+}
+.dropdown-menu-inner a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.8rem;
+  color: #374151;
+  text-decoration: none;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  transition: all 0.15s;
+}
+.dropdown-menu-inner a:hover { background: #f0fdfa; color: #0d9488; }
+.dropdown-menu-inner a i { font-size: 1rem; color: #0d9488; flex-shrink: 0; }
+
+/* ── 16. BADGES ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.badge-teal {
+  background: #f0fdfa;
+  color: #0d9488;
+  border: 1px solid #ccfbf1;
+}
+.badge-white-glass {
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.95);
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+}
+
+/* ── 17. SECTION HEADINGS ── */
+.section-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+.section-title .gradient {
+  background: linear-gradient(135deg, #14b8a6, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section-subtitle {
+  font-size: 1rem;
+  color: #6b7280;
+  line-height: 1.75;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ── 18. CHECK LIST ── */
+.check-list {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #374151;
+  line-height: 1.5;
+}
+.check-list li i {
+  color: #0d9488;
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+/* ── 19. ICON BOX ── */
+.icon-box {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+/* ── 20. BACK TO TOP ── */
+.back-to-top {
+  position: fixed;
+  bottom: 90px;
+  right: 28px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #14b8a6, #06b6d4);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 16px rgba(20,184,166,0.4);
+  z-index: 9200;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  transform: translateY(10px);
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.back-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(20,184,166,0.5);
+}
+@media (max-width: 768px) {
+  .back-to-top { bottom: 80px; right: 16px; }
+}
+
+/* ── 21. GRID HELPERS ── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+@media (max-width: 1024px) {
+  .grid-3 { grid-template-columns: 1fr 1fr; }
+  .grid-4 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .grid-2 { grid-template-columns: 1fr; gap: 2rem; }
+  .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}
+
+/* ── 22. SPACING UTILITIES ── */
+.mb-4 { margin-bottom: 1rem; }
+.mb-8 { margin-bottom: 2rem; }
+.mb-12 { margin-bottom: 3rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-8 { margin-top: 2rem; }
+.text-center { text-align: center; }
+.bg-white { background: #fff; }
+
+/* ── 23. HOVER EFFECTS FOR INDUSTRY TILES ── */
+.ind-tile {
+  transition: all 0.25s !important;
+}
+.ind-tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(13,148,136,0.12);
+}
+
+/* ── 24. CTA BANNER IMPROVEMENTS ── */
+.cta-banner {
+  position: relative;
+  overflow: hidden;
+}
+.cta-banner h2, .cta-banner p { position: relative; z-index: 1; }
+.cta-btns { position: relative; z-index: 1; }
+
+/* ── 25. FORM IMPROVEMENTS ── */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #0d9488 !important;
+  box-shadow: 0 0 0 3px rgba(13,148,136,0.12) !important;
+}
+input, select, textarea {
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* ── 26. LOGO ── */
+.logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.logo-icon {
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, #14b8a6, #06b6d4);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+.logo-name {
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+}
+.logo-name .om { color: #0d9488; }
+.logo-name .net { color: #111827; }
+.logo-tagline {
+  font-size: 0.65rem;
+  color: #6b7280;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ── 27. HEADER PHONE LINK ── */
+.header-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #0d9488;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: color 0.2s;
+}
+.header-phone:hover { color: #0f766e; }
+
+/* ── 28. SCROLL REVEAL (class toggled by JS) ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── 29. PRINT MEDIA ── */
+@media print {
+  .site-header, .dual-action-strip, #waWrap, #stTrigger, #lamTrigger,
+  .omnet-sticky-bar, .back-to-top { display: none !important; }
+  main { padding-top: 0 !important; }
+}
+
+/* ── 30. ACCESSIBILITY ── */
+:focus-visible {
+  outline: 3px solid #14b8a6;
+  outline-offset: 2px;
+}
+button { cursor: pointer; }
+img { max-width: 100%; height: auto; }

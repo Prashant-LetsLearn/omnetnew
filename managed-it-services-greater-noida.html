@@ -129,6 +129,7 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
  .site-header { top: 36px !important; }
  @media (max-width: 768px) { .site-header { top: 32px !important; } }
 </style>
+  <link rel="stylesheet" href="omnet-improvements.css" />
 </head>
 <body>
 
@@ -526,9 +527,9 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
  </div>
  <div class="footer-col">
  <h4>Contact Us</h4>
- <div class="footer-contact-item"><i class="ri-smartphone-line"></i><div><div class="label">Mobile</div><div class="value"></div></div></div>
+ <div class="footer-contact-item"><i class="ri-smartphone-line"></i><div><div class="label">Mobile</div><div class="value"><a href="tel:+919717270865" style="color:var(--teal-400);text-decoration:none;font-weight:600">+91 97172 70865</a></div></div></div>
  <div class="footer-contact-item"><i class="ri-phone-line"></i><div><div class="label">Landline</div><div class="value">+91-120-522-3376</div></div></div>
- <div class="footer-contact-item"><i class="ri-mail-line"></i><div><div class="label">Email</div><div class="value"></div></div></div>
+ <div class="footer-contact-item"><i class="ri-mail-line"></i><div><div class="label">Email</div><div class="value"><a href="mailto:hello@omnetit.in" style="color:var(--teal-400);text-decoration:none">hello@omnetit.in</a></div></div></div>
  <div class="footer-contact-item"><i class="ri-map-pin-line"></i><div><div class="label">Location</div><div class="value">Ghaziabad, UP, India<br/><span style="color:var(--gray-600);font-size:.75rem">Serving Delhi NCR</span></div></div></div>
  </div>
  </div>
@@ -543,11 +544,25 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
  </div>
  </div>
 </footer>
-<button class="back-to-top" aria-label="Back to top"><i class="ri-arrow-up-line"></i></button>
-<script src="script.js"></script>
 <!-- ================================================================
  ALL WIDGETS - paste just before <script src="carousel.js"></script>
  <script src="upi-payment.js"></script>
+
+<!-- ── MOBILE STICKY BOTTOM BAR ── -->
+<div class="omnet-sticky-bar" role="navigation" aria-label="Quick contact">
+  <a class="omnet-sticky-phone" href="tel:+919717270865" title="Call us">
+    <i class="ri-phone-line"></i>
+  </a>
+  <a class="omnet-sticky-call" href="tel:+919717270865">
+    <i class="ri-phone-fill"></i> +91 97172 70865
+  </a>
+  <a class="omnet-sticky-wa" href="https://wa.me/919717270865?text=Hi%20Omnet%20IT%2C%20I%20need%20IT%20support." target="_blank" rel="noopener" title="WhatsApp">
+    <i class="ri-whatsapp-line"></i>
+  </a>
+</div>
+<button class="back-to-top" aria-label="Back to top"><i class="ri-arrow-up-line"></i></button>
+<script src="script.js"></script>
+
 </body> on every page
  2. Leave a Message (bottom-right)
  3. Support Ticket button (bottom-right, above Leave a Message)
@@ -933,6 +948,22 @@ document.addEventListener('DOMContentLoaded', function(){
 <!-- ═══ END SUPPORT WIDGETS ═══ -->
 
 <!-- ═══ END ALL WIDGETS ═══ -->
+
+
+<!-- ── MOBILE STICKY BOTTOM BAR ── -->
+<div class="omnet-sticky-bar" role="navigation" aria-label="Quick contact">
+  <a class="omnet-sticky-phone" href="tel:+919717270865" title="Call us">
+    <i class="ri-phone-line"></i>
+  </a>
+  <a class="omnet-sticky-call" href="tel:+919717270865">
+    <i class="ri-phone-fill"></i> +91 97172 70865
+  </a>
+  <a class="omnet-sticky-wa" href="https://wa.me/919717270865?text=Hi%20Omnet%20IT%2C%20I%20need%20IT%20support." target="_blank" rel="noopener" title="WhatsApp">
+    <i class="ri-whatsapp-line"></i>
+  </a>
+</div>
+<button class="back-to-top" aria-label="Back to top"><i class="ri-arrow-up-line"></i></button>
+<script src="script.js"></script>
 
 </body>
 </html>
