@@ -229,7 +229,7 @@
       </div>
     </a>
     <div class="header-cta">
-      <a href="tel:+918920603270" class="header-phone"><i class="ri-phone-line"></i> +91-89206-03270</a>
+      <a href="tel:+918920603270" class="header-phone"><i class="ri-phone-line"></i> </a>
       <a href="index.html" class="btn-primary"><i class="ri-home-line"></i> Home</a>
     </div>
     <button class="mobile-menu-btn"><i class="ri-menu-line"></i></button>
@@ -447,9 +447,6 @@
           <a href="tel:+918920603270" class="btn-order-next" style="text-decoration:none;font-size:.875rem;">
             <i class="ri-phone-fill"></i> Call Us
           </a>
-          <a href="https://wa.me/918920603270" target="_blank" class="btn-order-next" style="background:linear-gradient(135deg,#25D366,#1ebe5d);text-decoration:none;font-size:.875rem;">
-            <i class="ri-whatsapp-line"></i> WhatsApp
-          </a>
           <a href="index.html" style="padding:.75rem 1.25rem;border-radius:10px;border:1.5px solid var(--gray-200);color:var(--gray-600);font-weight:700;font-size:.875rem;text-decoration:none;">
             <i class="ri-home-line"></i> Home
           </a>
@@ -475,7 +472,7 @@
           <div class="trust-pill"><i class="ri-bank-card-line"></i> Card · UPI · Net Banking · EMI</div>
           <div class="trust-pill"><i class="ri-time-line"></i> Response within 1 business hour</div>
           <div class="trust-pill"><i class="ri-refund-line"></i> GST invoice provided</div>
-          <div class="trust-pill"><i class="ri-customer-service-2-line"></i> +91-89206-03270</div>
+          <div class="trust-pill"><i class="ri-customer-service-2-line"></i> </div>
         </div>
       </div>
     </div>
@@ -659,9 +656,6 @@ function payWithRazorpay() {
   // Check if Razorpay key is configured
   if (RAZORPAY_KEY === 'rzp_test_YOUR_KEY_ID') {
     // Demo mode — show setup instructions
-    if (confirm('⚠️  Razorpay Key not yet configured.\n\nTo enable card payments:\n1. Create account at razorpay.com\n2. Go to Settings → API Keys\n3. Copy your Key ID\n4. Replace rzp_test_YOUR_KEY_ID in order.html\n\nFor now, would you like to proceed with UPI payment instead?')) {
-      window.openUpiModal(amount);
-    }
     return;
   }
 
@@ -699,7 +693,7 @@ function payWithRazorpay() {
     });
     rzp.open();
   } catch(e) {
-    alert('Could not load payment gateway. Please use UPI payment or call us at +91-89206-03270');
+    alert('Could not load payment gateway. Please use UPI payment or call us at ');
   }
 }
 
