@@ -90,6 +90,7 @@ body {
   z-index: 1000;
   background: #fff;
   box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  overflow: visible !important; /* CRITICAL: must be visible so dropdowns can extend below header */
 }
 .header-inner {
   max-width: 1280px;
