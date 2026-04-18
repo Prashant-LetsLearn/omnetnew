@@ -129,15 +129,20 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
 .x-pri-card:hover .cta-arrow { background:#0d9488; color:#fff; transform:translateX(3px); }
 @media (max-width:680px) { .x-pri-card { grid-template-columns:auto 1fr; padding:1.25rem; } .x-pri-card .cta-arrow { grid-column:1/-1; justify-self:end; margin-top:-8px; } }
 
-.x-em-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.15rem; max-width:1200px; margin:0 auto; }
-.x-em-card { background:#fff; border:1px solid #e5e7eb; border-radius:14px; padding:1.4rem 1.4rem 1.6rem; position:relative; transition:transform .18s, box-shadow .18s; }
-.x-em-card:hover { transform:translateY(-3px); box-shadow:0 12px 28px rgba(0,0,0,.07); }
-.x-em-card.highlight { border:2px solid #0d9488; box-shadow:0 8px 24px rgba(13,148,136,.15); }
-.x-em-card .em-tag { position:absolute; top:-10px; right:16px; background:linear-gradient(135deg,#14b8a6,#0891b2); color:#fff; font-size:.68rem; font-weight:700; padding:4px 10px; border-radius:99px; letter-spacing:.4px; text-transform:uppercase; }
-.x-em-card h3 { margin:0 0 .35rem; font-size:1.08rem; color:#0f172a; font-weight:700; display:flex; align-items:center; gap:.5rem; }
-.x-em-card .ideal { font-size:.78rem; color:#0f766e; font-weight:700; text-transform:uppercase; letter-spacing:.4px; margin-bottom:.7rem; }
-.x-em-card p { margin:0 0 .9rem; color:#475569; font-size:.9rem; line-height:1.6; }
-.x-em-card .em-cta { display:inline-flex; align-items:center; gap:4px; color:#0d9488; font-weight:700; text-decoration:none; font-size:.9rem; }
+/* ── 2×2 engagement grid with equal card heights ── */
+.x-em-section { padding:2.75rem 0 3rem; }
+.x-em-section .x-section-header { margin-bottom:2rem; }
+.x-em-grid { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:1.25rem; max-width:900px; margin:0 auto; }
+@media (max-width: 640px) { .x-em-grid { grid-template-columns:1fr; gap:1rem; max-width:440px; } }
+.x-em-card { background:#fff; border:1px solid #e5e7eb; border-radius:14px; padding:1.5rem 1.5rem 1.4rem; position:relative; transition:transform .18s, box-shadow .18s, border-color .18s; display:flex; flex-direction:column; }
+.x-em-card:hover { transform:translateY(-3px); box-shadow:0 12px 28px rgba(0,0,0,.07); border-color:#99f6e4; }
+.x-em-card.highlight { border:2px solid #0d9488; box-shadow:0 6px 22px rgba(13,148,136,.13); }
+.x-em-card .em-tag { position:absolute; top:-10px; left:50%; transform:translateX(-50%); background:linear-gradient(135deg,#0d9488,#0891b2); color:#fff; font-size:.66rem; font-weight:700; padding:4px 12px; border-radius:99px; letter-spacing:.4px; text-transform:uppercase; white-space:nowrap; box-shadow:0 4px 10px rgba(13,148,136,.25); }
+.x-em-card h3 { margin:0 0 .3rem; font-size:1.1rem; color:#0f172a; font-weight:700; display:flex; align-items:center; gap:.5rem; }
+.x-em-card .ideal { font-size:.75rem; color:#0f766e; font-weight:700; text-transform:uppercase; letter-spacing:.4px; margin-bottom:.7rem; }
+.x-em-card p { margin:0 0 1.1rem; color:#475569; font-size:.92rem; line-height:1.6; flex-grow:1; }
+.x-em-card .em-cta { display:inline-flex; align-items:center; gap:4px; color:#0d9488; font-weight:700; text-decoration:none; font-size:.9rem; margin-top:auto; }
+.x-em-card .em-cta:hover { color:#0f766e; gap:8px; }
 
 .x-steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.25rem; counter-reset:step; }
 .x-step { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:1.3rem 1.4rem; position:relative; }
@@ -555,8 +560,8 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
   </div>
 </section>
 
-<!-- ═══ ENGAGEMENT / WAYS TO ENGAGE — fills the blank space with "Four ways to engage" ═══ -->
-<section class="x-section alt" aria-labelledby="engagement-h2">
+<!-- ═══ ENGAGEMENT / 2×2 GRID ═══ -->
+<section class="x-section alt x-em-section" aria-labelledby="engagement-h2">
   <div class="container">
     <div class="x-section-header">
       <span class="badge">How To Engage</span>
@@ -572,21 +577,18 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
         <a href="fixed-cost-it-support.html" class="em-cta">Learn more <i class="ri-arrow-right-line"></i></a>
       </article>
       <article class="x-em-card">
-        <span class="em-tag">Flexible</span>
         <h3><i class="ri-wallet-3-line" style="color:#0d9488"></i> Prepaid Support Packs</h3>
         <div class="ideal">Variable workload</div>
         <p>Buy a block of hours or tickets upfront — use them across the year. No monthly commitment. GST invoiced.</p>
         <a href="prepaid-it-support.html" class="em-cta">Learn more <i class="ri-arrow-right-line"></i></a>
       </article>
       <article class="x-em-card">
-        <span class="em-tag">Pay-As-You-Go</span>
         <h3><i class="ri-flashlight-line" style="color:#0d9488"></i> Casual (Pay-Per-Ticket)</h3>
         <div class="ideal">Freelancers, startups</div>
         <p>No contract. GST invoice per job. Remote or onsite. Same or next-day response.</p>
         <a href="casual-it-support.html" class="em-cta">Learn more <i class="ri-arrow-right-line"></i></a>
       </article>
       <article class="x-em-card">
-        <span class="em-tag">Fully Outsourced</span>
         <h3><i class="ri-shield-star-line" style="color:#0d9488"></i> Fully Managed IT</h3>
         <div class="ideal">100+ seat organisations</div>
         <p>End-to-end ownership — strategy, operations, security, cloud, vendor management. vCIO advisory. Custom SLA. Dedicated team.</p>
