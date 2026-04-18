@@ -67,6 +67,12 @@
 <link rel="stylesheet" href="mobile-fixes.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
 
+<script>
+function cbOpen(){var m=document.getElementById('cbModal'),o=document.getElementById('cbOverlay');if(m)m.style.display='block';if(o)o.style.display='block';}
+function cbHide(){var m=document.getElementById('cbModal'),o=document.getElementById('cbOverlay');if(m)m.style.display='none';if(o)o.style.display='none';}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <style>
 .site-header { top: 36px !important; }
 @media (max-width: 768px) { .site-header { top: 32px !important; } }
@@ -503,6 +509,302 @@
 <script src="form-validation.js" defer></script>
 <script src="script.js"></script>
 <script src="fixes.js"></script>
+
+
+<!-- ═══ CALLBACK MODAL (global) ═══ -->
+<div id="cbOverlay" style="display:none;position:fixed;inset:0;z-index:9200;background:rgba(0,0,0,.5);" onclick="cbHide()"></div>
+<div id="cbModal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9201;width:430px;max-width:calc(100vw - 24px);background:#fff;border-radius:16px;box-shadow:0 12px 50px rgba(0,0,0,.22);overflow:hidden;font-family:inherit;">
+ <div style="background:linear-gradient(135deg,#f97316,#eab308);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;">
+ <div style="display:flex;align-items:center;gap:10px;">
+ <div style="width:38px;height:38px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="ri-calendar-check-fill" style="color:#fff;font-size:19px;"></i></div>
+ <div>
+ <div style="color:#fff;font-size:15px;font-weight:700;line-height:1.2;">Request a Callback</div>
+ <div style="color:rgba(255,255,255,.85);font-size:12px;">We'll call you at your preferred time</div>
+ </div>
+ </div>
+ <button onclick="cbHide()" style="color:#fff;background:none;border:none;font-size:24px;cursor:pointer;line-height:1;opacity:.85;">&times;</button>
+ </div>
+ <div style="padding:20px;">
+ <form id="cbForm">
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px;">
+ <div><label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Full Name <span style="color:#e53935;">*</span></label>
+ <input type="text" name="cb_name" required placeholder="Your name" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#f97316'" onblur="this.style.borderColor='#e5e7eb'"></div>
+ <div><label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Phone <span style="color:#e53935;">*</span></label>
+ <input type="tel" name="cb_phone" required placeholder="+91 XXXXX XXXXX" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#f97316'" onblur="this.style.borderColor='#e5e7eb'"></div>
+ </div>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px;">
+ <div><label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Preferred Date <span style="color:#e53935;">*</span></label>
+ <input type="date" name="cb_date" required style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#f97316'" onblur="this.style.borderColor='#e5e7eb'"></div>
+ <div><label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Preferred Time <span style="color:#e53935;">*</span></label>
+ <select name="cb_time" required style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:#fff;appearance:none;" onfocus="this.style.borderColor='#f97316'" onblur="this.style.borderColor='#e5e7eb'">
+ <option value="" disabled selected>Select time</option>
+ <option>9:00 AM – 10:00 AM</option><option>10:00 AM – 11:00 AM</option>
+ <option>11:00 AM – 12:00 PM</option><option>12:00 PM – 1:00 PM</option>
+ <option>2:00 PM – 3:00 PM</option><option>3:00 PM – 4:00 PM</option>
+ <option>4:00 PM – 5:00 PM</option><option>5:00 PM – 6:00 PM</option>
+ </select></div>
+ </div>
+ <div style="margin-bottom:16px;"><label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Topic / Service</label>
+ <select name="cb_topic" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:#fff;appearance:none;">
+ <option selected>General Enquiry</option><option>IT Support / AMC</option>
+ <option>Managed IT Services</option><option>IT Security</option>
+ <option>Cloud Services</option><option>Network Infrastructure</option>
+ <option>Hardware / Products</option><option>Other</option>
+ </select></div>
+ <button type="submit" id="cbSubmitBtn" style="width:100%;padding:12px;background:linear-gradient(135deg,#f97316,#eab308);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">
+ <i class="ri-calendar-check-line"></i> Schedule My Callback
+ </button>
+ <div id="cbSuccess" style="display:none;margin-top:12px;padding:11px;background:#ecfdf5;color:#065f46;border-radius:8px;font-size:13px;text-align:center;"><i class="ri-checkbox-circle-line"></i> Callback scheduled! Our team will call you at your chosen time.</div>
+ <div id="cbError" style="display:none;margin-top:12px;padding:11px;background:#fef2f2;color:#991b1b;border-radius:8px;font-size:13px;text-align:center;">Something went wrong. Please call +91 97172 70865.</div>
+ </form>
+ </div>
+</div>
+
+<!-- ═══ TECHNICAL SUPPORT (floating button, higher position) ═══ -->
+<button id="stTrigger" style="position:fixed;bottom:92px;right:28px;z-index:9000;background:#ef4444;color:#fff;border:none;border-radius:50px;padding:11px 18px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;cursor:pointer;box-shadow:0 4px 18px rgba(239,68,68,.45);">
+  <i class="ri-customer-service-2-line" style="font-size:17px;"></i>
+  <span>Technical Support</span>
+</button>
+
+<div id="stOverlay" style="display:none;position:fixed;inset:0;z-index:9010;background:rgba(0,0,0,.5);"></div>
+<div id="stModal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9011;width:420px;max-width:calc(100vw - 24px);background:#fff;border-radius:16px;box-shadow:0 12px 50px rgba(0,0,0,.2);overflow:hidden;font-family:inherit;">
+  <div style="background:linear-gradient(135deg,#ef4444,#dc2626);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div style="width:38px;height:38px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="ri-customer-service-2-line" style="color:#fff;font-size:19px;"></i></div>
+      <div>
+        <div style="color:#fff;font-size:15px;font-weight:700;line-height:1.2;">Log a Support Ticket</div>
+        <div style="color:rgba(255,255,255,.85);font-size:12px;">Our team will contact you within 20 minutes.</div>
+      </div>
+    </div>
+    <button id="stClose" style="color:#fff;background:none;border:none;font-size:24px;cursor:pointer;line-height:1;opacity:.85;">&times;</button>
+  </div>
+  <div style="padding:20px;max-height:80vh;overflow-y:auto;">
+    <form id="stForm">
+      <input type="hidden" name="access_key" value="2af0c0f5-01fa-4349-b83c-fff623cb969b">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px;">
+        <div>
+          <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Full Name <span style="color:#e53935;">*</span></label>
+          <input type="text" name="name" required placeholder="Your name" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+        </div>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Phone <span style="color:#e53935;">*</span></label>
+          <input type="tel" name="phone" required placeholder="+91 XXXXX XXXXX" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+        </div>
+      </div>
+      <div style="margin-bottom:13px;">
+        <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Email Address <span style="color:#e53935;">*</span></label>
+        <input type="email" name="email" required placeholder="your@email.com" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px;">
+        <div>
+          <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Issue Category <span style="color:#e53935;">*</span></label>
+          <select name="category" required style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:#fff;appearance:none;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+            <option value="" disabled selected>Select category</option>
+            <option>Hardware Issue</option>
+            <option>Software / OS Issue</option>
+            <option>Network / Internet</option>
+            <option>Email Issue</option>
+            <option>Server / Cloud</option>
+            <option>Security / Virus</option>
+            <option>Printer / Peripheral</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Priority <span style="color:#e53935;">*</span></label>
+          <select name="priority" required style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:#fff;appearance:none;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+            <option value="" disabled selected>Select priority</option>
+            <option>🔴 Critical — System Down</option>
+            <option>🟠 High — Major Impact</option>
+            <option>🟡 Medium — Partial Impact</option>
+            <option>🟢 Low — Minor Issue</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-bottom:13px;">
+        <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Company / Organisation</label>
+        <input type="text" name="company" placeholder="Your company name" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+      </div>
+      <div style="margin-bottom:16px;">
+        <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Describe Your Issue <span style="color:#e53935;">*</span></label>
+        <textarea name="issue" required placeholder="Please describe the issue in detail — what happened, when it started, and what you have already tried..." rows="4" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;resize:vertical;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'"></textarea>
+      </div>
+      <button type="submit" id="stSubmitBtn" style="width:100%;padding:12px;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.3px;">
+        <i class="ri-send-plane-line"></i> Submit Support Ticket
+      </button>
+      <div id="stSuccess" style="display:none;margin-top:12px;padding:12px 14px;background:#ecfdf5;color:#065f46;border-radius:8px;font-size:13px;text-align:center;">
+        <i class="ri-checkbox-circle-line"></i> <strong>Ticket submitted!</strong> Our team will connect with you soon.
+      </div>
+      <div id="stError" style="display:none;margin-top:12px;padding:12px 14px;background:#fef2f2;color:#991b1b;border-radius:8px;font-size:13px;text-align:center;">
+        Something went wrong. Please email us at <strong>hello@omnetit.in</strong>.
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ═══ LEAVE A MESSAGE (floating button, lower position) ═══ -->
+<button id="lamTrigger" style="position:fixed;bottom:28px;right:28px;z-index:9000;background:#0d9488;color:#fff;border:none;border-radius:50px;padding:13px 20px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;cursor:pointer;box-shadow:0 4px 18px rgba(13,148,136,.45);">
+  <i class="ri-message-3-line" style="font-size:18px;"></i>
+  <span>Leave a Message</span>
+</button>
+
+<div id="lamOverlay" style="display:none;position:fixed;inset:0;z-index:9001;background:rgba(0,0,0,.45);"></div>
+<div id="lamModal" style="display:none;position:fixed;bottom:90px;right:28px;z-index:9002;width:340px;max-width:calc(100vw - 32px);background:#fff;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.2);overflow:hidden;font-family:inherit;">
+  <div style="background:#0d9488;padding:12px 16px;display:flex;align-items:center;gap:10px;">
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0d1b2a;border:2px solid #fff;border-radius:6px;padding:4px 8px;line-height:1;flex-shrink:0;">
+      <span style="font-size:8px;font-weight:300;color:#90caf9;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1px;">OMNET</span>
+      <span style="font-size:12px;font-weight:800;color:#fff;letter-spacing:2px;">IT</span>
+    </div>
+    <span style="color:#fff;font-size:15px;font-weight:600;flex:1;">Leave a message</span>
+    <button id="lamClose" style="color:#fff;background:none;border:none;font-size:24px;cursor:pointer;line-height:1;">&times;</button>
+  </div>
+  <div style="padding:16px;">
+    <form id="lamForm">
+      <input type="hidden" name="access_key" value="2af0c0f5-01fa-4349-b83c-fff623cb969b">
+      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Email address</label><input type="email" name="email" placeholder="Enter your email address" style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;"></div>
+      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Contact number</label><input type="tel" name="phone" placeholder="Enter your contact number" style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;"></div>
+      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Inquiry For <span style="color:#e53935;">*</span></label>
+        <select id="lamDept" name="inquiry_for" required style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;appearance:none;background:#fff;">
+          <option value="" disabled selected>Choose a department</option>
+          <option value="Support">Support</option>
+          <option value="Sales">Sales</option>
+        </select></div>
+      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Message</label><textarea name="message" placeholder="Type your message..." rows="3" style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;resize:vertical;"></textarea></div>
+      <button type="submit" id="lamSubmitBtn" style="width:100%;padding:11px;background:#0d9488;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;">Submit Message</button>
+      <div id="lamSuccess" style="display:none;margin-top:10px;padding:10px;background:#ecfdf5;color:#065f46;border-radius:8px;font-size:13px;text-align:center;">&#10003; Message received! Our team will connect with you soon.</div>
+      <div id="lamError" style="display:none;margin-top:10px;padding:10px;background:#fef2f2;color:#991b1b;border-radius:8px;font-size:13px;text-align:center;">Something went wrong. Please try again.</div>
+    </form>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  /* ── Callback form ── */
+  var cbForm=document.getElementById('cbForm');
+  if(cbForm){ cbForm.addEventListener('submit',async function(e){
+    e.preventDefault();
+    var btn=document.getElementById('cbSubmitBtn'),suc=document.getElementById('cbSuccess'),err=document.getElementById('cbError');
+    btn.disabled=true; btn.innerHTML='Scheduling..';
+    suc.style.display='none'; err.style.display='none';
+    try{
+      var fd=new FormData(cbForm);
+      var res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({access_key:'2af0c0f5-01fa-4349-b83c-fff623cb969b',
+          subject:'OMNET IT - Callback Request',from_name:'OMNET IT Website',
+          name:fd.get('cb_name')||'N/A',phone:fd.get('cb_phone')||'N/A',
+          date:fd.get('cb_date')||'N/A',time:fd.get('cb_time')||'N/A',
+          topic:fd.get('cb_topic')||'General Enquiry'})});
+      var json=await res.json();
+      if(json.success){ suc.style.display='block'; cbForm.reset(); setTimeout(function(){cbHide();suc.style.display='none';},3500); }
+      else { throw new Error(); }
+    }catch(e2){ err.style.display='block'; }
+    btn.disabled=false; btn.innerHTML='<i class="ri-calendar-check-line"></i> Schedule My Callback';
+  }); }
+
+  /* ── Technical Support Ticket ── */
+  var stTrigger=document.getElementById('stTrigger'),stModal=document.getElementById('stModal'),
+      stOverlay=document.getElementById('stOverlay'),stClose2=document.getElementById('stClose'),
+      stForm=document.getElementById('stForm'),stSubmit=document.getElementById('stSubmitBtn'),
+      stSuccess=document.getElementById('stSuccess'),stError=document.getElementById('stError');
+  function stOpen(){ if(stModal) stModal.style.display='block'; if(stOverlay) stOverlay.style.display='block'; }
+  function stHide(){ if(stModal) stModal.style.display='none'; if(stOverlay) stOverlay.style.display='none'; }
+  if(stTrigger) stTrigger.addEventListener('click',stOpen);
+  if(stClose2)  stClose2.addEventListener('click',stHide);
+  if(stOverlay) stOverlay.addEventListener('click',stHide);
+  if(stForm){ stForm.addEventListener('submit',async function(e){
+    e.preventDefault();
+    if(stSubmit){ stSubmit.disabled=true; stSubmit.innerHTML='Submitting...'; }
+    if(stSuccess) stSuccess.style.display='none';
+    if(stError)   stError.style.display='none';
+    try{
+      var fd=new FormData(stForm);
+      var page=window.location.pathname.split('/').pop()||'index.html';
+      var now=new Date();
+      var ymd=now.getFullYear().toString()+String(now.getMonth()+1).padStart(2,'0')+String(now.getDate()).padStart(2,'0');
+      var rand=Math.floor(10000+Math.random()*90000);
+      var ticketNum='OMT-'+ymd+'-'+rand;
+      var customerEmail=fd.get('email')||'';
+      var res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({access_key:'2af0c0f5-01fa-4349-b83c-fff623cb969b',
+          subject:'['+ticketNum+'] Support Ticket - '+(fd.get('priority')||'')+' | '+(fd.get('category')||''),
+          from_name:'OMNET IT Support Ticket',page:page,
+          ticket_number:ticketNum,
+          name:fd.get('name')||'N/A',phone:fd.get('phone')||'N/A',email:customerEmail||'N/A',
+          company:fd.get('company')||'N/A',category:fd.get('category')||'N/A',
+          priority:fd.get('priority')||'N/A',issue:fd.get('issue')||'N/A'})});
+      var json=await res.json();
+      if(json.success){
+        var EMAILJS_SERVICE_ID='service_bgf345i', EMAILJS_TEMPLATE_ID='template_5bj7joh', EMAILJS_PUBLIC_KEY='pWP-yxZPWj9aR6ld0';
+        if(customerEmail && typeof emailjs!=='undefined'){
+          try { await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+            to_email:customerEmail, customer_name:fd.get('name')||'Customer',
+            ticket_number:ticketNum, category:fd.get('category')||'N/A',
+            priority:fd.get('priority')||'N/A', issue:fd.get('issue')||'N/A',
+            phone:fd.get('phone')||'N/A', company:fd.get('company')||'N/A'
+          }, EMAILJS_PUBLIC_KEY); } catch(emailErr){ console.warn('EmailJS failed:', emailErr); }
+        }
+        if(stSuccess){
+          stSuccess.innerHTML='<i class="ri-checkbox-circle-line"></i> <strong>Ticket #'+ticketNum+' Created!</strong> A confirmation has been sent to your email. Our team will connect with you soon.';
+          stSuccess.style.display='block';
+        }
+        stForm.reset();
+        setTimeout(function(){ stHide(); if(stSuccess) stSuccess.style.display='none'; },6000);
+      } else { throw new Error(); }
+    }catch(err){ if(stError) stError.style.display='block'; }
+    if(stSubmit){ stSubmit.disabled=false; stSubmit.innerHTML='<i class="ri-send-plane-line"></i> Submit Support Ticket'; }
+  }); }
+
+  /* ── Leave a Message ── */
+  var lamTrigger=document.getElementById('lamTrigger'),lamModal=document.getElementById('lamModal'),
+      lamOverlay=document.getElementById('lamOverlay'),lamClose2=document.getElementById('lamClose'),
+      lamForm=document.getElementById('lamForm'),lamSubmit=document.getElementById('lamSubmitBtn'),
+      lamSuccess=document.getElementById('lamSuccess'),lamError=document.getElementById('lamError');
+  function lamOpen(){ if(lamModal) lamModal.style.display='block'; if(lamOverlay) lamOverlay.style.display='block'; }
+  function lamHide(){ if(lamModal) lamModal.style.display='none'; if(lamOverlay) lamOverlay.style.display='none'; }
+  if(lamTrigger) lamTrigger.addEventListener('click',lamOpen);
+  if(lamClose2)  lamClose2.addEventListener('click',lamHide);
+  if(lamOverlay) lamOverlay.addEventListener('click',lamHide);
+  if(lamForm){ lamForm.addEventListener('submit',async function(e){
+    e.preventDefault();
+    var deptEl=document.getElementById('lamDept');
+    if(deptEl && !deptEl.value){ deptEl.style.borderColor='#e53935'; return; }
+    if(deptEl) deptEl.style.borderColor='';
+    if(lamSubmit){ lamSubmit.disabled=true; lamSubmit.textContent='Sending...'; }
+    if(lamSuccess) lamSuccess.style.display='none';
+    if(lamError)   lamError.style.display='none';
+    try{
+      var fd=new FormData(lamForm);
+      var page=window.location.pathname.split('/').pop()||'index.html';
+      var res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({access_key:'2af0c0f5-01fa-4349-b83c-fff623cb969b',
+          subject:'OMNET IT - Leave a Message',from_name:'OMNET IT Website',page:page,
+          email:fd.get('email')||'N/A',phone:fd.get('phone')||'N/A',
+          inquiry_for:fd.get('inquiry_for')||'N/A',message:fd.get('message')||'N/A'})});
+      var json=await res.json();
+      if(json.success){
+        var LAM_EMAILJS_SERVICE_ID='service_bgf345i', LAM_EMAILJS_TEMPLATE_ID='template_5gbzl7h', LAM_EMAILJS_PUBLIC_KEY='pWP-yxZPWj9aR6ld0';
+        var lamEmail=fd.get('email')||'';
+        if(lamEmail && typeof emailjs!=='undefined'){
+          try { await emailjs.send(LAM_EMAILJS_SERVICE_ID, LAM_EMAILJS_TEMPLATE_ID, {
+            to_email:lamEmail, customer_name:lamEmail,
+            inquiry_for:fd.get('inquiry_for')||'N/A',
+            phone:fd.get('phone')||'N/A', message:fd.get('message')||'N/A'
+          }, LAM_EMAILJS_PUBLIC_KEY); } catch(emailErr){ console.warn('EmailJS failed:', emailErr); }
+        }
+        if(lamSuccess) lamSuccess.style.display='block';
+        lamForm.reset();
+      } else { throw new Error(); }
+    }catch(err){ if(lamError) lamError.style.display='block'; }
+    if(lamSubmit){ lamSubmit.disabled=false; lamSubmit.textContent='Submit Message'; }
+  }); }
+
+  /* Offset sticky bar to avoid overlap with floating buttons on mobile */
+  if(window.innerWidth<=768){
+    var stb=document.querySelector('.omnet-sticky-bar');
+    if(stb) stb.style.bottom='80px';
+  }
+});
+</script>
 
 </body>
 </html>
