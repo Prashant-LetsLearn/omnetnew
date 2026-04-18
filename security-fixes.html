@@ -1,0 +1,438 @@
+<!--
+══════════════════════════════════════════════════════════════════════════════
+  OMNET IT — SECURITY-HARDENED FORMS (drop-in)
+══════════════════════════════════════════════════════════════════════════════
+  Replaces: Contact form, Callback form, Support Ticket form, Leave-a-Message form
+
+  Layered defences (each form below ships ALL of these):
+    1. Honeypot field          — invisible <input name="website"> bots auto-fill
+    2. Time-trap               — submissions under 3 s after page-load are bot-typical
+    3. Web3Forms botcheck      — Web3Forms' own honeypot (server-side)
+    4. reCAPTCHA v3            — invisible score, threshold 0.5
+    5. Client-side validation  — pattern + maxlength + same-origin check
+    6. XSS sanitisation        — every value is run through sanitiseInput()
+    7. Rate-limit (soft)       — localStorage throttle: max 3 submits / 10 min / form
+    8. CSRF (token-style)      — random nonce stored in sessionStorage; checked on submit
+    9. Email obfuscation       — no raw "mailto:" in the markup; revealed by JS
+
+  NB on CSRF: True CSRF requires server-side state. This site is static
+  (GitHub Pages) and submits to Web3Forms. Web3Forms validates the request
+  against your dashboard's allowed origins ("Restrict by Domain" must be ON).
+  The nonce shipped here is a soft, scraper-friction layer — not a substitute
+  for the dashboard setting. See implementation-guide.md.
+
+  CONFIGURE THESE TWO PLACEHOLDERS BEFORE GOING LIVE:
+    -- WEB3FORMS access key  (replace 2af0c0f5-... if you rotate the key)
+    -- RECAPTCHA_SITE_KEY    (free at https://www.google.com/recaptcha/admin)
+══════════════════════════════════════════════════════════════════════════════
+-->
+
+<!-- ╭───────────────────────────────────────────────────────────╮
+     │ HEAD — load reCAPTCHA v3 + the validation library         │
+     │  Paste these two tags inside <head> on every page         │
+     │  that contains a form.                                    │
+     ╰───────────────────────────────────────────────────────────╯ -->
+<script src="https://www.google.com/recaptcha/api.js?render=YOUR_RECAPTCHA_SITE_KEY"
+        defer></script>
+<script src="form-validation.js" defer></script>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     1) MAIN CONTACT FORM (page: contact.html)
+     ════════════════════════════════════════════════════════════ -->
+<form id="contactForm"
+      class="omnet-secure-form"
+      data-form-name="contact"
+      data-min-fill-seconds="3"
+      novalidate
+      autocomplete="on">
+
+  <!-- Web3Forms access key -->
+  <input type="hidden" name="access_key" value="2af0c0f5-01fa-4349-b83c-fff623cb969b">
+
+  <!-- Web3Forms native honeypot — DO NOT remove or rename -->
+  <input type="checkbox" name="botcheck" class="hp-botcheck"
+         style="display:none !important" tabindex="-1" autocomplete="off">
+
+  <!-- Custom honeypot #2 — common bot lure (label "Website") -->
+  <div class="hp-trap"
+       aria-hidden="true"
+       style="position:absolute;left:-10000px;top:-10000px;height:1px;width:1px;overflow:hidden;">
+    <label for="hp_website">Leave this field empty</label>
+    <input type="text"  id="hp_website" name="website"   tabindex="-1" autocomplete="off">
+    <input type="email" id="hp_emailb"  name="emailaddr" tabindex="-1" autocomplete="off">
+  </div>
+
+  <!-- CSRF-style nonce (populated by JS on page-load) -->
+  <input type="hidden" name="csrf_token" id="contactForm_csrf" value="">
+
+  <!-- Form-load timestamp (used to enforce min-fill time) -->
+  <input type="hidden" name="form_loaded_at" id="contactForm_ts" value="">
+
+  <!-- reCAPTCHA v3 token (populated on submit) -->
+  <input type="hidden" name="recaptcha_token" id="contactForm_rc" value="">
+
+  <!-- ── Real fields (visible to humans) ── -->
+  <div class="form-row">
+    <div class="form-field">
+      <label for="cf_name">Full name <span class="req">*</span></label>
+      <input type="text" id="cf_name" name="name"
+             required minlength="2" maxlength="80"
+             pattern="[A-Za-z .'\-]{2,80}"
+             autocomplete="name"
+             placeholder="Your name">
+      <small class="field-error" id="err_cf_name"></small>
+    </div>
+    <div class="form-field">
+      <label for="cf_phone">Phone <span class="req">*</span></label>
+      <input type="tel" id="cf_phone" name="phone"
+             required maxlength="20"
+             pattern="^[+0-9 \-()]{8,20}$"
+             autocomplete="tel"
+             placeholder="+91 XXXXX XXXXX"
+             inputmode="tel">
+      <small class="field-error" id="err_cf_phone"></small>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label for="cf_email">Email <span class="req">*</span></label>
+    <input type="email" id="cf_email" name="email"
+           required maxlength="120"
+           autocomplete="email"
+           placeholder="you@company.com">
+    <small class="field-error" id="err_cf_email"></small>
+  </div>
+
+  <div class="form-field">
+    <label for="cf_company">Company</label>
+    <input type="text" id="cf_company" name="company"
+           maxlength="120"
+           autocomplete="organization"
+           placeholder="Company name (optional)">
+  </div>
+
+  <div class="form-field">
+    <label for="cf_subject">Subject <span class="req">*</span></label>
+    <select id="cf_subject" name="subject" required>
+      <option value="">Select a topic</option>
+      <option>IT Support / AMC enquiry</option>
+      <option>Managed IT Services</option>
+      <option>IT Security / Cybersecurity</option>
+      <option>Cloud / Microsoft 365 / Google Workspace</option>
+      <option>Hardware purchase (Dell / HP / Lenovo / Apple)</option>
+      <option>Network / WiFi / Cabling</option>
+      <option>Other</option>
+    </select>
+    <small class="field-error" id="err_cf_subject"></small>
+  </div>
+
+  <div class="form-field">
+    <label for="cf_message">Message <span class="req">*</span></label>
+    <textarea id="cf_message" name="message"
+              required minlength="10" maxlength="2000"
+              rows="5"
+              placeholder="Tell us a little about your IT requirement..."></textarea>
+    <small class="field-counter"><span id="cf_msg_count">0</span> / 2000</small>
+    <small class="field-error" id="err_cf_message"></small>
+  </div>
+
+  <!-- Consent (GDPR / DPDP Act 2023) -->
+  <div class="form-consent">
+    <input type="checkbox" id="cf_consent" name="consent" required>
+    <label for="cf_consent">
+      I agree to be contacted by OMNET IT regarding my enquiry. See our
+      <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.
+    </label>
+  </div>
+
+  <button type="submit" class="btn-submit" id="cf_submit">
+    <span class="btn-label">Send message</span>
+    <span class="btn-spinner" hidden>Sending…</span>
+  </button>
+
+  <div class="form-status" id="cf_status" role="status" aria-live="polite"></div>
+</form>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     2) CALLBACK REQUEST FORM (modal — used on every page)
+     ════════════════════════════════════════════════════════════ -->
+<form id="callbackForm"
+      class="omnet-secure-form"
+      data-form-name="callback"
+      data-min-fill-seconds="3"
+      novalidate>
+  <input type="hidden" name="access_key" value="2af0c0f5-01fa-4349-b83c-fff623cb969b">
+  <input type="checkbox" name="botcheck" class="hp-botcheck"
+         style="display:none !important" tabindex="-1" autocomplete="off">
+  <div class="hp-trap" aria-hidden="true"
+       style="position:absolute;left:-10000px;height:1px;width:1px;overflow:hidden;">
+    <input type="text" name="website"   tabindex="-1" autocomplete="off">
+    <input type="url"  name="full_url"  tabindex="-1" autocomplete="off">
+  </div>
+  <input type="hidden" name="csrf_token"     id="callbackForm_csrf" value="">
+  <input type="hidden" name="form_loaded_at" id="callbackForm_ts"   value="">
+  <input type="hidden" name="recaptcha_token" id="callbackForm_rc"  value="">
+
+  <div class="form-row">
+    <div class="form-field">
+      <label for="cb_name">Full name <span class="req">*</span></label>
+      <input type="text" id="cb_name" name="cb_name"
+             required minlength="2" maxlength="80"
+             pattern="[A-Za-z .'\-]{2,80}" autocomplete="name">
+    </div>
+    <div class="form-field">
+      <label for="cb_phone">Phone <span class="req">*</span></label>
+      <input type="tel" id="cb_phone" name="cb_phone"
+             required maxlength="20"
+             pattern="^[+0-9 \-()]{8,20}$" autocomplete="tel">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-field">
+      <label for="cb_date">Preferred date <span class="req">*</span></label>
+      <input type="date" id="cb_date" name="cb_date" required>
+    </div>
+    <div class="form-field">
+      <label for="cb_time">Preferred time <span class="req">*</span></label>
+      <select id="cb_time" name="cb_time" required>
+        <option value="">Select a time</option>
+        <option>9:00 AM – 10:00 AM</option>
+        <option>10:00 AM – 11:00 AM</option>
+        <option>11:00 AM – 12:00 PM</option>
+        <option>12:00 PM – 1:00 PM</option>
+        <option>2:00 PM – 3:00 PM</option>
+        <option>3:00 PM – 4:00 PM</option>
+        <option>4:00 PM – 5:00 PM</option>
+        <option>5:00 PM – 6:00 PM</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-field">
+    <label for="cb_topic">Topic</label>
+    <select id="cb_topic" name="cb_topic">
+      <option>General enquiry</option>
+      <option>IT Support / AMC</option>
+      <option>Managed IT Services</option>
+      <option>IT Security</option>
+      <option>Cloud — Microsoft 365 / Google Workspace</option>
+      <option>Hardware — Dell / HP / Lenovo / Apple</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <button type="submit" class="btn-submit" id="cb_submit">
+    <span class="btn-label">Schedule callback</span>
+    <span class="btn-spinner" hidden>Scheduling…</span>
+  </button>
+  <div class="form-status" id="cb_status" role="status" aria-live="polite"></div>
+</form>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     3) SUPPORT TICKET FORM
+     ════════════════════════════════════════════════════════════ -->
+<form id="supportTicketForm"
+      class="omnet-secure-form"
+      data-form-name="support_ticket"
+      data-min-fill-seconds="5"
+      novalidate>
+  <input type="hidden" name="access_key" value="2af0c0f5-01fa-4349-b83c-fff623cb969b">
+  <input type="checkbox" name="botcheck" class="hp-botcheck"
+         style="display:none !important" tabindex="-1" autocomplete="off">
+  <div class="hp-trap" aria-hidden="true"
+       style="position:absolute;left:-10000px;height:1px;width:1px;overflow:hidden;">
+    <input type="text" name="website" tabindex="-1" autocomplete="off">
+  </div>
+  <input type="hidden" name="csrf_token"      id="supportTicketForm_csrf" value="">
+  <input type="hidden" name="form_loaded_at"  id="supportTicketForm_ts"   value="">
+  <input type="hidden" name="recaptcha_token" id="supportTicketForm_rc"   value="">
+
+  <div class="form-row">
+    <div class="form-field">
+      <label for="st_name">Name <span class="req">*</span></label>
+      <input type="text" id="st_name" name="name"
+             required minlength="2" maxlength="80"
+             pattern="[A-Za-z .'\-]{2,80}" autocomplete="name">
+    </div>
+    <div class="form-field">
+      <label for="st_phone">Phone <span class="req">*</span></label>
+      <input type="tel" id="st_phone" name="phone"
+             required maxlength="20"
+             pattern="^[+0-9 \-()]{8,20}$" autocomplete="tel">
+    </div>
+  </div>
+  <div class="form-field">
+    <label for="st_email">Email <span class="req">*</span></label>
+    <input type="email" id="st_email" name="email"
+           required maxlength="120" autocomplete="email">
+  </div>
+  <div class="form-row">
+    <div class="form-field">
+      <label for="st_category">Category <span class="req">*</span></label>
+      <select id="st_category" name="category" required>
+        <option value="">Select category</option>
+        <option>Hardware Issue</option>
+        <option>Software / OS Issue</option>
+        <option>Network / Internet</option>
+        <option>Email Issue</option>
+        <option>Server / Cloud</option>
+        <option>Security / Virus</option>
+        <option>Printer / Peripheral</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-field">
+      <label for="st_priority">Priority <span class="req">*</span></label>
+      <select id="st_priority" name="priority" required>
+        <option value="">Select priority</option>
+        <option>🔴 Critical — System Down</option>
+        <option>🟠 High — Major Impact</option>
+        <option>🟡 Medium — Partial Impact</option>
+        <option>🟢 Low — Minor Issue</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-field">
+    <label for="st_company">Company / Organisation</label>
+    <input type="text" id="st_company" name="company" maxlength="120" autocomplete="organization">
+  </div>
+  <div class="form-field">
+    <label for="st_issue">Describe the issue <span class="req">*</span></label>
+    <textarea id="st_issue" name="issue"
+              required minlength="20" maxlength="2000"
+              rows="5"
+              placeholder="What happened, when did it start, what have you already tried..."></textarea>
+    <small class="field-counter"><span id="st_issue_count">0</span> / 2000</small>
+  </div>
+  <button type="submit" class="btn-submit" id="st_submit">
+    <span class="btn-label">Submit ticket</span>
+    <span class="btn-spinner" hidden>Submitting…</span>
+  </button>
+  <div class="form-status" id="st_status" role="status" aria-live="polite"></div>
+</form>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     4) "LEAVE A MESSAGE" FORM (floating widget on every page)
+     ════════════════════════════════════════════════════════════ -->
+<form id="messageForm"
+      class="omnet-secure-form"
+      data-form-name="message"
+      data-min-fill-seconds="2"
+      novalidate>
+  <input type="hidden" name="access_key" value="2af0c0f5-01fa-4349-b83c-fff623cb969b">
+  <input type="checkbox" name="botcheck" class="hp-botcheck"
+         style="display:none !important" tabindex="-1" autocomplete="off">
+  <div class="hp-trap" aria-hidden="true"
+       style="position:absolute;left:-10000px;height:1px;width:1px;overflow:hidden;">
+    <input type="text" name="website" tabindex="-1" autocomplete="off">
+  </div>
+  <input type="hidden" name="csrf_token"      id="messageForm_csrf" value="">
+  <input type="hidden" name="form_loaded_at"  id="messageForm_ts"   value="">
+  <input type="hidden" name="recaptcha_token" id="messageForm_rc"   value="">
+
+  <div class="form-field">
+    <label for="msg_email">Email address</label>
+    <input type="email" id="msg_email" name="email" maxlength="120" autocomplete="email">
+  </div>
+  <div class="form-field">
+    <label for="msg_phone">Contact number</label>
+    <input type="tel" id="msg_phone" name="phone" maxlength="20"
+           pattern="^[+0-9 \-()]{0,20}$" autocomplete="tel">
+  </div>
+  <div class="form-field">
+    <label for="msg_dept">Department <span class="req">*</span></label>
+    <select id="msg_dept" name="inquiry_for" required>
+      <option value="">Choose a department</option>
+      <option value="Support">Support</option>
+      <option value="Sales">Sales</option>
+    </select>
+  </div>
+  <div class="form-field">
+    <label for="msg_text">Message <span class="req">*</span></label>
+    <textarea id="msg_text" name="message"
+              required minlength="5" maxlength="1000"
+              rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn-submit" id="msg_submit">
+    <span class="btn-label">Submit message</span>
+    <span class="btn-spinner" hidden>Submitting…</span>
+  </button>
+  <div class="form-status" id="msg_status" role="status" aria-live="polite"></div>
+</form>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     5) OBFUSCATED EMAIL DISPLAY ELEMENTS
+     Drop these wherever you used to write hello@omnetit.in.
+     The address is reconstructed by email-obfuscation.js on click.
+     ════════════════════════════════════════════════════════════ -->
+
+<!-- For inline text use -->
+<span class="omnet-email"
+      data-user="aGVsbG8="
+      data-domain="b21uZXRpdC5pbg=="
+      data-label="Reveal email">
+  <span class="email-placeholder">[ click to reveal email ]</span>
+</span>
+
+<!-- For a clickable button-style display -->
+<button type="button" class="omnet-email-btn"
+        data-user="aGVsbG8="
+        data-domain="b21uZXRpdC5pbg==">
+  <i class="ri-mail-line"></i> Email us
+</button>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     6) MINIMAL FORM CSS (paste once into your stylesheet)
+     ════════════════════════════════════════════════════════════ -->
+<style>
+.omnet-secure-form { font-family: inherit; }
+.omnet-secure-form .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px; }
+@media (max-width:540px) { .omnet-secure-form .form-row { grid-template-columns:1fr; } }
+.omnet-secure-form .form-field { margin-bottom:14px; display:flex; flex-direction:column; }
+.omnet-secure-form label { font-size:13px; font-weight:600; color:#374151; margin-bottom:4px; }
+.omnet-secure-form .req { color:#dc2626; }
+.omnet-secure-form input,
+.omnet-secure-form select,
+.omnet-secure-form textarea {
+  width:100%; padding:10px 12px; font-size:14px;
+  border:1.5px solid #e5e7eb; border-radius:8px; outline:none;
+  font-family:inherit; box-sizing:border-box; background:#fff;
+  transition:border-color .15s ease, box-shadow .15s ease;
+}
+.omnet-secure-form input:focus,
+.omnet-secure-form select:focus,
+.omnet-secure-form textarea:focus { border-color:#0d9488; box-shadow:0 0 0 3px rgba(13,148,136,.12); }
+.omnet-secure-form input.is-invalid,
+.omnet-secure-form select.is-invalid,
+.omnet-secure-form textarea.is-invalid { border-color:#dc2626; box-shadow:0 0 0 3px rgba(220,38,38,.10); }
+.omnet-secure-form .field-error { color:#b91c1c; font-size:12px; min-height:14px; margin-top:3px; }
+.omnet-secure-form .field-counter { color:#6b7280; font-size:11px; align-self:flex-end; margin-top:3px; }
+.omnet-secure-form .form-consent { display:flex; gap:8px; align-items:flex-start; font-size:12px; color:#6b7280; margin:6px 0 14px; }
+.omnet-secure-form .form-consent input { width:auto; margin-top:3px; }
+.omnet-secure-form .btn-submit {
+  width:100%; padding:12px 16px; border:none; border-radius:8px;
+  background:linear-gradient(135deg,#0d9488,#0891b2); color:#fff;
+  font-size:14px; font-weight:700; cursor:pointer; letter-spacing:.3px;
+  transition:transform .12s ease, opacity .15s ease;
+}
+.omnet-secure-form .btn-submit:hover:not(:disabled) { transform:translateY(-1px); }
+.omnet-secure-form .btn-submit:disabled { opacity:.6; cursor:not-allowed; }
+.omnet-secure-form .form-status { margin-top:12px; padding:10px 12px; border-radius:8px;
+  font-size:13px; text-align:center; display:none; }
+.omnet-secure-form .form-status.is-success { display:block; background:#ecfdf5; color:#065f46; }
+.omnet-secure-form .form-status.is-error   { display:block; background:#fef2f2; color:#991b1b; }
+.omnet-secure-form .form-status.is-info    { display:block; background:#eff6ff; color:#1e40af; }
+
+/* Obfuscated-email element styling */
+.omnet-email { cursor:pointer; color:#0d9488; text-decoration:underline dotted; }
+.omnet-email .email-placeholder { font-style:italic; opacity:.85; }
+.omnet-email.revealed { font-style:normal; }
+.omnet-email-btn { display:inline-flex; align-items:center; gap:6px; padding:8px 14px;
+  background:#0d9488; color:#fff; border:none; border-radius:50px;
+  font-size:13px; font-weight:600; cursor:pointer; }
+.omnet-email-btn:hover { background:#0f766e; }
+</style>

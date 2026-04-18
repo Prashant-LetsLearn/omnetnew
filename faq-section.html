@@ -1,0 +1,182 @@
+<!--
+══════════════════════════════════════════════════════════════════════════════
+  OMNET IT — FAQ SECTION (faq-section.html)
+══════════════════════════════════════════════════════════════════════════════
+  Drop-in <section> with 10 common questions, accessible accordion (no JS
+  framework required — uses native <details>/<summary>), and matching
+  FAQPage JSON-LD so Google can render rich-result snippets.
+
+  HOW TO USE
+  ──────────
+    1. Paste the JSON-LD block once into <head> of any page that hosts
+       the FAQ (homepage, contact page, services page).
+    2. Paste the <section class="omnet-faq"> block where you want the
+       accordion to render.
+    3. To customise: edit the question/answer pairs in BOTH the JSON-LD
+       and the HTML (they MUST stay in sync — Google will warn otherwise).
+══════════════════════════════════════════════════════════════════════════════
+-->
+
+
+<!-- ─────────────────────────────────────────────────────────
+     1) JSON-LD (paste in <head>)
+     ───────────────────────────────────────────────────────── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type":"Question", "name":"Is OMNET IT a CERT-In empanelled provider?",
+      "acceptedAnswer": { "@type":"Answer", "text":"Yes. OMNET IT is empanelled with the Indian Computer Emergency Response Team (CERT-In) for information security auditing services. This means we meet the Government of India's quality and competence bar for security work." } },
+    { "@type":"Question", "name":"Which cities and areas does OMNET IT cover for onsite IT support?",
+      "acceptedAnswer": { "@type":"Answer", "text":"We provide onsite IT support across Delhi NCR — including all sectors of Noida, Greater Noida, Gurugram, Ghaziabad, Faridabad, and all of New Delhi. Remote support is available pan-India." } },
+    { "@type":"Question", "name":"What engagement models do you offer for IT support?",
+      "acceptedAnswer": { "@type":"Answer", "text":"Three primary models: (1) Fully Managed IT Services — complete IT outsourcing; (2) Fixed-Cost AMC — defined coverage with predictable annual pricing; (3) Pay-per-ticket / Casual support — no long-term contract, billed per incident." } },
+    { "@type":"Question", "name":"Are you an authorised reseller for Dell, HP, Lenovo and Apple?",
+      "acceptedAnswer": { "@type":"Answer", "text":"Yes. OMNET IT is an authorised business reseller for Dell, HP, Lenovo, Apple, ASUS, Acer and Microsoft Surface. We supply with GST invoice, manufacturer warranty and on-site support across Delhi NCR." } },
+    { "@type":"Question", "name":"Can you help us migrate to Microsoft 365 or Google Workspace?",
+      "acceptedAnswer": { "@type":"Answer", "text":"Yes. We are a Microsoft 365 reseller and Google Workspace partner. We handle license procurement, mailbox / drive migration, MX/SPF/DKIM/DMARC setup, MDM enrolment, user training and ongoing administration." } },
+    { "@type":"Question", "name":"What cybersecurity services do you provide?",
+      "acceptedAnswer": { "@type":"Answer", "text":"Endpoint XDR, Multi-Factor Authentication (MFA), Single Sign-On (SSO), Conditional Access, identity and access management with JumpCloud / Microsoft Entra ID / Microsoft Intune, vulnerability assessment, security audits, and incident response." } },
+    { "@type":"Question", "name":"Do you offer 24/7 helpdesk support?",
+      "acceptedAnswer": { "@type":"Answer", "text":"Yes — round-the-clock helpdesk and monitoring with SLA-bound response and resolution times. Every ticket is logged, tracked and escalated through our centralised ticketing system." } },
+    { "@type":"Question", "name":"What is the typical response time for a Critical (system-down) ticket?",
+      "acceptedAnswer": { "@type":"Answer", "text":"For Critical tickets we acknowledge within 15 minutes and begin remote remediation immediately. Onsite dispatch in Delhi NCR is typically within 2–4 hours depending on location." } },
+    { "@type":"Question", "name":"Do you provide IT services for small businesses or only enterprises?",
+      "acceptedAnswer": { "@type":"Answer", "text":"Both. Our pay-per-ticket and fixed-cost AMC models are popular with SMEs (10–200 users), while our fully managed services support mid-market and enterprise clients across Delhi NCR." } },
+    { "@type":"Question", "name":"How do I request a quote or schedule a callback?",
+      "acceptedAnswer": { "@type":"Answer", "text":"Use the 'Leave a Message' or 'Request a Callback' button on any page of www.omnetit.in, or call +91 97172 70865 between 9 AM and 7 PM IST." } }
+  ]
+}
+</script>
+
+
+<!-- ─────────────────────────────────────────────────────────
+     2) HTML (paste where you want the FAQ to render)
+     ───────────────────────────────────────────────────────── -->
+<section class="omnet-faq section" id="faq">
+  <div class="container">
+    <div class="section-header" style="text-align:center;">
+      <span class="badge"><i class="ri-question-answer-line"></i> Frequently Asked Questions</span>
+      <h2>Answers to common questions</h2>
+      <p style="color:#64748b; max-width:640px; margin: .5rem auto 0;">
+        Can't find what you're looking for? Call <a href="tel:+919717270865">+91 97172 70865</a>
+        or
+        <span class="omnet-email" data-user="aGVsbG8=" data-domain="b21uZXRpdC5pbg==">
+          <span class="email-placeholder">[ click to reveal email ]</span>
+        </span>.
+      </p>
+    </div>
+
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary><span>Is OMNET IT a CERT-In empanelled provider?</span><i class="ri-add-line"></i></summary>
+        <div class="faq-body">
+          Yes. OMNET IT is empanelled with the Indian Computer Emergency Response Team (CERT-In) for information security auditing services. This means we meet the Government of India's quality and competence bar for security work.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>Which cities and areas does OMNET IT cover for onsite IT support?</span><i class="ri-add-line"></i></summary>
+        <div class="faq-body">
+          We provide onsite IT support across <strong>Delhi NCR</strong> — including all sectors of Noida, Greater Noida, Gurugram, Ghaziabad, Faridabad, and all of New Delhi. Remote support is available <strong>pan-India</strong>.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>What engagement models do you offer for IT support?</span><i class="ri-add-line"></i></summary>
+        <div class="faq-body">
+          Three primary models:
+          <ul>
+            <li><strong>Fully Managed IT Services</strong> — complete IT outsourcing</li>
+            <li><strong>Fixed-Cost AMC</strong> — defined coverage with predictable annual pricing</li>
+            <li><strong>Pay-per-ticket / Casual support</strong> — no long-term contract, billed per incident</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>Are you an authorised reseller for Dell, HP, Lenovo and Apple?</span><i class="ri-add-line"></i></summary>
+        <div class="faq-body">
+          Yes. OMNET IT is an authorised business reseller for <strong>Dell, HP, Lenovo, Apple, ASUS, Acer and Microsoft Surface</strong>. We supply with GST invoice, manufacturer warranty and on-site support across Delhi NCR.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>Can you help us migrate to Microsoft 365 or Google Workspace?</span><i class="ri-add-line"></i></summary>
+        <div class="faq-body">
+          Yes. We are a <strong>Microsoft 365 reseller</strong> and <strong>Google Workspace partner</strong>. We handle license procurement, mailbox / drive migration, MX/SPF/DKIM/DMARC setup, MDM enrolment, user training and ongoing administration.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>What cybersecurity services do you provide?</span><i class="ri-add-line"></i></summary>
+        <div class="faq-body">
+          Endpoint <strong>XDR</strong>, <strong>MFA</strong>, <strong>SSO</strong>, <strong>Conditional Access</strong>, identity and access management with <strong>JumpCloud / Microsoft Entra ID / Microsoft Intune</strong>, vulnerability assessment, security audits, and incident response.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>Do you offer 24/7 helpdesk support?</span><i class="ri-add-line"></i></summary>
+        <div class="faq-body">
+          Yes — round-the-clock helpdesk and monitoring with <strong>SLA-bound</strong> response and resolution times. Every ticket is logged, tracked and escalated through our centralised ticketing system.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>What is the typical response time for a Critical (system-down) ticket?</span><i class="ri-add-line"></i></summary>
+        <div class="faq-body">
+          For Critical tickets we acknowledge within <strong>15 minutes</strong> and begin remote remediation immediately. Onsite dispatch in Delhi NCR is typically within <strong>2–4 hours</strong> depending on location.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>Do you provide IT services for small businesses or only enterprises?</span><i class="ri-add-line"></i></summary>
+        <div class="faq-body">
+          Both. Our pay-per-ticket and fixed-cost AMC models are popular with <strong>SMEs (10–200 users)</strong>, while our fully managed services support <strong>mid-market and enterprise clients</strong> across Delhi NCR.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary><span>How do I request a quote or schedule a callback?</span><i class="ri-add-line"></i></summary>
+        <div class="faq-body">
+          Use the <strong>"Leave a Message"</strong> or <strong>"Request a Callback"</strong> button on any page of www.omnetit.in, or call <a href="tel:+919717270865">+91 97172 70865</a> between 9 AM and 7 PM IST.
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────
+     3) CSS (paste once into your stylesheet)
+     ───────────────────────────────────────────────────────── -->
+<style>
+.omnet-faq            { background: #f8fafc; }
+.omnet-faq .badge {
+  display:inline-flex; align-items:center; gap:6px;
+  background:#ccfbf1; color:#0f766e; padding:6px 14px; border-radius:99px;
+  font-size:12px; font-weight:600; letter-spacing:.5px; text-transform:uppercase;
+  margin-bottom:1rem;
+}
+.faq-list             { max-width: 820px; margin: 0 auto; display: grid; gap: .75rem; }
+.faq-item             { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden;
+                        transition: border-color .15s ease, box-shadow .15s ease; }
+.faq-item[open]       { border-color: #5eead4; box-shadow: 0 4px 14px rgba(13,148,136,.08); }
+.faq-item summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1rem 1.25rem; cursor: pointer; list-style: none;
+  font-weight: 600; color: #0f172a; font-size: .98rem;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary i { color: #0d9488; font-size: 1.4rem; transition: transform .2s ease; }
+.faq-item[open] summary i { transform: rotate(45deg); }
+.faq-body {
+  padding: 0 1.25rem 1.1rem 1.25rem; color: #475569; line-height: 1.7;
+  font-size: .95rem;
+}
+.faq-body ul { margin: .35rem 0 0; padding-left: 1.25rem; }
+.faq-body li { margin-bottom: .35rem; }
+</style>

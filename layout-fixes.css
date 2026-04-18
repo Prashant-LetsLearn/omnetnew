@@ -1,0 +1,258 @@
+/* ════════════════════════════════════════════════════════════════════════
+   OMNET IT — LAYOUT FIXES (layout-fixes.css)
+   ════════════════════════════════════════════════════════════════════════
+   Load order (CRITICAL):
+     <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="design-system.css">
+     <link rel="stylesheet" href="layout-fixes.css">     ← LAST so it wins
+     <link rel="stylesheet" href="responsive-design.css">
+
+   What this file does:
+     1. Tightens absurdly large vertical padding on .section, .home-hero,
+        .page-hero so pages stop showing huge blank stripes between content.
+     2. Caps stray min-height: 100vh declarations that were producing
+        single-section pages with 70 % whitespace below.
+     3. Normalises container padding so content edges never collide with
+        the viewport on tablets.
+     4. Fixes the font hierarchy so H1/H2/H3 actually look distinct
+        (the audit flagged inconsistent heading sizes).
+     5. Fixes collapsible margin issues (margin-top + margin-bottom both
+        applied between sections, doubling whitespace).
+     6. Tightens .footer-main and .footer-bottom — they currently render
+        ~280 px of empty space below the actual footer content.
+
+   Every rule below is annotated with WHY it changes, so future edits are
+   informed rather than blind.
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* ──────────────────────────────────────────────────────────────────────
+   1. SECTION SPACING — primary blank-space culprit
+   The design system originally set .section { padding: 5.5rem 0; }
+   plus individual sections add their own margin-top. On a typical page
+   that produced ~9 rem (≈144 px) between blocks. Reduced to ~3.5 rem.
+   ────────────────────────────────────────────────────────────────────── */
+.section,
+section.section,
+section[class*="section-"]:not(.section-title):not(.section-subtitle):not(.section-header) {
+  padding-top: 3.5rem !important;
+  padding-bottom: 3.5rem !important;
+}
+.section-sm { padding-top: 2.25rem !important; padding-bottom: 2.25rem !important; }
+.section-lg { padding-top: 4.5rem  !important; padding-bottom: 4.5rem  !important; }
+
+/* Reset stray top/bottom margins that double-up after .section padding */
+.section + .section,
+section + section { margin-top: 0 !important; }
+
+/* Section headers had margin-bottom: 3.5rem — too generous on mobile */
+.section-header { margin-bottom: 2.25rem !important; }
+
+/* Some pages wrapped sections in <div class="page-section"> instead — match */
+.page-section,
+.content-section,
+.feature-section {
+  padding: 3.5rem 0 !important;
+  margin: 0 !important;
+}
+
+
+/* ──────────────────────────────────────────────────────────────────────
+   2. HERO BANNERS — currently 200 px+ top padding on every page
+   Original: padding: 204px 0 80px;  (to clear a 200 px sticky header)
+   The actual sticky header is ≈140 px tall, so 60 px were wasted.
+   ────────────────────────────────────────────────────────────────────── */
+.home-hero,
+.page-hero,
+.hero,
+.inner-hero,
+section.hero {
+  padding-top: 150px !important;     /* clears the sticky header + 10 px breath */
+  padding-bottom: 60px !important;
+}
+
+/* On mobile the sticky header collapses — hero needs less top padding */
+@media (max-width: 768px) {
+  .home-hero,
+  .page-hero,
+  .hero,
+  .inner-hero,
+  section.hero {
+    padding-top: 110px !important;
+    padding-bottom: 40px !important;
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────────────────
+   3. FULL-VIEWPORT MIN-HEIGHTS — kill the "scroll past nothing" pages
+   Several pages had .section { min-height: 100vh } which produced a 1-
+   sentence section followed by 90 % blank scroll. Capped to auto.
+   ────────────────────────────────────────────────────────────────────── */
+.section[style*="min-height"],
+.page-section[style*="min-height"],
+.hero[style*="min-height"] {
+  min-height: auto !important;
+}
+.section, .page-section, section { min-height: 0 !important; }
+
+
+/* ──────────────────────────────────────────────────────────────────────
+   4. CONTAINER PADDING — content was hugging viewport edges on tablet
+   ────────────────────────────────────────────────────────────────────── */
+.container,
+.wrap,
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  box-sizing: border-box;
+}
+@media (max-width: 540px) {
+  .container, .wrap, .inner { padding-left: 1rem; padding-right: 1rem; }
+}
+
+
+/* ──────────────────────────────────────────────────────────────────────
+   5. TYPOGRAPHY — consistent hierarchy across pages
+   The audit flagged H1s on different pages ranging from 1.6 rem to 4 rem.
+   We pin them with clamp() so they scale predictably.
+   ────────────────────────────────────────────────────────────────────── */
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+               Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --line-base:  1.65;
+  --line-tight: 1.25;
+  --line-loose: 1.85;
+}
+body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: var(--line-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 { font-size: clamp(2rem,   4.5vw, 3.25rem) !important; line-height: 1.18 !important; letter-spacing: -.02em; font-weight: 800; margin: 0 0 1rem; }
+h2 { font-size: clamp(1.6rem, 3vw,   2.25rem) !important; line-height: 1.22 !important; letter-spacing: -.018em; font-weight: 800; margin: 0 0 .9rem; }
+h3 { font-size: clamp(1.2rem, 2.2vw, 1.5rem)  !important; line-height: 1.3  !important; font-weight: 700;  margin: 0 0 .65rem; }
+h4 { font-size: 1.1rem  !important; line-height: 1.4  !important; font-weight: 700; margin: 0 0 .5rem; }
+h5 { font-size: 1rem    !important; line-height: 1.45 !important; font-weight: 700; }
+h6 { font-size: .9rem   !important; line-height: 1.5  !important; font-weight: 700; }
+p  { line-height: 1.7;  margin: 0 0 1rem; }
+
+
+/* ──────────────────────────────────────────────────────────────────────
+   6. FOOTER — currently 280 px of empty space at the bottom
+   Reduced footer padding + collapsed orphan margins on the bottom row.
+   ────────────────────────────────────────────────────────────────────── */
+.site-footer        { padding-top: 2.5rem !important; padding-bottom: 0 !important; }
+.footer-main        { padding-bottom: 1.5rem !important; gap: 2rem !important; }
+.footer-coverage    { padding: 1rem 0 !important; margin: 0 !important; }
+.footer-bottom      { padding: 1rem 0 !important; margin-top: 0 !important; }
+.footer-bottom-inner{ padding: .25rem 0 !important; }
+
+
+/* ──────────────────────────────────────────────────────────────────────
+   7. CARDS — uniform spacing inside grids
+   Some cards had 2.5 rem inside padding, others 1 rem — inconsistent.
+   ────────────────────────────────────────────────────────────────────── */
+.card,
+.feature-card,
+.service-card,
+.product-card,
+.industry-card {
+  padding: 1.5rem !important;
+  gap: .75rem !important;
+}
+
+
+/* ──────────────────────────────────────────────────────────────────────
+   8. PARTNER LOGOS GRID — was overflowing on tablets
+   Switched from fixed-column grid to auto-fit with min cell width.
+   ────────────────────────────────────────────────────────────────────── */
+.partner-logos,
+.partner-grid,
+.logo-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
+  gap: 1.25rem !important;
+  align-items: center;
+  padding: 1rem 0;
+}
+.partner-logos img,
+.partner-grid img,
+.logo-grid img {
+  max-width: 100%;
+  height: auto;
+  max-height: 56px;
+  filter: grayscale(20%);
+  opacity: .85;
+  transition: opacity .2s, filter .2s;
+}
+.partner-logos img:hover,
+.partner-grid img:hover,
+.logo-grid img:hover { opacity: 1; filter: grayscale(0); }
+
+
+/* ──────────────────────────────────────────────────────────────────────
+   9. STICKY-HEADER OFFSET FIX
+   The sticky header ate the top of anchor-jumped sections. scroll-margin-top
+   on every section makes #anchor links land in the right place.
+   ────────────────────────────────────────────────────────────────────── */
+.section, section, [id^="section-"] { scroll-margin-top: 130px; }
+
+
+/* ──────────────────────────────────────────────────────────────────────
+   10. UTILITY FIXES — small but high-impact
+   ────────────────────────────────────────────────────────────────────── */
+
+/* Stop horizontal scroll on mobile (text overflow was pushing pages wider) */
+html, body { overflow-x: hidden; max-width: 100%; }
+
+/* Images never overflow their parent */
+img, video, iframe { max-width: 100%; height: auto; }
+
+/* Tables become responsive without effort */
+table { width: 100%; max-width: 100%; }
+.table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* Lists inside .prose stop having weird left bullets falling outside */
+.prose ul, .prose ol { padding-left: 1.25rem; }
+
+/* Buttons consistent vertical alignment */
+.btn, .btn-primary, .btn-secondary, .btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* Anchor-only sections that had margin-bottom: 0 + sibling margin-top
+   were producing 6 rem combined gap — collapsed via gap on grid */
+.grid, [class*="-grid"] { row-gap: 1.5rem !important; }
+
+
+/* ──────────────────────────────────────────────────────────────────────
+   11. ELIMINATE ORPHAN <br> SPACERS
+   The site uses <br><br><br> a few places to "create space". Strip stacked
+   line breaks visually so the layout system controls spacing instead.
+   ────────────────────────────────────────────────────────────────────── */
+br + br + br,
+br + br + br + br { display: none; }
+
+
+/* ──────────────────────────────────────────────────────────────────────
+   12. PRINT STYLESHEET — hide chat widgets, sticky strips, ads
+   ────────────────────────────────────────────────────────────────────── */
+@media print {
+  .site-header, .footer-coverage, .floating-buttons,
+  #cbModal, #cbOverlay, #stModal, #stOverlay, #lamModal,
+  #lamOverlay, .whatsapp-fab, .dual-action-strip,
+  .scroll-to-top { display: none !important; }
+  body { background: #fff; }
+  a { color: #000; text-decoration: underline; }
+  .section { padding: 1rem 0 !important; }
+}

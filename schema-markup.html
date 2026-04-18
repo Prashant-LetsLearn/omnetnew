@@ -1,0 +1,400 @@
+<!--
+══════════════════════════════════════════════════════════════════════════════
+  OMNET IT — SCHEMA.ORG MARKUP LIBRARY (schema-markup.html)
+══════════════════════════════════════════════════════════════════════════════
+  Each <script type="application/ld+json"> block below is self-contained
+  and safe to paste into the <head> of the page noted at the top of it.
+
+  Validate at:
+       https://validator.schema.org
+       https://search.google.com/test/rich-results
+
+  Index of blocks below:
+       1.  LocalBusiness   (homepage — replaces existing block in index.html)
+       2.  Organization    (site-wide; can also live on about/contact)
+       3.  WebSite + SearchAction  (homepage)
+       4.  Service         (one per service page — IT Support shown as example)
+       5.  Product         (template — duplicate per SKU on landing pages)
+       6.  ItemList        (product catalogue listing on shop / landing pages)
+       7.  FAQPage         (homepage / FAQ section)
+       8.  BreadcrumbList  (every interior page)
+       9.  Review + AggregateRating  (testimonials)
+       10. ContactPage     (contact.html)
+══════════════════════════════════════════════════════════════════════════════
+-->
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     1. LOCALBUSINESS — homepage (index.html)
+     Replaces existing LocalBusiness block; address now points to
+     405B Skylark Building, Nehru Place, New Delhi.
+     ════════════════════════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.omnetit.in/#localbusiness",
+  "name": "OMNET IT Solutions",
+  "alternateName": "OMNET IT",
+  "url": "https://www.omnetit.in",
+  "description": "CERT-In empanelled IT support and managed services provider across Delhi NCR. Authorised reseller for Dell, HP, Lenovo, Apple MacBook and Chromebooks. Microsoft 365 reseller, Google Workspace partner.",
+  "image": "https://www.omnetit.in/og-banner.png",
+  "logo": "https://www.omnetit.in/og-banner.png",
+  "telephone": "+91-9717270865",
+  "email": "hello@omnetit.in",
+  "priceRange": "₹₹",
+  "currenciesAccepted": "INR",
+  "paymentAccepted": "Cash, UPI, Bank Transfer, Cheque, Credit Card",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "405B, Skylark Building, 60 Nehru Place",
+    "addressLocality": "New Delhi",
+    "addressRegion": "Delhi",
+    "postalCode": "110019",
+    "addressCountry": "IN"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 28.5479, "longitude": 77.2503 },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "09:00", "closes": "19:00" },
+    { "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Sunday"], "opens": "10:00", "closes": "17:00" }
+  ],
+  "areaServed": [
+    { "@type": "City", "name": "New Delhi" },
+    { "@type": "City", "name": "Noida" },
+    { "@type": "City", "name": "Greater Noida" },
+    { "@type": "City", "name": "Gurugram" },
+    { "@type": "City", "name": "Ghaziabad" },
+    { "@type": "City", "name": "Faridabad" },
+    { "@type": "AdministrativeArea", "name": "Delhi NCR" }
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/company/omnet-it-system/",
+    "https://x.com/omnetit",
+    "https://www.facebook.com/OMNETITSYSTEMS"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "IT Services & Products",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Managed IT Services" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "24/7 IT Support" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cybersecurity (XDR, MFA, SSO)" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cloud Migration (Microsoft 365, Google Workspace)" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Network Infrastructure" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Computer AMC" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Product",  "name": "Dell Laptops & Workstations" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Product",  "name": "HP Laptops & ProLiant Servers" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Product",  "name": "Lenovo ThinkPad & ThinkSystem" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Product",  "name": "Apple MacBook, Mac Mini, iMac" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Product",  "name": "Chromebooks (HP, Acer, ASUS, Lenovo)" } }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "120"
+  }
+}
+</script>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     2. ORGANIZATION — site-wide
+     ════════════════════════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://www.omnetit.in/#organization",
+  "name": "OMNET IT Solutions",
+  "url": "https://www.omnetit.in",
+  "logo": "https://www.omnetit.in/og-banner.png",
+  "foundingDate": "2014",
+  "telephone": "+91-9717270865",
+  "email": "hello@omnetit.in",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "405B, Skylark Building, 60 Nehru Place",
+    "addressLocality": "New Delhi", "addressRegion": "Delhi",
+    "postalCode": "110019", "addressCountry": "IN"
+  },
+  "contactPoint": [
+    { "@type": "ContactPoint", "telephone": "+91-9717270865",
+      "contactType": "customer service", "areaServed": "IN",
+      "availableLanguage": ["English","Hindi"] },
+    { "@type": "ContactPoint", "telephone": "+91-120-522-3376",
+      "contactType": "technical support", "areaServed": "IN" }
+  ],
+  "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "credentialCategory": "Government Empanelment",
+    "name": "CERT-In Empanelled Information Security Auditing Organisation"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/omnet-it-system/",
+    "https://x.com/omnetit",
+    "https://www.facebook.com/OMNETITSYSTEMS"
+  ]
+}
+</script>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     3. WEBSITE + SEARCHACTION — homepage (enables sitelinks searchbox)
+     ════════════════════════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://www.omnetit.in/#website",
+  "url": "https://www.omnetit.in/",
+  "name": "OMNET IT Solutions",
+  "publisher": { "@id": "https://www.omnetit.in/#organization" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.omnetit.in/?s={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     4. SERVICE — example: 24/7 IT Support page
+     Duplicate this block once per service page, swapping name + description.
+     ════════════════════════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "24/7 IT Support",
+  "name": "24/7 IT Support Delhi NCR",
+  "description": "Round-the-clock IT helpdesk and onsite support across Delhi NCR. SLA-driven, certified L1/L2/L3 engineers, ticketed escalation control.",
+  "provider": { "@id": "https://www.omnetit.in/#organization" },
+  "areaServed": [
+    { "@type": "City", "name": "New Delhi" },
+    { "@type": "City", "name": "Noida" },
+    { "@type": "City", "name": "Greater Noida" },
+    { "@type": "City", "name": "Gurugram" },
+    { "@type": "City", "name": "Ghaziabad" }
+  ],
+  "audience": { "@type": "BusinessAudience", "audienceType": "Small &amp; Medium Businesses, Enterprises" },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.omnetit.in/pricing.html",
+    "priceCurrency": "INR",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "priceCurrency": "INR",
+      "description": "Custom-quoted based on user count and engagement model"
+    },
+    "availability": "https://schema.org/InStock"
+  },
+  "termsOfService": "https://www.omnetit.in/terms-of-service.html"
+}
+</script>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     5. PRODUCT — template (one per SKU on a landing page)
+     This example is for the Dell Latitude 5430. Duplicate per SKU.
+     ════════════════════════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Dell Latitude 5430 Business Laptop",
+  "image": "https://www.omnetit.in/img/products/dell-latitude-5430.jpg",
+  "description": "Dell Latitude 5430 — 12th-Gen Intel Core i5/i7, 14-inch FHD display, 8/16/32 GB DDR4, 256/512 GB / 1 TB SSD. ProSupport options available.",
+  "sku": "DELL-LAT-5430",
+  "mpn": "Latitude-5430",
+  "brand": { "@type": "Brand", "name": "Dell" },
+  "category": "Laptops > Business Laptops",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.omnetit.in/dell-laptops-delhi-ncr.html",
+    "priceCurrency": "INR",
+    "price": "Contact for best price",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": { "@id": "https://www.omnetit.in/#organization" },
+    "areaServed": "IN",
+    "warranty": {
+      "@type": "WarrantyPromise",
+      "durationOfWarranty": { "@type": "QuantitativeValue", "value": 1, "unitCode": "ANN" },
+      "warrantyScope": "https://schema.org/PartsAndLabor"
+    }
+  }
+}
+</script>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     6. ITEMLIST — product catalogue (e.g. on dell-laptops-delhi-ncr.html)
+     ════════════════════════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Dell Laptops Catalogue — OMNET IT, Delhi NCR",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Dell Latitude 5430",     "url": "https://www.omnetit.in/dell-laptops-delhi-ncr.html#latitude-5430" },
+    { "@type": "ListItem", "position": 2, "name": "Dell Latitude 7430",     "url": "https://www.omnetit.in/dell-laptops-delhi-ncr.html#latitude-7430" },
+    { "@type": "ListItem", "position": 3, "name": "Dell Precision 5570",    "url": "https://www.omnetit.in/dell-laptops-delhi-ncr.html#precision-5570" },
+    { "@type": "ListItem", "position": 4, "name": "Dell XPS 13",            "url": "https://www.omnetit.in/dell-laptops-delhi-ncr.html#xps-13" },
+    { "@type": "ListItem", "position": 5, "name": "Dell XPS 15",            "url": "https://www.omnetit.in/dell-laptops-delhi-ncr.html#xps-15" },
+    { "@type": "ListItem", "position": 6, "name": "Dell Vostro 3520",       "url": "https://www.omnetit.in/dell-laptops-delhi-ncr.html#vostro-3520" }
+  ]
+}
+</script>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     7. FAQPAGE — homepage / faq-section.html (10 questions)
+     ════════════════════════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is OMNET IT a CERT-In empanelled provider?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "Yes. OMNET IT is empanelled with the Indian Computer Emergency Response Team (CERT-In) for information security auditing services. This means we meet the Government of India's quality and competence bar for security work." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which cities and areas does OMNET IT cover for onsite IT support?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "We provide onsite IT support across Delhi NCR — including all sectors of Noida, Greater Noida, Gurugram, Ghaziabad, Faridabad, and all of New Delhi. Remote support is available pan-India." }
+    },
+    {
+      "@type": "Question",
+      "name": "What engagement models do you offer for IT support?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "Three primary models: (1) Fully Managed IT Services — complete IT outsourcing; (2) Fixed-Cost AMC — defined coverage with predictable annual pricing; (3) Pay-per-ticket / Casual support — no long-term contract, billed per incident." }
+    },
+    {
+      "@type": "Question",
+      "name": "Are you an authorised reseller for Dell, HP, Lenovo and Apple?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "Yes. OMNET IT is an authorised business reseller for Dell, HP, Lenovo, Apple, ASUS, Acer and Microsoft Surface. We supply with GST invoice, manufacturer warranty and on-site support across Delhi NCR." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you help us migrate to Microsoft 365 or Google Workspace?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "Yes. We are a Microsoft 365 reseller and Google Workspace partner. We handle license procurement, mailbox / drive migration, MX/SPF/DKIM/DMARC setup, MDM enrolment, user training and ongoing administration." }
+    },
+    {
+      "@type": "Question",
+      "name": "What cybersecurity services do you provide?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "Endpoint XDR, Multi-Factor Authentication (MFA), Single Sign-On (SSO), Conditional Access, identity and access management with JumpCloud / Microsoft Entra ID / Microsoft Intune, vulnerability assessment, security audits, and incident response." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer 24/7 helpdesk support?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "Yes — round-the-clock helpdesk and monitoring with SLA-bound response and resolution times. Every ticket is logged, tracked and escalated through our centralised ticketing system." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the typical response time for a Critical (system-down) ticket?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "For Critical tickets we acknowledge within 15 minutes and begin remote remediation immediately. Onsite dispatch in Delhi NCR is typically within 2–4 hours depending on location." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you provide IT services for small businesses or only enterprises?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "Both. Our pay-per-ticket and fixed-cost AMC models are popular with SMEs (10 – 200 users), while our fully managed services support mid-market and enterprise clients across Delhi NCR." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I request a quote or schedule a callback?",
+      "acceptedAnswer": { "@type": "Answer",
+        "text": "Use the 'Leave a Message' or 'Request a Callback' button on any page of www.omnetit.in, email hello@omnetit.in, or call +91 97172 70865 between 9 AM and 7 PM IST." }
+    }
+  ]
+}
+</script>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     8. BREADCRUMBLIST — paste on every interior page, swap labels/URLs
+     ════════════════════════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home",         "item": "https://www.omnetit.in/" },
+    { "@type": "ListItem", "position": 2, "name": "Products",     "item": "https://www.omnetit.in/products.html" },
+    { "@type": "ListItem", "position": 3, "name": "Dell Laptops", "item": "https://www.omnetit.in/dell-laptops-delhi-ncr.html" }
+  ]
+}
+</script>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     9. REVIEW + AGGREGATERATING — testimonials section
+     ════════════════════════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://www.omnetit.in/#organization",
+  "name": "OMNET IT Solutions",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "120",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Anjali R." },
+      "datePublished": "2025-11-12",
+      "reviewBody": "OMNET IT migrated our 45-user organisation from on-premise Exchange to Microsoft 365 with zero downtime. Their L2 engineers handled MX cutover and MDM enrolment over a weekend. Highly professional.",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Rohit M." },
+      "datePublished": "2025-12-04",
+      "reviewBody": "Reliable AMC partner for our Noida office. Tickets are responded to within minutes and onsite engineers arrive same-day for hardware issues.",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Priya S." },
+      "datePublished": "2026-02-09",
+      "reviewBody": "We deployed JumpCloud + Entra ID across our hybrid Windows/macOS fleet with OMNET. Their identity team understood our edge cases and delivered Conditional Access policies that actually work.",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+    }
+  ]
+}
+</script>
+
+
+<!-- ════════════════════════════════════════════════════════════════════
+     10. CONTACTPAGE — for contact.html
+     ════════════════════════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": "https://www.omnetit.in/contact.html#contactpage",
+  "url": "https://www.omnetit.in/contact.html",
+  "name": "Contact OMNET IT Solutions",
+  "description": "Reach OMNET IT Solutions for IT support, managed services, hardware quotes, and cybersecurity in Delhi NCR.",
+  "mainEntity": { "@id": "https://www.omnetit.in/#organization" }
+}
+</script>
