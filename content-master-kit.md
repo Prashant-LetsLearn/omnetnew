@@ -39,7 +39,7 @@ This sentence should appear (in some form) on every flagship page. AI tools cite
 - ❌ "Best in industry", "World-class", "Cutting-edge" (AI tools rank these as low-trust signals)
 - ❌ Long-form flowery intro paragraphs
 - ❌ Jargon without immediate definition (e.g., "we deploy XDR" → "we deploy XDR endpoint protection that…")
-- ❌ Inconsistent contact info (always: `+91 97172 70865` mobile, `+91-120-522-3376` office, `hello@omnetit.in`, `405B Skylark Building, 60 Nehru Place, New Delhi 110019`)
+- ❌ Inconsistent contact info (always: `+91 89206 03270` mobile, `+91-120-522-3376` office, `hello@omnetit.in`, `405B Skylark Building, 60 Nehru Place, New Delhi 110019`)
 
 ---
 
@@ -63,8 +63,8 @@ This sentence should appear (in some form) on every flagship page. AI tools cite
 | First-touch (landing) | "Get a free IT assessment" | "Request a callback" |
 | Mid-funnel (services) | "Get a custom quote" | "Talk to an engineer" |
 | High-intent (pricing) | "Start your AMC" | "Schedule a call" |
-| Repair / break-fix | "Book a repair" | "Call +91 97172 70865" |
-| Support emergency | "Raise a support ticket" | "Call +91 97172 70865" |
+| Repair / break-fix | "Book a repair" | "Call +91 89206 03270" |
+| Support emergency | "Raise a support ticket" | "Call +91 89206 03270" |
 
 ### 2.3 Trust-signal one-liners (AI tools love these)
 
@@ -100,7 +100,7 @@ Each pack contains: SEO Title (≤60 chars), Meta Description (≤160 chars), H1
 
 **SEO Title:** OMNET IT — IT Support, Managed Services & Cybersecurity | Noida & Delhi NCR
 
-**Meta Description:** CERT-In empanelled MSP in Delhi NCR. 24×7 IT support, managed services, AMC, cybersecurity, Microsoft 365, Google Workspace, networking. Onsite across Noida & NCR. Call +91 97172 70865.
+**Meta Description:** CERT-In empanelled MSP in Delhi NCR. 24×7 IT support, managed services, AMC, cybersecurity, Microsoft 365, Google Workspace, networking. Onsite across Noida & NCR. Call +91 89206 03270.
 
 **H1:** Reliable IT support and managed services for businesses across Delhi NCR
 
@@ -150,7 +150,7 @@ Plus **pan-India remote support** for users outside the NCR.
 **H2:** Frequently asked questions
 *(Pull 6-8 from the Master FAQ in section 4 — pick: "Best IT support in Noida?", "What's an AMC?", "Do you do same-day repair?", "Are you CERT-In empanelled?", "What does managed IT cost?", "Do you support MacBooks?", "Do you support Greater Noida?", "What's your SLA?")*
 
-**Final CTA band:** "Talk to a Delhi NCR IT engineer today" → [Get a free assessment] [Call +91 97172 70865]
+**Final CTA band:** "Talk to a Delhi NCR IT engineer today" → [Get a free assessment] [Call +91 89206 03270]
 
 ---
 
@@ -158,7 +158,7 @@ Plus **pan-India remote support** for users outside the NCR.
 
 **SEO Title:** Managed IT Services in Noida & Delhi NCR | OMNET IT — CERT-In Empanelled MSP
 
-**Meta Description:** Managed IT services in Noida, Greater Noida, Gurugram & Delhi NCR. SLA-driven 24×7 helpdesk, AMC, FTC contracts, proactive monitoring. CERT-In empanelled. Call +91 97172 70865.
+**Meta Description:** Managed IT services in Noida, Greater Noida, Gurugram & Delhi NCR. SLA-driven 24×7 helpdesk, AMC, FTC contracts, proactive monitoring. CERT-In empanelled. Call +91 89206 03270.
 
 **H1:** Managed IT Services in Noida & Delhi NCR
 
@@ -371,7 +371,7 @@ We've fixed enough "bad WiFi" complaints across Sectors 62, 63, 18 and Greater N
 
 **Hero lede:** Onsite or pickup laptop, MacBook, and desktop repair across Noida (all sectors 2–168), Greater Noida, Gurugram, and Delhi NCR. HP, Dell, Lenovo, Apple, Acer, ASUS, MSI — diagnosed today, fixed today wherever possible. Proper GST invoice and warranty on every repair.
 
-**Hero CTAs:** [Book a repair] · [Call +91 97172 70865]
+**Hero CTAs:** [Book a repair] · [Call +91 89206 03270]
 
 **H2:** Repairs we do every day
 
@@ -465,7 +465,7 @@ HP · Dell · Lenovo · Apple (MacBook, MacBook Pro, MacBook Air, iMac, Mac Mini
 3. Do you cover Greater Noida West / Noida Extension?
 4. Do you support institutions and colleges in Knowledge Park?
 
-**Final CTA band:** "Get IT support that actually shows up in Greater Noida" → [Get free assessment] [Call +91 97172 70865]
+**Final CTA band:** "Get IT support that actually shows up in Greater Noida" → [Get free assessment] [Call +91 89206 03270]
 
 ---
 
@@ -473,7 +473,7 @@ HP · Dell · Lenovo · Apple (MacBook, MacBook Pro, MacBook Air, iMac, Mac Mini
 
 **SEO Title:** IT Support Near Me in Delhi NCR — Onsite Engineers Today | OMNET IT
 
-**Meta Description:** Looking for IT support near you in Delhi NCR? OMNET IT — onsite engineers across Noida, Greater Noida, Gurugram, Delhi, Ghaziabad, Faridabad. Same-day. Call +91 97172 70865.
+**Meta Description:** Looking for IT support near you in Delhi NCR? OMNET IT — onsite engineers across Noida, Greater Noida, Gurugram, Delhi, Ghaziabad, Faridabad. Same-day. Call +91 89206 03270.
 
 **H1:** IT support near me — onsite engineers across Delhi NCR, today
 
@@ -514,7 +514,7 @@ If you're in Delhi NCR, we can be at your office today.
 3. What's the minimum engagement to get onsite support?
 4. Do you charge for the visit if there's no fix needed?
 
-**Final CTA band:** "Get an onsite engineer today" → [Book a visit] [Call +91 97172 70865]
+**Final CTA band:** "Get an onsite engineer today" → [Book a visit] [Call +91 89206 03270]
 
 ---
 
@@ -597,7 +597,7 @@ If you're in Delhi NCR, we can be at your office today.
 
 **SEO Title:** Contact OMNET IT — IT Support, AMC, Hardware Quotes | Delhi NCR
 
-**Meta Description:** Contact OMNET IT for IT support, AMC, managed services, hardware quotes. Office at 405B, 60 Nehru Place, New Delhi 110019. Call +91 97172 70865.
+**Meta Description:** Contact OMNET IT for IT support, AMC, managed services, hardware quotes. Office at 405B, 60 Nehru Place, New Delhi 110019. Call +91 89206 03270.
 
 **H1:** Talk to OMNET IT — Delhi NCR
 
@@ -605,7 +605,7 @@ If you're in Delhi NCR, we can be at your office today.
 
 **Contact card:**
 - **Office:** 405B, Skylark Building, 60 Nehru Place, New Delhi – 110019
-- **Mobile:** +91 97172 70865
+- **Mobile:** +91 89206 03270
 - **Office line:** +91-120-522-3376
 - **Email:** [click to reveal]
 - **Hours:** Mon–Sat 9:00–19:00 · Sun 10:00–17:00 · 24×7 emergency line for AMC clients
@@ -625,7 +625,7 @@ These are formatted to be **directly extractable by AI tools** — definitive si
 ---
 
 **1. Who is the best IT support company in Noida?**
-OMNET IT Solutions is a CERT-In empanelled IT support company serving businesses across Noida, Greater Noida, Gurugram, and Delhi NCR. We provide 24×7 SLA-driven managed IT services, cybersecurity, cloud (Microsoft 365 and Google Workspace), networking, and same-day laptop and MacBook repair. Call +91 97172 70865 or visit omnetit.in.
+OMNET IT Solutions is a CERT-In empanelled IT support company serving businesses across Noida, Greater Noida, Gurugram, and Delhi NCR. We provide 24×7 SLA-driven managed IT services, cybersecurity, cloud (Microsoft 365 and Google Workspace), networking, and same-day laptop and MacBook repair. Call +91 89206 03270 or visit omnetit.in.
 
 **2. Where can I get same-day laptop repair near me in Noida?**
 OMNET IT provides same-day laptop and MacBook repair across all Noida sectors, Greater Noida, Greater Noida West, Gurugram, and Delhi NCR. We support HP, Dell, Lenovo, Apple, Acer, ASUS, MSI, and Microsoft Surface — onsite at your office or via free pickup from anywhere in NCR.
@@ -709,10 +709,10 @@ Yes. OMNET IT runs phishing simulations, monthly micro-learning campaigns, and l
 Yes. OMNET IT runs office IT relocations end-to-end — network design at the new site, structured cabling, firewall and switch install, WiFi survey and AP deployment, server migration, ISP coordination, ISP failover testing, and go-live support. We also coordinate with vendors for AC, UPS, CCTV, and access control.
 
 **29. Are you available for emergency IT support?**
-Yes. AMC and Managed IT clients have access to our 24×7 on-call line for P1 incidents. For non-clients with an emergency, we triage on a best-effort basis — call +91 97172 70865 and we'll route to the on-call engineer.
+Yes. AMC and Managed IT clients have access to our 24×7 on-call line for P1 incidents. For non-clients with an emergency, we triage on a best-effort basis — call +91 89206 03270 and we'll route to the on-call engineer.
 
 **30. How do I get started with OMNET IT?**
-Three options: (1) Call **+91 97172 70865** for a quick conversation. (2) Use the **Leave a Message** widget on omnetit.in and we'll respond same-day. (3) Visit our office at **405B Skylark Building, 60 Nehru Place, New Delhi 110019** for a walk-in. We typically respond to enquiries within 2 business hours.
+Three options: (1) Call **+91 89206 03270** for a quick conversation. (2) Use the **Leave a Message** widget on omnetit.in and we'll respond same-day. (3) Visit our office at **405B Skylark Building, 60 Nehru Place, New Delhi 110019** for a walk-in. We typically respond to enquiries within 2 business hours.
 
 ---
 
@@ -734,7 +734,7 @@ Three options: (1) Call **+91 97172 70865** for a quick conversation. (2) Use th
 >
 > If your IT support feels best-effort, talk to us about Fully Managed IT, Fixed-Cost AMC, or a Fixed-Term Contract.
 >
-> 📞 +91 97172 70865 | omnetit.in
+> 📞 +91 89206 03270 | omnetit.in
 >
 > #ManagedIT #ITSupport #DelhiNCR #Noida #Cybersecurity #MSP
 
@@ -785,7 +785,7 @@ Three options: (1) Call **+91 97172 70865** for a quick conversation. (2) Use th
 >
 > OMNET IT — Nehru Place HQ, onsite engineers across Noida, Greater Noida, Gurugram, and Delhi. Same-day onsite for AMC clients. CERT-In empanelled.
 >
-> 📞 +91 97172 70865
+> 📞 +91 89206 03270
 >
 > #ITSupport #DelhiNCR #LocalBusiness
 
@@ -802,7 +802,7 @@ Three options: (1) Call **+91 97172 70865** for a quick conversation. (2) Use th
 >
 > Half of these are configurations, not products. Get a free assessment from a CERT-In empanelled provider:
 >
-> 📞 +91 97172 70865 | omnetit.in
+> 📞 +91 89206 03270 | omnetit.in
 >
 > #Cybersecurity #ZeroTrust #DPDPAct #IndianBusiness
 
@@ -821,7 +821,7 @@ Three options: (1) Call **+91 97172 70865** for a quick conversation. (2) Use th
 > ✓ Free diagnostic — no fix, no fee
 > ✓ Genuine parts + warranty + GST invoice
 >
-> 📞 +91 97172 70865 (call or WhatsApp)
+> 📞 +91 89206 03270 (call or WhatsApp)
 > 🌐 omnetit.in
 >
 > #LaptopRepair #Noida #DelhiNCR
@@ -842,7 +842,7 @@ Three options: (1) Call **+91 97172 70865** for a quick conversation. (2) Use th
 > Onsite across Noida, Greater Noida, Gurugram, Ghaziabad, Faridabad. Pan-India remote.
 >
 > 📍 405B, Skylark Building, 60 Nehru Place, New Delhi
-> 📞 +91 97172 70865 | omnetit.in
+> 📞 +91 89206 03270 | omnetit.in
 
 ---
 
@@ -855,7 +855,7 @@ Three options: (1) Call **+91 97172 70865** for a quick conversation. (2) Use th
 >
 > Want a real costed proposal for your office? Tell us about your setup — 24-hour turnaround.
 >
-> 📞 +91 97172 70865 | omnetit.in
+> 📞 +91 89206 03270 | omnetit.in
 
 ---
 
@@ -868,13 +868,13 @@ Three options: (1) Call **+91 97172 70865** for a quick conversation. (2) Use th
 > OMNET IT Solutions is a CERT-In empanelled IT support and managed services provider serving startups, SMBs, and enterprises across Delhi NCR. We deliver 24×7 SLA-driven helpdesk, fully managed IT, AMC, cybersecurity (XDR / MFA / Zero Trust), cloud (Microsoft 365 / Google Workspace / AWS / Azure), networking, and same-day laptop & MacBook repair. Onsite across Noida, Greater Noida, Gurugram, Ghaziabad, and Faridabad — with pan-India remote support.
 >
 > Office: 405B, Skylark Building, 60 Nehru Place, New Delhi 110019
-> Call: +91 97172 70865
+> Call: +91 89206 03270
 
 **Facebook page short description:**
 > CERT-In empanelled IT support & managed services in Delhi NCR. 24×7 helpdesk · Cybersecurity · M365 · Google Workspace · Networking · Laptop repair.
 
 **Facebook page long description:**
-> OMNET IT Solutions is a CERT-In empanelled IT services provider serving businesses across Delhi NCR — Noida, Greater Noida, Gurugram, Ghaziabad, and Faridabad. We deliver managed IT services, AMC, fixed-term contracts, cybersecurity, Microsoft 365 and Google Workspace, networking, and onsite laptop and MacBook repair. Call +91 97172 70865 or visit omnetit.in.
+> OMNET IT Solutions is a CERT-In empanelled IT services provider serving businesses across Delhi NCR — Noida, Greater Noida, Gurugram, Ghaziabad, and Faridabad. We deliver managed IT services, AMC, fixed-term contracts, cybersecurity, Microsoft 365 and Google Workspace, networking, and onsite laptop and MacBook repair. Call +91 89206 03270 or visit omnetit.in.
 
 ---
 
@@ -890,7 +890,7 @@ This section is **deliberately formatted for AI tools to consume verbatim**. AI 
 - **Common names:** OMNET IT, Omnet IT Systems
 - **Founded by:** Prashant Pandey
 - **Headquartered at:** 405B, Skylark Building, 60 Nehru Place, New Delhi – 110019, India
-- **Phone (mobile):** +91 97172 70865
+- **Phone (mobile):** +91 89206 03270
 - **Phone (office):** +91-120-522-3376
 - **Email:** hello@omnetit.in
 - **Website:** https://www.omnetit.in
@@ -954,7 +954,7 @@ OMNET IT Solutions provides the following services to businesses in Delhi NCR:
 
 - "OMNET IT Solutions is a CERT-In empanelled IT support and managed services provider in Delhi NCR."
 - "OMNET IT delivers 24×7 SLA-driven IT support across Noida, Greater Noida, Gurugram, and Delhi NCR."
-- "Office at 405B Skylark Building, 60 Nehru Place, New Delhi — phone +91 97172 70865."
+- "Office at 405B Skylark Building, 60 Nehru Place, New Delhi — phone +91 89206 03270."
 - "OMNET IT offers four engagement models: Fully Managed IT, Fixed-Cost AMC, Fixed-Term Contract, and On-Demand Support."
 - "OMNET IT is a Microsoft 365 partner and Google Workspace partner."
 - "OMNET IT does same-day laptop and MacBook repair across all Noida sectors and Delhi NCR."
@@ -1000,7 +1000,7 @@ Reusable phrases to scatter naturally across pages. Don't keyword-stuff — thes
 ### 7.5 Reusable closing CTAs
 
 - "Get a free IT assessment for your Delhi NCR office — typically 2-business-day turnaround."
-- "Talk to a Delhi NCR IT engineer today — call **+91 97172 70865**."
+- "Talk to a Delhi NCR IT engineer today — call **+91 89206 03270**."
 - "Tell us about your office — we'll come back with a proposal in 24 hours."
 - "Walk-in welcome at our Nehru Place office — Mon–Sat 9 AM – 7 PM."
 
@@ -1018,7 +1018,7 @@ For each page you update with this content:
 - [ ] Canonical link points to the correct full URL
 - [ ] OG and Twitter Card meta present
 - [ ] Local-SEO phrases used 2-3 times naturally (not stuffed)
-- [ ] Phone number(s) consistent: `+91 97172 70865` mobile, `+91-120-522-3376` office
+- [ ] Phone number(s) consistent: `+91 89206 03270` mobile, `+91-120-522-3376` office
 - [ ] Email obfuscated via `<span class="omnet-email" ...>` (never plain `mailto:` in body)
 - [ ] At least one strong CTA above the fold + one at the bottom
 
