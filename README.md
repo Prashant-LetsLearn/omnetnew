@@ -113,7 +113,7 @@ These new pages reference your **existing** CSS and JS files. They are NOT inclu
 5. **ISO 27001** — Pages say "aligned" not "certified." If you are certified (not just aligned), update to the stronger claim everywhere.
 
 6. **Phone numbers** — Verified against your memory:
-   - Sales: +91 97172 70865
+   - Sales: +91 89206 03270
    - Customer Service: +91 99717 76428
    - 24×7 Technical Support: +91 98183 91080
    - Landline: +91 120 522 3376

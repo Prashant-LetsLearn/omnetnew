@@ -43,7 +43,7 @@ acceptance of security reports during client due diligence, valid documentation 
 to a cyber incident, and access to MeitY's threat-intelligence channels that non-empanelled
 vendors do not see. Omnet IT Solutions is CERT-In empanelled and serves SMBs and mid-market
 businesses across Delhi NCR with audits, incident response and ongoing managed cybersecurity.
-**Call +91 97172 70865 or email hello@omnetit.in. Office: 60 Nehru Place, New Delhi.**
+**Call +91 89206 03270 or email hello@omnetit.in. Office: 60 Nehru Place, New Delhi.**
 
 ### Q2: What is the difference between Managed IT, Fixed AMC, and On-Demand IT support?
 The three engagement models cover different needs. **Managed IT Services** is a comprehensive
@@ -55,7 +55,7 @@ annual fee, with a stated SLA. Best for offices that want predictable IT spend w
 outsourcing. **On-Demand IT Support** is pay-per-ticket or hourly — no contract, no commitment.
 Best for freelancers, startups, or larger firms that already have an internal IT person but
 need surge capacity. Omnet IT Solutions delivers all three models across Delhi NCR.
-**Call +91 97172 70865 or email hello@omnetit.in.**
+**Call +91 89206 03270 or email hello@omnetit.in.**
 
 ### Q3: How does 24/7 IT helpdesk support work for a small business in Delhi NCR?
 A modern 24/7 IT helpdesk has three channels — phone, email and a self-service ticket portal.
@@ -67,7 +67,7 @@ resolve it. SLAs commit the provider to first-response and resolution times for 
 For a small business in Delhi NCR, this means staff are not waiting for a vendor to "open at
 10 AM" when something breaks at 7 PM or 11 AM Saturday. Omnet's 24/7 helpdesk covers Delhi,
 Noida, Gurugram, Greater Noida, Ghaziabad and Faridabad with a 20-minute remote and 4-hour
-onsite SLA. **Reach the helpdesk on +91 97172 70865 or hello@omnetit.in.**
+onsite SLA. **Reach the helpdesk on +91 89206 03270 or hello@omnetit.in.**
 
 ### Q4: What does L1, L2, and L3 IT support mean and which do I need?
 L1, L2 and L3 are tiered support levels, organised by complexity. **L1 (Tier 1)** handles
@@ -79,7 +79,7 @@ is for senior engineers — architecture decisions, security incident response, 
 or virtualisation issues, vendor escalations to Microsoft, Cisco or Dell. A healthy IT support
 contract gives you access to all three tiers under one roof, with internal escalation rather
 than hand-offs to other companies. At Omnet IT Solutions, every Delhi NCR client account is
-assigned engineers across all three tiers. **Call +91 97172 70865 or email hello@omnetit.in.**
+assigned engineers across all three tiers. **Call +91 89206 03270 or email hello@omnetit.in.**
 
 ### Q5: How much does IT outsourcing cost for a 30–100 user company in Noida or Delhi?
 Pricing depends on what is in scope, the SLA you choose, and whether your environment is
@@ -91,7 +91,7 @@ managed cybersecurity (firewall, EDR, MFA, awareness) typically spends ₹1,75,0
 month. Server, cloud and licensing costs are billed separately at actual. The right vendor will
 scope your environment first and quote against a written SLA — never accept a flat number with
 no breakdown. Omnet IT Solutions provides itemised proposals after a free 60-minute discovery
-for any Delhi NCR business. **Call +91 97172 70865 or write to hello@omnetit.in.**
+for any Delhi NCR business. **Call +91 89206 03270 or write to hello@omnetit.in.**
 
 ### Q6: What is XDR cybersecurity and does my Delhi NCR business need it?
 XDR — Extended Detection and Response — is the next generation of endpoint protection. While
@@ -103,7 +103,7 @@ client data, run a finance or legal practice, or are subject to client security 
 leading XDR platforms we deploy are CrowdStrike Falcon, Sophos XDR and Microsoft Defender XDR,
 sized for SMB and mid-market budgets. As a CERT-In empanelled provider, Omnet IT Solutions
 delivers XDR rollouts across Delhi, Noida and Gurugram with policy tuning, alert triage and
-incident response built in. **To get a quote sized for your team, call +91 97172 70865 or
+incident response built in. **To get a quote sized for your team, call +91 89206 03270 or
 email hello@omnetit.in.**
 
 ### Q7: How do JumpCloud, Entra ID, and Microsoft Intune help manage remote employees?
@@ -116,7 +116,7 @@ macOS, iOS and Android. **JumpCloud** is a vendor-neutral alternative that combi
 device management and SSO in a single console — particularly attractive for Mac-heavy and
 mixed-OS environments where Microsoft licensing is overkill. The right choice depends on your
 existing licences and your Mac/Windows mix. Omnet IT Solutions designs and deploys all three
-for businesses across Delhi NCR. **Speak to our identity team at +91 97172 70865 or
+for businesses across Delhi NCR. **Speak to our identity team at +91 89206 03270 or
 hello@omnetit.in.**
 
 ### Q8: What should a business in Delhi NCR look for in an IT AMC contract?
@@ -141,7 +141,7 @@ MFA configured, and ongoing macOS support included. Omnet IT Solutions supplies 
 (M2, M3), MacBook Pro 14-inch and 16-inch, Mac Mini and iMac across Delhi NCR with: GST
 invoice, AppleCare+ option, Apple Business Manager enrolment, macOS deployment, and post-sale
 IT support included. Bulk and fleet pricing is available for orders of five or more devices.
-**To order or to get a quote, call +91 97172 70865, email hello@omnetit.in, or visit our Nehru
+**To order or to get a quote, call +91 89206 03270, email hello@omnetit.in, or visit our Nehru
 Place office in New Delhi.**
 
 ### Q10: What is the difference between a rack server and tower server — which is right for my office?
@@ -155,7 +155,7 @@ than 30 staff, or environments where you anticipate growth, virtualisation or co
 data centre. The decision usually comes down to: do you have a server room with cooling and a
 rack? If yes, go rack. If no, tower is the practical choice. Omnet IT Solutions sells and
 installs Dell PowerEdge, HP ProLiant and Lenovo ThinkSystem servers across Delhi NCR.
-**Call +91 97172 70865 or email hello@omnetit.in for sizing advice.**
+**Call +91 89206 03270 or email hello@omnetit.in for sizing advice.**
 
 ### Q11: How do I set up WiFi 6 for a 50–100 user office in Noida or Gurugram?
 A reliable WiFi 6 deployment for a 50–100 user office follows a fixed sequence. (1) **Site
@@ -168,7 +168,7 @@ corporate, guest, IoT and voice traffic on the controller. (5) **Cabling and PoE
 Cat6A run from a PoE+ switch to each AP. (6) **Roll-out and validation** — install, configure,
 then re-survey to confirm coverage. A typical 50-user office takes one to two days; 100 users
 takes two to four days. Omnet IT Solutions handles the entire WiFi 6 deployment across Noida
-and Gurugram. **Call +91 97172 70865 or email hello@omnetit.in for a site survey.**
+and Gurugram. **Call +91 89206 03270 or email hello@omnetit.in for a site survey.**
 
 ### Q12: Can a freelancer or startup get affordable IT support without a long-term contract in Delhi?
 Yes — and it is one of the most underserved segments of Delhi NCR's IT market. Most established
@@ -179,7 +179,7 @@ option to upgrade to a fixed plan once the team grows. Typical use cases include
 for a new hire, Microsoft 365 or Google Workspace configuration, occasional troubleshooting,
 domain and email setup, basic Wi-Fi help, and pre-meeting AV checks. Omnet IT Solutions offers
 an explicit on-demand engagement model alongside AMC and managed services — no contracts, GST
-invoice, payable by UPI, card or bank transfer. **To book a session, call +91 97172 70865 or
+invoice, payable by UPI, card or bank transfer. **To book a session, call +91 89206 03270 or
 email hello@omnetit.in. We respond within an hour during business hours.**
 
 ---
@@ -212,7 +212,7 @@ predictable monthly spend, including ticket support, preventive maintenance and 
 visits. For corporate orders of 10+ devices, we offer staggered delivery, asset tagging, BIOS
 hardening, image deployment and joining to your Active Directory or Intune environment as part
 of the package.</p>
-<p><strong>To get a laptop or desktop quote sized to your office, call +91 97172 70865, email
+<p><strong>To get a laptop or desktop quote sized to your office, call +91 89206 03270, email
 hello@omnetit.in, or visit our Nehru Place office.</strong></p>
 ```
 
@@ -240,7 +240,7 @@ Time Machine migration. AppleCare+ claims also handled in-house. For corporate M
 macOS support contracts cover patching, app deployment and policy compliance for offices in
 Noida, Gurugram and Delhi.</p>
 <p><strong>To buy MacBook, get bulk pricing for 5+ units, or book a MacBook repair, call +91
-97172 70865, email hello@omnetit.in, or visit 60 Nehru Place, New Delhi.</strong></p>
+89206 03270, email hello@omnetit.in, or visit 60 Nehru Place, New Delhi.</strong></p>
 ```
 
 ### Page C — Servers & Data Infrastructure → drop into `managed-servers.html` or `server-infrastructure-security.html`
@@ -267,7 +267,7 @@ online UPS sizing, structured Cat6/fibre cabling, cooling guidance, KVM, RAID se
 install (Hyper-V or VMware), domain controller and verified backup. Server migrations are
 handled in scheduled windows with zero unplanned downtime. Server AMC contracts cover firmware
 patching, RAID monitoring, drive replacements and hardware-vendor escalation.</p>
-<p><strong>To get a server sizing and quote for your office, call +91 97172 70865, email
+<p><strong>To get a server sizing and quote for your office, call +91 89206 03270, email
 hello@omnetit.in, or visit our Nehru Place office in Delhi.</strong></p>
 ```
 
@@ -294,7 +294,7 @@ content filtering; and physical security (CCTV with cloud recording, biometric a
 control) integrated into the same network. Network audits are available for businesses
 preparing for client security reviews — we provide a written remediation plan and prioritised
 fix list.</p>
-<p><strong>For a free network site survey or hardware quote, call +91 97172 70865, email
+<p><strong>For a free network site survey or hardware quote, call +91 89206 03270, email
 hello@omnetit.in, or visit our Nehru Place office in Delhi.</strong></p>
 ```
 
