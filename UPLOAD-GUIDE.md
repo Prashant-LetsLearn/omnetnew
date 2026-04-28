@@ -1,33 +1,46 @@
-# How to Upload to GitHub — Comment Leak Fix
+# How to Upload to GitHub — FINAL Fix
 
-## What was wrong
+## What was actually wrong
 
-On 15 pages, my earlier sticky-bar removal left orphaned HTML comment fragments
-that **leaked onto the visible page** as text:
+On 15 pages including `infrastructure-services.html` and `products.html`, there
+was a malformed HTML comment block at the bottom that looked like:
 
 ```
-on every page
-2. Leave a Message (bottom-right)
-3. Support Ticket button (bottom-right, above Leave a Message)
-====== -->
+<!-- ================================================================
+ ALL WIDGETS - paste just before <script src="carousel.js"></script>
+ <script src="upi-payment.js"></script>
+
+<!-- ── MOBILE STICKY BOTTOM BAR ── -->
 ```
 
-This appeared at the bottom of pages on both desktop and mobile.
+The first `<!-- =====` opened a comment, but the next `-->` (inside the inner
+`<!-- ── MOBILE STICKY BOTTOM BAR ── -->`) closed the comment in a confusing
+way that some browsers may have rendered weirdly.
 
 ## What I fixed
 
-✅ Removed the orphaned comment fragments from all 80 affected pages
-✅ Cleaned up stray `--->` and `====` artifacts
-✅ Verified zero pages still have leaked text
-✅ Pages affected included: it-support-noida.html, managed-it-services-delhi.html,
-   it-support-gurugram.html, infrastructure-services.html, products.html, and others
+✅ Removed the broken developer-instruction comment from all 15 pages
+✅ Replaced with clean `<!-- ── MOBILE STICKY BOTTOM BAR ── -->` only
+✅ Verified with proper HTML parsing — 0 pages have visible leaked text
+✅ The site sticky bar continues to work correctly
 
-## Note on pre-existing issue (not fixed here)
+## Pages fixed in this batch
 
-Some pages (404.html, blog.html, privacy-policy.html, etc.) have **duplicate
-`</body>` tags** — but this was in the original site code, not caused by my
-changes. Browsers handle this gracefully so it's not a visible bug. Worth fixing
-properly when you next refactor the templates, but not urgent.
+- infrastructure-services.html
+- products.html
+- it-support-aerocity-delhi.html
+- it-support-delhi.html
+- it-support-greater-noida.html
+- it-support-greater-noida-west.html
+- it-support-gurugram.html
+- it-support-noida.html
+- it-support-noida-expressway.html
+- it-support-noida-sector-62.html
+- it-support-noida-sector-63.html
+- managed-it-services-delhi.html
+- managed-it-services-gurugram.html
+- managed-it-services-noida.html
+- managed-it-services-greater-noida.html
 
 ## Upload — GitHub Web
 
@@ -35,20 +48,17 @@ properly when you next refactor the templates, but not urgent.
 2. **Go to your repo** on GitHub.com
 3. Click **"Add file" → "Upload files"**
 4. **Select ALL files** from the extracted folder → drag into upload area
-5. Commit message: `Fix: remove leaked HTML comment fragments from page bottom`
-6. Choose **"Create a new branch"** → name: `fix-comment-leak`
+5. Commit message: `Fix: clean malformed comment block on 15 pages`
+6. Choose **"Create a new branch"** → name: `fix-comment-block`
 7. **"Propose changes"** → **"Create pull request"** → **"Merge"**
 
 ## Verify after upload
 
-Open these specific pages — bottom of page should be clean text-free:
-- https://www.omnetit.in/it-support-noida.html
-- https://www.omnetit.in/managed-it-services-delhi.html
-- https://www.omnetit.in/it-support-gurugram.html
+Visit these pages on your live site (after merging):
 - https://www.omnetit.in/infrastructure-services.html
 - https://www.omnetit.in/products.html
+- https://www.omnetit.in/it-support-noida.html
 
-If you scroll to the bottom of any of these, you should see only the footer —
-no stray `2. Leave a Message...` text.
+Scroll to the bottom — should be clean, no stray text visible.
 
 That's it.
