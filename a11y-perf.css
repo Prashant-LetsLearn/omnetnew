@@ -1,0 +1,133 @@
+/*
+═══════════════════════════════════════════════════════════════════════════
+  OMNET IT — Accessibility & Performance CSS additions
+  File: a11y-perf.css
+  Add as the LAST stylesheet on every page (after existing CSS).
+  Purpose: improve WCAG 2.1 AA compliance, Core Web Vitals, and UX.
+═══════════════════════════════════════════════════════════════════════════
+*/
+
+/* ── 1. Visible focus rings (WCAG 2.4.7) ─────────────────────────────── */
+/* Browsers by default remove focus rings — that's an accessibility violation.
+   This adds a high-contrast focus ring on all interactive elements. */
+*:focus-visible {
+  outline: 3px solid #0d9488;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+/* Hide the ring on mouse-clicked elements (but keep for keyboard users) */
+*:focus:not(:focus-visible) { outline: none; }
+
+
+/* ── 2. Reduced-motion preference (WCAG 2.3.3) ──────────────────────── */
+/* Users who set "Reduce motion" in their OS get static experience. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ── 3. Skip-link visibility (WCAG 2.4.1) ───────────────────────────── */
+/* Hidden until keyboard-focused, then visible at top-left. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #0f766e;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 0 0 8px 0;
+  font-weight: 600;
+  z-index: 99999;
+}
+.skip-link:focus {
+  left: 0;
+  top: 0;
+}
+
+
+/* ── 4. Tap targets ≥ 44×44px (WCAG 2.5.5) ──────────────────────────── */
+/* Apple HIG and Google MD both recommend 44px+ for touch. */
+@media (max-width: 768px) {
+  a.btn, button, .btn, input[type="submit"], input[type="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  /* Increase spacing on inline footer links to avoid mis-taps */
+  footer a { padding: 6px 0; display: inline-block; }
+}
+
+
+/* ── 5. Image performance defaults ──────────────────────────────────── */
+/* Prevents layout shift (CLS) when images load. */
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+/* Hint for browsers to reserve space (use width/height attrs in HTML) */
+
+
+/* ── 6. Prevent horizontal scroll on mobile ─────────────────────────── */
+html, body { overflow-x: hidden; }
+
+
+/* ── 7. Font rendering optimisations ────────────────────────────────── */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+
+/* ── 8. Print stylesheet (small but improves UX) ────────────────────── */
+@media print {
+  .site-header, .site-footer, .omn-sticky-cta,
+  .hero-cta, nav, .omn-link-cluster { display: none !important; }
+  body { color: #000; background: #fff; font-size: 12pt; }
+  a { color: #000; text-decoration: underline; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 90%; }
+}
+
+
+/* ── 9. Dark mode preference (basic) ────────────────────────────────── */
+/* Optional: respects user's OS dark-mode preference. */
+@media (prefers-color-scheme: dark) {
+  /* Only apply if you've designed for dark mode.
+     Comment out this block until you have dark-mode design tokens. */
+  /* :root {
+    --bg: #111827;
+    --text: #e5e7eb;
+  } */
+}
+
+
+/* ── 10. Selection colour ───────────────────────────────────────────── */
+::selection {
+  background: #0d9488;
+  color: #fff;
+}
+
+
+/* ── 11. Form input accessibility ───────────────────────────────────── */
+input:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: #dc2626;
+}
+input:valid:not(:focus):not(:placeholder-shown) {
+  border-color: #16a34a;
+}
+label { cursor: pointer; }
+
+
+/* ── 12. Reduce CSS bloat note ──────────────────────────────────────── */
+/* You currently load 5 stylesheets:
+     style.css, design-system.css, layout-fixes.css,
+     responsive-design.css, mobile-fixes.css
+   Plus this one would be 6. Long-term: consolidate to 2 max:
+     1. critical.css (above-the-fold, inline in <head>)
+     2. main.css (everything else, loaded async)
+   See AUDIT-FINDINGS.md §5 for the consolidation plan. */

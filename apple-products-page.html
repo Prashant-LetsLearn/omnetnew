@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apple MacBook Reseller Delhi NCR | Air M3 · Pro 14/16 · Mac Mini · iMac | OMNET</title>
-  <meta name="description" content="Apple authorised reseller in Delhi NCR. MacBook Air M3, MacBook Pro 14/16-inch, Mac Mini M2, iMac 24-inch. Business pricing, GST invoice, JAMF/Intune setup. Call +91 89206 03270.">
+  <title>Apple MacBook Reseller Delhi NCR | OMNET</title>
+  <meta name="description" content="Apple authorised reseller in Delhi NCR. MacBook Air M3, MacBook Pro 14/16-inch, Mac Mini M2, iMac 24-inch. Business pricing, GST invoice, JAMF/Intune setup.">
   <meta name="keywords" content="Apple MacBook reseller Delhi, MacBook Air M3 Delhi, MacBook Pro 14 inch Noida, MacBook Pro 16 inch Gurugram, Mac Mini M2 Delhi, iMac 24 inch Delhi, Apple business reseller Noida, MacBook AppleCare Delhi NCR">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="OMNET IT Solutions">
   <link rel="canonical" href="https://www.omnetit.in/apple-macbook-delhi-ncr.html">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Apple MacBook Reseller Delhi NCR | Air M3 · Pro 14/16 · Mac Mini · iMac | OMNET">
+  <meta property="og:title" content="Apple MacBook Reseller Delhi NCR | OMNET">
   <meta property="og:description" content="Apple authorised reseller in Delhi NCR. MacBook Air M3, MacBook Pro 14/16-inch, Mac Mini M2, iMac 24-inch. Business pricing, GST invoice, JAMF/Intune setup. Call +91 89206 03270.">
   <meta property="og:url" content="https://www.omnetit.in/apple-macbook-delhi-ncr.html">
   <meta property="og:image" content="https://www.omnetit.in/og-banner.png">
   <meta property="og:site_name" content="OMNET IT Solutions">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Apple MacBook Reseller Delhi NCR | Air M3 · Pro 14/16 · Mac Mini · iMac | OMNET">
+  <meta name="twitter:title" content="Apple MacBook Reseller Delhi NCR | OMNET">
   <meta name="twitter:description" content="Apple authorised reseller in Delhi NCR. MacBook Air M3, MacBook Pro 14/16-inch, Mac Mini M2, iMac 24-inch. Business pricing, GST invoice, JAMF/Intune setup. Call +91 89206 03270.">
   <meta name="twitter:image" content="https://www.omnetit.in/og-banner.png">
 
@@ -307,6 +307,7 @@
     .cta-strip .line { border:2px solid #fff; color:#fff; }
     @media (max-width: 640px) { .cta-strip { grid-template-columns: 1fr; text-align: center; } .cta-strip .cta-btns { justify-content: center; } }
   </style>
+<link rel="stylesheet" href="a11y-perf.css">
 </head>
 <body>
 
@@ -722,5 +723,81 @@
 <button class="back-to-top" aria-label="Back to top"><i class="ri-arrow-up-line"></i></button>
 
 <script src="fixes.js"></script>
+<!--
+═══════════════════════════════════════════════════════════════════════════
+  PARTIAL: Sticky Mobile CTA Bar
+  Drop this snippet near the closing </body> tag on every page.
+  Contains: Call · WhatsApp · Quote buttons (mobile-only, hidden on desktop).
+  CSS is inline / scoped so no extra stylesheet edit needed.
+═══════════════════════════════════════════════════════════════════════════
+-->
+<style>
+  .omn-sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.06);
+    padding: 8px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+  }
+  .omn-sticky-cta a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 4px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    min-height: 44px;     /* WCAG tap target */
+    transition: transform 0.1s ease;
+  }
+  .omn-sticky-cta a:active { transform: scale(0.97); }
+  .omn-sticky-cta .cta-call    { background: #0d9488; color: #fff; }
+  .omn-sticky-cta .cta-wa      { background: #25D366; color: #fff; }
+  .omn-sticky-cta .cta-quote   { background: #f59e0b; color: #111827; }
+  .omn-sticky-cta i { font-size: 16px; }
+
+  @media (max-width: 768px) {
+    .omn-sticky-cta { display: grid; }
+    /* Add bottom padding to body so content isn't hidden behind the bar */
+    body { padding-bottom: 64px; }
+  }
+</style>
+
+<nav class="omn-sticky-cta" aria-label="Quick contact actions">
+  <a href="tel:+918920603270"
+     class="cta-call"
+     aria-label="Call OMNET IT Solutions"
+     onclick="if(typeof gtag==='function')gtag('event','click',{event_category:'cta',event_label:'sticky_call'});">
+    <i class="ri-phone-fill" aria-hidden="true"></i>
+    <span>Call</span>
+  </a>
+  <a href="https://wa.me/919818391080?text=Hi%2C%20I%20need%20IT%20support%20for%20my%20office.%20Please%20call%20me%20back."
+     class="cta-wa"
+     target="_blank"
+     rel="noopener"
+     aria-label="WhatsApp OMNET IT Solutions"
+     onclick="if(typeof gtag==='function')gtag('event','click',{event_category:'cta',event_label:'sticky_whatsapp'});">
+    <i class="ri-whatsapp-fill" aria-hidden="true"></i>
+    <span>WhatsApp</span>
+  </a>
+  <a href="contact.html#quote"
+     class="cta-quote"
+     aria-label="Request a quote from OMNET IT Solutions"
+     onclick="if(typeof gtag==='function')gtag('event','click',{event_category:'cta',event_label:'sticky_quote'});">
+    <i class="ri-file-text-line" aria-hidden="true"></i>
+    <span>Quote</span>
+  </a>
+</nav>
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+
 </body>
 </html>

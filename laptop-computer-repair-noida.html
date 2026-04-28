@@ -5,9 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Laptop &amp; MacBook Repair in Noida — Same-day | HP, Dell, Lenovo, Apple | OMNET</title>
-<meta name="description" content="Same-day laptop &amp; MacBook repair in Noida (all sectors), Greater Noida, Gurugram &amp; Delhi NCR. Onsite or pickup. HP, Dell, Lenovo, Apple, Acer, ASUS. GST invoice + warranty.">
-<meta name="keywords" content="laptop repair Noida, laptop repair near me Noida, MacBook repair near me, MacBook repair Noida, computer repair Noida, computer repair near me, laptop repair Greater Noida, MacBook repair Delhi NCR, HP laptop repair Noida, Dell laptop repair Noida, Lenovo laptop repair Noida, Apple repair Noida, same day laptop repair Noida, onsite laptop repair Delhi NCR, laptop screen replacement Noida, motherboard repair Noida">
+<title>Laptop &amp; MacBook Repair Noida — Same-Day | OMNET</title>
+<meta name="description" content="Same-day laptop &amp; MacBook repair in Noida (all sectors), Greater Noida, Gurugram &amp; Delhi NCR. Onsite or pickup. HP, Dell, Lenovo, Apple, Acer, ASUS.">
+<meta name="keywords" content="laptop repair Noida, laptop repair near me Noida, MacBook repair near me, MacBook repair Noida, computer repair Noida, computer repair near me, laptop repair Greater Noida, MacBook repair Delhi NCR, HP laptop repair Noida, Dell laptop repair Noida">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="author" content="OMNET IT Solutions">
 
@@ -19,7 +19,7 @@
 <link rel="canonical" href="https://www.omnetit.in/laptop-macbook-repair-noida.html">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Laptop &amp; MacBook Repair in Noida — Same-day | HP, Dell, Lenovo, Apple | OMNET">
+<meta property="og:title" content="Laptop &amp; MacBook Repair Noida — Same-Day | OMNET">
 <meta property="og:description" content="Same-day laptop &amp; MacBook repair in Noida (all sectors), Greater Noida, Gurugram &amp; Delhi NCR. Onsite or pickup. HP, Dell, Lenovo, Apple, Acer, ASUS. GST invoice + warranty.">
 <meta property="og:url" content="https://www.omnetit.in/laptop-macbook-repair-noida.html">
 <meta property="og:image" content="https://www.omnetit.in/og-banner.png">
@@ -30,7 +30,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@omnetit">
-<meta name="twitter:title" content="Laptop &amp; MacBook Repair in Noida — Same-day | HP, Dell, Lenovo, Apple | OMNET">
+<meta name="twitter:title" content="Laptop &amp; MacBook Repair Noida — Same-Day | OMNET">
 <meta name="twitter:description" content="Same-day laptop &amp; MacBook repair in Noida (all sectors), Greater Noida, Gurugram &amp; Delhi NCR. Onsite or pickup. HP, Dell, Lenovo, Apple, Acer, ASUS. GST invoice + warranty.">
 <meta name="twitter:image" content="https://www.omnetit.in/og-banner.png">
 
@@ -255,6 +255,7 @@
 .site-header { top: 36px !important; }
 @media (max-width: 768px) { .site-header { top: 32px !important; } }
 </style>
+<link rel="stylesheet" href="a11y-perf.css">
 </head>
 <body>
 
@@ -691,5 +692,81 @@
 <button class="back-to-top" aria-label="Back to top"><i class="ri-arrow-up-line"></i></button>
 
 <script src="fixes.js"></script>
+<!--
+═══════════════════════════════════════════════════════════════════════════
+  PARTIAL: Sticky Mobile CTA Bar
+  Drop this snippet near the closing </body> tag on every page.
+  Contains: Call · WhatsApp · Quote buttons (mobile-only, hidden on desktop).
+  CSS is inline / scoped so no extra stylesheet edit needed.
+═══════════════════════════════════════════════════════════════════════════
+-->
+<style>
+  .omn-sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.06);
+    padding: 8px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+  }
+  .omn-sticky-cta a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 4px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    min-height: 44px;     /* WCAG tap target */
+    transition: transform 0.1s ease;
+  }
+  .omn-sticky-cta a:active { transform: scale(0.97); }
+  .omn-sticky-cta .cta-call    { background: #0d9488; color: #fff; }
+  .omn-sticky-cta .cta-wa      { background: #25D366; color: #fff; }
+  .omn-sticky-cta .cta-quote   { background: #f59e0b; color: #111827; }
+  .omn-sticky-cta i { font-size: 16px; }
+
+  @media (max-width: 768px) {
+    .omn-sticky-cta { display: grid; }
+    /* Add bottom padding to body so content isn't hidden behind the bar */
+    body { padding-bottom: 64px; }
+  }
+</style>
+
+<nav class="omn-sticky-cta" aria-label="Quick contact actions">
+  <a href="tel:+918920603270"
+     class="cta-call"
+     aria-label="Call OMNET IT Solutions"
+     onclick="if(typeof gtag==='function')gtag('event','click',{event_category:'cta',event_label:'sticky_call'});">
+    <i class="ri-phone-fill" aria-hidden="true"></i>
+    <span>Call</span>
+  </a>
+  <a href="https://wa.me/919818391080?text=Hi%2C%20I%20need%20IT%20support%20for%20my%20office.%20Please%20call%20me%20back."
+     class="cta-wa"
+     target="_blank"
+     rel="noopener"
+     aria-label="WhatsApp OMNET IT Solutions"
+     onclick="if(typeof gtag==='function')gtag('event','click',{event_category:'cta',event_label:'sticky_whatsapp'});">
+    <i class="ri-whatsapp-fill" aria-hidden="true"></i>
+    <span>WhatsApp</span>
+  </a>
+  <a href="contact.html#quote"
+     class="cta-quote"
+     aria-label="Request a quote from OMNET IT Solutions"
+     onclick="if(typeof gtag==='function')gtag('event','click',{event_category:'cta',event_label:'sticky_quote'});">
+    <i class="ri-file-text-line" aria-hidden="true"></i>
+    <span>Quote</span>
+  </a>
+</nav>
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+
 </body>
 </html>
