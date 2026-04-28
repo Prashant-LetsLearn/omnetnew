@@ -1,48 +1,39 @@
-# How to Upload to GitHub — Final Version (Fixed)
+# How to Upload to GitHub — Sticky Bar Fix
 
-This zip contains the **complete website** with the sticky bar bug fixed.
+## What was wrong
 
-## What's fixed in this version
+The bottom strip you saw on desktop (showing `+91 89206 03270` and a WhatsApp icon)
+was the site's **existing** sticky CTA bar (`omnet-sticky-bar`), which has its
+hiding CSS in `mobile-redesign.css` and `omnet-improvements.css` — but those files
+are NOT loaded by the HTML pages. So the bar leaked onto desktop.
 
-✅ **Sticky mobile CTA bar — desktop visibility bug FIXED**
-   - Was showing on desktop because of CSS conflicts
-   - Now uses inline SVG icons (no font CDN dependency)
-   - Strict desktop hiding with `!important` rules
-   - Will only show on mobile screens (≤ 768px wide)
+## What I fixed
 
-✅ All previous fixes still in place:
-   - 78 page titles tightened to ≤ 60 characters
-   - 23 pages with keyword stuffing cleaned up
-   - 29 meta descriptions trimmed
-   - Accessibility CSS on every page
+1. **Removed my redundant duplicate CTA bar** from all 90 pages
+   (the one I added earlier was a duplicate — the site already had its own)
+2. **Added CSS to `a11y-perf.css`** that:
+   - Hides the existing `.omnet-sticky-bar` on desktop with `!important`
+   - Re-implements the proper mobile styling so it shows correctly on phones
 
-## Upload — GitHub Web (easiest)
+So now:
+- **Desktop:** No sticky bar visible at the bottom ✓
+- **Mobile:** The site's existing sticky bar shows properly with phone + WhatsApp ✓
+
+## Upload — GitHub Web
 
 1. **Extract this zip** on your computer
 2. **Go to your repo** on GitHub.com
 3. Click **"Add file" → "Upload files"**
 4. **Select ALL files** from the extracted folder → drag into upload area
-5. Commit message: `Fix: sticky mobile CTA visible on desktop`
-6. Choose **"Create a new branch"** → name: `seo-sticky-cta-fix`
+5. Commit message: `Fix: hide existing sticky bar on desktop, remove duplicate`
+6. Choose **"Create a new branch"** → name: `fix-sticky-bar`
 7. **"Propose changes"** → **"Create pull request"** → **"Merge"**
 
-Site updates in 1–5 minutes.
+## Verify after upload
 
-## After upload — verify the fix
+1. **Open the site on your laptop/desktop** — bottom of page should be CLEAN
+   (no phone number bar) ✓
+2. **Open the site on your phone** (or resize browser to <768px wide)
+   — Sticky bar appears with phone icon + "+91 89206 03270" + WhatsApp icon ✓
 
-1. **Open your site on DESKTOP** (laptop/PC)
-   → No sticky bar should be visible at the bottom ✓
-2. **Open your site on MOBILE** (or resize browser to <768px wide)
-   → Three-button sticky bar appears: Call · WhatsApp · Quote ✓
-3. **The icons should render** as crisp SVG (phone, WhatsApp, document)
-
-## What changed technically
-
-- `partial-sticky-mobile-cta.html` — rewritten with:
-  - Inline SVG icons (always render, no CDN dependency)
-  - Unique ID `#omn-mobile-cta-bar` to avoid CSS conflicts
-  - `display: none !important` on default state
-  - `display: grid !important` only inside `@media (max-width: 768px)`
-- This new partial was injected into all 90 site pages, replacing the old one
-
-That's it. Upload, merge, verify on desktop and mobile.
+That's it. The bottom-of-desktop white strip bug is fixed.
