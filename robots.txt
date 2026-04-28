@@ -3,7 +3,11 @@
 # https://www.omnetit.in/robots.txt
 # ════════════════════════════════════════════════════════════════════════
 # This file lives at the site root and tells crawlers what they may index.
-# Replace your existing /robots.txt with this version.
+# Last updated: 2026-04-28
+#
+# Key change vs previous version: AI search & assistant crawlers are now
+# ALLOWED. Without this, omnetit.in is invisible to ChatGPT browsing,
+# Perplexity, Claude search, and Gemini grounding.
 # ════════════════════════════════════════════════════════════════════════
 
 # ── Default rules for all crawlers ────────────────────────────────────
@@ -21,6 +25,10 @@ Disallow: /.github/
 Disallow: /og-banner.html
 Disallow: /og-banner-instructions.txt
 Disallow: /omnet-mobile-redesign.html
+Disallow: /schema-markup.html
+Disallow: /seo-meta-tags.html
+Disallow: /security-fixes.html
+Disallow: /faq-section.html
 Disallow: /google-ads-keywords.csv
 
 # Don't index thank-you / order-success URLs (no SEO value, fragments only)
@@ -33,7 +41,7 @@ Disallow: /*&utm_*
 Crawl-delay: 1
 
 
-# ── Per-bot rules (override the wildcard above) ───────────────────────
+# ── Major search engines ──────────────────────────────────────────────
 
 # Google: full speed, index everything
 User-agent: Googlebot
@@ -43,6 +51,10 @@ Disallow: /admin/
 
 # Google Images
 User-agent: Googlebot-Image
+Allow: /
+
+# Google Extended — required for Gemini grounding & SGE features
+User-agent: Google-Extended
 Allow: /
 
 # Bing
@@ -58,38 +70,77 @@ Allow: /
 User-agent: Applebot
 Allow: /
 
+# Apple Extended — required for Apple Intelligence summaries
+User-agent: Applebot-Extended
+Allow: /
+
 # Yandex
 User-agent: YandexBot
 Allow: /
 Crawl-delay: 2
 
 
-# ── Block aggressive scrapers, "AI training" crawlers, and SEO spam bots ──
-# Uncomment any line below if you want to permit that crawler.
+# ── AI search & assistant crawlers — ALLOW ────────────────────────────
+# These crawlers power ChatGPT browsing, Perplexity, Claude search, etc.
+# Allowing them is required for AI-search visibility.
+#
+# NOTE: "GPTBot", "ClaudeBot", "anthropic-ai" and "CCBot" can also be
+# used for model TRAINING (not just retrieval). If you want to be cited
+# in AI search results but NOT have your content used for training,
+# block GPTBot/ClaudeBot/anthropic-ai/CCBot below and keep only the
+# retrieval bots (OAI-SearchBot, ChatGPT-User, PerplexityBot,
+# Perplexity-User, Google-Extended, Applebot-Extended).
+# ─────────────────────────────────────────────────────────────────────
 
+# OpenAI — search index for ChatGPT search
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI — live fetch when a user asks ChatGPT a question
+User-agent: ChatGPT-User
+Allow: /
+
+# OpenAI — training crawler (uncomment Disallow line if you want to opt out)
 User-agent: GPTBot
-Disallow: /
+Allow: /
+# Disallow: /
 
+# Perplexity — search index
+User-agent: PerplexityBot
+Allow: /
+
+# Perplexity — live fetch
+User-agent: Perplexity-User
+Allow: /
+
+# Anthropic — Claude search & user fetch
 User-agent: ClaudeBot
-Disallow: /
+Allow: /
 
-User-agent: CCBot
-Disallow: /
+User-agent: Claude-Web
+Allow: /
 
 User-agent: anthropic-ai
-Disallow: /
+Allow: /
 
-User-agent: Google-Extended
-Disallow: /
+# Common Crawl — used by many AI products
+User-agent: CCBot
+Allow: /
 
-User-agent: PerplexityBot
-Disallow: /
+# Meta AI
+User-agent: FacebookBot
+Allow: /
 
-User-agent: Bytespider
-Disallow: /
+User-agent: Meta-ExternalAgent
+Allow: /
 
-User-agent: Amazonbot
-Disallow: /
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+
+# ── Block aggressive scrapers and SEO spam bots ───────────────────────
+# These don't drive search visibility — they only hammer your server.
 
 User-agent: AhrefsBot
 Disallow: /
@@ -107,6 +158,12 @@ User-agent: PetalBot
 Disallow: /
 
 User-agent: BLEXBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
 Disallow: /
 
 
