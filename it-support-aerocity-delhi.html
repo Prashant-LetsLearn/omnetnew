@@ -645,74 +645,89 @@
   CSS is inline / scoped so no extra stylesheet edit needed.
 ═══════════════════════════════════════════════════════════════════════════
 -->
+<!--
+═══════════════════════════════════════════════════════════════════════════
+  OMNET — Sticky Mobile CTA Bar v2 (FIXED)
+  Uses inline SVG icons (no CDN dependency) and strict desktop hiding.
+═══════════════════════════════════════════════════════════════════════════
+-->
 <style>
-  .omn-sticky-cta {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    background: #ffffff;
-    border-top: 1px solid #e5e7eb;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.06);
-    padding: 8px;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 6px;
-  }
-  .omn-sticky-cta a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    padding: 12px 4px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-    min-height: 44px;     /* WCAG tap target */
-    transition: transform 0.1s ease;
-  }
-  .omn-sticky-cta a:active { transform: scale(0.97); }
-  .omn-sticky-cta .cta-call    { background: #0d9488; color: #fff; }
-  .omn-sticky-cta .cta-wa      { background: #25D366; color: #fff; }
-  .omn-sticky-cta .cta-quote   { background: #f59e0b; color: #111827; }
-  .omn-sticky-cta i { font-size: 16px; }
+  /* Hide on desktop with maximum specificity to beat any inherited styles */
+  div#omn-mobile-cta-bar { display: none !important; }
 
+  /* Show ONLY on small screens */
   @media (max-width: 768px) {
-    .omn-sticky-cta { display: grid; }
-    /* Add bottom padding to body so content isn't hidden behind the bar */
-    body { padding-bottom: 64px; }
+    div#omn-mobile-cta-bar {
+      display: grid !important;
+      position: fixed !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      z-index: 999999 !important;
+      background: #ffffff !important;
+      border-top: 1px solid #e5e7eb !important;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08) !important;
+      padding: 8px !important;
+      grid-template-columns: 1fr 1fr 1fr !important;
+      gap: 6px !important;
+      box-sizing: border-box !important;
+      margin: 0 !important;
+    }
+    div#omn-mobile-cta-bar a {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 6px !important;
+      padding: 12px 4px !important;
+      border-radius: 8px !important;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      text-decoration: none !important;
+      min-height: 44px !important;
+      box-sizing: border-box !important;
+      line-height: 1 !important;
+    }
+    div#omn-mobile-cta-bar a:active { transform: scale(0.97); }
+    div#omn-mobile-cta-bar .omn-c1 { background: #0d9488 !important; color: #ffffff !important; }
+    div#omn-mobile-cta-bar .omn-c2 { background: #25D366 !important; color: #ffffff !important; }
+    div#omn-mobile-cta-bar .omn-c3 { background: #f59e0b !important; color: #111827 !important; }
+    div#omn-mobile-cta-bar svg {
+      width: 18px !important;
+      height: 18px !important;
+      flex-shrink: 0 !important;
+      fill: currentColor !important;
+    }
+    /* Push body content up so it isn't hidden behind the bar */
+    body { padding-bottom: 68px !important; }
   }
 </style>
 
-<nav class="omn-sticky-cta" aria-label="Quick contact actions">
-  <a href="tel:+918920603270"
-     class="cta-call"
-     aria-label="Call OMNET IT Solutions"
+<div id="omn-mobile-cta-bar" role="navigation" aria-label="Quick contact">
+  <a href="tel:+918920603270" class="omn-c1" aria-label="Call OMNET IT Solutions"
      onclick="if(typeof gtag==='function')gtag('event','click',{event_category:'cta',event_label:'sticky_call'});">
-    <i class="ri-phone-fill" aria-hidden="true"></i>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+    </svg>
     <span>Call</span>
   </a>
   <a href="https://wa.me/919818391080?text=Hi%2C%20I%20need%20IT%20support%20for%20my%20office.%20Please%20call%20me%20back."
-     class="cta-wa"
-     target="_blank"
-     rel="noopener"
-     aria-label="WhatsApp OMNET IT Solutions"
+     class="omn-c2" target="_blank" rel="noopener" aria-label="WhatsApp OMNET IT Solutions"
      onclick="if(typeof gtag==='function')gtag('event','click',{event_category:'cta',event_label:'sticky_whatsapp'});">
-    <i class="ri-whatsapp-fill" aria-hidden="true"></i>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.301-.345.451-.523.146-.181.194-.301.297-.496.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.195 2.105 3.195 5.1 4.485.714.3 1.27.48 1.704.629.714.227 1.365.195 1.88.121.574-.091 1.767-.721 2.016-1.426.255-.705.255-1.29.18-1.425-.074-.135-.27-.21-.57-.345m-5.446 7.443h-.016c-1.78 0-3.535-.48-5.064-1.38l-.36-.214-3.75.975 1.005-3.645-.239-.375a9.869 9.869 0 0 1-1.516-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.892 6.99c-.002 5.45-4.437 9.885-9.887 9.885M20.52 3.449C18.24 1.245 15.24.022 12.045.022 5.463.022.103 5.382.101 11.971c0 2.096.546 4.142 1.588 5.945L0 24l6.335-1.652a11.882 11.882 0 0 0 5.71 1.447h.006c6.585 0 11.946-5.358 11.949-11.945 0-3.196-1.24-6.196-3.495-8.401"/>
+    </svg>
     <span>WhatsApp</span>
   </a>
-  <a href="contact.html#quote"
-     class="cta-quote"
-     aria-label="Request a quote from OMNET IT Solutions"
+  <a href="contact.html" class="omn-c3" aria-label="Request a quote from OMNET IT Solutions"
      onclick="if(typeof gtag==='function')gtag('event','click',{event_category:'cta',event_label:'sticky_quote'});">
-    <i class="ri-file-text-line" aria-hidden="true"></i>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+    </svg>
     <span>Quote</span>
   </a>
-</nav>
+</div>
 <!-- ═══════════════════════════════════════════════════════════════════════ -->
-
 </body>
 on every page -->
 <!-- ═══ CALLBACK MODAL (global) ═══ -->
