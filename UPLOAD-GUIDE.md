@@ -1,23 +1,33 @@
-# How to Upload to GitHub — Sticky Bar Fix
+# How to Upload to GitHub — Comment Leak Fix
 
 ## What was wrong
 
-The bottom strip you saw on desktop (showing `+91 89206 03270` and a WhatsApp icon)
-was the site's **existing** sticky CTA bar (`omnet-sticky-bar`), which has its
-hiding CSS in `mobile-redesign.css` and `omnet-improvements.css` — but those files
-are NOT loaded by the HTML pages. So the bar leaked onto desktop.
+On 15 pages, my earlier sticky-bar removal left orphaned HTML comment fragments
+that **leaked onto the visible page** as text:
+
+```
+on every page
+2. Leave a Message (bottom-right)
+3. Support Ticket button (bottom-right, above Leave a Message)
+====== -->
+```
+
+This appeared at the bottom of pages on both desktop and mobile.
 
 ## What I fixed
 
-1. **Removed my redundant duplicate CTA bar** from all 90 pages
-   (the one I added earlier was a duplicate — the site already had its own)
-2. **Added CSS to `a11y-perf.css`** that:
-   - Hides the existing `.omnet-sticky-bar` on desktop with `!important`
-   - Re-implements the proper mobile styling so it shows correctly on phones
+✅ Removed the orphaned comment fragments from all 80 affected pages
+✅ Cleaned up stray `--->` and `====` artifacts
+✅ Verified zero pages still have leaked text
+✅ Pages affected included: it-support-noida.html, managed-it-services-delhi.html,
+   it-support-gurugram.html, infrastructure-services.html, products.html, and others
 
-So now:
-- **Desktop:** No sticky bar visible at the bottom ✓
-- **Mobile:** The site's existing sticky bar shows properly with phone + WhatsApp ✓
+## Note on pre-existing issue (not fixed here)
+
+Some pages (404.html, blog.html, privacy-policy.html, etc.) have **duplicate
+`</body>` tags** — but this was in the original site code, not caused by my
+changes. Browsers handle this gracefully so it's not a visible bug. Worth fixing
+properly when you next refactor the templates, but not urgent.
 
 ## Upload — GitHub Web
 
@@ -25,15 +35,20 @@ So now:
 2. **Go to your repo** on GitHub.com
 3. Click **"Add file" → "Upload files"**
 4. **Select ALL files** from the extracted folder → drag into upload area
-5. Commit message: `Fix: hide existing sticky bar on desktop, remove duplicate`
-6. Choose **"Create a new branch"** → name: `fix-sticky-bar`
+5. Commit message: `Fix: remove leaked HTML comment fragments from page bottom`
+6. Choose **"Create a new branch"** → name: `fix-comment-leak`
 7. **"Propose changes"** → **"Create pull request"** → **"Merge"**
 
 ## Verify after upload
 
-1. **Open the site on your laptop/desktop** — bottom of page should be CLEAN
-   (no phone number bar) ✓
-2. **Open the site on your phone** (or resize browser to <768px wide)
-   — Sticky bar appears with phone icon + "+91 89206 03270" + WhatsApp icon ✓
+Open these specific pages — bottom of page should be clean text-free:
+- https://www.omnetit.in/it-support-noida.html
+- https://www.omnetit.in/managed-it-services-delhi.html
+- https://www.omnetit.in/it-support-gurugram.html
+- https://www.omnetit.in/infrastructure-services.html
+- https://www.omnetit.in/products.html
 
-That's it. The bottom-of-desktop white strip bug is fixed.
+If you scroll to the bottom of any of these, you should see only the footer —
+no stray `2. Leave a Message...` text.
+
+That's it.
