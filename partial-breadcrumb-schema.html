@@ -1,0 +1,64 @@
+<!--
+═══════════════════════════════════════════════════════════════════════════
+  PARTIAL: BreadcrumbList Schema
+  Add to <head> of every interior page (NOT homepage).
+  REPLACE the placeholders before pasting:
+    {{CURRENT_PAGE_URL}}     full URL of this page
+    {{CURRENT_PAGE_TITLE}}   short title shown in breadcrumb
+    {{CATEGORY_NAME}}        e.g. "Services" / "Locations" / "Products"
+    {{CATEGORY_URL}}         e.g. https://www.omnetit.in/services.html
+
+  Example for /it-support-noida.html:
+    Home  ›  Locations  ›  IT Support Noida
+═══════════════════════════════════════════════════════════════════════════
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.omnetit.in/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{{CATEGORY_NAME}}",
+      "item": "{{CATEGORY_URL}}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{CURRENT_PAGE_TITLE}}",
+      "item": "{{CURRENT_PAGE_URL}}"
+    }
+  ]
+}
+</script>
+
+<!--
+═══════════════════════════════════════════════════════════════════════════
+  Quick reference — category mappings
+═══════════════════════════════════════════════════════════════════════════
+
+  PAGE PATTERN                  CATEGORY_NAME       CATEGORY_URL
+  ───────────────────────────── ─────────────────── ───────────────────────────────────────────
+  it-support-*.html             Locations            https://www.omnetit.in/it-support.html
+  managed-it-services-*.html    Services             https://www.omnetit.in/managed-services.html
+  *-repair-*.html               Repair Services      https://www.omnetit.in/repair-services.html
+  cloud-*.html                  Cloud Services       https://www.omnetit.in/cloud-services.html
+  *-security.html               Cybersecurity        https://www.omnetit.in/it-security.html
+  *-products-page.html          Products             https://www.omnetit.in/products.html
+  microsoft-365-*.html          Software             https://www.omnetit.in/products.html
+  google-workspace-*.html       Software             https://www.omnetit.in/products.html
+  *-amc-*.html                  AMC Services         https://www.omnetit.in/computer-amc-services.html
+  managed-*.html                Managed Services     https://www.omnetit.in/managed-services.html
+  *-rental.html                 Hardware Rental      https://www.omnetit.in/it-hardware-rental.html
+  blog-* / *-tips.html          Blog                 https://www.omnetit.in/blog.html
+  privacy-* / terms-*           Legal                https://www.omnetit.in/
+
+═══════════════════════════════════════════════════════════════════════════
+-->
