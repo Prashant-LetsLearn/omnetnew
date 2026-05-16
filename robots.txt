@@ -2,19 +2,15 @@
 # OMNET IT Solutions — robots.txt
 # https://www.omnetit.in/robots.txt
 # ════════════════════════════════════════════════════════════════════════
-# This file lives at the site root and tells crawlers what they may index.
-# Last updated: 2026-04-28
-#
-# Key change vs previous version: AI search & assistant crawlers are now
-# ALLOWED. Without this, omnetit.in is invisible to ChatGPT browsing,
-# Perplexity, Claude search, and Gemini grounding.
+# This file tells crawlers what they may index.
+# Last updated: 2026-05-16
 # ════════════════════════════════════════════════════════════════════════
 
 # ── Default rules for all crawlers ────────────────────────────────────
 User-agent: *
 Allow: /
 
-# Don't crawl admin/utility paths or scratch files
+# Don't crawl admin/utility/dev paths
 Disallow: /cdn-cgi/
 Disallow: /admin/
 Disallow: /private/
@@ -22,14 +18,7 @@ Disallow: /tmp/
 Disallow: /node_modules/
 Disallow: /.git/
 Disallow: /.github/
-Disallow: /og-banner.html
-Disallow: /og-banner-instructions.txt
-Disallow: /omnet-mobile-redesign.html
-Disallow: /schema-markup.html
-Disallow: /seo-meta-tags.html
-Disallow: /security-fixes.html
-Disallow: /faq-section.html
-Disallow: /google-ads-keywords.csv
+Disallow: /docs/
 
 # Don't index thank-you / order-success URLs (no SEO value, fragments only)
 Disallow: /*?utm_*
@@ -48,6 +37,7 @@ User-agent: Googlebot
 Allow: /
 Disallow: /cdn-cgi/
 Disallow: /admin/
+Disallow: /docs/
 
 # Google Images
 User-agent: Googlebot-Image
@@ -81,35 +71,24 @@ Crawl-delay: 2
 
 
 # ── AI search & assistant crawlers — ALLOW ────────────────────────────
-# These crawlers power ChatGPT browsing, Perplexity, Claude search, etc.
+# These power ChatGPT browsing, Perplexity, Claude search, Gemini grounding, etc.
 # Allowing them is required for AI-search visibility.
-#
-# NOTE: "GPTBot", "ClaudeBot", "anthropic-ai" and "CCBot" can also be
-# used for model TRAINING (not just retrieval). If you want to be cited
-# in AI search results but NOT have your content used for training,
-# block GPTBot/ClaudeBot/anthropic-ai/CCBot below and keep only the
-# retrieval bots (OAI-SearchBot, ChatGPT-User, PerplexityBot,
-# Perplexity-User, Google-Extended, Applebot-Extended).
 # ─────────────────────────────────────────────────────────────────────
 
-# OpenAI — search index for ChatGPT search
+# OpenAI
 User-agent: OAI-SearchBot
 Allow: /
 
-# OpenAI — live fetch when a user asks ChatGPT a question
 User-agent: ChatGPT-User
 Allow: /
 
-# OpenAI — training crawler (uncomment Disallow line if you want to opt out)
 User-agent: GPTBot
 Allow: /
-# Disallow: /
 
-# Perplexity — search index
+# Perplexity
 User-agent: PerplexityBot
 Allow: /
 
-# Perplexity — live fetch
 User-agent: Perplexity-User
 Allow: /
 
@@ -140,7 +119,7 @@ Allow: /
 
 
 # ── Block aggressive scrapers and SEO spam bots ───────────────────────
-# These don't drive search visibility — they only hammer your server.
+# These don't drive search visibility — they only hammer the server.
 
 User-agent: AhrefsBot
 Disallow: /
