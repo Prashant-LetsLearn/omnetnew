@@ -572,6 +572,113 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
   </script>
 </section>
 
+<!-- ═══ FEATURED SERVICES (6-card) — moved up so visitors see new offerings without scrolling deep ═══ -->
+<section class="x-section" aria-labelledby="featured-h2" style="background:linear-gradient(180deg,#f8fafc 0%,#fff 100%);padding-top:48px;padding-bottom:48px">
+  <div class="container">
+    <div class="x-section-header" style="margin-bottom:1.5rem">
+      <span class="badge" style="background:#ccfbf1;color:#0f766e">✨ New Services</span>
+      <h2 id="featured-h2" style="margin-top:.5rem">Software, Web &amp; Email — built for businesses Pan India &amp; Globally</h2>
+      <p class="intro">Beyond core IT support: we build the software, websites and apps your business runs on, and we set up &amp; secure the email platforms your team uses every day.</p>
+    </div>
+    <style>
+      .feat6-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.1rem;margin-top:1.2rem}
+      @media(min-width:1024px){.feat6-grid{grid-template-columns:repeat(3,1fr)}}
+      .feat6-card{background:#fff;border:1px solid #e2e8f0;border-radius:1rem;padding:1.6rem 1.4rem;text-decoration:none;display:flex;flex-direction:column;transition:all .25s;position:relative;overflow:hidden}
+      .feat6-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0d9488,#14b8a6,#0891b2);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+      .feat6-card:hover{box-shadow:0 14px 36px rgba(13,148,136,.16);border-color:#5eead4;transform:translateY(-5px)}
+      .feat6-card:hover::before{transform:scaleX(1)}
+      .feat6-card .ico{width:3rem;height:3rem;border-radius:.75rem;background:linear-gradient(135deg,#ccfbf1,#a7f3d0);display:flex;align-items:center;justify-content:center;font-size:1.45rem;color:#0d7377;margin-bottom:1rem;transition:transform .25s}
+      .feat6-card:hover .ico{transform:scale(1.08) rotate(-3deg)}
+      .feat6-card h3{font-size:1.05rem;font-weight:800;color:#0f172a;margin-bottom:.4rem;line-height:1.3}
+      .feat6-card p{font-size:.875rem;color:#475569;line-height:1.6;margin-bottom:1rem;flex-grow:1}
+      .feat6-card .arrow{color:#0d9488;font-weight:700;font-size:.85rem;display:inline-flex;align-items:center;gap:.3rem;align-self:flex-start;transition:transform .25s}
+      .feat6-card:hover .arrow{transform:translateX(5px)}
+      .feat6-see-all{text-align:center;margin-top:2rem}
+      .feat6-see-all a{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:50px;background:linear-gradient(135deg,#0d9488,#0891b2);color:#fff;text-decoration:none;font-weight:700;font-size:.95rem;transition:all .2s}
+      .feat6-see-all a:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(13,148,136,.32)}
+    </style>
+    <div class="feat6-grid">
+      <a href="custom-software.html" class="feat6-card">
+        <div class="ico"><i class="ri-code-box-line"></i></div>
+        <h3>Custom Software Development</h3>
+        <p>Tailor-made software solutions built around your business workflows — web apps, portals, ERP, CRM and automation.</p>
+        <span class="arrow">Learn More <i class="ri-arrow-right-line"></i></span>
+      </a>
+      <a href="website-design.html" class="feat6-card">
+        <div class="ico"><i class="ri-layout-4-line"></i></div>
+        <h3>Website Designing &amp; Development</h3>
+        <p>Professional, responsive, SEO-friendly websites for businesses of every size — corporate, landing, e-commerce.</p>
+        <span class="arrow">Learn More <i class="ri-arrow-right-line"></i></span>
+      </a>
+      <a href="app-development.html" class="feat6-card">
+        <div class="ico"><i class="ri-smartphone-line"></i></div>
+        <h3>Mobile App Development</h3>
+        <p>Android &amp; iOS apps designed for performance, usability and growth — native or cross-platform.</p>
+        <span class="arrow">Learn More <i class="ri-arrow-right-line"></i></span>
+      </a>
+      <a href="email-licensing.html" class="feat6-card">
+        <div class="ico"><i class="ri-key-2-line"></i></div>
+        <h3>Email Licensing</h3>
+        <p>Authorised licensing for Google Workspace, Microsoft 365, Zoho Mail &amp; Exchange — single GST invoice, volume discounts.</p>
+        <span class="arrow">Learn More <i class="ri-arrow-right-line"></i></span>
+      </a>
+      <a href="email-migration.html" class="feat6-card">
+        <div class="ico"><i class="ri-mail-send-line"></i></div>
+        <h3>Email Migration</h3>
+        <p>Zero-downtime migration between Google Workspace, Microsoft 365, Zoho, cPanel — mail, calendar, contacts preserved.</p>
+        <span class="arrow">Learn More <i class="ri-arrow-right-line"></i></span>
+      </a>
+      <a href="professional-email.html" class="feat6-card">
+        <div class="ico"><i class="ri-shield-keyhole-line"></i></div>
+        <h3>Email Security &amp; Support</h3>
+        <p>Custom domain email with DKIM/SPF/DMARC, anti-spam, anti-phishing protection &amp; 24×7 expert support.</p>
+        <span class="arrow">Learn More <i class="ri-arrow-right-line"></i></span>
+      </a>
+    </div>
+    <div class="feat6-see-all">
+      <a href="services.html"><i class="ri-service-line"></i> See All Services — Google Workspace, Microsoft 365, Zoho &amp; more</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ENGAGEMENT / 2×2 GRID — moved up to sit alongside priority services ═══ -->
+<section class="x-section alt x-em-section" aria-labelledby="engagement-h2">
+  <div class="container">
+    <div class="x-section-header">
+      <span class="badge">How To Engage</span>
+      <h2 id="engagement-h2">Four ways to work with OMNET — pick the model that matches your scale</h2>
+      <p class="intro">Every business consumes IT differently. Pick the model and we'll size it for you during the free assessment.</p>
+    </div>
+    <div class="x-em-grid">
+      <article class="x-em-card highlight">
+        <span class="em-tag">Most Popular</span>
+        <h3><i class="ri-coupon-3-line" style="color:#0d9488"></i> Fixed-Cost AMC</h3>
+        <div class="ideal">20-100 seat offices</div>
+        <p>One fixed monthly fee. Unlimited helpdesk tickets. Defined onsite visits. 24×7 monitoring. Monthly reporting. Dedicated account manager.</p>
+        <a href="fixed-cost-it-support.html" class="em-cta">Learn more <i class="ri-arrow-right-line"></i></a>
+      </article>
+      <article class="x-em-card">
+        <h3><i class="ri-wallet-3-line" style="color:#0d9488"></i> Prepaid Support Packs</h3>
+        <div class="ideal">Variable workload</div>
+        <p>Buy a block of hours or tickets upfront — use them across the year. No monthly commitment. GST invoiced.</p>
+        <a href="prepaid-it-support.html" class="em-cta">Learn more <i class="ri-arrow-right-line"></i></a>
+      </article>
+      <article class="x-em-card">
+        <h3><i class="ri-flashlight-line" style="color:#0d9488"></i> Casual (Pay-Per-Ticket)</h3>
+        <div class="ideal">Freelancers, startups</div>
+        <p>No contract. GST invoice per job. Remote or onsite. Same or next-day response.</p>
+        <a href="casual-it-support.html" class="em-cta">Learn more <i class="ri-arrow-right-line"></i></a>
+      </article>
+      <article class="x-em-card">
+        <h3><i class="ri-shield-star-line" style="color:#0d9488"></i> Fully Managed IT</h3>
+        <div class="ideal">100+ seat organisations</div>
+        <p>End-to-end ownership — strategy, operations, security, cloud, vendor management. vCIO advisory. Custom SLA. Dedicated team.</p>
+        <a href="managed-services.html" class="em-cta">Book Discovery Call <i class="ri-arrow-right-line"></i></a>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ SERVICES (priority-ordered) ═══ -->
 <section class="x-section" aria-labelledby="services-h2">
   <div class="container">
@@ -640,123 +747,6 @@ function cbHide(){var m=document.getElementById('cbModal'),o=document.getElement
       <a href="services.html" style="display:inline-flex;align-items:center;gap:6px;padding:12px 26px;border-radius:50px;background:linear-gradient(135deg,#0d9488,#0891b2);color:#fff;text-decoration:none;font-weight:700;">
         <i class="ri-service-line"></i> See All Services
       </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ SOFTWARE, CLOUD & EMAIL SERVICES ═══ -->
-<section class="x-section alt" aria-labelledby="software-h2" style="background:#f8fafc">
-  <div class="container">
-    <div class="x-section-header">
-      <span class="badge">Software · Cloud · Email</span>
-      <h2 id="software-h2">Software, web, and cloud — built for businesses across India &amp; globally</h2>
-      <p class="intro">Beyond infrastructure: we build the software, websites, and apps your business runs on, and we deploy the cloud &amp; email platforms your team works in every day.</p>
-    </div>
-    <style>
-      .new-svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.25rem;margin-top:1rem}
-      .new-svc-card{background:#fff;border:1px solid #e2e8f0;border-radius:1rem;padding:1.6rem 1.4rem;text-decoration:none;display:flex;flex-direction:column;transition:all .25s;position:relative;overflow:hidden}
-      .new-svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0d9488,#14b8a6);transform:scaleX(0);transform-origin:left;transition:transform .3s}
-      .new-svc-card:hover{box-shadow:0 12px 32px rgba(13,148,136,.14);border-color:#5eead4;transform:translateY(-4px)}
-      .new-svc-card:hover::before{transform:scaleX(1)}
-      .new-svc-card .ico{width:2.8rem;height:2.8rem;border-radius:.7rem;background:linear-gradient(135deg,#ccfbf1,#a7f3d0);display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#0d7377;margin-bottom:1rem}
-      .new-svc-card h3{font-size:1rem;font-weight:700;color:#0f172a;margin-bottom:.4rem;display:flex;align-items:center;gap:.4rem}
-      .new-svc-card p{font-size:.875rem;color:#475569;line-height:1.6;margin-bottom:1rem;flex-grow:1}
-      .new-svc-card .arrow{color:#0d9488;font-weight:700;font-size:.85rem;display:inline-flex;align-items:center;gap:.3rem;align-self:flex-start;transition:transform .25s}
-      .new-svc-card:hover .arrow{transform:translateX(4px)}
-    </style>
-    <div class="new-svc-grid">
-      <a href="custom-software.html" class="new-svc-card">
-        <div class="ico"><i class="ri-code-box-line"></i></div>
-        <h3>Custom Software Development</h3>
-        <p>Tailor-made software solutions built for your business workflows — web apps, portals, ERP, CRM and more.</p>
-        <span class="arrow">Learn More <i class="ri-arrow-right-line"></i></span>
-      </a>
-      <a href="website-design.html" class="new-svc-card">
-        <div class="ico"><i class="ri-layout-4-line"></i></div>
-        <h3>Website Designing &amp; Development</h3>
-        <p>Professional, responsive, and SEO-friendly websites for businesses of all sizes.</p>
-        <span class="arrow">Learn More <i class="ri-arrow-right-line"></i></span>
-      </a>
-      <a href="app-development.html" class="new-svc-card">
-        <div class="ico"><i class="ri-smartphone-line"></i></div>
-        <h3>Mobile App Development</h3>
-        <p>Android &amp; iOS apps designed for performance, usability, and business growth.</p>
-        <span class="arrow">Learn More <i class="ri-arrow-right-line"></i></span>
-      </a>
-      <a href="email-licensing.html" class="new-svc-card">
-        <div class="ico"><i class="ri-key-2-line"></i></div>
-        <h3>Email Licensing</h3>
-        <p>Authorised licensing for business email platforms — Google Workspace, Microsoft 365, Zoho Mail, and more.</p>
-        <span class="arrow">Learn More <i class="ri-arrow-right-line"></i></span>
-      </a>
-      <a href="email-migration.html" class="new-svc-card">
-        <div class="ico"><i class="ri-mail-send-line"></i></div>
-        <h3>Email Migration</h3>
-        <p>Seamless, zero-downtime migration between Google Workspace, Microsoft 365, Zoho, cPanel, and any email platform.</p>
-        <span class="arrow">Learn More <i class="ri-arrow-right-line"></i></span>
-      </a>
-      <a href="google-workspace.html" class="new-svc-card">
-        <div class="ico"><i class="ri-google-line"></i></div>
-        <h3>Google Workspace Setup &amp; Support</h3>
-        <p>Official Google Workspace partner — setup, admin, migration, and ongoing support.</p>
-        <span class="arrow">Learn More <i class="ri-arrow-right-line"></i></span>
-      </a>
-      <a href="microsoft-365.html" class="new-svc-card">
-        <div class="ico"><i class="ri-microsoft-line"></i></div>
-        <h3>Microsoft 365 Setup &amp; Support</h3>
-        <p>Microsoft 365 deployment, licensing, Teams, OneDrive, Exchange setup and management.</p>
-        <span class="arrow">Learn More <i class="ri-arrow-right-line"></i></span>
-      </a>
-      <a href="zoho-suite.html" class="new-svc-card">
-        <div class="ico"><i class="ri-apps-2-line"></i></div>
-        <h3>Zoho Suite Implementation</h3>
-        <p>Full Zoho suite setup — Zoho Mail, CRM, Books, People, Projects and more.</p>
-        <span class="arrow">Learn More <i class="ri-arrow-right-line"></i></span>
-      </a>
-      <a href="professional-email.html" class="new-svc-card">
-        <div class="ico"><i class="ri-mail-star-line"></i></div>
-        <h3>Professional Business Email</h3>
-        <p>Custom domain email setup with spam protection, DKIM/SPF/DMARC, and 24×7 support.</p>
-        <span class="arrow">Learn More <i class="ri-arrow-right-line"></i></span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ ENGAGEMENT / 2×2 GRID ═══ -->
-<section class="x-section alt x-em-section" aria-labelledby="engagement-h2">
-  <div class="container">
-    <div class="x-section-header">
-      <span class="badge">How To Engage</span>
-      <h2 id="engagement-h2">Four ways to work with OMNET — pick the model that matches your scale</h2>
-      <p class="intro">Every business consumes IT differently. Pick the model and we'll size it for you during the free assessment.</p>
-    </div>
-    <div class="x-em-grid">
-      <article class="x-em-card highlight">
-        <span class="em-tag">Most Popular</span>
-        <h3><i class="ri-coupon-3-line" style="color:#0d9488"></i> Fixed-Cost AMC</h3>
-        <div class="ideal">20-100 seat offices</div>
-        <p>One fixed monthly fee. Unlimited helpdesk tickets. Defined onsite visits. 24×7 monitoring. Monthly reporting. Dedicated account manager.</p>
-        <a href="fixed-cost-it-support.html" class="em-cta">Learn more <i class="ri-arrow-right-line"></i></a>
-      </article>
-      <article class="x-em-card">
-        <h3><i class="ri-wallet-3-line" style="color:#0d9488"></i> Prepaid Support Packs</h3>
-        <div class="ideal">Variable workload</div>
-        <p>Buy a block of hours or tickets upfront — use them across the year. No monthly commitment. GST invoiced.</p>
-        <a href="prepaid-it-support.html" class="em-cta">Learn more <i class="ri-arrow-right-line"></i></a>
-      </article>
-      <article class="x-em-card">
-        <h3><i class="ri-flashlight-line" style="color:#0d9488"></i> Casual (Pay-Per-Ticket)</h3>
-        <div class="ideal">Freelancers, startups</div>
-        <p>No contract. GST invoice per job. Remote or onsite. Same or next-day response.</p>
-        <a href="casual-it-support.html" class="em-cta">Learn more <i class="ri-arrow-right-line"></i></a>
-      </article>
-      <article class="x-em-card">
-        <h3><i class="ri-shield-star-line" style="color:#0d9488"></i> Fully Managed IT</h3>
-        <div class="ideal">100+ seat organisations</div>
-        <p>End-to-end ownership — strategy, operations, security, cloud, vendor management. vCIO advisory. Custom SLA. Dedicated team.</p>
-        <a href="managed-services.html" class="em-cta">Book Discovery Call <i class="ri-arrow-right-line"></i></a>
-      </article>
     </div>
   </div>
 </section>
