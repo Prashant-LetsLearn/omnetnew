@@ -1192,6 +1192,9 @@ body {
    Root cause: dropdown-menu z-index (200) lower than header (1000),
    causing menus to appear behind other elements. Also missing 
    overflow:visible on .nav-dropdown parent.
+   
+   Hover support restored so dropdown works even before JS loads, and
+   for users on devices where mouseenter fires normally.
 ───────────────────────────────────────────────────────────────────*/
 .nav-dropdown {
   position: relative;
@@ -1202,11 +1205,14 @@ body {
   pointer-events: none;
   opacity: 0;
   transform: translateY(-8px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
   display: block !important; /* Override display:none — use opacity instead */
   visibility: hidden;
 }
 
+/* HOVER: open dropdown when mouse enters nav-dropdown OR menu */
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu,
 .dropdown-menu.open {
   pointer-events: auto;
   opacity: 1;
