@@ -1,13 +1,13 @@
 /* ═══════════════════════════════════════════════════════
    OMNET IT SOLUTIONS — UPI PAYMENT SYSTEM
-   UPI ID: 8920603270@ybl
+   UPI ID: 9717270865@ybl
    Merchant: Omnet IT Solutions
    ═══════════════════════════════════════════════════════ */
 
 (function () {
   'use strict';
 
-  const UPI_ID   = '8920603270@ybl';
+  const UPI_ID   = '9717270865@ybl';
   const UPI_NAME = 'Omnet IT Solutions';
   const UPI_NOTE = 'Omnet IT Payment';
 
