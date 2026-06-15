@@ -1903,5 +1903,40 @@ const OmnetShop = (function () {
 </div>
 
     <script src="i18n.js" defer></script>
+
+<!-- value block: trust + FAQ + links + CTA (depth, trust & SEO) -->
+<section class="omn-vb" aria-label="Why choose OMNET, FAQs and contact">
+<style>
+.omn-vb{font-family:inherit;max-width:1100px;margin:2.5rem auto 0;padding:2rem 1.25rem 3rem}
+.omn-vb__trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin-bottom:2.2rem}
+.omn-vb__t{background:#f0fdfa;border:1px solid #99f6e4;border-radius:12px;padding:1rem;text-align:center}
+.omn-vb__t i{font-size:1.5rem;color:#0d9488}
+.omn-vb__t strong{display:block;color:#0f172a;font-size:1.05rem;margin-top:.25rem}
+.omn-vb__t span{color:#64748b;font-size:.82rem}
+.omn-vb h2{font-size:1.4rem;color:#0f172a;margin:0 0 1rem}
+.omn-vb__faq details{border:1px solid #e5e7eb;border-radius:10px;padding:.9rem 1.1rem;margin-bottom:.7rem;background:#fff}
+.omn-vb__faq summary{font-weight:700;color:#0f172a;cursor:pointer}
+.omn-vb__faq p{color:#475569;margin:.6rem 0 0;line-height:1.6}
+.omn-vb__links{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.4rem 0 2rem}
+.omn-vb__links a{color:#0f766e;border:1px solid #99f6e4;background:#f0fdfa;padding:.45rem .9rem;border-radius:999px;font-size:.9rem;font-weight:600;text-decoration:none}
+.omn-vb__links a:hover{background:#ccfbf1}
+.omn-vb__cta{background:linear-gradient(135deg,#0d9488,#0891b2);border-radius:16px;padding:2rem;text-align:center;color:#fff}
+.omn-vb__cta h3{font-size:1.4rem;margin:0 0 .5rem;color:#fff}
+.omn-vb__cta p{margin:0 0 1.2rem;opacity:.92}
+.omn-vb__cta a{display:inline-block;margin:.3rem;padding:.7rem 1.4rem;border-radius:10px;font-weight:700;text-decoration:none}
+.omn-vb__cta .p{background:#fff;color:#0f766e}
+.omn-vb__cta .s{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.5)}
+</style>
+
+  <div class="omn-vb__trust">
+    <div class="omn-vb__t"><i class="ri-government-line"></i><strong>CERT-In</strong><span>Govt. empanelled</span></div>
+    <div class="omn-vb__t"><i class="ri-customer-service-2-line"></i><strong>24/7</strong><span>Helpdesk support</span></div>
+    <div class="omn-vb__t"><i class="ri-team-line"></i><strong>500+</strong><span>Businesses served</span></div>
+    <div class="omn-vb__t"><i class="ri-star-fill"></i><strong>4.9/5</strong><span>147 reviews</span></div>
+  </div>
+<div class="omn-vb__faq"><h2>Frequently asked questions</h2><details><summary>Do your products include a GST invoice?</summary><p>Yes. Every purchase from OMNET IT Solutions includes a proper GST tax invoice, so your business can claim input credit.</p></details><details><summary>Do you provide setup and support for what I buy?</summary><p>Yes. Hardware, software and licenses can be supplied ready-to-use, with installation, configuration and ongoing IT support available.</p></details><details><summary>Can I get bulk or fleet pricing?</summary><p>Yes. Volume pricing is available for orders of five or more devices or licenses — request a quote and our team will prepare a costed proposal.</p></details></div><h2>Explore OMNET IT Solutions</h2><div class="omn-vb__links"><a href="products.html">All Products</a><a href="microsoft-365.html">Microsoft 365</a><a href="google-workspace.html">Google Workspace</a><a href="it-hardware-rental.html">IT Hardware Rental</a><a href="contact.html">Contact</a></div>
+  <div class="omn-vb__cta"><h3>Need help choosing the right products?</h3><p>Talk to our team for the right hardware, software and licenses — supplied, configured and supported.</p><a class="p" href="contact.html"><i class="ri-mail-send-line"></i> Get a Free IT Assessment</a><a class="s" href="tel:+919717270865"><i class="ri-phone-line"></i> +91 97172 70865</a></div>
+</section>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do your products include a GST invoice?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every purchase from OMNET IT Solutions includes a proper GST tax invoice, so your business can claim input credit."}}, {"@type": "Question", "name": "Do you provide setup and support for what I buy?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Hardware, software and licenses can be supplied ready-to-use, with installation, configuration and ongoing IT support available."}}, {"@type": "Question", "name": "Can I get bulk or fleet pricing?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Volume pricing is available for orders of five or more devices or licenses \u2014 request a quote and our team will prepare a costed proposal."}}]}</script>
 </body>
 </html>

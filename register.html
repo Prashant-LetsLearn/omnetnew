@@ -595,5 +595,40 @@ document.addEventListener('DOMContentLoaded', function(){
 
 <script src="fixes.js"></script>
     <script src="i18n.js" defer></script>
+
+<!-- value block: trust + FAQ + links + CTA (depth, trust & SEO) -->
+<section class="omn-vb" aria-label="Why choose OMNET, FAQs and contact">
+<style>
+.omn-vb{font-family:inherit;max-width:1100px;margin:2.5rem auto 0;padding:2rem 1.25rem 3rem}
+.omn-vb__trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin-bottom:2.2rem}
+.omn-vb__t{background:#f0fdfa;border:1px solid #99f6e4;border-radius:12px;padding:1rem;text-align:center}
+.omn-vb__t i{font-size:1.5rem;color:#0d9488}
+.omn-vb__t strong{display:block;color:#0f172a;font-size:1.05rem;margin-top:.25rem}
+.omn-vb__t span{color:#64748b;font-size:.82rem}
+.omn-vb h2{font-size:1.4rem;color:#0f172a;margin:0 0 1rem}
+.omn-vb__faq details{border:1px solid #e5e7eb;border-radius:10px;padding:.9rem 1.1rem;margin-bottom:.7rem;background:#fff}
+.omn-vb__faq summary{font-weight:700;color:#0f172a;cursor:pointer}
+.omn-vb__faq p{color:#475569;margin:.6rem 0 0;line-height:1.6}
+.omn-vb__links{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.4rem 0 2rem}
+.omn-vb__links a{color:#0f766e;border:1px solid #99f6e4;background:#f0fdfa;padding:.45rem .9rem;border-radius:999px;font-size:.9rem;font-weight:600;text-decoration:none}
+.omn-vb__links a:hover{background:#ccfbf1}
+.omn-vb__cta{background:linear-gradient(135deg,#0d9488,#0891b2);border-radius:16px;padding:2rem;text-align:center;color:#fff}
+.omn-vb__cta h3{font-size:1.4rem;margin:0 0 .5rem;color:#fff}
+.omn-vb__cta p{margin:0 0 1.2rem;opacity:.92}
+.omn-vb__cta a{display:inline-block;margin:.3rem;padding:.7rem 1.4rem;border-radius:10px;font-weight:700;text-decoration:none}
+.omn-vb__cta .p{background:#fff;color:#0f766e}
+.omn-vb__cta .s{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.5)}
+</style>
+
+  <div class="omn-vb__trust">
+    <div class="omn-vb__t"><i class="ri-government-line"></i><strong>CERT-In</strong><span>Govt. empanelled</span></div>
+    <div class="omn-vb__t"><i class="ri-customer-service-2-line"></i><strong>24/7</strong><span>Helpdesk support</span></div>
+    <div class="omn-vb__t"><i class="ri-team-line"></i><strong>500+</strong><span>Businesses served</span></div>
+    <div class="omn-vb__t"><i class="ri-star-fill"></i><strong>4.9/5</strong><span>147 reviews</span></div>
+  </div>
+<div class="omn-vb__faq"><h2>Frequently asked questions</h2><details><summary>Why create an OMNET account?</summary><p>Track your orders and support tickets, access exclusive pricing, and manage your software licenses — all in one place.</p></details><details><summary>Is my information secure?</summary><p>Yes. OMNET IT Solutions is CERT-In empanelled and follows strict data-protection practices. Your details are never sold or shared for marketing.</p></details><details><summary>Do I need an account to get support?</summary><p>No — you can call us or request a callback anytime. An account simply makes ordering and tracking faster.</p></details></div><h2>Explore OMNET IT Solutions</h2><div class="omn-vb__links"><a href="services.html">Our Services</a><a href="pricing.html">Pricing</a><a href="managed-services.html">Managed IT</a><a href="it-support.html">IT Support</a><a href="contact.html">Contact</a></div>
+  <div class="omn-vb__cta"><h3>Prefer to speak to someone first?</h3><p>No account needed — get a free IT assessment and a costed proposal within 24 hours.</p><a class="p" href="contact.html"><i class="ri-mail-send-line"></i> Get a Free IT Assessment</a><a class="s" href="tel:+919717270865"><i class="ri-phone-line"></i> +91 97172 70865</a></div>
+</section>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why create an OMNET account?", "acceptedAnswer": {"@type": "Answer", "text": "Track your orders and support tickets, access exclusive pricing, and manage your software licenses \u2014 all in one place."}}, {"@type": "Question", "name": "Is my information secure?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. OMNET IT Solutions is CERT-In empanelled and follows strict data-protection practices. Your details are never sold or shared for marketing."}}, {"@type": "Question", "name": "Do I need an account to get support?", "acceptedAnswer": {"@type": "Answer", "text": "No \u2014 you can call us or request a callback anytime. An account simply makes ordering and tracking faster."}}]}</script>
 </body>
 </html>
