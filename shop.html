@@ -1887,5 +1887,18 @@ const OmnetShop = (function () {
 })();
 </script>
 
+<style>
+.omnet-sticky-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:9300;background:#fff;border-top:1px solid #e5e7eb;padding:.5rem 1rem;box-shadow:0 -4px 20px rgba(0,0,0,.1);gap:.75rem;align-items:center}
+@media(max-width:768px){.omnet-sticky-bar{display:flex!important}body{padding-bottom:64px}}
+.omnet-sticky-phone{display:flex;align-items:center;justify-content:center;width:44px;height:44px;background:#f0fdfa;border-radius:50%;color:#0d9488;font-size:1.2rem;text-decoration:none;flex-shrink:0;border:1.5px solid #ccfbf1}
+.omnet-sticky-call{flex:1;display:flex;align-items:center;justify-content:center;gap:.5rem;background:linear-gradient(135deg,#0d9488,#06b6d4);color:#fff;border-radius:10px;padding:.75rem;font-size:.9rem;font-weight:700;text-decoration:none}
+.omnet-sticky-wa{display:flex;align-items:center;justify-content:center;width:44px;height:44px;background:#25D366;border-radius:50%;color:#fff;font-size:1.25rem;text-decoration:none;flex-shrink:0}
+</style>
+<div class="omnet-sticky-bar" role="navigation" aria-label="Quick contact">
+  <a class="omnet-sticky-phone" href="tel:+919717270865" title="Call us"><i class="ri-phone-line"></i></a>
+  <a class="omnet-sticky-call" href="tel:+919717270865"><i class="ri-phone-fill"></i> +91 97172 70865</a>
+  <a class="omnet-sticky-wa" href="https://wa.me/919717270865?text=Hi%2C%20I%20am%20interested%20in%20buying%20IT%20products" target="_blank" rel="noopener" title="WhatsApp"><i class="ri-whatsapp-line"></i></a>
+</div>
+
 </body>
 </html>
