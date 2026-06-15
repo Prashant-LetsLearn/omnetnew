@@ -7,7 +7,52 @@ phase with clear expectations.
 
 ---
 
+## 0. Update (v2) — full-page translation now works
+
+The first version only translated the shared UI chrome (nav/footer/buttons),
+because that was the only thing in the built-in dictionary. That has been
+fixed. There are now **two ways** the whole page translates, and you choose
+based on how much quality/SEO you want:
+
+**A) Runtime full-page translation — works right now, no build step.**
+Selecting a language now:
+- saves the choice to `localStorage` **and** a `googtrans` cookie;
+- reloads once, then translates the **entire page** — hero, headings,
+  service copy, buttons, forms, testimonials, FAQs, footer, and content
+  added after load — not just the menu;
+- **persists across every page**: because the cookie is read on each page,
+  every link the visitor follows stays in the chosen language until they
+  change it, with no English/translated mix;
+- handles **RTL** (Arabic, Urdu) automatically and works on desktop/tablet/
+  mobile.
+The UI chrome is translated instantly from the dictionary for a fast first
+paint; the rest is handled by the machine-translation bridge. If the bridge
+ever fails to load, the page degrades gracefully (chrome translated, body
+English) rather than breaking. Caveat unchanged: the bridge is machine
+quality and is an unsupported Google product — fine as a live default,
+not ideal as your permanent SEO foundation.
+
+**B) Pre-translated pages — the robust, recommended, SEO-grade solution.**
+A new build pipeline (`build-i18n/`) generates real `/hi/`, `/ar/` … pages
+with the full content translated, correct `lang`/`dir`, `hreflang`,
+self-canonical, and in-language internal links. After you build them, add
+one line to your pages —
+`<script>window.OMNET_PRETRANSLATED = ["hi","ar",...]</script>` — and the
+switcher automatically **routes** visitors to those real pages (best
+quality, fully indexable, zero third-party dependency). Languages you
+haven't built yet keep using the runtime bridge from (A). See
+`build-i18n/README.md` for usage. This is the path that satisfies "reliable,
+full, consistent, indexable" — run it for your top pages and top languages
+first, then expand.
+
+In short: **(A) makes the whole site translate and persist today; (B) is the
+production-grade upgrade.** The sections below cover the architecture, the
+SEO rationale for (B), and how to extend everything.
+
+---
+
 ## 1. What was built
+
 
 A **two-tier translation system** designed specifically for a static,
 build-pipeline-free site of ~72 hand-written HTML pages hosted on GitHub

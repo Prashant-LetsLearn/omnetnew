@@ -1,30 +1,42 @@
 /* ════════════════════════════════════════════════════════════════════
-   OMNET IT — Multilingual engine (i18n.js)   v1.0
+   OMNET IT — Multilingual engine (i18n.js)   v2.0
    ────────────────────────────────────────────────────────────────────
    WHAT THIS DOES
    1. Adds an on-brand language switcher to the header (desktop) and the
       mobile menu, on every page that includes this file.
-   2. Instantly translates all shared UI "chrome" — navigation, buttons,
-      CTAs, footer, and common form labels — using the dictionary below.
-      (Self-hosted, fast, no third party, fully reliable.)
-   3. Detects the visitor's browser language on first visit and offers a
+   2. FULL-PAGE translation: selecting a language translates the ENTIRE
+      page — hero, headings, service copy, buttons, forms, testimonials,
+      FAQs, footer, and dynamically-added content — not just the menu.
+        • The shared UI chrome (nav, buttons, footer, form labels) is
+          translated instantly from the built-in dictionary for a fast
+          first paint and clean brand-term handling.
+        • All remaining unique body content is translated by the Google
+          translation bridge, driven by the `googtrans` cookie.
+   3. SITE-WIDE PERSISTENCE: the choice is stored in localStorage AND a
+      cookie, so every page the visitor opens loads in the same language
+      automatically until they change it. No mixed-language pages.
+   4. Detects the visitor's browser language on first visit and offers a
       one-tap switch, with English as the permanent fallback.
-   4. Handles right-to-left layout for Arabic and Urdu automatically.
-   5. Remembers the choice (localStorage) across pages and visits.
-   6. OPTIONAL bridge: for languages other than English it offers a
-      "Translate page content too" button that uses Google Translate to
-      machine-translate the unique body text of the page. This is opt-in
-      and clearly labelled. See README_TRANSLATION.md for the trade-offs.
+   5. Handles right-to-left layout for Arabic and Urdu automatically.
+
+   RELIABILITY NOTE
+   The body-content bridge uses Google's website translation widget. It is
+   the only zero-build, full-page option available on static hosting, and
+   it is what drives cross-page persistence via the googtrans cookie. It is
+   machine translation (not human quality) and is an unsupported Google
+   product. For the most reliable, highest-quality, SEO-indexable result,
+   pre-generate translated pages with the build pipeline (see
+   build-i18n/ and README_TRANSLATION.md). If the widget ever fails to
+   load, the page degrades gracefully: the UI chrome stays translated and
+   the body stays English, rather than breaking.
 
    ── HOW TO ADD A NEW LANGUAGE ──────────────────────────────────────
    1. Add an entry to LANGS (code, native name, English name, flag, dir).
-   2. Add a matching block to DICT with the same code.
-   Done. Nothing else changes.
+   2. Add a matching block to DICT with the same code (chrome strings).
+   Body content is handled automatically by the bridge / build pipeline.
 
-   ── HOW TO ADD A NEW TRANSLATABLE STRING ───────────────────────────
+   ── HOW TO ADD A NEW TRANSLATABLE CHROME STRING ────────────────────
    Add the exact English text as a key in EACH language block of DICT.
-   Any text node or common attribute on any page whose trimmed text
-   matches that key is translated automatically — no per-page edits.
    ════════════════════════════════════════════════════════════════════ */
 (function () {
   "use strict";
@@ -32,6 +44,38 @@
   var STORAGE_KEY = "omnet_lang";
   var DISMISS_KEY = "omnet_lang_suggest_dismissed";
   var DEFAULT = "en";
+
+  /* ---------- Pre-translated pages (build pipeline) ----------
+     If you run build-i18n/translate-site.mjs and deploy the /<lang>/
+     folders, opt in to routing by adding ONE line to your pages (or a
+     shared header partial):
+         <script>window.OMNET_PRETRANSLATED = ["hi","ar","fr"];</script>
+     When set, the switcher NAVIGATES to the real translated page
+     (e.g. /hi/about.html) instead of using the runtime bridge — higher
+     quality, fully indexable, zero third-party dependency.
+     Generated pages carry <html data-omnet-pretranslated="xx">, which the
+     engine reads to know it is already translated. */
+  function preList(){ return (window.OMNET_PRETRANSLATED && window.OMNET_PRETRANSLATED.length) ? window.OMNET_PRETRANSLATED : null; }
+  function pageLang(){ return document.documentElement.getAttribute("data-omnet-pretranslated"); }
+
+  // The path of the current page with any /<lang>/ prefix stripped.
+  function basePath(){
+    var segs = location.pathname.split("/").filter(Boolean);
+    var pl = pageLang();
+    if (pl && segs[0] === pl) segs = segs.slice(1);
+    return segs;                         // e.g. ["about.html"] or []
+  }
+  function routeFor(code){
+    var segs = basePath();
+    var tail = segs.join("/");
+    if (code === DEFAULT) return "/" + tail;             // "/" or "/about.html"
+    return "/" + code + "/" + tail;                      // "/hi/about.html" or "/hi/"
+  }
+
+  /* Navigation seam (overridable for testing / SPA integration). */
+  function navTo(url){ if (typeof window.OMNET_navigate === "function") return window.OMNET_navigate(url); location.assign(url); }
+  function reloadPage(){ if (typeof window.OMNET_navigate === "function") return window.OMNET_navigate("reload"); location.reload(); }
+  function replaceTo(url){ if (typeof window.OMNET_navigate === "function") return window.OMNET_navigate("replace:" + url); location.replace(url); }
 
   /* ---------- Supported languages ---------- */
   var LANGS = [
@@ -284,8 +328,8 @@
     document.body.appendChild(d);
   }
   function loadGoogle(targetCode){
-    pendingGoogle = targetCode;
-    if (googleReady) return fireGoogle(targetCode);
+    pendingGoogle = targetCode || cookieLang() || getSaved();
+    if (googleReady) return fireGoogle(pendingGoogle);
     if (googleLoading) return;
     googleLoading = true;
     ensureGoogleHost();
@@ -296,8 +340,8 @@
           includedLanguages: LANGS.map(function(l){return l.code;}).join(",") },
         "omnet-google-translate");
       googleReady = true;
-      // give the widget a tick to build its hidden <select>
-      setTimeout(function(){ if (pendingGoogle) fireGoogle(pendingGoogle); }, 600);
+      // The googtrans cookie usually auto-applies; fire explicitly as a safety net.
+      setTimeout(function(){ if (pendingGoogle && pendingGoogle !== DEFAULT) fireGoogle(pendingGoogle); }, 600);
     };
     var s = document.createElement("script");
     s.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
@@ -315,8 +359,45 @@
     // Reset Google by selecting the empty/original option if present
     var sel = document.querySelector("select.goog-te-combo");
     if (sel){ sel.value = ""; sel.dispatchEvent(new Event("change")); }
-    // Also clear the googtrans cookie so a reload returns to English
-    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+    clearGoogCookie();
+  }
+
+  /* ---------- googtrans cookie ----------
+     The Google widget reads this cookie on every page load and auto-applies
+     the translation. Setting it is what makes a chosen language persist
+     across page navigation site-wide, with no per-page work. We set it on
+     both the host path and the registrable domain so it survives apex/www
+     and deep paths. */
+  function rootDomain(){
+    var h = location.hostname;                 // e.g. www.omnetit.in
+    if (/^\d+\.\d+\.\d+\.\d+$/.test(h) || h === "localhost") return null;
+    var parts = h.split(".");
+    if (parts.length <= 2) return h;           // omnetit.in
+    return parts.slice(-2).join(".");          // omnetit.in (from www.omnetit.in)
+  }
+  function setGoogCookie(code){
+    var val = "/en/" + code;
+    var enc = encodeURIComponent(val);
+    document.cookie = "googtrans=" + enc + ";path=/";
+    document.cookie = "googtrans=" + val + ";path=/";   // some builds expect unencoded
+    var rd = rootDomain();
+    if (rd){
+      document.cookie = "googtrans=" + enc + ";path=/;domain=." + rd;
+      document.cookie = "googtrans=" + val + ";path=/;domain=." + rd;
+    }
+  }
+  function clearGoogCookie(){
+    var exp = ";expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "googtrans=;path=/" + exp;
+    var rd = rootDomain();
+    if (rd) document.cookie = "googtrans=;path=/;domain=." + rd + exp;
+  }
+  function cookieLang(){
+    var m = document.cookie.match(/googtrans=([^;]+)/);
+    if (!m) return null;
+    var v = decodeURIComponent(m[1]);          // "/en/hi"
+    var parts = v.split("/");
+    return parts[2] || null;
   }
 
   /* ---------- Build the switcher UI ---------- */
@@ -415,17 +496,33 @@
     if (bar) bar.classList.remove("show");
   }
 
-  /* ---------- Master setter ---------- */
+  /* ---------- Master setter ----------
+     Full-page, site-wide, persistent translation.
+     We persist the choice (localStorage + cookie) and reload once: on the
+     fresh load the engine instantly translates the UI chrome from the
+     dictionary, and the Google bridge — driven by the googtrans cookie —
+     translates ALL remaining body content (hero, headings, service copy,
+     testimonials, FAQs, footer, dynamic content). Reloading guarantees a
+     clean, fully-translated page with no half-English/half-translated mix. */
   function setLanguage(code, opts){
     opts = opts || {};
     if (!byCode(code)) code = DEFAULT;
     save(code);
-    applyDir(code);
-    if (code === DEFAULT) { clearGoogle(); }
-    applyTo(code);
-    refreshSwitchers(code);
-    if (!opts.silent) showContentNote(code);
     document.dispatchEvent(new CustomEvent("omnet:langchange", { detail:{ code: code } }));
+
+    var pre = preList();
+    // If real translated pages exist for this language (or English root),
+    // navigate to them — best quality, fully indexable, no third party.
+    if (pre && (code === DEFAULT || pre.indexOf(code) !== -1)){
+      clearGoogCookie();                 // routing supersedes the runtime bridge
+      navTo(routeFor(code));
+      return;
+    }
+    // Otherwise use the runtime bridge: persist via cookie + reload so the
+    // whole page (and every subsequent page) translates consistently.
+    if (code === DEFAULT) clearGoogCookie(); else setGoogCookie(code);
+    if (opts.noReload){ applyDir(code); applyTo(code); refreshSwitchers(code); return; }
+    reloadPage();
   }
   window.OMNET_setLanguage = setLanguage; // public hook
 
@@ -477,13 +574,39 @@
 
   /* ---------- Init ---------- */
   function init(){
-    var current = getSaved() || DEFAULT;
+    var onLang = pageLang();
+    if (onLang){
+      // This page was pre-translated by the build pipeline and is already
+      // fully in `onLang`. Just sync the switcher + persistence; do NOT run
+      // the dictionary or the Google bridge.
+      save(onLang);
+      injectSwitchers(onLang);
+      refreshSwitchers(onLang);
+      // html lang/dir are already correct in the generated markup.
+      return;
+    }
+
+    // Root (English-source) page: reconcile saved choice with cookie.
+    var saved = getSaved();
+    var ckLang = cookieLang();
+    var current = saved || ckLang || DEFAULT;
+    if (current !== DEFAULT && saved !== current) save(current);
+
+    // If real translated pages exist for the chosen language, send the
+    // visitor to the indexable page instead of translating at runtime.
+    var pre = preList();
+    if (current !== DEFAULT && pre && pre.indexOf(current) !== -1){
+      replaceTo(routeFor(current));
+      return;
+    }
+
+    if (current !== DEFAULT && !ckLang) setGoogCookie(current);
     injectSwitchers(current);
     if (current !== DEFAULT){
-      applyDir(current);
-      applyTo(current);
+      applyDir(current);          // <html lang/dir> (RTL for ar/ur)
+      applyTo(current);           // instant chrome translation (fast paint)
       refreshSwitchers(current);
-      showContentNote(current);
+      loadGoogle(current);        // translate the FULL page body
     }
     maybeSuggest();
   }
