@@ -1,0 +1,277 @@
+/* ════════════════════════════════════════════════════════════════════
+   OMNET IT — Multilingual (i18n) UI
+   Language switcher + browser-language suggestion banner + RTL support.
+   Harmonised with the existing teal design system (style.css :root vars).
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ---------- Language switcher (desktop, lives in .header-cta) ---------- */
+.omnet-lang {
+  position: relative;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.omnet-lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--teal-50, #f0fdfa);
+  color: var(--teal-700, #0f766e);
+  border: 1px solid var(--teal-200, #99f6e4);
+  border-radius: 50px;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .15s ease, border-color .15s ease, color .15s ease;
+}
+.omnet-lang-btn:hover,
+.omnet-lang-btn[aria-expanded="true"] {
+  background: var(--teal-100, #ccfbf1);
+  border-color: var(--teal-400, #2dd4bf);
+  color: var(--teal-800, #115e59);
+}
+.omnet-lang-btn i.ri-global-line { font-size: 16px; }
+.omnet-lang-btn .omnet-lang-caret {
+  font-size: 14px;
+  transition: transform .15s ease;
+}
+.omnet-lang-btn[aria-expanded="true"] .omnet-lang-caret { transform: rotate(180deg); }
+.omnet-lang-current { font-weight: 700; }
+
+/* ---------- Dropdown panel ---------- */
+.omnet-lang-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 230px;
+  max-height: 70vh;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid var(--gray-200, #e5e7eb);
+  border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(15, 118, 110, .14), 0 2px 8px rgba(0,0,0,.06);
+  padding: 6px;
+  z-index: 1200;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity .16s ease, transform .16s ease, visibility .16s;
+}
+.omnet-lang-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.omnet-lang-menu button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: 9px;
+  padding: 9px 11px;
+  font-size: 14px;
+  color: var(--gray-700, #374151);
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .12s ease, color .12s ease;
+}
+.omnet-lang-menu button:hover,
+.omnet-lang-menu button:focus-visible {
+  background: var(--teal-50, #f0fdfa);
+  color: var(--teal-700, #0f766e);
+  outline: none;
+}
+.omnet-lang-menu button[aria-current="true"] {
+  background: var(--teal-100, #ccfbf1);
+  color: var(--teal-800, #115e59);
+  font-weight: 700;
+}
+.omnet-lang-menu button[aria-current="true"]::after {
+  content: "\2713"; /* check */
+  margin-left: auto;
+  font-weight: 700;
+  color: var(--teal-600, #0d9488);
+}
+.omnet-lang-flag {
+  font-size: 18px;
+  line-height: 1;
+  width: 22px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.omnet-lang-native { font-weight: 600; }
+.omnet-lang-en {
+  margin-left: 4px;
+  font-size: 12px;
+  color: var(--gray-400, #9ca3af);
+}
+
+/* ---------- Mobile switcher (lives inside .mobile-nav-inner) ---------- */
+.omnet-lang-mobile {
+  margin-top: .25rem;
+  margin-bottom: .25rem;
+}
+.omnet-lang-mobile .omnet-lang-mobile-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--teal-600, #0d9488);
+  padding: .35rem .25rem;
+}
+.omnet-lang-mobile select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--teal-50, #f0fdfa) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%230d9488' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center;
+  border: 1px solid var(--teal-200, #99f6e4);
+  border-radius: 10px;
+  padding: 12px 38px 12px 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--teal-800, #115e59);
+  font-family: inherit;
+  cursor: pointer;
+}
+.omnet-lang-mobile select:focus-visible {
+  outline: 2px solid var(--teal-400, #2dd4bf);
+  outline-offset: 2px;
+}
+
+/* ---------- Browser-language suggestion banner ---------- */
+.omnet-lang-suggest {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translate(-50%, 140%);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  max-width: min(560px, calc(100vw - 32px));
+  background: #fff;
+  border: 1px solid var(--teal-200, #99f6e4);
+  border-left: 4px solid var(--teal-500, #14b8a6);
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(15, 118, 110, .18), 0 4px 12px rgba(0,0,0,.08);
+  padding: 14px 16px;
+  opacity: 0;
+  transition: transform .3s cubic-bezier(.16,1,.3,1), opacity .3s ease;
+}
+.omnet-lang-suggest.show {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+.omnet-lang-suggest .omnet-suggest-icon {
+  font-size: 22px;
+  color: var(--teal-600, #0d9488);
+  flex-shrink: 0;
+}
+.omnet-lang-suggest .omnet-suggest-text {
+  font-size: 14px;
+  color: var(--gray-700, #374151);
+  flex: 1 1 220px;
+  min-width: 180px;
+}
+.omnet-lang-suggest .omnet-suggest-text strong { color: var(--teal-700, #0f766e); }
+.omnet-lang-suggest .omnet-suggest-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.omnet-suggest-yes {
+  background: linear-gradient(135deg, var(--teal-500, #14b8a6), var(--cyan-600, #0891b2));
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 9px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+}
+.omnet-suggest-yes:hover { filter: brightness(1.06); }
+.omnet-suggest-no {
+  background: none;
+  border: none;
+  color: var(--gray-500, #6b7280);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 6px;
+  font-family: inherit;
+}
+.omnet-suggest-no:hover { color: var(--gray-700, #374151); }
+
+/* ---------- Optional "translate full page content" bridge bar ---------- */
+.omnet-content-note {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: var(--teal-50, #f0fdfa);
+  border-bottom: 1px solid var(--teal-200, #99f6e4);
+  padding: 8px 16px;
+  font-size: 13px;
+  color: var(--teal-800, #115e59);
+  text-align: center;
+}
+.omnet-content-note.show { display: flex; }
+.omnet-content-note button {
+  background: var(--teal-600, #0d9488);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 6px 14px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+.omnet-content-note button:hover { background: var(--teal-700, #0f766e); }
+.omnet-content-note .omnet-content-dismiss {
+  background: none;
+  color: var(--teal-700, #0f766e);
+  padding: 6px 8px;
+}
+
+/* ---------- RTL support (Arabic, Urdu) ---------- */
+html[dir="rtl"] .header-inner,
+html[dir="rtl"] .header-nav-bar-inner,
+html[dir="rtl"] .footer-main { direction: rtl; }
+html[dir="rtl"] .omnet-lang-menu { right: auto; left: 0; }
+html[dir="rtl"] .omnet-lang-menu button { text-align: right; }
+html[dir="rtl"] .omnet-lang-menu button[aria-current="true"]::after { margin-left: 0; margin-right: auto; }
+html[dir="rtl"] .omnet-lang-en { margin-left: 0; margin-right: 4px; }
+html[dir="rtl"] .omnet-lang-suggest { border-left: 1px solid var(--teal-200,#99f6e4); border-right: 4px solid var(--teal-500,#14b8a6); }
+/* Keep Latin brand marks LTR even inside an RTL page */
+html[dir="rtl"] .logo-name,
+html[dir="rtl"] .logo-tagline,
+html[dir="rtl"] [data-i18n-keep-ltr],
+html[dir="rtl"] .header-phone { direction: ltr; unicode-bidi: embed; }
+
+/* ---------- Hide Google Translate's default chrome (we drive it ourselves) ---------- */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-gadget-icon,
+#goog-gt-tt,
+.goog-te-balloon-frame { display: none !important; }
+.goog-text-highlight { background: none !important; box-shadow: none !important; }
+body { top: 0 !important; } /* Google pushes body down with a banner; cancel it */
+#omnet-google-translate { position: absolute; left: -9999px; height: 0; overflow: hidden; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .omnet-lang-menu, .omnet-lang-suggest, .omnet-lang-btn .omnet-lang-caret { transition: none; }
+}
