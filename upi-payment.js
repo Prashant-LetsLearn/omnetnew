@@ -1,13 +1,13 @@
 /* ═══════════════════════════════════════════════════════
    OMNET IT SOLUTIONS — UPI PAYMENT SYSTEM
-   UPI ID: 8920603270@ybl
+   UPI ID: 9717270865@ybl
    Merchant: Omnet IT Solutions
    ═══════════════════════════════════════════════════════ */
 
 (function () {
   'use strict';
 
-  const UPI_ID   = '8920603270@ybl';
+  const UPI_ID   = '9717270865@ybl';
   const UPI_NAME = 'Omnet IT Solutions';
   const UPI_NOTE = 'Omnet IT Payment';
 
@@ -224,7 +224,7 @@
         document.getElementById('upiTxnId').value = '';
       }
     } catch (e) {
-      alert('Could not send confirmation. Please WhatsApp the transaction ID to +91-8920603270');
+      alert('Could not send confirmation. Please WhatsApp the transaction ID to +91-97172-70865');
     } finally {
       btn.disabled = false;
       btn.innerHTML = '<i class="ri-send-plane-line"></i> Confirm';
