@@ -224,7 +224,7 @@
         document.getElementById('upiTxnId').value = '';
       }
     } catch (e) {
-      alert('Could not send confirmation. Please WhatsApp the transaction ID to +91-97172-70865');
+      alert('Could not send confirmation. Please WhatsApp the transaction ID to +91-8920603270');
     } finally {
       btn.disabled = false;
       btn.innerHTML = '<i class="ri-send-plane-line"></i> Confirm';
