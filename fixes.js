@@ -147,8 +147,8 @@
     bar.setAttribute('role', 'navigation');
     bar.setAttribute('aria-label', 'Quick contact');
     bar.innerHTML =
-      '<a class="omnet-sticky-phone" href="tel:+918920603270" title="Call us"><i class="ri-phone-line"></i></a>' +
-      '<a class="omnet-sticky-call" href="tel:+918920603270"><i class="ri-phone-fill"></i> +91-8920603270</a>' +
+      '<a class="omnet-sticky-phone" href="tel:+919717270865" title="Call us"><i class="ri-phone-line"></i></a>' +
+      '<a class="omnet-sticky-call" href="tel:+919717270865"><i class="ri-phone-fill"></i> +91 97172 70865</a>' +
       '<a class="omnet-sticky-wa" href="https://wa.me/919717270865?text=Hi%2C%20I%20am%20interested%20in%20your%20services" target="_blank" rel="noopener" title="WhatsApp"><i class="ri-whatsapp-line"></i></a>';
     document.body.appendChild(bar);
   }
