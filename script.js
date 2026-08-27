@@ -207,7 +207,7 @@ document.head.appendChild(_s);
     const fab = document.createElement('div');
     fab.className = 'float-actions';
     fab.innerHTML = `
-      <a href="https://wa.me/919717270865?text=Hi%2C%20I%20am%20interested%20in%20your%20services" target="_blank" 
+      <a href="https://wa.me/918920603270?text=Hi%2C%20I%20am%20interested%20in%20your%20services" target="_blank" 
          class="float-wa" title="Chat on WhatsApp">
         <i class="ri-whatsapp-line"></i>
       </a>`;
@@ -264,7 +264,7 @@ document.head.appendChild(_s);
 
   /* ── FIX: WhatsApp floating button — always correct URL ── */
   function fixWhatsAppButton() {
-    var WA_URL = 'https://wa.me/919717270865?text=Hi%2C%20I%20am%20interested%20in%20your%20services';
+    var WA_URL = 'https://wa.me/918920603270?text=Hi%2C%20I%20am%20interested%20in%20your%20services';
     
     // Fix the right-side float button injected by script.js
     document.querySelectorAll('.float-wa').forEach(function (el) {
@@ -370,7 +370,7 @@ document.head.appendChild(_s);
         var fab = document.createElement('div');
         fab.className = 'float-actions';
         fab.style.cssText = 'position:fixed;left:1.25rem;bottom:5rem;z-index:99998;display:flex;flex-direction:column;gap:.6rem;align-items:flex-start;';
-        fab.innerHTML = '<a href="https://wa.me/919717270865?text=Hi%2C%20I%20am%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer" class="float-wa" title="Chat on WhatsApp" style="width:52px;height:52px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 4px 16px rgba(37,211,102,.5);text-decoration:none;"><i class="ri-whatsapp-line"></i></a>';
+        fab.innerHTML = '<a href="https://wa.me/918920603270?text=Hi%2C%20I%20am%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer" class="float-wa" title="Chat on WhatsApp" style="width:52px;height:52px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 4px 16px rgba(37,211,102,.5);text-decoration:none;"><i class="ri-whatsapp-line"></i></a>';
         document.body.appendChild(fab);
       }
     }, 500);
