@@ -1,12 +1,12 @@
 {
-  "name": "OMNET IT SOLUTIONS",
+  "name": "OMNET IT Solutions",
   "short_name": "OMNET",
-  "description": "IT support for businesses in Noida, Greater Noida, Delhi, and Gurugram. Onsite IT services, dedicated engineers, custom software, and 24/7 remote support.",
+  "description": "CERT-In empanelled IT support, managed services, cybersecurity, cloud and infrastructure across India and globally.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#0d9488",
+  "theme_color": "#0e2a52",
   "icons": [
     { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" },
     { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192", "purpose": "any maskable" },
