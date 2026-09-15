@@ -166,7 +166,7 @@ document.head.appendChild(_s);
     <div class="dual-action-inner">
       <div class="dual-action-left">
         <i class="ri-shield-check-line"></i>
-        Trusted IT Partner for 500+ Delhi NCR Businesses
+        Managed IT Support for Businesses Across Delhi NCR
       </div>
       <div class="dual-action-right">
         <a href="register.html" class="btn-register-hdr" id="regHdrBtn">
