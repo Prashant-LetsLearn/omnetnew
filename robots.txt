@@ -1,9 +1,9 @@
 # ════════════════════════════════════════════════════════════════════════
-# OMNET IT SOLUTIONS — robots.txt
+# OMNET IT Solutions — robots.txt
 # https://www.omnetit.in/robots.txt
 # ════════════════════════════════════════════════════════════════════════
 # This file tells crawlers what they may index.
-# Last updated: 2026-09-15
+# Last updated: 2026-05-16
 # ════════════════════════════════════════════════════════════════════════
 
 # ── Default rules for all crawlers ────────────────────────────────────
