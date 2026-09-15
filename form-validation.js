@@ -278,7 +278,7 @@
       setStatus(form, 'error',
         'You\'ve sent several messages already. Please try again in ' +
         escapeHtml(String(rl.waitMin)) + ' minutes, or call ' +
-        '<a href="tel:+919717270865">+91 97172 70865</a>.');
+        '<a href="tel:+918920603270">+91 89206 03270</a>.');
       return;
     }
 
@@ -318,7 +318,7 @@
       setStatus(form, 'error',
         'Something went wrong. Please email us at ' +
         '<a href="#" onclick="window.OmnetEmail&&window.OmnetEmail.reveal(this);return false;">' +
-        'reveal email</a> or call <a href="tel:+919717270865">+91 97172 70865</a>.');
+        'reveal email</a> or call <a href="tel:+918920603270">+91 89206 03270</a>.');
     } finally {
       setSubmitting(form, false);
     }
