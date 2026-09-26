@@ -2,23 +2,22 @@
 
 > CERT-In empanelled IT services, cybersecurity, cloud, and hardware supplier
 > in Delhi NCR. Headquartered at Nehru Place, New Delhi. Founded 2016 by
-> Dauly Kumari. Serves 500+ businesses across Noida, Delhi, Gurugram,
+> Dauly Kumari. Serves businesses across Noida, Delhi, Gurugram,
 > Ghaziabad, Sahibabad and Faridabad. 4-hour onsite SLA. 24×7 helpdesk.
 > Standard contract SLAs: P1 30-min response / 4-hr resolution; P2 2-hr / 1
 > business day; P3 4-hr / 2 business days; P4 1 / 5 business days.
 
 ## Contact
-- Phone (sales): +91-97172-70865
+- Phone (sales): +91-89206-03270
 - Phone (customer service): +91-99717-76428
 - Phone (24×7 technical support): +91-98183-91080
 - Office (Noida landline): +91-120-522-3376
-- Email: hello@omnetit.in
+- Email: info@omnetit.in
 - Office: 405B, Skylark Building, 60 Nehru Place, New Delhi 110019, India
 - Hours: Mon–Sat 9:00–19:00, Sun 10:00–17:00 IST
 
 ## Trust signals
 - CERT-In empanelled (Indian Computer Emergency Response Team, MeitY, Government of India)
-- 4.9 / 5 from 147 verified Google reviews
 - Microsoft 365 partner
 - Google Workspace partner
 - Apple Business Manager partner
@@ -35,7 +34,6 @@
 - [Network Infrastructure & Connectivity](https://www.omnetit.in/network-infrastructure-connectivity.html): structured LAN cabling (CAT6/CAT6A), fiber optic networking, enterprise Wi-Fi (site survey, indoor/outdoor/multi-floor), network hardware (switches, routers, VLANs), network security integration, and network AMC for offices, warehouses and institutions.
 - [Server Installation & Management](https://www.omnetit.in/managed-servers.html): Dell PowerEdge, HP ProLiant, Lenovo ThinkSystem rack and tower servers; Active Directory, virtualisation (Hyper-V, VMware), backup (Veeam, Acronis, Datto).
 - [Email Solutions](https://www.omnetit.in/email-solutions.html): Microsoft 365 mail, Google Workspace mail, anti-phishing, DMARC/DKIM/SPF, email continuity.
-- [Data Recovery](https://www.omnetit.in/data-recovery-noida.html): hard drive, SSD, RAID, NAS data recovery for Delhi NCR.
 - [Repair Services](https://www.omnetit.in/repair-services.html): MacBook, laptop, desktop, printer repair across Delhi NCR.
 - [IT Hardware Rental](https://www.omnetit.in/it-hardware-rental.html): laptops, desktops, servers, MacBooks on rent for short-term and project use.
 
@@ -43,32 +41,27 @@
 
 ### Delhi
 - [IT Support Delhi](https://www.omnetit.in/it-support-delhi.html)
-- [IT Support Nehru Place, Delhi](https://www.omnetit.in/it-support-nehru-place-delhi.html)
-- [IT Support Aerocity, Delhi](https://www.omnetit.in/it-support-aerocity-delhi.html)
-- [IT Support Dwarka, Delhi](https://www.omnetit.in/it-support-dwarka-delhi.html)
 
 ### Noida
 - [IT Support Noida (all sectors)](https://www.omnetit.in/it-support-noida.html)
-- [IT Support Noida Sector 62](https://www.omnetit.in/it-support-noida-sector-62.html)
-- [IT Support Noida Sector 63](https://www.omnetit.in/it-support-noida-sector-63.html)
-- [IT Support Noida Expressway](https://www.omnetit.in/it-support-noida-expressway.html)
 - [IT Support Greater Noida](https://www.omnetit.in/it-support-greater-noida.html)
-- [IT Support Greater Noida West](https://www.omnetit.in/it-support-greater-noida-west.html)
 - [Managed IT Services Noida](https://www.omnetit.in/managed-it-services-noida.html)
-- [Managed IT Services Greater Noida](https://www.omnetit.in/managed-it-services-greater-noida.html)
 
 ### Gurugram
 - [IT Support Gurugram (Cyber City, DLF, MG Road)](https://www.omnetit.in/it-support-gurugram.html)
 - [Managed IT Services Gurugram](https://www.omnetit.in/managed-it-services-gurugram.html)
-- [Computer Repair Gurugram](https://www.omnetit.in/computer-repair-gurugram.html)
 
 ### Ghaziabad
 - [IT Support Ghaziabad](https://www.omnetit.in/it-support-ghaziabad.html)
-- [IT Support Ghaziabad Indirapuram](https://www.omnetit.in/it-support-ghaziabad-indirapuram.html)
-- [IT Support Indirapuram](https://www.omnetit.in/it-support-indirapuram.html)
 
 ### Faridabad
 - [IT Support Faridabad](https://www.omnetit.in/it-support-faridabad.html)
+
+### Delhi NCR & global
+- [IT Support Delhi NCR](https://www.omnetit.in/it-support-ncr.html)
+- [Dedicated Onsite IT Engineer, Delhi NCR](https://www.omnetit.in/dedicated-onsite-it-engineer-delhi-ncr.html)
+- [IT Outsourcing Services in India](https://www.omnetit.in/it-outsourcing.html)
+- [India IT Support for Global Companies](https://www.omnetit.in/india-it-support-for-global-companies.html)
 
 ## Products
 
@@ -77,9 +70,8 @@
 - [HP Laptops & Servers](https://www.omnetit.in/hp-products-page.html)
 - [Lenovo ThinkPad & ThinkSystem](https://www.omnetit.in/lenovo-products-page.html)
 - [Chromebooks for Business](https://www.omnetit.in/chromebooks-page.html)
-- [Microsoft 365](https://www.omnetit.in/microsoft-365-page.html)
-- [Google Workspace](https://www.omnetit.in/google-workspace-page.html)
-- [Refurbished Laptops Noida](https://www.omnetit.in/refurbished-laptops-noida.html)
+- [Microsoft 365](https://www.omnetit.in/microsoft-365.html)
+- [Google Workspace](https://www.omnetit.in/google-workspace.html)
 - [Spare Parts](https://www.omnetit.in/spare-parts.html)
 
 ## Pricing
@@ -93,16 +85,16 @@
 
 ## Resources & guides
 
-- [How to choose an IT support company in Noida](https://www.omnetit.in/how-to-choose-it-support-company-noida.html)
-- [Cybersecurity threats SME Noida 2026](https://www.omnetit.in/cybersecurity-threats-sme-noida-2026.html)
-- [IT security checklist Delhi NCR](https://www.omnetit.in/it-security-checklist-delhi-ncr.html)
-- [Cloud vs on-premise for Delhi SME](https://www.omnetit.in/cloud-vs-on-premise-delhi-sme.html)
-- [Managed IT services cost Delhi NCR](https://www.omnetit.in/managed-it-services-cost-delhi-ncr.html)
-- [Microsoft 365 benefits for Noida business](https://www.omnetit.in/microsoft-365-benefits-noida-business.html)
+- [How to choose an IT support company in Delhi](https://www.omnetit.in/blog-it-support-delhi-guide.html)
+- [Managed IT services in Delhi: what businesses need](https://www.omnetit.in/blog-managed-it-services-delhi.html)
+- [IT support in Gurugram: Cyber City & DLF guide](https://www.omnetit.in/blog-it-support-gurugram-guide.html)
+- [Cloud migration for Gurugram businesses](https://www.omnetit.in/blog-cloud-migration-gurugram.html)
+- [Cybersecurity checklist for Noida businesses](https://www.omnetit.in/blog-cybersecurity-checklist-noida.html)
+- [IT AMC vs in-house IT for Noida](https://www.omnetit.in/blog-it-amc-noida.html)
+- [Office server vs cloud for Noida SMBs](https://www.omnetit.in/blog-server-setup-noida.html)
+- [8 signs your laptop needs professional repair](https://www.omnetit.in/blog-laptop-repair-signs-noida.html)
 - [What is computer AMC and do I need one](https://www.omnetit.in/what-is-computer-amc-do-i-need-one.html)
-- [Server management for Noida business](https://www.omnetit.in/server-management-noida-business.html)
 - [IT support response time SLA explained](https://www.omnetit.in/it-support-response-time-sla.html)
-- [Laptop repair Noida tips](https://www.omnetit.in/laptop-repair-noida-tips.html)
 
 ## Optional
 
