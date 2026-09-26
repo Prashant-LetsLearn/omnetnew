@@ -2,15 +2,53 @@
 # OMNET IT Solutions — robots.txt
 # https://www.omnetit.in/robots.txt
 # ════════════════════════════════════════════════════════════════════════
-# This file tells crawlers what they may index.
-# Last updated: 2026-05-16
+# Last updated: 2026-09-26
+#
+# NOTE: A crawler obeys ONLY the most specific User-agent group that matches
+# it — it does not also inherit the "User-agent: *" rules. So every allowed
+# group below repeats the same private-path Disallow list.
+#
+# Tracking parameters (utm_*, gclid, fbclid) are deliberately NOT blocked:
+# blocking them stops Google from seeing the canonical tag on those URLs and
+# can cause "Indexed, though blocked by robots.txt". Every page carries a
+# self-referencing canonical, which consolidates parameter URLs instead.
 # ════════════════════════════════════════════════════════════════════════
 
-# ── Default rules for all crawlers ────────────────────────────────────
+# ── Default rules for all other crawlers ──────────────────────────────
 User-agent: *
-Allow: /
+Disallow: /cdn-cgi/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /docs/
+Crawl-delay: 1
 
-# Don't crawl admin/utility/dev paths
+
+# ── Search engines & AI search/assistant crawlers — ALLOW ─────────────
+# Google (Search, Images, Gemini grounding), DuckDuckGo, Apple (Search &
+# Apple Intelligence), OpenAI, Perplexity, Anthropic, Common Crawl, Meta,
+# Cohere. Same private-path rules as above; no Crawl-delay (Google ignores it).
+User-agent: Googlebot
+User-agent: Googlebot-Image
+User-agent: Google-Extended
+User-agent: DuckDuckBot
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: ClaudeBot
+User-agent: Claude-Web
+User-agent: anthropic-ai
+User-agent: CCBot
+User-agent: FacebookBot
+User-agent: Meta-ExternalAgent
+User-agent: cohere-ai
 Disallow: /cdn-cgi/
 Disallow: /admin/
 Disallow: /private/
@@ -20,102 +58,29 @@ Disallow: /.git/
 Disallow: /.github/
 Disallow: /docs/
 
-# Don't index thank-you / order-success URLs (no SEO value, fragments only)
-Disallow: /*?utm_*
-Disallow: /*?gclid=
-Disallow: /*?fbclid=
-Disallow: /*&utm_*
-
-# Be polite — don't hammer the server
-Crawl-delay: 1
-
-
-# ── Major search engines ──────────────────────────────────────────────
-
-# Google: full speed, index everything
-User-agent: Googlebot
-Allow: /
+# Bing (honours Crawl-delay)
+User-agent: Bingbot
 Disallow: /cdn-cgi/
 Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.github/
 Disallow: /docs/
-
-# Google Images
-User-agent: Googlebot-Image
-Allow: /
-
-# Google Extended — required for Gemini grounding & SGE features
-User-agent: Google-Extended
-Allow: /
-
-# Bing
-User-agent: Bingbot
-Allow: /
 Crawl-delay: 1
-
-# DuckDuckGo
-User-agent: DuckDuckBot
-Allow: /
-
-# Apple Search
-User-agent: Applebot
-Allow: /
-
-# Apple Extended — required for Apple Intelligence summaries
-User-agent: Applebot-Extended
-Allow: /
 
 # Yandex
 User-agent: YandexBot
-Allow: /
+Disallow: /cdn-cgi/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /docs/
 Crawl-delay: 2
-
-
-# ── AI search & assistant crawlers — ALLOW ────────────────────────────
-# These power ChatGPT browsing, Perplexity, Claude search, Gemini grounding, etc.
-# Allowing them is required for AI-search visibility.
-# ─────────────────────────────────────────────────────────────────────
-
-# OpenAI
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: GPTBot
-Allow: /
-
-# Perplexity
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Perplexity-User
-Allow: /
-
-# Anthropic — Claude search & user fetch
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-# Common Crawl — used by many AI products
-User-agent: CCBot
-Allow: /
-
-# Meta AI
-User-agent: FacebookBot
-Allow: /
-
-User-agent: Meta-ExternalAgent
-Allow: /
-
-# Cohere
-User-agent: cohere-ai
-Allow: /
 
 
 # ── Block aggressive scrapers and SEO spam bots ───────────────────────
