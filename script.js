@@ -402,45 +402,35 @@ document.head.appendChild(_s);
 })();
 
 // ── TAWK.TO LIVE CHAT ────────────────────────────────────────────
-// Pages that have the teal "Leave a Message" button (#lamTrigger) use it as
-// the chat launcher, so Tawk's own bubble is hidden there BEFORE it renders
-// (no flash-then-disappear). Pages without that button show Tawk's normal
-// bubble. Until Tawk has loaded, the button opens the message form instead.
+// Tawk's chat bubble is always visible (bottom-right) and is the site's one
+// chat button. On pages that have the teal "Leave a Message" button, that
+// button is shown only until chat loads (or if chat fails to load, in which
+// case it still opens the message form).
 var Tawk_API = Tawk_API || {}, Tawk_LoadTime = new Date();
 (function () {
-  var ready = false;
-  function hasLauncher() { return !!document.getElementById('lamTrigger'); }
-  function hideIfLauncher() {
-    if (hasLauncher() && typeof Tawk_API.hideWidget === 'function') Tawk_API.hideWidget();
-  }
-
-  // On phones, keep Tawk's bubble above the sticky call bar at the bottom of the screen
-  Tawk_API.customStyle = { visibility: { mobile: { position: 'br', xOffset: 16, yOffset: 76 } } };
-
-  // On phones (<=768px) the sticky call bar covers the bottom 60px, so lift the
-  // floating "Leave a Message" / "Technical Support" buttons above it.
-  var fabCss = document.createElement('style');
-  fabCss.textContent = '@media (max-width:768px){' +
-    'html body #lamTrigger{bottom:calc(76px + env(safe-area-inset-bottom,0px)) !important;right:16px !important;z-index:9400 !important}' +
-    'html body #stTrigger{bottom:calc(132px + env(safe-area-inset-bottom,0px)) !important;right:16px !important}}';
-  document.head.appendChild(fabCss);
-
-  Tawk_API.onBeforeLoad = hideIfLauncher;
-  Tawk_API.onLoad = function () { ready = true; hideIfLauncher(); };
-  Tawk_API.onChatMinimized = hideIfLauncher;
-  // If an agent replies while the chat is closed, show the bubble so it isn't missed
-  Tawk_API.onChatMessageAgent = function () {
-    if (typeof Tawk_API.showWidget === 'function') Tawk_API.showWidget();
+  // Bubble position: bottom-right; on phones, sit above the sticky call bar (~62px tall)
+  Tawk_API.customStyle = {
+    visibility: {
+      desktop: { position: 'br', xOffset: 20, yOffset: 20 },
+      mobile:  { position: 'br', xOffset: 16, yOffset: 76 }
+    }
   };
 
-  // "Leave a Message" -> open live chat (capture phase, runs before the page's own form handler)
-  document.addEventListener('click', function (e) {
-    if (!ready || !e.target.closest || !e.target.closest('#lamTrigger')) return;
-    e.preventDefault();
-    e.stopPropagation();
-    Tawk_API.showWidget();
-    Tawk_API.maximize();
-  }, true);
+  // Keep the red "Technical Support" button clear of the chat bubble, and on
+  // phones keep the floating buttons above the sticky call bar.
+  var fabCss = document.createElement('style');
+  fabCss.textContent =
+    'html body #stTrigger{bottom:100px !important}' +
+    '@media (max-width:768px){' +
+      'html body #lamTrigger{bottom:calc(76px + env(safe-area-inset-bottom,0px)) !important;right:16px !important;z-index:9400 !important}' +
+      'html body #stTrigger{bottom:calc(152px + env(safe-area-inset-bottom,0px)) !important;right:16px !important}}';
+  document.head.appendChild(fabCss);
+
+  Tawk_API.onLoad = function () {
+    if (typeof Tawk_API.showWidget === 'function') Tawk_API.showWidget();
+    var lam = document.getElementById('lamTrigger');
+    if (lam) lam.style.setProperty('display', 'none', 'important'); // bubble replaces it
+  };
 
   // Load after the page has finished loading so chat doesn't slow down first paint
   function loadTawk() {
