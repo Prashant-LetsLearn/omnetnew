@@ -37,7 +37,17 @@
 - [Repair Services](https://www.omnetit.in/repair-services.html): MacBook, laptop, desktop, printer repair across Delhi NCR.
 - [IT Hardware Rental](https://www.omnetit.in/it-hardware-rental.html): laptops, desktops, servers, MacBooks on rent for short-term and project use.
 
-## Locations served (with dedicated landing pages)
+## Service areas
+
+- [Service areas overview](https://www.omnetit.in/locations/): onsite IT support across Delhi NCR; remote support across India and worldwide. Contract clients get a 4-hour onsite response.
+- [IT services in Delhi](https://www.omnetit.in/locations/delhi/) — [Nehru Place](https://www.omnetit.in/locations/delhi/nehru-place/) (head office)
+- [IT services in Noida](https://www.omnetit.in/locations/noida/) — [Sector 62](https://www.omnetit.in/locations/noida/sector-62/), [Sector 63](https://www.omnetit.in/locations/noida/sector-63/), [Noida Expressway](https://www.omnetit.in/locations/noida/noida-expressway/)
+- [IT services in Greater Noida](https://www.omnetit.in/locations/greater-noida/) — [Greater Noida West](https://www.omnetit.in/locations/greater-noida/greater-noida-west/), [Knowledge Park](https://www.omnetit.in/locations/greater-noida/knowledge-park/)
+- [IT services in Gurugram](https://www.omnetit.in/locations/gurugram/) — [Cyber City](https://www.omnetit.in/locations/gurugram/cyber-city/), [Udyog Vihar](https://www.omnetit.in/locations/gurugram/udyog-vihar/)
+- [IT services in Ghaziabad](https://www.omnetit.in/locations/ghaziabad/) — [Indirapuram](https://www.omnetit.in/locations/ghaziabad/indirapuram/), [Sahibabad](https://www.omnetit.in/locations/ghaziabad/sahibabad/)
+- [IT services in Faridabad](https://www.omnetit.in/locations/faridabad/)
+
+## Location landing pages by service
 
 ### Delhi
 - [IT Support Delhi](https://www.omnetit.in/it-support-delhi.html)
