@@ -402,12 +402,15 @@ document.head.appendChild(_s);
 })();
 
 // ── TAWK.TO LIVE CHAT ────────────────────────────────────────────
-// Tawk's chat bubble is always visible (bottom-right) and is the site's one
-// chat button. On pages that have the teal "Leave a Message" button, that
-// button is shown only until chat loads (or if chat fails to load, in which
-// case it still opens the message form).
+// Bottom-right layout (all always visible):
+//   [Technical Support]
+//   [Leave a Message] (chat bubble)
+// "Leave a Message" opens the Tawk chat; if chat hasn't loaded (or is
+// blocked), it opens the message form instead.
 var Tawk_API = Tawk_API || {}, Tawk_LoadTime = new Date();
 (function () {
+  var ready = false;
+
   // Bubble position: bottom-right; on phones, sit above the sticky call bar (~62px tall)
   Tawk_API.customStyle = {
     visibility: {
@@ -416,21 +419,29 @@ var Tawk_API = Tawk_API || {}, Tawk_LoadTime = new Date();
     }
   };
 
-  // Keep the red "Technical Support" button clear of the chat bubble, and on
-  // phones keep the floating buttons above the sticky call bar.
+  // Place the two floating buttons around the chat bubble so nothing overlaps
   var fabCss = document.createElement('style');
   fabCss.textContent =
-    'html body #stTrigger{bottom:100px !important}' +
+    'html body #lamTrigger{bottom:28px !important;right:94px !important;display:flex !important}' +
+    'html body #stTrigger{bottom:100px !important;right:20px !important}' +
     '@media (max-width:768px){' +
-      'html body #lamTrigger{bottom:calc(76px + env(safe-area-inset-bottom,0px)) !important;right:16px !important;z-index:9400 !important}' +
-      'html body #stTrigger{bottom:calc(152px + env(safe-area-inset-bottom,0px)) !important;right:16px !important}}';
+      'html body #lamTrigger{bottom:calc(84px + env(safe-area-inset-bottom,0px)) !important;right:88px !important;z-index:9400 !important}' +
+      'html body #stTrigger{bottom:calc(148px + env(safe-area-inset-bottom,0px)) !important;right:16px !important}}';
   document.head.appendChild(fabCss);
 
   Tawk_API.onLoad = function () {
+    ready = true;
     if (typeof Tawk_API.showWidget === 'function') Tawk_API.showWidget();
-    var lam = document.getElementById('lamTrigger');
-    if (lam) lam.style.setProperty('display', 'none', 'important'); // bubble replaces it
   };
+
+  // "Leave a Message" -> open live chat (capture phase, runs before the page's own form handler)
+  document.addEventListener('click', function (e) {
+    if (!ready || !e.target.closest || !e.target.closest('#lamTrigger')) return;
+    e.preventDefault();
+    e.stopPropagation();
+    Tawk_API.showWidget();
+    Tawk_API.maximize();
+  }, true);
 
   // Load after the page has finished loading so chat doesn't slow down first paint
   function loadTawk() {
