@@ -169,13 +169,13 @@ document.head.appendChild(_s);
         Trusted IT Partner for Delhi NCR Businesses
       </div>
       <div class="dual-action-right">
-        <a href="register.html" class="btn-register-hdr" id="regHdrBtn">
+        <a href="/register.html" class="btn-register-hdr" id="regHdrBtn">
           <i class="ri-user-add-line"></i> Register / Sign Up
         </a>
-        <a href="managed-services.html" class="btn-managed">
+        <a href="/managed-services.html" class="btn-managed">
           <i class="ri-settings-4-line"></i> Managed Services
         </a>
-        <a href="shop.html" class="btn-online-purchase">
+        <a href="/shop.html" class="btn-online-purchase">
           <i class="ri-shopping-cart-2-line"></i> Online Purchase
         </a>
       </div>
@@ -198,7 +198,7 @@ document.head.appendChild(_s);
     const regBtn = document.getElementById('regHdrBtn');
     if (user && regBtn) {
       regBtn.innerHTML = `<i class="ri-user-line"></i> ${user.name.split(' ')[0]}`;
-      regBtn.href      = 'register.html#dashboard';
+      regBtn.href      = '/register.html#dashboard';
     }
   } catch (e) { /* ignore */ }
 

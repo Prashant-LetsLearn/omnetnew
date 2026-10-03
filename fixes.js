@@ -178,3 +178,11 @@
   });
 
 })();
+
+/* ── FIX: "Request Callback" on pages without the callback modal ──
+   Many pages show the header callback button but don't include the modal,
+   so cbOpen() was undefined and the button did nothing. Send those visitors
+   to the contact page, which opens the callback form. */
+if (typeof window.cbOpen !== 'function') {
+  window.cbOpen = function () { window.location.href = '/contact.html#callback'; };
+}
