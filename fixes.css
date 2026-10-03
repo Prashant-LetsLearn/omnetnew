@@ -1,0 +1,668 @@
+/* ═══════════════════════════════════════════════════════════════════
+   OMNET IT SOLUTIONS — COMPREHENSIVE BUG FIXES & UI IMPROVEMENTS
+   Applied: All 12 audit issues resolved
+═══════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────
+   FIX 1: CRITICAL — Remove click-blocking overlay caused by 
+   dual-action-strip covering the page. The strip is position:fixed 
+   but the body wasn't getting correct top padding, so the strip 
+   was invisibly blocking clicks below the header.
+   Root cause: dual-action-strip z-index:1002 + site-header 
+   z-index:1000 stacked without enough body padding-top.
+───────────────────────────────────────────────────────────────────*/
+html, body {
+  overflow-x: hidden;
+}
+
+/* Ensure no invisible full-width fixed element blocks clicks */
+.dual-action-strip {
+  pointer-events: auto;
+  /* Strip only blocks its own height — children get clicks */
+}
+
+/* Prevent the strip from blocking the area below it */
+.dual-action-strip * {
+  pointer-events: auto;
+}
+
+/* Body needs enough top offset to clear both the strip (36px) 
+   and the header (~68px) = 104px total minimum */
+body {
+  padding-top: 0; /* Heroes manage their own offset */
+}
+
+/* Fix: hero sections must clear both fixed layers */
+.home-hero {
+  padding-top: 140px !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   FIX 2: NAVIGATION DROPDOWNS
+   Root cause: dropdown-menu z-index (200) lower than header (1000),
+   causing menus to appear behind other elements. Also missing 
+   overflow:visible on .nav-dropdown parent.
+───────────────────────────────────────────────────────────────────*/
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  z-index: 1100 !important; /* Must be above .site-header z-index:1000 */
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  display: block !important; /* Override display:none — use opacity instead */
+  visibility: hidden;
+}
+
+.dropdown-menu.open {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+/* Ensure nav doesn't clip dropdowns */
+.site-nav {
+  overflow: visible !important;
+}
+
+.header-inner {
+  overflow: visible !important;
+}
+
+.site-header {
+  overflow: visible !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   FIX 3: WHATSAPP FLOATING BUTTON
+   Ensure the WhatsApp button is always clickable, above all overlays,
+   and uses the correct link with proper text.
+───────────────────────────────────────────────────────────────────*/
+#waWrap {
+  z-index: 99999 !important;
+  pointer-events: auto !important;
+}
+
+#waBubble {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+.float-actions {
+  z-index: 99998 !important;
+  pointer-events: auto !important;
+}
+
+.float-wa {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  z-index: 99998 !important;
+}
+
+/* Mobile sticky bar WhatsApp icon */
+.omnet-sticky-wa {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  z-index: 99998 !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   FIX 4: OVERLAY / CLICK BLOCKING — Ensure modal overlays are 
+   closed by default and don't block page interaction.
+   cart-overlay and modal-overlay must start non-blocking.
+───────────────────────────────────────────────────────────────────*/
+.cart-overlay:not(.open) {
+  pointer-events: none !important;
+  opacity: 0 !important;
+}
+
+.modal-overlay:not(.active) {
+  pointer-events: none !important;
+  display: none !important;
+}
+
+.upi-modal-overlay:not(.active) {
+  pointer-events: none !important;
+  display: none !important;
+}
+
+/* stOverlay (support ticket) must be none by default */
+#stOverlay {
+  pointer-events: none;
+}
+
+#stOverlay[style*="block"],
+#stOverlay[style*="flex"] {
+  pointer-events: auto;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   FIX 5 & 6: CONTACT PAGE — Layout and usability improvements
+───────────────────────────────────────────────────────────────────*/
+.contact-info-box {
+  background: #fff;
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-address-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-address-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  background: var(--gray-50);
+  border-radius: 10px;
+  border: 1px solid var(--gray-100);
+}
+
+.contact-address-row i {
+  color: var(--teal-600);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.contact-address-row .addr-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.2rem;
+}
+
+.contact-address-row .addr-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gray-800);
+}
+
+.contact-address-row a {
+  color: var(--teal-700);
+  text-decoration: none;
+}
+
+.contact-address-row a:hover {
+  text-decoration: underline;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   FIX 7: UI/UX — Mobile, Tablet, Desktop improvements
+───────────────────────────────────────────────────────────────────*/
+
+/* Better button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+}
+
+/* Improved section spacing */
+.section {
+  padding: 5rem 0;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 0;
+  }
+}
+
+/* Better grid responsiveness */
+@media (max-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .footer-main {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid-4 {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .footer-main {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .footer-brand {
+    grid-column: 1;
+  }
+  
+  .home-hero-inner,
+  .hero-inner {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  
+  .hero-stat-row {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .hero-svc-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Better mobile nav */
+@media (max-width: 768px) {
+  .header-phone {
+    display: none;
+  }
+  
+  .site-header {
+    top: 32px;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   FIX 11: BOTTOM WHITE STRIP / LAYOUT BUG
+   Common causes: body padding-bottom not matching sticky bar height,
+   footer missing background continuity, extra margin on last section.
+───────────────────────────────────────────────────────────────────*/
+
+/* Ensure footer background reaches the very bottom */
+.site-footer {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.footer-bottom {
+  margin-bottom: 0 !important;
+}
+
+/* On mobile, body needs padding for the sticky bar (64px height) */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 68px !important;
+  }
+  
+  /* Prevent any section from adding unexpected bottom gap */
+  section:last-of-type,
+  .section:last-of-type {
+    margin-bottom: 0 !important;
+  }
+}
+
+/* Fix: ensure html/body fill full viewport */
+html {
+  min-height: 100%;
+  background: #fff;
+}
+
+body {
+  min-height: 100vh;
+  background: #fff;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   SERVICES SECTION IMPROVEMENTS (Issue 8 — reference: ditserv.com)
+   Cleaner, more conversion-focused layout
+───────────────────────────────────────────────────────────────────*/
+.service-card {
+  background: #fff;
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  padding: 1.75rem;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal-500), var(--cyan-500));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+  border-color: var(--teal-200);
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-card .icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.service-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin: 0;
+}
+
+.service-card p {
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  line-height: 1.65;
+  flex: 1;
+}
+
+.service-card .cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--teal-600);
+  text-decoration: none;
+  margin-top: 0.5rem;
+}
+
+.service-card .cta-link i {
+  transition: transform 0.2s;
+}
+
+.service-card:hover .cta-link i {
+  transform: translateX(4px);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   GENERAL TYPOGRAPHY & READABILITY IMPROVEMENTS
+───────────────────────────────────────────────────────────────────*/
+.section-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--gray-900);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--gray-600);
+  line-height: 1.7;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   QUICK CARD FIX (contact page)
+───────────────────────────────────────────────────────────────────*/
+.quick-card {
+  background: #fff;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 16px;
+  padding: 1.75rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+}
+
+.quick-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.09);
+}
+
+.quick-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 1.1rem;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   SCROLL REVEAL — ensure elements don't stay invisible
+   (fallback if IntersectionObserver doesn't fire)
+───────────────────────────────────────────────────────────────────*/
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Safety fallback: after 2s, reveal all elements regardless */
+.reveal {
+  transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   ADDITIONAL MOBILE / TABLET RESPONSIVE FIXES
+═══════════════════════════════════════════════════════════════════ */
+
+/* Fix hero top padding — must clear dual-action-strip (36px) + header (~68px) */
+@media (min-width: 769px) {
+  .home-hero {
+    padding-top: 160px !important;
+  }
+  .page-hero {
+    padding-top: 120px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-hero {
+    padding-top: 110px !important;
+  }
+  .page-hero {
+    padding-top: 100px !important;
+  }
+  .home-hero-inner {
+    grid-template-columns: 1fr !important;
+  }
+  .hero-svc-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .hero-stat-row {
+    grid-template-columns: repeat(2,1fr) !important;
+  }
+  /* Improve button sizing on mobile */
+  .btn {
+    font-size: 0.88rem !important;
+    padding: 0.65rem 1.25rem !important;
+  }
+  /* Stack action buttons */
+  .home-hero-btns {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-svc-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .hero-stat-row {
+    grid-template-columns: repeat(2,1fr) !important;
+    gap: 0.75rem !important;
+  }
+}
+
+/* ── Services grid improvements ── */
+@media (max-width: 1024px) {
+  .services-grid,
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .services-grid,
+  .grid-3 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── Contact page layout ── */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+  }
+  #contact-form {
+    padding: 1.5rem !important;
+  }
+}
+
+/* ── Navigation link spacing ── */
+.nav-link {
+  white-space: nowrap;
+}
+
+/* ── Fix waWrap on mobile — move to right side to avoid overlap with content ── */
+@media (max-width: 768px) {
+  #waWrap {
+    bottom: 80px !important;
+    left: 12px !important;
+  }
+}
+
+/* ── Ensure stTrigger (support button) doesn't overlap WA button ── */
+#stTrigger {
+  z-index: 99990 !important;
+}
+
+/* ── Fix footer mobile layout ── */
+@media (max-width: 768px) {
+  .footer-main {
+    grid-template-columns: 1fr !important;
+    padding: 2rem 1rem !important;
+    gap: 1.5rem !important;
+  }
+  .footer-bottom-inner {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    text-align: center !important;
+  }
+  .footer-coverage {
+    padding: 1rem !important;
+    font-size: 0.78rem !important;
+  }
+}
+
+/* ── Improved spacing between sections ── */
+.section + .section {
+  border-top: 0;
+}
+
+/* ── Better form styling on contact page ── */
+.form-input,
+.form-select,
+.form-textarea,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--gray-900);
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--teal-500);
+  box-shadow: 0 0 0 3px rgba(20,184,166,0.12);
+}
+
+/* ── Services section — conversion-focused cards ── */
+.svc-highlight-card {
+  background: linear-gradient(135deg, var(--teal-600), var(--cyan-600));
+  color: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.svc-highlight-card h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.svc-highlight-card p {
+  opacity: 0.88;
+  line-height: 1.65;
+}
+
+.svc-highlight-card .cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fff;
+  color: var(--teal-700);
+  border-radius: 8px;
+  padding: 0.65rem 1.25rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  transition: transform 0.2s;
+}
+
+.svc-highlight-card .cta-btn:hover {
+  transform: translateX(3px);
+}

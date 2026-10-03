@@ -1,0 +1,213 @@
+/* ════════════════════════════════════════════════════════════════════════
+   OMNET IT — RESPONSIVE DESIGN (responsive-design.css)
+   ════════════════════════════════════════════════════════════════════════
+   Loaded LAST. Mobile-first breakpoints:
+
+       (max-width: 1024px)  → tablet landscape
+       (max-width:  768px)  → tablet portrait
+       (max-width:  540px)  → phone
+       (max-width:  380px)  → small phone
+
+   Audit findings addressed here:
+     • Text overflow on small screens (long product names, phone numbers)
+     • Header CTAs colliding on tablet
+     • Forms wider than viewport on phone (box-sizing: border-box fix)
+     • Partner-logo grid breaking
+     • Footer columns stacked but not centered correctly
+     • Hero text getting clipped by sticky header on phone
+     • Tables losing readability on phone (forced horizontal-scroll wrapper)
+
+   Each section below targets ONE concern so future tweaks are easy.
+   ════════════════════════════════════════════════════════════════════════ */
+
+
+/* ╭─────────────────────────────────────────────╮
+   │ TABLET LANDSCAPE: ≤ 1024 px                  │
+   ╰─────────────────────────────────────────────╯ */
+@media (max-width: 1024px) {
+
+  /* Header CTAs were overlapping the nav */
+  .header-cta              { gap: 8px; }
+  .header-cta .btn-primary { padding: 8px 14px; font-size: 13px; }
+  .header-phone            { font-size: 13px; }
+
+  /* Two-column hero collapses to stacked */
+  .hero-grid,
+  .home-hero-inner {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    text-align: center;
+  }
+  .home-hero-inner img { margin: 0 auto; max-width: 80%; }
+
+  /* Three-column feature grids → two columns */
+  .features-grid,
+  .services-grid,
+  .industries-grid,
+  .grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Footer 4 cols → 2 cols */
+  .footer-main { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+
+/* ╭─────────────────────────────────────────────╮
+   │ TABLET PORTRAIT: ≤ 768 px                    │
+   ╰─────────────────────────────────────────────╯ */
+@media (max-width: 768px) {
+
+  /* Hide desktop nav, show hamburger */
+  .desktop-nav         { display: none !important; }
+  .mobile-menu-btn     { display: inline-flex !important; }
+  .header-nav-bar      { display: none; }
+
+  /* Hide secondary header CTAs, keep only "Call" + hamburger */
+  .header-cta .btn-primary,
+  .header-cta button   { display: none !important; }
+  .header-cta .header-phone { font-size: 12px; padding: 6px 10px; }
+
+  /* Hero text size step-down */
+  .home-hero h1, .page-hero h1, .hero h1 {
+    font-size: clamp(1.7rem, 6vw, 2.4rem) !important;
+  }
+  .home-hero p,  .page-hero p,  .hero p {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+  }
+  .home-hero .btn-group, .page-hero .btn-group {
+    flex-direction: column !important;
+    gap: .75rem !important;
+    align-items: stretch !important;
+  }
+  .home-hero .btn, .page-hero .btn { justify-content: center !important; }
+
+  /* Section padding tighter on phone */
+  .section, section.section, .page-section { padding: 2.5rem 0 !important; }
+  .section-header { margin-bottom: 1.75rem !important; }
+
+  /* All multi-column grids → single column */
+  .features-grid, .services-grid, .industries-grid,
+  .grid-2, .grid-3, .grid-4, .grid-cards,
+  .pricing-grid, .product-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Cards: tighten padding, drop hover translate (no hover on touch) */
+  .card, .feature-card, .service-card, .product-card {
+    padding: 1.25rem !important;
+  }
+  .card:hover, .feature-card:hover, .service-card:hover, .product-card:hover {
+    transform: none !important;
+  }
+
+  /* Footer: stacked, centered */
+  .footer-main { grid-template-columns: 1fr !important; text-align: center; gap: 1.5rem !important; }
+  .footer-social { justify-content: center; }
+  .footer-contact-item { justify-content: center; }
+  .footer-bottom-inner { flex-direction: column; gap: .5rem; text-align: center; }
+
+  /* Forms */
+  .form-row { grid-template-columns: 1fr !important; }
+  input, select, textarea, button { font-size: 16px !important; /* prevents iOS zoom */ }
+
+  /* Floating buttons don't crowd the screen */
+  .whatsapp-fab, #lamTrigger {
+    bottom: 16px !important; right: 16px !important;
+    padding: 10px 14px !important; font-size: 13px !important;
+  }
+}
+
+
+/* ╭─────────────────────────────────────────────╮
+   │ PHONE: ≤ 540 px                              │
+   ╰─────────────────────────────────────────────╯ */
+@media (max-width: 540px) {
+
+  /* Container padding tighter */
+  .container, .wrap { padding-left: 1rem !important; padding-right: 1rem !important; }
+
+  /* Tighter h1 / h2 */
+  h1 { font-size: 1.65rem !important; }
+  h2 { font-size: 1.35rem !important; }
+  h3 { font-size: 1.15rem !important; }
+
+  /* Hide non-critical hero badges/labels to save vertical space */
+  .hero .badge, .hero-meta, .hero-stats { display: none; }
+
+  /* Pricing tables: stack the columns */
+  .pricing-table { display: block; }
+  .pricing-table > * { width: 100% !important; margin-bottom: 1rem; }
+
+  /* Tables: force horizontal scroll wrapper */
+  table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* Long phone numbers / emails: prevent overflow */
+  a[href^="tel:"], a[href^="mailto:"], .omnet-email-link {
+    word-break: break-all;
+  }
+
+  /* Modals fill most of screen */
+  #cbModal, #stModal, #lamModal {
+    width: calc(100vw - 24px) !important;
+    max-width: calc(100vw - 24px) !important;
+  }
+
+  /* Dual-action strip wraps */
+  .dual-action-strip {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    padding: 6px 8px !important;
+  }
+  .dual-action-strip a { font-size: 12px !important; padding: 6px 10px !important; }
+
+  /* Partner logo grid: 3 small cells */
+  .partner-logos, .partner-grid, .logo-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: .75rem !important;
+  }
+  .partner-logos img { max-height: 40px; }
+}
+
+
+/* ╭─────────────────────────────────────────────╮
+   │ SMALL PHONE: ≤ 380 px                        │
+   ╰─────────────────────────────────────────────╯ */
+@media (max-width: 380px) {
+
+  body { font-size: 15px; }
+  h1   { font-size: 1.45rem !important; }
+  .home-hero, .page-hero { padding-top: 95px !important; }
+  .footer-coverage p, .footer-bottom-inner p { font-size: 12px; }
+  .partner-logos { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+
+/* ╭─────────────────────────────────────────────╮
+   │ DARK MODE (respects user preference)         │
+   ╰─────────────────────────────────────────────╯ */
+@media (prefers-color-scheme: dark) {
+  /* The site's brand colours work in both modes already; only adjust
+     the auto-injected form-status colours so contrast stays readable. */
+  .omnet-secure-form .form-status.is-success { background:#064e3b; color:#a7f3d0; }
+  .omnet-secure-form .form-status.is-error   { background:#7f1d1d; color:#fecaca; }
+  .omnet-secure-form .form-status.is-info    { background:#1e3a8a; color:#bfdbfe; }
+}
+
+
+/* ╭─────────────────────────────────────────────╮
+   │ ACCESSIBILITY: focus rings + reduced motion  │
+   ╰─────────────────────────────────────────────╯ */
+*:focus-visible {
+  outline: 3px solid #0d9488 !important;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

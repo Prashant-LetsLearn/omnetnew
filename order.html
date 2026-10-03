@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Place an Order | OMNET IT Solutions</title>
+ <meta name="description" content="Place a service order with OMNET IT Solutions. Pay securely by card, UPI, net banking or QR. Serving Noida, Greater Noida, Gurugram & across India." />
+ <meta name="robots" content="index, follow" />
+ <link rel="canonical" href="https://www.omnetit.in/order.html" />
+<meta name="theme-color" content="#0d9488" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&amp;family=DM+Serif+Display:ital@0;1&amp;display=swap">
+<link rel="stylesheet" href="bundle-3833c1d9.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css"></noscript>
+ <!-- Google tag -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-GWE61BMZN1"></script>
+ <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GWE61BMZN1');</script>
+ <!-- Razorpay SDK -->
+ <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+ <style>
+ /* ── Dual-strip offset ── */
+ .site-header { top: 36px !important; }
+ @media (max-width: 768px) { .site-header { top: 32px !important; } }
+
+ /* ── Page layout ── */
+ .order-page {
+ min-height: 100vh;
+ background: linear-gradient(160deg, #0a2240 0%, #0d4f5c 45%, #0f7a6e 100%);
+ padding: 156px 1rem 4rem;
+ }
+ .order-shell {
+ max-width: 920px; margin: 0 auto;
+ display: grid; grid-template-columns: 1fr 380px; gap: 2rem; align-items: start;
+ }
+ @media (max-width: 860px) {
+ .order-shell { grid-template-columns: 1fr; }
+ .order-summary-col { order: -1; }
+ }
+
+ /* ── Order form card ── */
+ .order-card {
+ background: #fff; border-radius: 24px; padding: 2.5rem;
+ box-shadow: 0 32px 80px rgba(0,0,0,.3);
+ }
+ .order-card-title {
+ font-size: 1.4rem; font-weight: 800; color: var(--gray-900); margin-bottom: .3rem;
+ }
+ .order-card-sub { font-size: .875rem; color: var(--gray-500); margin-bottom: 2rem; }
+
+ /* Progress steps */
+ .order-steps {
+ display: flex; align-items: center; margin-bottom: 2.25rem;
+ gap: 0;
+ }
+ .order-step {
+ display: flex; align-items: center; gap: .5rem;
+ font-size: .78rem; font-weight: 700; color: var(--gray-400);
+ flex: 1;
+ }
+ .order-step.active { color: var(--teal-600); }
+ .order-step.complete { color: var(--teal-500); }
+ .step-num {
+ width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--gray-200);
+ display: flex; align-items: center; justify-content: center;
+ font-size: .78rem; font-weight: 800; flex-shrink: 0; background: #fff;
+ transition: all .3s;
+ }
+ .order-step.active .step-num { border-color: var(--teal-500); color: var(--teal-600); background: var(--teal-50); }
+ .order-step.complete .step-num { border-color: var(--teal-500); background: var(--teal-500); color: #fff; }
+ .step-line { flex: 1; height: 2px; background: var(--gray-200); margin: 0 .5rem; }
+ .step-line.done { background: var(--teal-400); }
+
+ /* Form fields */
+ .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+ @media (max-width: 520px) { .form-grid-2 { grid-template-columns: 1fr; } }
+ .form-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
+ .form-label {
+ font-size: .8rem; font-weight: 700; color: var(--gray-700);
+ display: flex; align-items: center; gap: .3rem;
+ }
+ .form-label .req { color: #ef4444; }
+ .form-input, .form-select, .form-textarea {
+ width: 100%; padding: .7rem 1rem; border: 1.5px solid var(--gray-200);
+ border-radius: 10px; font-size: .9rem; font-family: inherit; color: var(--gray-900);
+ outline: none; transition: border-color .2s, box-shadow .2s; background: #fff;
+ }
+ .form-input:focus, .form-select:focus, .form-textarea:focus {
+ border-color: var(--teal-400); box-shadow: 0 0 0 3px rgba(20,184,166,.12);
+ }
+ .form-textarea { resize: vertical; min-height: 90px; }
+ .form-hint { font-size: .74rem; color: var(--gray-400); }
+
+ /* Amount display */
+ .amount-row {
+ display: flex; align-items: center;
+ border: 1.5px solid var(--gray-200); border-radius: 10px; overflow: hidden;
+ }
+ .amount-prefix {
+ padding: 0 .85rem; font-size: 1.1rem; font-weight: 800;
+ color: var(--gray-500); background: var(--gray-50);
+ border-right: 1.5px solid var(--gray-200); height: 46px;
+ display: flex; align-items: center;
+ }
+ .amount-input {
+ flex: 1; border: none !important; box-shadow: none !important;
+ font-size: 1.2rem; font-weight: 700; color: var(--teal-700);
+ padding: 0 .85rem; height: 46px; outline: none; background: transparent;
+ }
+ .amount-gst {
+ font-size: .72rem; color: var(--gray-400); padding: 0 .75rem;
+ background: var(--gray-50); height: 46px; display: flex; align-items: center;
+ border-left: 1.5px solid var(--gray-200); white-space: nowrap;
+ }
+
+ /* Payment method selection */
+ .pay-method-title { font-size: .9rem; font-weight: 700; color: var(--gray-800); margin-bottom: .85rem; }
+ .pay-method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1.5rem; }
+ .pay-method-btn {
+ border: 2px solid var(--gray-200); border-radius: 12px; padding: 1rem .75rem;
+ background: #fff; cursor: pointer; text-align: center; transition: all .2s;
+ display: flex; flex-direction: column; align-items: center; gap: .4rem;
+ font-family: inherit;
+ }
+ .pay-method-btn:hover { border-color: var(--teal-300); background: var(--teal-50); }
+ .pay-method-btn.selected { border-color: var(--teal-500); background: var(--teal-50); }
+ .pay-method-btn .pm-icon { font-size: 1.6rem; }
+ .pay-method-btn .pm-label { font-size: .78rem; font-weight: 700; color: var(--gray-700); }
+ .pay-method-btn .pm-sub { font-size: .68rem; color: var(--gray-400); }
+ .pay-method-btn.selected .pm-label { color: var(--teal-700); }
+ .pm-razorpay { border-color: #3395FF; }
+ .pm-razorpay.selected { border-color: #3395FF; background: #eff6ff; }
+ .pm-upi { border-color: #7c3aed; }
+ .pm-upi.selected { border-color: #7c3aed; background: #f5f3ff; }
+
+ /* Nav buttons */
+ .order-nav { display: flex; gap: .75rem; margin-top: 1.75rem; justify-content: flex-end; }
+ .btn-order-back {
+ padding: .75rem 1.5rem; border-radius: 10px; border: 1.5px solid var(--gray-200);
+ background: #fff; color: var(--gray-600); font-weight: 700; font-size: .9rem;
+ cursor: pointer; font-family: inherit; transition: all .2s;
+ }
+ .btn-order-back:hover { border-color: var(--gray-400); color: var(--gray-800); }
+ .btn-order-next {
+ padding: .75rem 1.75rem; border-radius: 10px; border: none;
+ background: linear-gradient(135deg, var(--teal-500), var(--cyan-600));
+ color: #fff; font-weight: 800; font-size: .95rem; cursor: pointer;
+ font-family: inherit; display: flex; align-items: center; gap: .5rem;
+ box-shadow: 0 4px 14px rgba(20,184,166,.35); transition: all .25s;
+ }
+ .btn-order-next:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(20,184,166,.45); }
+ .btn-pay-rzp {
+ width: 100%; padding: .9rem; border-radius: 12px; border: none;
+ background: linear-gradient(135deg, #3395FF, #1a6ee0);
+ color: #fff; font-weight: 800; font-size: 1rem; cursor: pointer;
+ font-family: inherit; display: flex; align-items: center; justify-content: center;
+ gap: .5rem; box-shadow: 0 4px 18px rgba(51,149,255,.4); transition: all .25s;
+ margin-bottom: .75rem;
+ }
+ .btn-pay-rzp:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(51,149,255,.55); }
+ .btn-pay-upi {
+ width: 100%; padding: .9rem; border-radius: 12px; border: none;
+ background: linear-gradient(135deg, #7c3aed, #4f46e5);
+ color: #fff; font-weight: 800; font-size: 1rem; cursor: pointer;
+ font-family: inherit; display: flex; align-items: center; justify-content: center;
+ gap: .5rem; box-shadow: 0 4px 18px rgba(124,58,237,.4); transition: all .25s;
+ }
+ .btn-pay-upi:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(124,58,237,.55); }
+
+ /* Success screen */
+ .order-success {
+ display: none; text-align: center; padding: 1rem 0;
+ }
+ .success-ring {
+ width: 80px; height: 80px; border-radius: 50%;
+ background: linear-gradient(135deg, var(--teal-400), var(--cyan-500));
+ display: flex; align-items: center; justify-content: center;
+ font-size: 2.2rem; color: #fff; margin: 0 auto 1.5rem;
+ box-shadow: 0 8px 32px rgba(20,184,166,.4);
+ animation: scaleIn .4s cubic-bezier(.34,1.56,.64,1);
+ }
+ @keyframes scaleIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+ .order-ref-box {
+ background: var(--teal-50); border: 1.5px solid var(--teal-200);
+ border-radius: 14px; padding: 1.25rem; margin: 1.5rem 0; text-align: left;
+ }
+ .order-ref-label { font-size: .72rem; font-weight: 700; color: var(--teal-600); text-transform: uppercase; letter-spacing: .1em; }
+ .order-ref-num { font-size: 1.5rem; font-weight: 900; color: var(--gray-900); font-family: monospace; margin: .25rem 0; }
+ .order-ref-sub { font-size: .78rem; color: var(--gray-500); }
+
+ /* Summary card (right column) */
+ .summary-card {
+ background: rgba(255,255,255,.08); backdrop-filter: blur(12px);
+ border: 1px solid rgba(255,255,255,.15); border-radius: 20px;
+ padding: 2rem; color: #fff; position: sticky; top: 160px;
+ }
+ .summary-title { font-size: 1rem; font-weight: 800; color: #fff; margin-bottom: 1.25rem; display: flex; align-items: center; gap: .5rem; }
+ .summary-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; padding: .65rem 0; border-bottom: 1px solid rgba(255,255,255,.1); font-size: .85rem; }
+ .summary-row:last-child { border-bottom: none; }
+ .summary-key { color: rgba(255,255,255,.6); }
+ .summary-val { color: #fff; font-weight: 600; text-align: right; max-width: 60%; }
+ .summary-total { margin-top: 1rem; padding: 1rem; background: rgba(255,255,255,.1); border-radius: 12px; }
+ .summary-total-label { font-size: .78rem; color: rgba(255,255,255,.6); margin-bottom: .25rem; }
+ .summary-total-amount { font-size: 2rem; font-weight: 900; color: #5eead4; }
+ .trust-pills { display: flex; flex-direction: column; gap: .5rem; margin-top: 1.5rem; }
+ .trust-pill { display: flex; align-items: center; gap: .6rem; font-size: .78rem; color: rgba(255,255,255,.7); }
+ .trust-pill i { color: #5eead4; font-size: 1rem; }
+ </style>
+  <link rel="stylesheet" href="omnet-improvements.css" />
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+<!-- ═══════════ JSON-LD : LocalBusiness + ProfessionalService + ComputerStore ═══════════ -->
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.omnetit.in/"},{"@type":"ListItem","position":2,"name":"Place an Order","item":"https://www.omnetit.in/order.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What payment methods do you accept?","acceptedAnswer":{"@type":"Answer","text":"Card, UPI, net banking, bank transfer and QR — all processed securely. A GST invoice is issued for every order."}},{"@type":"Question","name":"Will I receive a GST tax invoice?","acceptedAnswer":{"@type":"Answer","text":"Yes. A proper GST tax invoice is issued for every order so you can claim input credit."}},{"@type":"Question","name":"How quickly will my order be processed?","acceptedAnswer":{"@type":"Answer","text":"Most service orders are confirmed within one business day, and our team contacts you to schedule delivery or onsite work."}}]}]}</script>
+<!-- ═══════════ JSON-LD : Service — Managed IT & AMC ═══════════ -->
+<!-- ═══════════ JSON-LD : Service — Cybersecurity ═══════════ -->
+<!-- ═══════════ JSON-LD : Service — Cloud Services ═══════════ -->
+<!-- ═══════════ JSON-LD : Service — Identity & Access Management ═══════════ -->
+<!-- ═══════════ JSON-LD : Service — Laptop & Desktop Sales ═══════════ -->
+<!-- ═══════════ JSON-LD : Service — MacBook & Apple Mac ═══════════ -->
+<!-- ═══════════ JSON-LD : Product — MacBook Air M3 ═══════════ -->
+<!-- ═══════════ JSON-LD : Product — Dell PowerEdge ═══════════ -->
+<!-- ═══════════ JSON-LD : Product — Cisco Catalyst Switch ═══════════ -->
+<!-- ═══════════ JSON-LD : FAQPage (12 Q&A from Task 5) ═══════════ -->
+
+    <link rel="stylesheet" href="i18n.css">
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="OMNET IT Solutions" />
+    <meta property="og:title" content="Place an Order | OMNET IT Solutions" />
+    <meta property="og:description" content="Place a service order with OMNET IT Solutions. Pay securely by card, UPI, net banking or QR. Serving Noida, Greater Noida, Gurugram &amp; across India." />
+    <meta property="og:url" content="https://www.omnetit.in/order.html" />
+    <meta property="og:image" content="https://www.omnetit.in/og-banner.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Place an Order | OMNET IT Solutions" />
+    <meta name="twitter:description" content="Place a service order with OMNET IT Solutions. Pay securely by card, UPI, net banking or QR." />
+    <meta name="twitter:image" content="https://www.omnetit.in/og-banner.png" />
+    <meta property="og:locale" content="en_IN" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "yrv8xmyd82");
+</script>
+</head>
+<body>
+
+<!-- ═══ DUAL ACTION STRIP ═══ -->
+<div class="dual-action-strip">
+  <div class="dual-action-inner">
+    <div class="dual-action-left">
+      <i class="ri-shield-check-line"></i>
+      Trusted IT Partner for Businesses Across India
+    </div>
+    <div class="dual-action-right">
+      <a href="register.html" class="btn-register-hdr" id="regHdrBtn">
+        <i class="ri-user-add-line"></i> Register / Sign Up
+      </a>
+      <a href="managed-services.html" class="btn-managed">
+        <i class="ri-settings-4-line"></i> Managed Services
+      </a>
+      <a href="order.html" class="btn-place-order">
+        <i class="ri-file-list-3-line"></i> Place Order
+      </a>
+      <a href="/support/" class="btn-online-purchase">
+        <i class="ri-customer-service-2-line"></i> Support
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SITE HEADER ═══ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo-wrap" title="OMNET IT Solutions"><img src="logo-omnet.svg" alt="OMNET IT Solutions" class="site-logo" width="141" height="42" style="height:clamp(34px,4.4vw,42px);width:auto;display:block" decoding="async" fetchpriority="high"/></a>
+    <div class="header-cta">
+      <a href="tel:+918920603270" class="header-phone"><i class="ri-phone-line"></i> Call Us</a>
+      <button onclick="cbOpen&&cbOpen()" style="display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#f97316,#eab308);color:#fff;border:none;border-radius:50px;padding:8px 15px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;animation:cbPulse 2s infinite;"><i class="ri-callback-line" style="font-size:15px;"></i> Request Callback</button>
+      <a href="pricing.html" class="btn-primary">Get Quote</a>
+    </div>
+    <button class="mobile-menu-btn" aria-label="Toggle menu"><i class="ri-menu-line" style="font-size:1.5rem"></i></button>
+  </div>
+
+  <!-- Nav bar row -->
+  <div class="header-nav-bar">
+    <nav class="header-nav-bar-inner desktop-nav">
+      <a href="index.html" class="nav-link">Home</a>
+
+      <!-- IT SUPPORT dropdown -->
+      <div class="nav-dropdown">
+        <button class="dropdown-btn">IT Support <i class="ri-arrow-down-s-line"></i></button>
+        <div class="dropdown-menu">
+          <div class="dropdown-menu-inner" style="min-width:230px">
+            <a href="it-support.html"><i class="ri-customer-service-2-line"></i>IT Support Overview</a>
+            <a href="fixed-cost-it-support.html"><i class="ri-shield-star-line"></i>Fixed Cost IT Support</a>
+            <a href="prepaid-it-support.html"><i class="ri-coupon-3-line"></i>Prepaid IT Support</a>
+            <a href="casual-it-support.html"><i class="ri-phone-find-line"></i>Casual IT Support</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- IT SECURITY dropdown -->
+      <div class="nav-dropdown">
+        <button class="dropdown-btn">IT Security <i class="ri-arrow-down-s-line"></i></button>
+        <div class="dropdown-menu">
+          <div class="dropdown-menu-inner" style="min-width:230px">
+            <a href="it-security.html"><i class="ri-shield-check-line"></i>IT Security Overview</a>
+            <a href="desktop-security.html"><i class="ri-computer-line"></i>Desktop Security</a>
+            <a href="server-infrastructure-security.html"><i class="ri-server-line"></i>Server Infrastructure</a>
+            <a href="cloud-security.html"><i class="ri-cloud-line"></i>Cloud Security</a>
+            <a href="risk-threat-assessment.html"><i class="ri-search-eye-line"></i>Risk &amp; Threat Assessment</a>
+            <a href="internet-content-security.html"><i class="ri-global-line"></i>Internet &amp; Content Security</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- MANAGED IT dropdown -->
+      <div class="nav-dropdown">
+        <button class="dropdown-btn">Managed IT <i class="ri-arrow-down-s-line"></i></button>
+        <div class="dropdown-menu">
+          <div class="dropdown-menu-inner" style="min-width:230px">
+            <a href="managed-services.html"><i class="ri-settings-3-line"></i>Managed IT Overview</a>
+            <a href="managed-servers.html"><i class="ri-server-line"></i>Managed Servers</a>
+            <a href="managed-security.html"><i class="ri-shield-check-line"></i>Managed Security</a>
+            <a href="managed-network.html"><i class="ri-global-line"></i>Managed Network</a>
+            <a href="managed-colocation.html"><i class="ri-database-2-line"></i>Managed Colocation</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SERVICES dropdown -->
+      <div class="nav-dropdown">
+        <button class="dropdown-btn">Services <i class="ri-arrow-down-s-line"></i></button>
+        <div class="dropdown-menu">
+          <div class="dropdown-menu-inner" style="min-width:260px">
+            <a href="services.html"><i class="ri-service-line"></i>All Services</a>
+            <a href="infrastructure-services.html"><i class="ri-building-2-line"></i>Infrastructure Services</a>
+            <a href="cloud-services.html"><i class="ri-cloud-line"></i>Cloud Services</a>
+            <a href="network-infrastructure-connectivity.html"><i class="ri-global-line"></i>Network Infrastructure &amp; Connectivity</a>
+          <a href="network-infrastructure-connectivity.html#lan-cabling"><i class="ri-git-commit-line"></i>LAN &amp; Structured Cabling</a>
+          <a href="network-infrastructure-connectivity.html#fiber"><i class="ri-link"></i>Fiber Networking</a>
+          <a href="network-infrastructure-connectivity.html#wifi"><i class="ri-wifi-line"></i>Enterprise Wi-Fi</a>
+          <a href="network-infrastructure-connectivity.html#amc"><i class="ri-tools-line"></i>Network Support &amp; AMC</a>
+            <a href="devops-services.html"><i class="ri-git-merge-line"></i>DevOps Services</a>
+            <a href="email-solutions.html"><i class="ri-mail-line"></i>Email Solutions</a>
+            <a href="repair-services.html"><i class="ri-tools-line"></i>Repair &amp; AMC</a>
+            <a href="remote-onsite-support.html"><i class="ri-customer-service-2-line"></i>Remote &amp; Onsite Support</a>
+            <a href="professional-services.html"><i class="ri-building-4-line"></i>Professional Services</a>
+            <a href="it-hardware-rental.html"><i class="ri-computer-line"></i>IT Hardware Rental</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button class="dropdown-btn">Software &amp; Web <i class="ri-arrow-down-s-line"></i></button>
+        <div class="dropdown-menu"><div class="dropdown-menu-inner" style="min-width:260px">
+          <a href="custom-software.html"><i class="ri-code-box-line"></i>Custom Software</a>
+          <a href="website-design.html"><i class="ri-layout-4-line"></i>Website Design &amp; Dev</a>
+          <a href="app-development.html"><i class="ri-smartphone-line"></i>Mobile App Development</a>
+        </div></div>
+      </div>
+      <div class="nav-dropdown">
+        <button class="dropdown-btn">Cloud &amp; Email <i class="ri-arrow-down-s-line"></i></button>
+        <div class="dropdown-menu"><div class="dropdown-menu-inner" style="min-width:260px">
+          <a href="google-workspace.html"><i class="ri-google-line"></i>Google Workspace</a>
+          <a href="microsoft-365.html"><i class="ri-microsoft-line"></i>Microsoft 365</a>
+          <a href="zoho-suite.html"><i class="ri-apps-2-line"></i>Zoho Suite</a>
+          <a href="professional-email.html"><i class="ri-mail-star-line"></i>Professional Email</a>
+          <a href="email-licensing.html"><i class="ri-key-2-line"></i>Email Licensing</a>
+          <a href="email-migration.html"><i class="ri-mail-send-line"></i>Email Migration</a>
+        </div></div>
+      </div>
+
+      <div class="nav-dropdown">
+        <button class="dropdown-btn">Physical Security <i class="ri-arrow-down-s-line"></i></button>
+        <div class="dropdown-menu"><div class="dropdown-menu-inner" style="min-width:250px">
+          <a href="physical-security-fire-safety.html"><i class="ri-cctv-line"></i>Overview</a>
+          <a href="physical-security-fire-safety.html#cctv"><i class="ri-camera-3-line"></i>CCTV &amp; Video Surveillance</a>
+          <a href="physical-security-fire-safety.html#access-control"><i class="ri-fingerprint-line"></i>Access Control</a>
+          <a href="physical-security-fire-safety.html#fire-safety"><i class="ri-fire-line"></i>Fire Detection &amp; Alarm</a>
+          <a href="physical-security-fire-safety.html#amc"><i class="ri-tools-line"></i>AMC &amp; Maintenance</a>
+        </div></div>
+      </div>
+      <a href="products.html" class="nav-link">Products</a>
+      <a href="industry-expertise.html" class="nav-link">Industries</a>
+
+      <div class="nav-dropdown">
+        <button class="dropdown-btn">About <i class="ri-arrow-down-s-line"></i></button>
+        <div class="dropdown-menu">
+          <div class="dropdown-menu-inner">
+            <a href="about.html"><i class="ri-information-line"></i>About Us</a>
+            <a href="portfolio.html"><i class="ri-briefcase-line"></i>Portfolio</a>
+            <a href="pricing.html"><i class="ri-price-tag-3-line"></i>Pricing</a>
+            <a href="locations/"><i class="ri-map-pin-line"></i>Service Areas</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+    </nav>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div class="mobile-nav">
+    <div class="mobile-nav-inner">
+      <a href="index.html">Home</a>
+      <div class="mobile-nav-section">
+        <div class="mobile-nav-label">IT Support</div>
+        <div class="mobile-nav-child">
+          <a href="it-support.html">IT Support Overview</a>
+          <a href="fixed-cost-it-support.html">Fixed Cost IT Support</a>
+          <a href="prepaid-it-support.html">Prepaid IT Support</a>
+          <a href="casual-it-support.html">Casual IT Support</a>
+        </div>
+      </div>
+      <div class="mobile-nav-section">
+        <div class="mobile-nav-label">IT Security</div>
+        <div class="mobile-nav-child">
+          <a href="it-security.html">IT Security Overview</a>
+          <a href="desktop-security.html">Desktop Security</a>
+          <a href="server-infrastructure-security.html">Server Infrastructure</a>
+          <a href="cloud-security.html">Cloud Security</a>
+          <a href="risk-threat-assessment.html">Risk &amp; Threat Assessment</a>
+          <a href="internet-content-security.html">Internet &amp; Content Security</a>
+        </div>
+      </div>
+      <div class="mobile-nav-section">
+        <div class="mobile-nav-label">Managed IT</div>
+        <div class="mobile-nav-child">
+          <a href="managed-services.html">Managed IT Overview</a>
+          <a href="managed-servers.html">Managed Servers</a>
+          <a href="managed-security.html">Managed Security</a>
+          <a href="managed-network.html">Managed Network</a>
+          <a href="managed-colocation.html">Managed Colocation</a>
+        </div>
+      </div>
+      <div class="mobile-nav-section">
+        <div class="mobile-nav-label">Services</div>
+        <div class="mobile-nav-child">
+          <a href="services.html">All Services</a>
+          <a href="infrastructure-services.html">Infrastructure Services</a>
+          <a href="cloud-services.html">Cloud Services</a>
+          <a href="network-infrastructure-connectivity.html">Network Infrastructure &amp; Connectivity</a>
+        <a href="network-infrastructure-connectivity.html#lan-cabling">LAN &amp; Structured Cabling</a>
+        <a href="network-infrastructure-connectivity.html#fiber">Fiber Networking</a>
+        <a href="network-infrastructure-connectivity.html#wifi">Enterprise Wi-Fi</a>
+        <a href="network-infrastructure-connectivity.html#amc">Network Support &amp; AMC</a>
+          <a href="email-solutions.html">Email Solutions</a>
+          <a href="repair-services.html">Repair &amp; AMC</a>
+        </div>
+      </div>      <div class="mobile-nav-section">
+        <div class="mobile-nav-label">Software &amp; Web</div>
+        <div class="mobile-nav-child">
+          <a href="custom-software.html">Custom Software</a>
+          <a href="website-design.html">Website Design &amp; Dev</a>
+          <a href="app-development.html">Mobile App Development</a>
+        </div>
+      </div>
+      <div class="mobile-nav-section">
+        <div class="mobile-nav-label">Cloud &amp; Email</div>
+        <div class="mobile-nav-child">
+          <a href="google-workspace.html">Google Workspace</a>
+          <a href="microsoft-365.html">Microsoft 365</a>
+          <a href="zoho-suite.html">Zoho Suite</a>
+          <a href="professional-email.html">Professional Email</a>
+          <a href="email-licensing.html">Email Licensing</a>
+          <a href="email-migration.html">Email Migration</a>
+        </div>
+      </div>
+
+      <div class="mobile-nav-section">
+        <div class="mobile-nav-label">Physical Security</div>
+        <div class="mobile-nav-child">
+          <a href="physical-security-fire-safety.html">Overview</a>
+          <a href="physical-security-fire-safety.html#cctv">CCTV &amp; Video Surveillance</a>
+          <a href="physical-security-fire-safety.html#access-control">Access Control</a>
+          <a href="physical-security-fire-safety.html#fire-safety">Fire Detection &amp; Alarm</a>
+          <a href="physical-security-fire-safety.html#amc">AMC &amp; Maintenance</a>
+        </div>
+      </div>
+      <a href="products.html">Products</a>
+      <a href="industry-expertise.html">Industries</a>
+      <div class="mobile-nav-section">
+        <div class="mobile-nav-label">About</div>
+        <div class="mobile-nav-child">
+          <a href="about.html">About Us</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="locations/">Service Areas</a>
+        </div>
+      </div>
+      <a href="contact.html">Contact</a>
+      <a href="blog.html">Blog</a>
+      <hr class="mobile-nav-divider"/>
+      <a href="tel:+918920603270"><i class="ri-phone-line"></i> Call Us</a>
+      <a href="pricing.html" style="background:linear-gradient(135deg,#14b8a6,#0891b2);color:#fff;text-align:center;font-weight:700;margin-top:.5rem">Get Quote</a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ ORDER PAGE ═══ -->
+<div class="order-page">
+<h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Place Your Order — OMNET IT Solutions</h1>
+ <div class="order-shell">
+
+ <!-- Left: Form -->
+ <div class="order-card">
+
+ <!-- Progress -->
+ <div class="order-steps" id="orderSteps">
+ <div class="order-step active" id="stepLabel1">
+ <div class="step-num">1</div>
+ <span>Your Details</span>
+ </div>
+ <div class="step-line" id="stepLine1"></div>
+ <div class="order-step" id="stepLabel2">
+ <div class="step-num">2</div>
+ <span>Service Info</span>
+ </div>
+ <div class="step-line" id="stepLine2"></div>
+ <div class="order-step" id="stepLabel3">
+ <div class="step-num">3</div>
+ <span>Pay &amp; Confirm</span>
+ </div>
+ </div>
+
+ <!-- ── STEP 1: Personal details ── -->
+ <div id="orderStep1">
+ <div class="order-card-title">Your Contact Details</div>
+ <div class="order-card-sub">We'll use this to send your order confirmation.</div>
+
+ <div class="form-grid-2">
+ <div class="form-group">
+ <label class="form-label">Full Name <span class="req">*</span></label>
+ <input type="text" id="oName" class="form-input" placeholder="Rahul Sharma" />
+ </div>
+ <div class="form-group">
+ <label class="form-label">Phone Number <span class="req">*</span></label>
+ <input type="tel" id="oPhone" class="form-input" placeholder="+91 98XXX XXXXX" />
+ </div>
+ </div>
+ <div class="form-group">
+ <label class="form-label">Email Address <span class="req">*</span></label>
+ <input type="email" id="oEmail" class="form-input" placeholder="you@company.com" />
+ </div>
+ <div class="form-grid-2">
+ <div class="form-group">
+ <label class="form-label">Company / Organization</label>
+ <input type="text" id="oCompany" class="form-input" placeholder="Acme Pvt Ltd" />
+ </div>
+ <div class="form-group">
+ <label class="form-label">City / Area <span class="req">*</span></label>
+ <input type="text" id="oCity" class="form-input" placeholder="Noida Sector 62" />
+ </div>
+ </div>
+
+ <div class="order-nav">
+ <button class="btn-order-next" onclick="goStep(2)">
+ Continue <i class="ri-arrow-right-line"></i>
+ </button>
+ </div>
+ </div>
+
+ <!-- ── STEP 2: Service details ── -->
+ <div id="orderStep2" style="display:none">
+ <div class="order-card-title">Service &amp; Order Details</div>
+ <div class="order-card-sub">Tell us what you need and the agreed amount.</div>
+
+ <div class="form-group">
+ <label class="form-label">Service Required <span class="req">*</span></label>
+ <select id="oService" class="form-select">
+ <option value="">— Select a service —</option>
+ <optgroup label="Repair & Hardware">
+ <option>Laptop Repair</option>
+ <option>Desktop / PC Repair</option>
+ <option>MacBook / Apple Repair</option>
+ <option>Printer Repair</option>
+ <option>SSD / RAM Upgrade</option>
+ <option>Screen Replacement</option>
+ <option>Data Recovery</option>
+ <option>Spare Parts</option>
+ </optgroup>
+ <optgroup label="Managed IT">
+ <option>Computer AMC (Annual Maintenance)</option>
+ <option>Managed IT Services</option>
+ <option>IT Support Contract</option>
+ <option>Server Management</option>
+ <option>Network / WiFi Setup</option>
+ <option>Structured Cabling</option>
+ <option>Firewall Installation</option>
+ </optgroup>
+ <optgroup label="Cloud & Software">
+ <option>Google Workspace Setup / Migration</option>
+ <option>Microsoft 365 Setup / Migration</option>
+ <option>Tally / TallyPrime Setup</option>
+ <option>JumpCloud Setup</option>
+ <option>Cloud Services</option>
+ </optgroup>
+ <optgroup label="Security">
+ <option>Cybersecurity Assessment</option>
+ <option>Antivirus / Endpoint Protection</option>
+ <option>Email Security</option>
+ </optgroup>
+ <optgroup label="Other">
+ <option>IT Hardware Rental</option>
+ <option>Refurbished Laptop Purchase</option>
+ <option>Software License Purchase</option>
+ <option>Other / Custom Requirement</option>
+ </optgroup>
+ </select>
+ </div>
+
+ <div class="form-group">
+ <label class="form-label">Number of Devices / Users</label>
+ <input type="number" id="oDevices" class="form-input" placeholder="e.g. 5" min="1" />
+ </div>
+
+ <div class="form-group">
+ <label class="form-label">Brief Description</label>
+ <textarea id="oDesc" class="form-textarea" placeholder="Describe what needs to be done, any specific issues, timeline, etc."></textarea>
+ </div>
+
+ <div class="form-group">
+ <label class="form-label">Order Amount (₹) <span class="req">*</span></label>
+ <div class="amount-row">
+ <span class="amount-prefix">₹</span>
+ <input type="number" id="oAmount" class="amount-input" placeholder="0" min="1" oninput="updateSummary()" />
+ <span class="amount-gst">incl. GST</span>
+ </div>
+ <span class="form-hint">Enter the amount agreed with our team. Minimum ₹100.</span>
+ </div>
+
+ <div class="order-nav">
+ <button class="btn-order-back" onclick="goStep(1)"><i class="ri-arrow-left-line"></i> Back</button>
+ <button class="btn-order-next" onclick="goStep(3)">
+ Proceed to Pay <i class="ri-secure-payment-line"></i>
+ </button>
+ </div>
+ </div>
+
+ <!-- ── STEP 3: Payment ── -->
+ <div id="orderStep3" style="display:none">
+ <div class="order-card-title">Choose Payment Method</div>
+ <div class="order-card-sub">All payments are secure &amp; encrypted.</div>
+
+ <!-- Amount summary strip -->
+ <div style="background:linear-gradient(135deg,var(--teal-50),#ecfeff);border:1.5px solid var(--teal-200);border-radius:14px;padding:1rem 1.25rem;margin-bottom:1.75rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;">
+ <div>
+ <div style="font-size:.72rem;font-weight:700;color:var(--teal-600);text-transform:uppercase;letter-spacing:.08em;">Order Total</div>
+ <div style="font-size:1.75rem;font-weight:900;color:var(--gray-900);">₹<span id="amountDisplay3">0</span></div>
+ </div>
+ <div style="font-size:.8rem;color:var(--gray-500);">
+ <div id="summaryService3" style="font-weight:600;color:var(--gray-700);"></div>
+ <div id="summaryName3"></div>
+ </div>
+ </div>
+
+ <!-- Payment method tabs -->
+ <div class="pay-method-title">Select how you'd like to pay:</div>
+ <div style="background:var(--teal-50);border:1px solid var(--teal-200);border-radius:12px;padding:.85rem 1.1rem;display:flex;align-items:center;gap:.6rem;margin-bottom:1.5rem;">
+ <i class="ri-shield-check-line" style="color:var(--teal-500);font-size:1.2rem;"></i>
+ <span style="font-size:.82rem;color:var(--teal-700);font-weight:600;">Pay securely via Razorpay — Cards, Net Banking, UPI, Wallets & EMI</span>
+ </div>
+
+ <!-- Razorpay panel -->
+ <div id="panelRzp">
+ <button class="btn-pay-rzp" onclick="payWithRazorpay()">
+ <i class="ri-bank-card-line"></i>
+ Pay ₹<span id="rzpAmountBtn">0</span> via Razorpay
+ </button>
+ <div style="text-align:center;margin-bottom:1rem;">
+ <div style="display:flex;align-items:center;gap:.4rem;justify-content:center;flex-wrap:wrap;">
+ <img src="https://cdn.razorpay.com/static/assets/logo/rzp.svg" alt="Razorpay" style="height:18px;opacity:.7;" onerror="this.style.display='none'" />
+ <span style="font-size:.72rem;color:var(--gray-400);">Secured by Razorpay · 256-bit SSL</span>
+ </div>
+ <div style="display:flex;gap:.5rem;justify-content:center;margin-top:.5rem;flex-wrap:wrap;">
+ <span style="font-size:.68rem;background:var(--gray-100);color:var(--gray-500);padding:.2rem .6rem;border-radius:4px;">VISA</span>
+ <span style="font-size:.68rem;background:var(--gray-100);color:var(--gray-500);padding:.2rem .6rem;border-radius:4px;">Mastercard</span>
+ <span style="font-size:.68rem;background:var(--gray-100);color:var(--gray-500);padding:.2rem .6rem;border-radius:4px;">RuPay</span>
+ <span style="font-size:.68rem;background:var(--gray-100);color:var(--gray-500);padding:.2rem .6rem;border-radius:4px;">Net Banking</span>
+ <span style="font-size:.68rem;background:var(--gray-100);color:var(--gray-500);padding:.2rem .6rem;border-radius:4px;">UPI</span>
+ <span style="font-size:.68rem;background:var(--gray-100);color:var(--gray-500);padding:.2rem .6rem;border-radius:4px;">EMI</span>
+ </div>
+ </div>
+ </div>
+
+
+
+ <div class="order-nav">
+ <button class="btn-order-back" onclick="goStep(2)"><i class="ri-arrow-left-line"></i> Back</button>
+ </div>
+
+ <div style="display:flex;align-items:center;gap:.5rem;margin-top:1.25rem;padding:1rem;background:var(--gray-50);border-radius:10px;">
+ <i class="ri-lock-line" style="color:var(--teal-500);font-size:1.2rem;flex-shrink:0;"></i>
+ <p style="font-size:.75rem;color:var(--gray-500);margin:0;line-height:1.6;">Your payment is fully encrypted. We never store your card details. All transactions processed by Razorpay (PCI DSS certified).</p>
+ </div>
+ </div>
+
+ <!-- ── SUCCESS SCREEN ── -->
+ <div class="order-success" id="orderSuccess">
+ <div class="success-ring"><i class="ri-check-double-line"></i></div>
+ <h2 style="font-size:1.6rem;font-weight:800;color:var(--gray-900);margin-bottom:.5rem;">Order Confirmed!</h2>
+ <p style="color:var(--gray-500);font-size:.9rem;">Thank you. Payment received &amp; your order is registered.</p>
+ <div class="order-ref-box">
+ <div class="order-ref-label"><i class="ri-receipt-line"></i> Your Order Reference</div>
+ <div class="order-ref-num" id="orderRefNum">#OMN-2025-0001</div>
+ <div class="order-ref-sub">Save this number. Our team will contact you within 1 business hour.</div>
+ </div>
+ <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-top:1.25rem;">
+ <a href="tel:+918920603270" class="btn-order-next" style="text-decoration:none;font-size:.875rem;">
+ <i class="ri-phone-fill"></i> Call Us
+ </a>
+ <a href="index.html" style="padding:.75rem 1.25rem;border-radius:10px;border:1.5px solid var(--gray-200);color:var(--gray-600);font-weight:700;font-size:.875rem;text-decoration:none;">
+ <i class="ri-home-line"></i> Home
+ </a>
+ </div>
+ </div>
+
+ </div><!-- /order-card -->
+
+ <!-- Right: Summary -->
+ <div class="order-summary-col">
+ <div class="summary-card">
+ <div class="summary-title"><i class="ri-file-list-3-line"></i> Order Summary</div>
+ <div class="summary-row"><span class="summary-key">Customer</span><span class="summary-val" id="sumName">—</span></div>
+ <div class="summary-row"><span class="summary-key">Phone</span><span class="summary-val" id="sumPhone">—</span></div>
+ <div class="summary-row"><span class="summary-key">Service</span><span class="summary-val" id="sumService">—</span></div>
+ <div class="summary-row"><span class="summary-key">Location</span><span class="summary-val" id="sumCity">—</span></div>
+ <div class="summary-total">
+ <div class="summary-total-label">Order Total</div>
+ <div class="summary-total-amount">₹<span id="sumAmount">0</span></div>
+ </div>
+ <div class="trust-pills">
+ <div class="trust-pill"><i class="ri-shield-check-line"></i> 100% Secure Checkout</div>
+ <div class="trust-pill"><i class="ri-bank-card-line"></i> Card · UPI · Net Banking · EMI</div>
+ <div class="trust-pill"><i class="ri-time-line"></i> Response within 1 business hour</div>
+ <div class="trust-pill"><i class="ri-refund-line"></i> GST invoice provided</div>
+ <div class="trust-pill"><i class="ri-customer-service-2-line"></i> </div>
+ </div>
+ </div>
+ </div>
+
+ </div><!-- /order-shell -->
+</div><!-- /order-page -->
+
+<button class="back-to-top" aria-label="Back to top"><i class="ri-arrow-up-line"></i></button>
+
+<script src="script.js"></script>
+<script src="carousel.js"></script>
+<script src="upi-payment.js"></script>
+<script>
+/* ══════════════════════════════════════════════════════
+ ORDER PAGE LOGIC
+══════════════════════════════════════════════════════ */
+
+// ── Razorpay Key — REPLACE with your live key once account is ready ──
+const RAZORPAY_KEY = 'rzp_test_YOUR_KEY_ID';
+// To get your Key: razorpay.com → Dashboard → Settings → API Keys → Generate Key
+// Replace 'rzp_test_YOUR_KEY_ID' with your actual Key ID (e.g. rzp_live_xxxxxxxxxxxxxx)
+
+const WEB3FORMS_KEY = '2af0c0f5-01fa-4349-b83c-fff623cb969b';
+
+let currentStep = 1;
+let selectedPM = 'rzp';
+
+/* ── Step navigation ── */
+function goStep(step) {
+ // Validate before advancing
+ if (step > currentStep) {
+ if (!validateStep(currentStep)) return;
+ }
+
+ // Hide all steps
+ [1,2,3].forEach(s => {
+ const el = document.getElementById('orderStep' + s);
+ if (el) el.style.display = 'none';
+ });
+
+ // Show target
+ const target = document.getElementById('orderStep' + step);
+ if (target) target.style.display = '';
+
+ // Update step indicator
+ [1,2,3].forEach(s => {
+ const label = document.getElementById('stepLabel' + s);
+ if (!label) return;
+ label.classList.remove('active','complete');
+ if (s < step) label.classList.add('complete');
+ else if (s === step) label.classList.add('active');
+ // Update step numbers for complete
+ const num = label.querySelector('.step-num');
+ if (s < step) num.innerHTML = '<i class="ri-check-line"></i>';
+ else num.textContent = s;
+ });
+ [1,2].forEach(s => {
+ const line = document.getElementById('stepLine' + s);
+ if (line) line.classList.toggle('done', s < step);
+ });
+
+ currentStep = step;
+ updateSummary();
+ updateAmountButtons();
+ window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ── Validation ── */
+function validateStep(step) {
+ if (step === 1) {
+ const name = document.getElementById('oName').value.trim();
+ const phone = document.getElementById('oPhone').value.trim();
+ const email = document.getElementById('oEmail').value.trim();
+ const city = document.getElementById('oCity').value.trim();
+ if (!name) { alert('Please enter your name.'); document.getElementById('oName').focus(); return false; }
+ if (!phone) { alert('Please enter your phone number.'); document.getElementById('oPhone').focus(); return false; }
+ if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); document.getElementById('oEmail').focus(); return false; }
+ if (!city) { alert('Please enter your city / area.'); document.getElementById('oCity').focus(); return false; }
+ }
+ if (step === 2) {
+ const svc = document.getElementById('oService').value;
+ const amt = parseFloat(document.getElementById('oAmount').value);
+ if (!svc) { alert('Please select a service.'); document.getElementById('oService').focus(); return false; }
+ if (!amt || amt < 100) { alert('Please enter a valid amount (minimum ₹100).'); document.getElementById('oAmount').focus(); return false; }
+ }
+ return true;
+}
+
+/* ── Summary update ── */
+function updateSummary() {
+ const name = document.getElementById('oName')?.value || '—';
+ const phone = document.getElementById('oPhone')?.value || '—';
+ const service = document.getElementById('oService')?.value || '—';
+ const city = document.getElementById('oCity')?.value || '—';
+ const amount = document.getElementById('oAmount')?.value || '0';
+
+ setText('sumName', name);
+ setText('sumPhone', phone);
+ setText('sumService', service);
+ setText('sumCity', city);
+ setText('sumAmount', amount ? Number(amount).toLocaleString('en-IN') : '0');
+}
+function setText(id, val) { const el = document.getElementById(id); if(el) el.textContent = val; }
+
+function updateAmountButtons() {
+ const raw = document.getElementById('oAmount')?.value || '0';
+ const fmt = Number(raw).toLocaleString('en-IN');
+ ['amountDisplay3','rzpAmountBtn','upiAmountBtn'].forEach(id => setText(id, fmt));
+ setText('summaryService3', document.getElementById('oService')?.value || '');
+ setText('summaryName3', document.getElementById('oName')?.value || '');
+}
+
+/* ── Payment method toggle ── */
+function selectPM(pm) {
+ selectedPM = pm;
+ document.getElementById('pmRzp').classList.toggle('selected', pm === 'rzp');
+ document.getElementById('panelRzp').style.display = pm === 'rzp' ? '' : 'none';
+}
+
+/* ── Generate reference number ── */
+function genRef() {
+ const now = new Date();
+ return '#OMN-' + now.getFullYear() + '-' + String(Math.floor(Math.random()*9000)+1000);
+}
+
+/* ── Send confirmation email ── */
+async function sendConfirmation(refNum, paymentId) {
+ try {
+ await fetch('https://api.web3forms.com/submit', {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify({
+ access_key: WEB3FORMS_KEY,
+ subject: `New Order ${refNum} — Omnet IT Solutions`,
+ 'Order Reference': refNum,
+ 'Customer Name': document.getElementById('oName').value,
+ 'Phone': document.getElementById('oPhone').value,
+ 'Email': document.getElementById('oEmail').value,
+ 'Company': document.getElementById('oCompany').value || 'N/A',
+ 'City / Area': document.getElementById('oCity').value,
+ 'Service': document.getElementById('oService').value,
+ 'Devices / Users': document.getElementById('oDevices').value || 'N/A',
+ 'Description': document.getElementById('oDesc').value || 'N/A',
+ 'Amount': '₹' + document.getElementById('oAmount').value,
+ 'Payment Method': 'Razorpay (Card / Net Banking / UPI / Wallets)',
+ 'Razorpay Payment ID': paymentId || 'Pending / UPI',
+ 'Timestamp': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+ 'Page': window.location.href,
+ })
+ });
+ } catch(e) { /* silent — payment already successful */ }
+}
+
+/* ── Show success screen ── */
+function showSuccess(refNum) {
+ document.getElementById('orderSteps').style.display = 'none';
+ [1,2,3].forEach(s => {
+ const el = document.getElementById('orderStep' + s);
+ if (el) el.style.display = 'none';
+ });
+ const suc = document.getElementById('orderSuccess');
+ suc.style.display = 'block';
+ document.getElementById('orderRefNum').textContent = refNum;
+ window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ── Razorpay payment ── */
+function payWithRazorpay() {
+ const amount = parseFloat(document.getElementById('oAmount').value);
+ if (!amount || amount < 100) {
+ alert('Please go back and enter a valid amount (minimum ₹100).');
+ return;
+ }
+
+ const name = document.getElementById('oName').value;
+ const email = document.getElementById('oEmail').value;
+ const phone = document.getElementById('oPhone').value;
+ const service = document.getElementById('oService').value;
+ const refNum = genRef();
+
+ // Check if Razorpay key is configured
+ if (RAZORPAY_KEY === 'rzp_test_YOUR_KEY_ID') {
+ // Demo mode — show setup instructions
+ return;
+ }
+
+ const options = {
+ key: RAZORPAY_KEY,
+ amount: Math.round(amount * 100), // paise
+ currency: 'INR',
+ name: 'Omnet IT Solutions',
+ description: service,
+ image: 'https://www.omnetit.in/og-banner.png',
+ notes: {
+ order_ref: refNum,
+ customer_name: name,
+ service: service,
+ city: document.getElementById('oCity').value,
+ },
+ prefill: { name, email, contact: phone },
+ theme: { color: '#14b8a6' },
+ modal: {
+ ondismiss: function() {
+ console.log('Payment cancelled by user');
+ }
+ },
+ handler: async function(response) {
+ // Payment successful
+ await sendConfirmation(refNum, response.razorpay_payment_id);
+ showSuccess(refNum);
+ }
+ };
+
+ try {
+ const rzp = new Razorpay(options);
+ rzp.on('payment.failed', function(res) {
+ alert('Payment failed: ' + (res.error?.description || 'Unknown error') + '\n\nPlease try again or use UPI payment.');
+ });
+ rzp.open();
+ } catch(e) {
+ alert('Could not load payment gateway. Please use UPI payment or call us at ');
+ }
+}
+
+// Init summary on load
+updateSummary();
+</script>
+
+
+
+
+
+
+<!-- ═══ 2. SUPPORT TICKET (bottom-right, higher) ═══ -->
+<button id="stTrigger" style="position:fixed;bottom:92px;right:28px;z-index:9000;background:#ef4444;color:#fff;border:none;border-radius:50px;padding:11px 18px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;cursor:pointer;box-shadow:0 4px 18px rgba(239,68,68,.45);">
+  <i class="ri-customer-service-2-line" style="font-size:17px;"></i>
+  <span>Technical Support</span>
+</button>
+
+<!-- Support Ticket Modal -->
+<div id="stOverlay" style="display:none;position:fixed;inset:0;z-index:9010;background:rgba(0,0,0,.5);"></div>
+<div id="stModal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9011;width:420px;max-width:calc(100vw - 24px);background:#fff;border-radius:16px;box-shadow:0 12px 50px rgba(0,0,0,.2);overflow:hidden;font-family:inherit;">
+  <div style="background:linear-gradient(135deg,#ef4444,#dc2626);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div style="width:38px;height:38px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="ri-customer-service-2-line" style="color:#fff;font-size:19px;"></i></div>
+      <div>
+        <div style="color:#fff;font-size:15px;font-weight:700;line-height:1.2;">Log a Support Ticket</div>
+        <div style="color:rgba(255,255,255,.85);font-size:12px;">Our team will contact you within 20 minutes.</div>
+      </div>
+    </div>
+    <button id="stClose" style="color:#fff;background:none;border:none;font-size:24px;cursor:pointer;line-height:1;opacity:.85;">&times;</button>
+  </div>
+  <div style="padding:20px;max-height:80vh;overflow-y:auto;">
+    <form id="stForm">
+      <input type="hidden" name="access_key" value="2af0c0f5-01fa-4349-b83c-fff623cb969b">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px;">
+        <div>
+          <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Full Name <span style="color:#e53935;">*</span></label>
+          <input type="text" name="name" required placeholder="Your name" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+        </div>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Phone <span style="color:#e53935;">*</span></label>
+          <input type="tel" name="phone" required placeholder="+91 XXXXX XXXXX" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+        </div>
+      </div>
+      <div style="margin-bottom:13px;">
+        <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Email Address <span style="color:#e53935;">*</span></label>
+        <input type="email" name="email" required placeholder="your@email.com" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:13px;">
+        <div>
+          <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Issue Category <span style="color:#e53935;">*</span></label>
+          <select name="category" required style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:#fff;appearance:none;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+            <option value="" disabled selected>Select category</option>
+            <option>Hardware Issue</option>
+            <option>Software / OS Issue</option>
+            <option>Network / Internet</option>
+            <option>Email Issue</option>
+            <option>Server / Cloud</option>
+            <option>Security / Virus</option>
+            <option>Printer / Peripheral</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Priority <span style="color:#e53935;">*</span></label>
+          <select name="priority" required style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;background:#fff;appearance:none;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+            <option value="" disabled selected>Select priority</option>
+            <option>🔴 Critical — System Down</option>
+            <option>🟠 High — Major Impact</option>
+            <option>🟡 Medium — Partial Impact</option>
+            <option>🟢 Low — Minor Issue</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-bottom:13px;">
+        <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Company / Organization</label>
+        <input type="text" name="company" placeholder="Your company name" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'">
+      </div>
+      <div style="margin-bottom:16px;">
+        <label style="display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4px;">Describe Your Issue <span style="color:#e53935;">*</span></label>
+        <textarea name="issue" required placeholder="Please describe the issue in detail — what happened, when it started, and what you have already tried..." rows="4" style="width:100%;padding:9px 11px;font-size:13px;border:1.5px solid #e5e7eb;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;resize:vertical;" onfocus="this.style.borderColor='#ef4444'" onblur="this.style.borderColor='#e5e7eb'"></textarea>
+      </div>
+      <button type="submit" id="stSubmitBtn" style="width:100%;padding:12px;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.3px;">
+        <i class="ri-send-plane-line"></i> Submit Support Ticket
+      </button>
+      <div id="stSuccess" style="display:none;margin-top:12px;padding:12px 14px;background:#ecfdf5;color:#065f46;border-radius:8px;font-size:13px;text-align:center;">
+        <i class="ri-checkbox-circle-line"></i> <strong>Ticket submitted!</strong> Our team will connect with you soon.
+      </div>
+      <div id="stError" style="display:none;margin-top:12px;padding:12px 14px;background:#fef2f2;color:#991b1b;border-radius:8px;font-size:13px;text-align:center;">
+        Something went wrong. Please email us at <strong>info@omnetit.in</strong>.
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ═══ 3. LEAVE A MESSAGE (bottom-right, lower) ═══ -->
+<button id="lamTrigger" style="position:fixed;bottom:28px;right:28px;z-index:9000;background:#0d9488;color:#fff;border:none;border-radius:50px;padding:13px 20px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;cursor:pointer;box-shadow:0 4px 18px rgba(13,148,136,.45);">
+  <i class="ri-chat-3-line" style="font-size:18px;"></i>
+  <span>Chat / Log Complaint</span>
+</button>
+
+<div id="lamOverlay" style="display:none;position:fixed;inset:0;z-index:9001;background:rgba(0,0,0,.45);"></div>
+<div id="lamModal" style="display:none;position:fixed;bottom:90px;right:28px;z-index:9002;width:340px;max-width:calc(100vw - 32px);background:#fff;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.2);overflow:hidden;font-family:inherit;">
+  <div style="background:#0d9488;padding:12px 16px;display:flex;align-items:center;gap:10px;">
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0d1b2a;border:2px solid #fff;border-radius:6px;padding:4px 8px;line-height:1;flex-shrink:0;">
+      <span style="font-size:8px;font-weight:300;color:#90caf9;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1px;">OMNET</span>
+      <span style="font-size:12px;font-weight:800;color:#fff;letter-spacing:2px;">IT</span>
+    </div>
+    <span style="color:#fff;font-size:15px;font-weight:600;flex:1;">Leave a message</span>
+    <button id="lamClose" style="color:#fff;background:none;border:none;font-size:24px;cursor:pointer;line-height:1;">&times;</button>
+  </div>
+  <div style="padding:16px;">
+    <form id="lamForm">
+      <input type="hidden" name="access_key" value="2af0c0f5-01fa-4349-b83c-fff623cb969b">
+      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Email address</label><input type="email" name="email" placeholder="Enter your email address" style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;"></div>
+      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Contact number</label><input type="tel" name="phone" placeholder="Enter your contact number" style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;"></div>
+      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Inquiry For <span style="color:#e53935;">*</span></label>
+        <select id="lamDept" name="inquiry_for" required style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;appearance:none;background:#fff;">
+          <option value="" disabled selected>Choose a department</option>
+          <option value="Support">Support</option>
+          <option value="Sales">Sales</option>
+        </select></div>
+      <div style="margin-bottom:12px;"><label style="display:block;font-size:13px;font-weight:600;color:#222;margin-bottom:4px;">Message</label><textarea name="message" placeholder="Type your message..." rows="3" style="width:100%;padding:9px 12px;font-size:13px;border:1px solid #d1d5db;border-radius:8px;outline:none;box-sizing:border-box;font-family:inherit;resize:vertical;"></textarea></div>
+      <button type="submit" id="lamSubmitBtn" style="width:100%;padding:11px;background:#0d9488;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;">Submit Message</button>
+      <div id="lamSuccess" style="display:none;margin-top:10px;padding:10px;background:#ecfdf5;color:#065f46;border-radius:8px;font-size:13px;text-align:center;">&#10003; Message received! Our team will connect with you soon.</div>
+      <div id="lamError" style="display:none;margin-top:10px;padding:10px;background:#fef2f2;color:#991b1b;border-radius:8px;font-size:13px;text-align:center;">Something went wrong. Please try again.</div>
+    </form>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  /* ── Support Ticket ── */
+  var stTrigger=document.getElementById('stTrigger'),stModal=document.getElementById('stModal'),
+      stOverlay=document.getElementById('stOverlay'),stClose2=document.getElementById('stClose'),
+      stForm=document.getElementById('stForm'),stSubmit=document.getElementById('stSubmitBtn'),
+      stSuccess=document.getElementById('stSuccess'),stError=document.getElementById('stError');
+  function stOpen(){ if(stModal) stModal.style.display='block'; if(stOverlay) stOverlay.style.display='block'; }
+  function stHide(){ if(stModal) stModal.style.display='none'; if(stOverlay) stOverlay.style.display='none'; }
+  if(stTrigger) stTrigger.addEventListener('click',stOpen);
+  if(stClose2)  stClose2.addEventListener('click',stHide);
+  if(stOverlay) stOverlay.addEventListener('click',stHide);
+  if(stForm){ stForm.addEventListener('submit',async function(e){
+    e.preventDefault();
+    if(stSubmit){ stSubmit.disabled=true; stSubmit.innerHTML='Submitting...'; }
+    if(stSuccess) stSuccess.style.display='none';
+    if(stError)   stError.style.display='none';
+    try{
+      var fd=new FormData(stForm);
+      var page=window.location.pathname.split('/').pop()||'index.html';
+      /* ── Generate unique ticket number ── */
+      var now=new Date();
+      var ymd=now.getFullYear().toString()+
+              String(now.getMonth()+1).padStart(2,'0')+
+              String(now.getDate()).padStart(2,'0');
+      var rand=Math.floor(10000+Math.random()*90000);
+      var ticketNum='OMT-'+ymd+'-'+rand;
+      var customerEmail=fd.get('email')||'';
+      /* ── Submit ticket to OMNET team ── */
+      var res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({access_key:'2af0c0f5-01fa-4349-b83c-fff623cb969b',
+          subject:'['+ticketNum+'] Support Ticket - '+(fd.get('priority')||'')+' | '+(fd.get('category')||''),
+          from_name:'OMNET IT Support Ticket',page:page,
+          ticket_number:ticketNum,
+          name:fd.get('name')||'N/A',phone:fd.get('phone')||'N/A',email:customerEmail||'N/A',
+          company:fd.get('company')||'N/A',category:fd.get('category')||'N/A',
+          priority:fd.get('priority')||'N/A',issue:fd.get('issue')||'N/A'})});
+      var json=await res.json();
+      if(json.success){
+        /* ── Send auto-reply to customer via EmailJS ── */
+        /* REPLACE the 3 placeholder values below with your real EmailJS credentials */
+        var EMAILJS_SERVICE_ID  = 'service_bgf345i';
+        var EMAILJS_TEMPLATE_ID = 'template_5bj7joh';
+        var EMAILJS_PUBLIC_KEY  = 'pWP-yxZPWj9aR6ld0';
+        if(customerEmail && EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID'){
+          await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+            to_email      : customerEmail,
+            customer_name : fd.get('name')||'Customer',
+            ticket_number : ticketNum,
+            category      : fd.get('category')||'N/A',
+            priority      : fd.get('priority')||'N/A',
+            issue         : fd.get('issue')||'N/A',
+            phone         : fd.get('phone')||'N/A',
+            company       : fd.get('company')||'N/A'
+          }, EMAILJS_PUBLIC_KEY);
+        }
+        /* ── Show success with ticket number ── */
+        if(stSuccess){
+          stSuccess.innerHTML='<i class="ri-checkbox-circle-line"></i> <strong>Ticket #'+ticketNum+' Created!</strong> A confirmation has been sent to your email. Our team will connect with you soon.';
+          stSuccess.style.display='block';
+        }
+        stForm.reset();
+        setTimeout(function(){ stHide(); if(stSuccess) stSuccess.style.display='none'; },6000);
+      } else { throw new Error(); }
+    }catch(err){ if(stError) stError.style.display='block'; }
+    if(stSubmit){ stSubmit.disabled=false; stSubmit.innerHTML='<i class="ri-send-plane-line"></i> Submit Support Ticket'; }
+  }); }
+
+  /* ── Leave a Message ── */
+  var lamTrigger=document.getElementById('lamTrigger'),lamModal=document.getElementById('lamModal'),
+      lamOverlay=document.getElementById('lamOverlay'),lamClose2=document.getElementById('lamClose'),
+      lamForm=document.getElementById('lamForm'),lamSubmit=document.getElementById('lamSubmitBtn'),
+      lamSuccess=document.getElementById('lamSuccess'),lamError=document.getElementById('lamError');
+  function lamOpen(){ if(lamModal) lamModal.style.display='block'; if(lamOverlay) lamOverlay.style.display='block'; }
+  function lamHide(){ if(lamModal) lamModal.style.display='none'; if(lamOverlay) lamOverlay.style.display='none'; }
+  if(lamTrigger) lamTrigger.addEventListener('click',lamOpen);
+  if(lamClose2)  lamClose2.addEventListener('click',lamHide);
+  if(lamOverlay) lamOverlay.addEventListener('click',lamHide);
+  if(lamForm){ lamForm.addEventListener('submit',async function(e){
+    e.preventDefault();
+    var deptEl=document.getElementById('lamDept');
+    if(deptEl && !deptEl.value){ deptEl.style.borderColor='#e53935'; return; }
+    if(deptEl) deptEl.style.borderColor='';
+    if(lamSubmit){ lamSubmit.disabled=true; lamSubmit.textContent='Sending...'; }
+    if(lamSuccess) lamSuccess.style.display='none';
+    if(lamError)   lamError.style.display='none';
+    try{
+      var fd=new FormData(lamForm);
+      var page=window.location.pathname.split('/').pop()||'index.html';
+      var res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({access_key:'2af0c0f5-01fa-4349-b83c-fff623cb969b',
+          subject:'OMNET IT - Leave a Message',from_name:'OMNET IT Website',page:page,
+          email:fd.get('email')||'N/A',phone:fd.get('phone')||'N/A',
+          inquiry_for:fd.get('inquiry_for')||'N/A',message:fd.get('message')||'N/A'})});
+      var json=await res.json();
+      if(json.success){
+        /* ── Send auto-reply to sender via EmailJS ── */
+        var LAM_EMAILJS_SERVICE_ID  = 'service_bgf345i';
+        var LAM_EMAILJS_TEMPLATE_ID = 'template_5gbzl7h';
+        var LAM_EMAILJS_PUBLIC_KEY  = 'pWP-yxZPWj9aR6ld0';
+        var lamEmail = fd.get('email')||'';
+        if(lamEmail && LAM_EMAILJS_TEMPLATE_ID !== 'YOUR_LAM_TEMPLATE_ID'){
+          await emailjs.send(LAM_EMAILJS_SERVICE_ID, LAM_EMAILJS_TEMPLATE_ID, {
+            to_email      : lamEmail,
+            customer_name : lamEmail,
+            inquiry_for   : fd.get('inquiry_for')||'N/A',
+            phone         : fd.get('phone')||'N/A',
+            message       : fd.get('message')||'N/A'
+          }, LAM_EMAILJS_PUBLIC_KEY);
+        }
+        if(lamSuccess) lamSuccess.style.display='block';
+        lamForm.reset();
+      }
+      else{ throw new Error(); }
+    }catch(err){ if(lamError) lamError.style.display='block'; }
+    if(lamSubmit){ lamSubmit.disabled=false; lamSubmit.textContent='Submit Message'; }
+  }); }
+});
+</script>
+<!-- ═══ END SUPPORT WIDGETS ═══ -->
+
+<script src="fixes.js"></script>
+<!-- ═══ STICKY CONTACT BAR ═══ -->
+<div class="omnet-sticky-bar" role="navigation" aria-label="Quick contact">
+  <a class="omnet-sticky-phone" href="tel:+918920603270" title="Call us">
+    <i class="ri-phone-line"></i>
+  </a>
+  <a class="omnet-sticky-call" href="tel:+918920603270">
+    <i class="ri-phone-fill"></i> +91 89206 03270
+  </a>
+  <a class="omnet-sticky-wa" href="https://wa.me/918920603270?text=Hi%2C%20I%20am%20interested%20in%20your%20services" target="_blank" rel="noopener" title="WhatsApp">
+    <i class="ri-whatsapp-line"></i>
+  </a>
+</div>
+<button class="back-to-top" aria-label="Back to top"><i class="ri-arrow-up-line"></i></button>
+
+    <script src="i18n.js" defer></script>
+
+<!-- value block: trust + FAQ + links + CTA (depth, trust & SEO) -->
+<section class="omn-vb" aria-label="Why choose OMNET, FAQs and contact">
+<style>
+.omn-vb{font-family:inherit;max-width:1100px;margin:2.5rem auto 0;padding:2rem 1.25rem 3rem}
+.omn-vb__trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin-bottom:2.2rem}
+.omn-vb__t{background:#f0fdfa;border:1px solid #99f6e4;border-radius:12px;padding:1rem;text-align:center}
+.omn-vb__t i{font-size:1.5rem;color:#0d9488}
+.omn-vb__t strong{display:block;color:#0f172a;font-size:1.05rem;margin-top:.25rem}
+.omn-vb__t span{color:#64748b;font-size:.82rem}
+.omn-vb h2{font-size:1.4rem;color:#0f172a;margin:0 0 1rem}
+.omn-vb__faq details{border:1px solid #e5e7eb;border-radius:10px;padding:.9rem 1.1rem;margin-bottom:.7rem;background:#fff}
+.omn-vb__faq summary{font-weight:700;color:#0f172a;cursor:pointer}
+.omn-vb__faq p{color:#475569;margin:.6rem 0 0;line-height:1.6}
+.omn-vb__links{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.4rem 0 2rem}
+.omn-vb__links a{color:#0f766e;border:1px solid #99f6e4;background:#f0fdfa;padding:.45rem .9rem;border-radius:999px;font-size:.9rem;font-weight:600;text-decoration:none}
+.omn-vb__links a:hover{background:#ccfbf1}
+.omn-vb__cta{background:linear-gradient(135deg,#0d9488,#0891b2);border-radius:16px;padding:2rem;text-align:center;color:#fff}
+.omn-vb__cta h3{font-size:1.4rem;margin:0 0 .5rem;color:#fff}
+.omn-vb__cta p{margin:0 0 1.2rem;opacity:.92}
+.omn-vb__cta a{display:inline-block;margin:.3rem;padding:.7rem 1.4rem;border-radius:10px;font-weight:700;text-decoration:none}
+.omn-vb__cta .p{background:#fff;color:#0f766e}
+.omn-vb__cta .s{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.5)}
+</style>
+
+  <div class="omn-vb__trust">
+    <div class="omn-vb__t"><i class="ri-government-line"></i><strong>CERT-In</strong><span>Govt. empanelled</span></div>
+    <div class="omn-vb__t"><i class="ri-customer-service-2-line"></i><strong>24/7</strong><span>Helpdesk support</span></div>
+    <div class="omn-vb__t"><i class="ri-shield-check-line"></i><strong>CERT-In</strong><span>Empanelled</span></div>
+  </div>
+<div class="omn-vb__faq"><h2>Frequently asked questions</h2><details><summary>What payment methods do you accept?</summary><p>Card, UPI, net banking, bank transfer and QR — all processed securely. A GST invoice is issued for every order.</p></details><details><summary>Will I receive a GST tax invoice?</summary><p>Yes. A proper GST tax invoice is issued for every order so you can claim input credit.</p></details><details><summary>How quickly will my order be processed?</summary><p>Most service orders are confirmed within one business day, and our team contacts you to schedule delivery or onsite work.</p></details></div><h2>Explore OMNET IT Solutions</h2><div class="omn-vb__links"><a href="services.html">Our Services</a><a href="pricing.html">Pricing</a><a href="managed-services.html">Managed IT</a><a href="contact.html">Contact</a></div>
+  <div class="omn-vb__cta"><h3>Questions before you order?</h3><p>Our team will help you scope the right service and confirm pricing — free, with no obligation.</p><a class="p" href="contact.html"><i class="ri-mail-send-line"></i> Get a Free IT Assessment</a><a class="s" href="tel:+918920603270"><i class="ri-phone-line"></i> +91 89206 03270</a></div>
+</section>
+
+<!-- MSME Udyam Registration: UDYAM-UP-29-0254285 | CERT-In Empanelled | OMNET IT Solutions -->
+</body>
+</html>
