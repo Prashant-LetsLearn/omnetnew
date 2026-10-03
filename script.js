@@ -175,7 +175,7 @@ document.head.appendChild(_s);
         <a href="/managed-services.html" class="btn-managed">
           <i class="ri-settings-4-line"></i> Managed Services
         </a>
-        <a href="/shop.html" class="btn-online-purchase">
+        <a href="/products.html" class="btn-online-purchase">
           <i class="ri-shopping-cart-2-line"></i> Online Purchase
         </a>
       </div>
@@ -399,4 +399,21 @@ document.head.appendChild(_s);
     fixOverlays();
   });
 
+})();
+
+// ── TAWK.TO INTEGRATION ──────────────────────────────────────────
+// IMPORTANT: Replace TAWK_PROPERTY_ID and TAWK_WIDGET_ID below
+// with values from your Tawk.to Dashboard → Administration → Chat Widget
+var Tawk_API = Tawk_API || {};
+Tawk_API.onLoad = function() {
+  // Hide default Tawk launcher — we use custom OMNET launcher instead
+  Tawk_API.hideWidget();
+};
+(function() {
+  var s1 = document.createElement('script'), s0 = document.getElementsByTagName('script')[0];
+  s1.async = true;
+  s1.src = 'https://embed.tawk.to/TAWK_PROPERTY_ID/TAWK_WIDGET_ID';
+  s1.charset = 'UTF-8';
+  s1.setAttribute('crossorigin', '*');
+  s0.parentNode.insertBefore(s1, s0);
 })();
