@@ -401,19 +401,56 @@ document.head.appendChild(_s);
 
 })();
 
-// ── TAWK.TO INTEGRATION ──────────────────────────────────────────
-// IMPORTANT: Replace TAWK_PROPERTY_ID and TAWK_WIDGET_ID below
-// with values from your Tawk.to Dashboard → Administration → Chat Widget
-var Tawk_API = Tawk_API || {};
-Tawk_API.onLoad = function() {
-  // Hide default Tawk launcher — we use custom OMNET launcher instead
-  Tawk_API.hideWidget();
-};
-(function() {
-  var s1 = document.createElement('script'), s0 = document.getElementsByTagName('script')[0];
-  s1.async = true;
-  s1.src = 'https://embed.tawk.to/6ac1452ce6f57734ca7b09da/1k41fce27';
-  s1.charset = 'UTF-8';
-  s1.setAttribute('crossorigin', '*');
-  s0.parentNode.insertBefore(s1, s0);
+// ── TAWK.TO LIVE CHAT ────────────────────────────────────────────
+// Pages that have the teal "Leave a Message" button (#lamTrigger) use it as
+// the chat launcher, so Tawk's own bubble is hidden there BEFORE it renders
+// (no flash-then-disappear). Pages without that button show Tawk's normal
+// bubble. Until Tawk has loaded, the button opens the message form instead.
+var Tawk_API = Tawk_API || {}, Tawk_LoadTime = new Date();
+(function () {
+  var ready = false;
+  function hasLauncher() { return !!document.getElementById('lamTrigger'); }
+  function hideIfLauncher() {
+    if (hasLauncher() && typeof Tawk_API.hideWidget === 'function') Tawk_API.hideWidget();
+  }
+
+  // On phones, keep Tawk's bubble above the sticky call bar at the bottom of the screen
+  Tawk_API.customStyle = { visibility: { mobile: { position: 'br', xOffset: 16, yOffset: 76 } } };
+
+  // On phones (<=768px) the sticky call bar covers the bottom 60px, so lift the
+  // floating "Leave a Message" / "Technical Support" buttons above it.
+  var fabCss = document.createElement('style');
+  fabCss.textContent = '@media (max-width:768px){' +
+    'html body #lamTrigger{bottom:calc(76px + env(safe-area-inset-bottom,0px)) !important;right:16px !important;z-index:9400 !important}' +
+    'html body #stTrigger{bottom:calc(132px + env(safe-area-inset-bottom,0px)) !important;right:16px !important}}';
+  document.head.appendChild(fabCss);
+
+  Tawk_API.onBeforeLoad = hideIfLauncher;
+  Tawk_API.onLoad = function () { ready = true; hideIfLauncher(); };
+  Tawk_API.onChatMinimized = hideIfLauncher;
+  // If an agent replies while the chat is closed, show the bubble so it isn't missed
+  Tawk_API.onChatMessageAgent = function () {
+    if (typeof Tawk_API.showWidget === 'function') Tawk_API.showWidget();
+  };
+
+  // "Leave a Message" -> open live chat (capture phase, runs before the page's own form handler)
+  document.addEventListener('click', function (e) {
+    if (!ready || !e.target.closest || !e.target.closest('#lamTrigger')) return;
+    e.preventDefault();
+    e.stopPropagation();
+    Tawk_API.showWidget();
+    Tawk_API.maximize();
+  }, true);
+
+  // Load after the page has finished loading so chat doesn't slow down first paint
+  function loadTawk() {
+    var s1 = document.createElement('script'), s0 = document.getElementsByTagName('script')[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/6ac1452ce6f57734ca7b09da/1k41fce27';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  }
+  if (document.readyState === 'complete') loadTawk();
+  else window.addEventListener('load', loadTawk);
 })();

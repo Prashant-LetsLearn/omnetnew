@@ -2379,14 +2379,7 @@ document.addEventListener('DOMContentLoaded',function(){
       lamSuccess=document.getElementById('lamSuccess'),lamError=document.getElementById('lamError');
   function lamOpen(){ if(lamModal) lamModal.style.display='block'; if(lamOverlay) lamOverlay.style.display='block'; }
   function lamHide(){ if(lamModal) lamModal.style.display='none'; if(lamOverlay) lamOverlay.style.display='none'; }
-  if(lamTrigger) lamTrigger.addEventListener('click', function() {
-    /* Open Tawk.to live chat; fall back to Leave-a-Message form if not loaded */
-    if (typeof Tawk_API !== 'undefined' && typeof Tawk_API.toggle === 'function') {
-      Tawk_API.toggle();
-    } else {
-      lamOpen();
-    }
-  });
+  if(lamTrigger) lamTrigger.addEventListener('click',lamOpen);
   if(lamClose2)  lamClose2.addEventListener('click',lamHide);
   if(lamOverlay) lamOverlay.addEventListener('click',lamHide);
   if(lamForm){ lamForm.addEventListener('submit',async function(e){
