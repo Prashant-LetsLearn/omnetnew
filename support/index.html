@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="description" content="OMNET IT Solutions Remote Support — Download AnyDesk and get instant IT support from our team." />
+<meta name="description" content="OMNET IT Solutions Support — raise a complaint or service request by live chat, email (support@omnetit.in) or phone, and get remote IT support via AnyDesk." />
 <title>OMNET Remote Support</title>
 <link rel="canonical" href="https://www.omnetit.in/support/">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap">
@@ -122,6 +122,27 @@
 
   footer { text-align:center; margin-top:40px; font-size:12px; color:var(--muted); }
 
+  /* Raise a support request */
+  .request-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px; margin-bottom:32px; }
+  .request-card h2 { margin:0 0 6px; font-family:'Plus Jakarta Sans',sans-serif; font-size:19px; font-weight:800; color:var(--fg); text-wrap:balance; }
+  .request-card > p { margin:0 0 20px; font-size:14px; color:var(--muted); }
+  .request-options { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:22px; }
+  @media (max-width:620px) { .request-options { grid-template-columns:1fr; } }
+  .request-option { display:flex; flex-direction:column; gap:8px; border:1px solid var(--border); border-radius:10px; padding:16px; background:var(--bg); min-width:0; }
+  .request-option strong { font-size:14px; font-weight:700; color:var(--fg); }
+  .request-option p { margin:0; font-size:13px; color:var(--muted); line-height:1.5; flex:1; }
+  .request-option .opt-value { font-size:13.5px; font-weight:600; color:var(--brand); word-break:break-all; }
+  .btn-req { display:inline-flex; align-items:center; justify-content:center; gap:8px; font-weight:700; font-size:14px; padding:11px 16px; border-radius:9px; text-decoration:none; border:none; cursor:pointer; font-family:inherit; transition:transform 0.15s,box-shadow 0.15s; }
+  .btn-req:hover { transform:translateY(-1px); }
+  .btn-req svg { width:18px; height:18px; flex-shrink:0; }
+  .btn-chat { background:#0d9488; color:#fff; box-shadow:0 3px 10px rgba(13,148,136,0.3); }
+  .btn-chat[disabled] { opacity:.75; cursor:progress; }
+  .btn-email { background:var(--brand); color:#fff; box-shadow:0 3px 10px rgba(26,60,110,0.25); }
+  .btn-call { background:var(--surface); color:var(--brand); border:1px solid var(--border); }
+  .chat-status { margin:0; font-size:12.5px; color:#b91c1c; line-height:1.45; }
+  .details-title { font-size:13px; font-weight:700; color:var(--fg); margin:0 0 8px; }
+  .details-list { margin:0; padding-left:20px; font-size:13.5px; color:var(--muted); display:grid; gap:4px; }
+
   /* Floating WhatsApp */
   .wa-float { position:fixed; bottom:28px; right:24px; z-index:999; display:flex; flex-direction:column; align-items:flex-end; gap:10px; }
   .wa-bubble { background:#fff; border-radius:16px; box-shadow:0 8px 32px rgba(0,0,0,0.18); padding:14px 18px; max-width:240px; font-size:13.5px; font-weight:500; color:#1a2332; line-height:1.45; position:relative; display:none; border:1px solid #e2e8f0; }
@@ -162,6 +183,51 @@
       Download AnyDesk — Free
     </a>
   </div>
+
+  <p class="section-label">Log a complaint or service request</p>
+  <section class="request-card" aria-labelledby="raise-request">
+    <h2 id="raise-request">Raise a Support Request</h2>
+    <p>You can log a complaint or service request with OMNET IT Solutions in any of the following ways. Our support team will review your request and get back to you.</p>
+
+    <div class="request-options">
+      <div class="request-option">
+        <strong>Live Chat</strong>
+        <p>Chat with our support team and describe the issue. You can also use the round chat button at the bottom-right corner of any page on our website.</p>
+        <button type="button" class="btn-req btn-chat" id="startChat">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.48 3 2 6.92 2 11.75c0 2.4 1.1 4.57 2.9 6.15L4 22l4.37-2.3c1.12.33 2.34.5 3.63.5 5.52 0 10-3.92 10-8.75S17.52 3 12 3z"/></svg>
+          <span id="startChatLabel">Start Live Chat</span>
+        </button>
+        <p class="chat-status" id="chatStatus" role="status" hidden>Live chat could not be loaded. Please email support@omnetit.in or call +91 89206 03270.</p>
+      </div>
+      <div class="request-option">
+        <strong>Email</strong>
+        <p>Send the details of your issue by email. Please include the information listed below.</p>
+        <span class="opt-value">support@omnetit.in</span>
+        <a class="btn-req btn-email" href="mailto:support@omnetit.in?subject=Support%20Request%20-%20%5BYour%20Company%5D&body=Name%3A%20%0ACompany%3A%20%0AContact%20number%3A%20%0A%0ADescription%20of%20the%20issue%3A%20%0A%0AAnyDesk%20ID%20(if%20remote%20support%20is%20needed)%3A%20">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email Support
+        </a>
+      </div>
+      <div class="request-option">
+        <strong>Phone / WhatsApp</strong>
+        <p>Call or message our support desk to report an urgent issue.</p>
+        <span class="opt-value">+91 89206 03270</span>
+        <a class="btn-req btn-call" href="tel:+918920603270">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Support
+        </a>
+      </div>
+    </div>
+
+    <p class="details-title">To help us resolve your request quickly, please include:</p>
+    <ul class="details-list">
+      <li>Your name and company name</li>
+      <li>Your contact number and email address</li>
+      <li>A short description of the issue and when it started</li>
+      <li>Screenshots or error messages, if available</li>
+      <li>Your AnyDesk ID, if you need a remote support session</li>
+    </ul>
+  </section>
 
   <p class="section-label">How it works — 4 easy steps</p>
   <div class="steps">
@@ -268,14 +334,14 @@
   </div>
 
   <footer>
-    &copy; 2024 OMNET IT Solutions &nbsp;·&nbsp; New Delhi, India &nbsp;·&nbsp; All support sessions are encrypted end-to-end.
+    &copy; 2026 OMNET IT Solutions &nbsp;·&nbsp; New Delhi, India &nbsp;·&nbsp; All support sessions are encrypted end-to-end.
   </footer>
 </div>
 
 <!-- Floating WhatsApp Button -->
 <div class="wa-float" id="waFloat">
   <div class="wa-bubble" id="waBubble">
-    👋 Need help? Chat with our support team on WhatsApp — we reply instantly!
+    Need help? Message our support team on WhatsApp.
   </div>
   <a href="https://wa.me/918920603270?text=Hello%20OMNET%20IT%20Solutions%2C%20I%20need%20technical%20support." 
      target="_blank" class="wa-btn" id="waBtn" title="Chat on WhatsApp">
@@ -292,12 +358,42 @@
   setTimeout(() => bubble.classList.add('show'), 3000);
   btn.addEventListener('click', () => bubble.classList.remove('show'));
 
-  // TAWK.TO — Tawk.to account banane ke baad yahan script paste karo:
-  // var Tawk_API=Tawk_API||{}, Tawk_LoadTime=new Date();
-  // (function(){ var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  // s1.async=true; s1.src='https://embed.tawk.to/YOUR_PROPERTY_ID/default';
-  // s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-  // s0.parentNode.insertBefore(s1,s0); })();
+</script>
+<script>
+  /* Live chat (Tawk.to): the default launcher stays hidden; the chat opens from "Start Live Chat" */
+  var Tawk_API = Tawk_API || {}, Tawk_LoadTime = new Date();
+  (function () {
+    var ready = false, failed = false, pending = null;
+    var btn = document.getElementById('startChat');
+    var label = document.getElementById('startChatLabel');
+    var status = document.getElementById('chatStatus');
+    function hideLauncher() { if (typeof Tawk_API.hideWidget === 'function') Tawk_API.hideWidget(); }
+    function reset() { btn.disabled = false; label.textContent = 'Start Live Chat'; }
+    function openChat() { reset(); status.hidden = true; Tawk_API.showWidget(); Tawk_API.maximize(); }
+    function unavailable() { reset(); status.hidden = false; }
+    function settle(ok) { if (!pending) return; clearTimeout(pending); pending = null; ok ? openChat() : unavailable(); }
+    Tawk_API.onBeforeLoad = hideLauncher;
+    Tawk_API.onLoad = function () { ready = true; hideLauncher(); settle(true); };
+    Tawk_API.onChatMinimized = hideLauncher;
+    btn.addEventListener('click', function () {
+      if (ready) return openChat();
+      if (failed) return unavailable();
+      btn.disabled = true; label.textContent = 'Connecting\u2026';
+      clearTimeout(pending);
+      pending = setTimeout(function () { pending = null; unavailable(); }, 6000);
+    });
+    function loadTawk() {
+      var s1 = document.createElement('script'), s0 = document.getElementsByTagName('script')[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/6ac1452ce6f57734ca7b09da/1k41fce27';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s1.onerror = function () { failed = true; settle(false); };
+      s0.parentNode.insertBefore(s1, s0);
+    }
+    if (document.readyState === 'complete') loadTawk();
+    else window.addEventListener('load', loadTawk);
+  })();
 </script>
 </body>
 </html>

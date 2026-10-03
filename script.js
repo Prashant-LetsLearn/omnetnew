@@ -401,46 +401,103 @@ document.head.appendChild(_s);
 
 })();
 
-// ── TAWK.TO LIVE CHAT ────────────────────────────────────────────
-// Bottom-right layout (all always visible):
-//   [Technical Support]
-//   [Leave a Message] (chat bubble)
-// "Leave a Message" opens the Tawk chat; if chat hasn't loaded (or is
-// blocked), it opens the message form instead.
+// ── LIVE CHAT (TAWK.TO) ──────────────────────────────────────────
+// One round chat button, bottom-right, mirroring the WhatsApp button on the
+// left. Label (tooltip / screen readers): "Chat / Log Complaint".
+// Tawk's own launcher is kept hidden; the chat window opens only from this
+// button, so nothing appears and disappears on its own. The red
+// "Technical Support" ticket button (where present) sits directly above it.
 var Tawk_API = Tawk_API || {}, Tawk_LoadTime = new Date();
 (function () {
-  var ready = false;
+  var LABEL = 'Chat / Log Complaint';
+  var ready = false, failed = false, pending = null;
 
-  // Bubble position: bottom-right; on phones, sit above the sticky call bar (~62px tall)
-  Tawk_API.customStyle = {
-    visibility: {
-      desktop: { position: 'br', xOffset: 20, yOffset: 20 },
-      mobile:  { position: 'br', xOffset: 16, yOffset: 76 }
+  var css = document.createElement('style');
+  css.textContent =
+    'html body #lamTrigger{position:fixed !important;right:20px !important;bottom:5rem !important;left:auto !important;top:auto !important;' +
+      'width:52px !important;height:52px !important;padding:0 !important;margin:0 !important;border-radius:50% !important;' +
+      'display:flex !important;align-items:center !important;justify-content:center !important;gap:0 !important;' +
+      'background:#0d9488 !important;color:#fff !important;border:none !important;cursor:pointer !important;' +
+      'box-shadow:0 4px 16px rgba(13,148,136,.5) !important;z-index:9000 !important;transition:transform .2s}' +
+    'html body #lamTrigger:hover{transform:scale(1.08)}' +
+    'html body #lamTrigger svg{width:26px;height:26px;display:block}' +
+    'html body #lamTrigger span{display:none !important}html body #lamTrigger i{font-size:24px !important}' +
+    'html body #lamTrigger.has-unread::before{content:"";position:absolute;top:1px;right:1px;width:12px;height:12px;background:#ef4444;border:2px solid #fff;border-radius:50%}' +
+    'html body #lamTrigger.is-loading svg{animation:omnetChatPulse 1s ease-in-out infinite}' +
+    '@keyframes omnetChatPulse{50%{opacity:.35}}' +
+    '@media (hover:hover){html body #lamTrigger::after{content:"' + LABEL + '";position:absolute;right:62px;top:50%;transform:translateY(-50%);' +
+      'background:#0f172a;color:#fff;font:600 13px/1 system-ui,sans-serif;padding:8px 12px;border-radius:8px;white-space:nowrap;' +
+      'opacity:0;pointer-events:none;transition:opacity .15s}' +
+      'html body #lamTrigger:hover::after,html body #lamTrigger:focus-visible::after{opacity:1}}' +
+    'html body #stTrigger{right:20px !important;bottom:calc(5rem + 64px) !important;left:auto !important}';
+  document.head.appendChild(css);
+
+  var ICON = '<svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true">' +
+    '<path d="M12 3C6.48 3 2 6.92 2 11.75c0 2.4 1.1 4.57 2.9 6.15L4 22l4.37-2.3c1.12.33 2.34.5 3.63.5 5.52 0 10-3.92 10-8.75S17.52 3 12 3z' +
+    'M8 13a1.25 1.25 0 1 0 0-2.5A1.25 1.25 0 0 0 8 13zm4 0a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5zm4 0a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5z"/></svg>';
+
+  function button() { return document.getElementById('lamTrigger'); }
+
+  // Every page gets the same button: reuse the page's own one or add it
+  function ensureButton() {
+    var btn = button();
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.id = 'lamTrigger';
+      btn.type = 'button';
+      document.body.appendChild(btn);
     }
-  };
+    btn.innerHTML = ICON + '<span>' + LABEL + '</span>';
+    btn.setAttribute('aria-label', LABEL);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ensureButton);
+  else ensureButton();
 
-  // Place the two floating buttons around the chat bubble so nothing overlaps
-  var fabCss = document.createElement('style');
-  fabCss.textContent =
-    'html body #lamTrigger{bottom:28px !important;right:94px !important;display:flex !important}' +
-    'html body #stTrigger{bottom:100px !important;right:20px !important}' +
-    '@media (max-width:768px){' +
-      'html body #lamTrigger{bottom:calc(84px + env(safe-area-inset-bottom,0px)) !important;right:88px !important;z-index:9400 !important}' +
-      'html body #stTrigger{bottom:calc(148px + env(safe-area-inset-bottom,0px)) !important;right:16px !important}}';
-  document.head.appendChild(fabCss);
+  function hideLauncher() { if (typeof Tawk_API.hideWidget === 'function') Tawk_API.hideWidget(); }
 
-  Tawk_API.onLoad = function () {
-    ready = true;
-    if (typeof Tawk_API.showWidget === 'function') Tawk_API.showWidget();
-  };
-
-  // "Leave a Message" -> open live chat (capture phase, runs before the page's own form handler)
-  document.addEventListener('click', function (e) {
-    if (!ready || !e.target.closest || !e.target.closest('#lamTrigger')) return;
-    e.preventDefault();
-    e.stopPropagation();
+  function openChat() {
+    var btn = button();
+    if (btn) btn.classList.remove('has-unread', 'is-loading');
     Tawk_API.showWidget();
     Tawk_API.maximize();
+  }
+
+  // Chat unavailable (e.g. blocked by an ad blocker): use the message form, or the contact page
+  function openFallback() {
+    var btn = button();
+    if (btn) btn.classList.remove('is-loading');
+    var modal = document.getElementById('lamModal'), overlay = document.getElementById('lamOverlay');
+    if (modal) { modal.style.display = 'block'; if (overlay) overlay.style.display = 'block'; }
+    else window.location.href = '/contact.html';
+  }
+
+  function settlePending(useChat) {
+    if (!pending) return;
+    clearTimeout(pending); pending = null;
+    if (useChat) openChat(); else openFallback();
+  }
+
+  Tawk_API.onBeforeLoad = hideLauncher;
+  Tawk_API.onLoad = function () { ready = true; hideLauncher(); settlePending(true); };
+  Tawk_API.onChatMinimized = hideLauncher;
+  Tawk_API.onChatMaximized = function () { var b = button(); if (b) b.classList.remove('has-unread'); };
+  Tawk_API.onChatMessageAgent = function () {
+    var b = button();
+    var open = typeof Tawk_API.isChatMaximized === 'function' && Tawk_API.isChatMaximized();
+    if (b && !open) b.classList.add('has-unread');
+  };
+
+  // Capture phase: runs before any older click handler on the button
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest || !e.target.closest('#lamTrigger')) return;
+    e.preventDefault();
+    e.stopPropagation();
+    if (ready) return openChat();
+    if (failed) return openFallback();
+    var btn = button();
+    if (btn) btn.classList.add('is-loading');
+    clearTimeout(pending);
+    pending = setTimeout(function () { pending = null; openFallback(); }, 6000);
   }, true);
 
   // Load after the page has finished loading so chat doesn't slow down first paint
@@ -450,6 +507,7 @@ var Tawk_API = Tawk_API || {}, Tawk_LoadTime = new Date();
     s1.src = 'https://embed.tawk.to/6ac1452ce6f57734ca7b09da/1k41fce27';
     s1.charset = 'UTF-8';
     s1.setAttribute('crossorigin', '*');
+    s1.onerror = function () { failed = true; settlePending(false); };
     s0.parentNode.insertBefore(s1, s0);
   }
   if (document.readyState === 'complete') loadTawk();
