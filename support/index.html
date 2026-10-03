@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="description" content="OMNET IT Solutions Remote Support — Download AnyDesk and get instant IT support from our team." />
 <title>OMNET Remote Support</title>
+<link rel="canonical" href="https://www.omnetit.in/support/">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap">
 
 <style>
@@ -70,6 +71,9 @@
   .logo-text { font-family:'Plus Jakarta Sans',sans-serif; }
   .logo-text strong { display:block; font-size:15px; font-weight:800; color:var(--brand); letter-spacing:-0.3px; }
   .logo-text span { font-size:11px; color:var(--muted); font-weight:500; letter-spacing:0.3px; text-transform:uppercase; }
+  .home-link { display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit; min-width:0; }
+  .back-link { margin-left:auto; font-size:13px; font-weight:600; color:var(--brand); text-decoration:none; padding:8px 14px; border:1px solid var(--border); border-radius:99px; background:var(--surface); white-space:nowrap; }
+  .back-link:hover { border-color:var(--brand); }
 
   /* Hero */
   .hero { background:var(--brand); border-radius:16px; padding:36px 32px; margin-bottom:32px; position:relative; overflow:hidden; }
@@ -135,13 +139,16 @@
 
 <div class="wrap">
   <header class="site-header">
-    <div class="logo-badge">
-      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-    </div>
-    <div class="logo-text">
-      <strong>OMNET IT Solutions</strong>
-      <span>Remote Support Portal</span>
-    </div>
+    <a href="/" class="home-link" aria-label="OMNET IT Solutions home">
+      <div class="logo-badge">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="logo-text">
+        <strong>OMNET IT Solutions</strong>
+        <span>Remote Support Portal</span>
+      </div>
+    </a>
+    <a href="/" class="back-link">&larr; Main website</a>
   </header>
 
   <div class="hero">

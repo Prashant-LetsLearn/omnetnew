@@ -175,8 +175,8 @@ document.head.appendChild(_s);
         <a href="/managed-services.html" class="btn-managed">
           <i class="ri-settings-4-line"></i> Managed Services
         </a>
-        <a href="/products.html" class="btn-online-purchase">
-          <i class="ri-shopping-cart-2-line"></i> Online Purchase
+        <a href="/support/" class="btn-online-purchase">
+          <i class="ri-customer-service-2-line"></i> Support
         </a>
       </div>
     </div>`;
