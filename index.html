@@ -1673,7 +1673,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
       <div class="omn-why-card">
         <div class="omn-why-card__icon" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe)"><i class="ri-file-list-3-line" style="color:#1d4ed8"></i></div>
         <h3>Written SLA — Every Contract</h3>
-        <p>P1 30-min response / 4-hr resolution. P2 2-hr / next business day. Every engagement ships with a signed SLA — no verbal promises, no ambiguity.</p>
+        <p>P1 20-min response / 4-hr resolution. P2 2-hr / next business day. Every engagement ships with a signed SLA — no verbal promises, no ambiguity.</p>
       </div>
 
       <div class="omn-why-card">
@@ -2379,7 +2379,14 @@ document.addEventListener('DOMContentLoaded',function(){
       lamSuccess=document.getElementById('lamSuccess'),lamError=document.getElementById('lamError');
   function lamOpen(){ if(lamModal) lamModal.style.display='block'; if(lamOverlay) lamOverlay.style.display='block'; }
   function lamHide(){ if(lamModal) lamModal.style.display='none'; if(lamOverlay) lamOverlay.style.display='none'; }
-  if(lamTrigger) lamTrigger.addEventListener('click',lamOpen);
+  if(lamTrigger) lamTrigger.addEventListener('click', function() {
+    /* Open Tawk.to live chat; fall back to Leave-a-Message form if not loaded */
+    if (typeof Tawk_API !== 'undefined' && typeof Tawk_API.toggle === 'function') {
+      Tawk_API.toggle();
+    } else {
+      lamOpen();
+    }
+  });
   if(lamClose2)  lamClose2.addEventListener('click',lamHide);
   if(lamOverlay) lamOverlay.addEventListener('click',lamHide);
   if(lamForm){ lamForm.addEventListener('submit',async function(e){
@@ -2425,135 +2432,6 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>
 
     <script src="i18n.js" defer></script>
-
-<!-- ═══ TAWK.TO FLOATING SUPPORT LAUNCHER ═══ -->
-<style>
-.omnet-support-fab {
-  position: fixed;
-  bottom: 5.5rem;
-  right: 1.25rem;
-  z-index: 99990;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: .5rem;
-}
-.omnet-support-fab__toggle {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--teal-600, #0d9488), var(--teal-700, #0f766e));
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.45rem;
-  box-shadow: 0 4px 16px rgba(13,148,136,.45);
-  transition: transform .2s, box-shadow .2s;
-  flex-shrink: 0;
-}
-.omnet-support-fab__toggle:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 22px rgba(13,148,136,.55);
-}
-.omnet-support-fab__menu {
-  display: none;
-  flex-direction: column;
-  gap: .45rem;
-  align-items: flex-end;
-}
-.omnet-support-fab__menu.open {
-  display: flex;
-}
-.omnet-support-fab__btn {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  background: #fff;
-  color: var(--teal-700, #0f766e);
-  border: 1.5px solid var(--teal-200, #99f6e4);
-  padding: .55rem 1rem;
-  border-radius: 50px;
-  font-size: .88rem;
-  font-weight: 700;
-  cursor: pointer;
-  text-decoration: none;
-  box-shadow: 0 3px 12px rgba(0,0,0,.1);
-  white-space: nowrap;
-  transition: background .15s, color .15s, border-color .15s;
-}
-.omnet-support-fab__btn:hover {
-  background: var(--teal-50, #f0fdfa);
-  border-color: var(--teal-400, #2dd4bf);
-  color: var(--teal-700, #0f766e);
-}
-.omnet-support-fab__btn i {
-  font-size: 1rem;
-}
-@media (max-width: 640px) {
-  .omnet-support-fab {
-    bottom: 5rem;
-    right: 1rem;
-  }
-}
-</style>
-
-<div class="omnet-support-fab" id="omnetSupportFab" aria-label="Support options">
-  <div class="omnet-support-fab__menu" id="omnetSupportMenu" role="menu">
-    <button class="omnet-support-fab__btn" onclick="omnetOpenChat()" title="Live chat with support" role="menuitem">
-      <i class="ri-chat-3-line"></i> Technical Support
-    </button>
-    <button class="omnet-support-fab__btn" onclick="omnetOpenChat()" title="Leave a message" role="menuitem">
-      <i class="ri-mail-send-line"></i> Leave a Message
-    </button>
-  </div>
-  <button class="omnet-support-fab__toggle" id="omnetSupportToggle" aria-expanded="false" aria-controls="omnetSupportMenu" title="Support">
-    <i class="ri-headphone-line" id="omnetSupportIcon"></i>
-  </button>
-</div>
-
-<script>
-(function() {
-  var fab = document.getElementById('omnetSupportFab');
-  var toggle = document.getElementById('omnetSupportToggle');
-  var menu = document.getElementById('omnetSupportMenu');
-  var icon = document.getElementById('omnetSupportIcon');
-  if (!toggle || !menu) return;
-
-  toggle.addEventListener('click', function() {
-    var isOpen = menu.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    icon.className = isOpen ? 'ri-close-line' : 'ri-headphone-line';
-  });
-
-  // Close menu on outside click
-  document.addEventListener('click', function(e) {
-    if (fab && !fab.contains(e.target) && menu.classList.contains('open')) {
-      menu.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-      icon.className = 'ri-headphone-line';
-    }
-  });
-})();
-
-function omnetOpenChat() {
-  if (typeof Tawk_API !== 'undefined' && typeof Tawk_API.toggle === 'function') {
-    Tawk_API.toggle();
-  } else {
-    // Fallback: open contact page if Tawk.to not yet configured
-    window.location.href = 'contact.html';
-  }
-  // Close FAB menu
-  var menu = document.getElementById('omnetSupportMenu');
-  var toggle = document.getElementById('omnetSupportToggle');
-  var icon = document.getElementById('omnetSupportIcon');
-  if (menu) menu.classList.remove('open');
-  if (toggle) toggle.setAttribute('aria-expanded', 'false');
-  if (icon) icon.className = 'ri-headphone-line';
-}
-</script>
 
 </body>
 </html>
