@@ -96,7 +96,7 @@
   content: "\2713"; /* check */
   margin-left: auto;
   font-weight: 700;
-  color: var(--teal-600, #0a6b62);
+  color: var(--teal-600, #0d9488);
 }
 .omnet-lang-flag {
   font-size: 18px;
@@ -125,7 +125,7 @@
   font-weight: 800;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--teal-600, #0a6b62);
+  color: var(--teal-600, #0d9488);
   padding: .35rem .25rem;
 }
 .omnet-lang-mobile select {
@@ -174,7 +174,7 @@
 }
 .omnet-lang-suggest .omnet-suggest-icon {
   font-size: 22px;
-  color: var(--teal-600, #0a6b62);
+  color: var(--teal-600, #0d9488);
   flex-shrink: 0;
 }
 .omnet-lang-suggest .omnet-suggest-text {
@@ -230,7 +230,7 @@
 }
 .omnet-content-note.show { display: flex; }
 .omnet-content-note button {
-  background: var(--teal-600, #0a6b62);
+  background: var(--teal-600, #0d9488);
   color: #fff;
   border: none;
   border-radius: 50px;
