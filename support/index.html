@@ -3,397 +3,457 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="description" content="OMNET IT Solutions Support — raise a complaint or service request by live chat, email (support@omnetit.in) or phone, and get remote IT support via AnyDesk." />
-<title>OMNET Remote Support</title>
+<title>IT Support Centre | Raise a Ticket, Live Chat &amp; Remote Help | OMNET IT Solutions</title>
+<meta name="description" content="OMNET IT Solutions Support Centre — raise a support ticket, start live chat, call or WhatsApp our helpdesk, or get instant remote help via AnyDesk. Serving Noida, Delhi, Gurugram &amp; all of India, 24×7." />
 <link rel="canonical" href="https://www.omnetit.in/support/">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap">
-
+<meta name="theme-color" content="#0b2a3c" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="OMNET IT Support Centre — Fast help, 24×7" />
+<meta property="og:description" content="Raise a ticket, chat live, call or connect remotely. CERT-In empanelled IT support for Delhi NCR and India." />
+<meta property="og:url" content="https://www.omnetit.in/support/" />
+<meta property="og:image" content="https://www.omnetit.in/og-banner.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GWE61BMZN1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GWE61BMZN1');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"OMNET IT Support Centre","url":"https://www.omnetit.in/support/","isPartOf":{"@id":"https://www.omnetit.in/#organization"}},{"@type":"Organization","@id":"https://www.omnetit.in/#organization","name":"OMNET IT Solutions","url":"https://www.omnetit.in/","logo":"https://www.omnetit.in/logo.png","contactPoint":[{"@type":"ContactPoint","contactType":"technical support","telephone":"+91-8920603270","email":"support@omnetit.in","areaServed":"IN","availableLanguage":["English","Hindi"],"hoursAvailable":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I raise an IT support ticket with OMNET?","acceptedAnswer":{"@type":"Answer","text":"Fill in the Raise a Ticket form on this page, start a live chat, email support@omnetit.in or call / WhatsApp +91 89206 03270. You receive a ticket ID immediately when you use the form."}},{"@type":"Question","name":"Is AnyDesk remote support safe?","acceptedAnswer":{"@type":"Answer","text":"Yes. A session starts only after you click Accept, you can see everything the technician does, and you can disconnect at any time by closing AnyDesk."}},{"@type":"Question","name":"Do you provide onsite support?","acceptedAnswer":{"@type":"Answer","text":"Yes. OMNET provides onsite engineers across Noida, Delhi and Gurugram (Delhi NCR) and remote support across India and worldwide."}}]}]}</script>
 <style>
-  :root {
-    --bg:       #f5f7fa;
-    --surface:  #ffffff;
-    --border:   #e2e8f0;
-    --fg:       #1a2332;
-    --muted:    #64748b;
-    --brand:    #1a3c6e;
-    --brand-lt: #2456a0;
-    --accent:   #0ea5e9;
-    --accent-lt:#e0f2fe;
-    --success:  #16a34a;
-    --step-bg:  #f0f5ff;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg:       #0f172a;
-      --surface:  #1e293b;
-      --border:   #334155;
-      --fg:       #e2e8f0;
-      --muted:    #94a3b8;
-      --brand:    #2563eb;
-      --brand-lt: #3b82f6;
-      --accent:   #38bdf8;
-      --accent-lt:#0c2a3f;
-      --success:  #22c55e;
-      --step-bg:  #1a2a40;
-      color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg:       #0f172a;
-    --surface:  #1e293b;
-    --border:   #334155;
-    --fg:       #e2e8f0;
-    --muted:    #94a3b8;
-    --brand:    #2563eb;
-    --brand-lt: #3b82f6;
-    --accent:   #38bdf8;
-    --accent-lt:#0c2a3f;
-    --success:  #22c55e;
-    --step-bg:  #1a2a40;
-    color-scheme: dark;
-  }
-  *, *::before, *::after { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--fg);
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
-    padding-inline: 16px;
-  }
-  .wrap { max-width: 680px; margin-inline: auto; padding-block: 40px 60px; }
+:root{
+  --ink:#0f172a;--muted:#5b6b7f;--line:#e5eaf0;--bg:#f4f7fa;--card:#fff;
+  --teal:#0d9488;--teal-d:#0f766e;--cyan:#0891b2;--navy:#0b2a3c;--orange:#f97316;--amber:#eab308;--green:#22c55e;--red:#ef4444;
+  --r:18px;--shadow:0 1px 2px rgba(15,23,42,.04),0 12px 32px rgba(15,23,42,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+svg{display:block}
+.container{max-width:1160px;margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px 12px;border-radius:8px;z-index:99}
 
-  /* Header */
-  .site-header { display:flex; align-items:center; gap:12px; margin-bottom:40px; padding-bottom:24px; border-bottom:1px solid var(--border); }
-  .logo-badge { width:44px; height:44px; background:var(--brand); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-  .logo-badge svg { width:24px; height:24px; fill:#fff; }
-  .logo-text { font-family:'Plus Jakarta Sans',sans-serif; }
-  .logo-text strong { display:block; font-size:15px; font-weight:800; color:var(--brand); letter-spacing:-0.3px; }
-  .logo-text span { font-size:11px; color:var(--muted); font-weight:500; letter-spacing:0.3px; text-transform:uppercase; }
-  .home-link { display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit; min-width:0; }
-  .back-link { margin-left:auto; font-size:13px; font-weight:600; color:var(--brand); text-decoration:none; padding:8px 14px; border:1px solid var(--border); border-radius:99px; background:var(--surface); white-space:nowrap; }
-  .back-link:hover { border-color:var(--brand); }
+/* Top bar */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(11,42,60,.82);backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
+.topbar .container{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
+.brand img{height:34px;width:auto}
+.brand small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#5eead4;font-weight:700}
+.top-actions{display:flex;align-items:center;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;text-decoration:none;border-radius:99px;padding:8px 14px;white-space:nowrap;transition:transform .15s,background .15s}
+.pill:hover{transform:translateY(-1px)}
+.pill svg{width:16px;height:16px}
+.pill-ghost{color:#e2f5f3;border:1px solid rgba(255,255,255,.18)}
+.pill-ghost:hover{background:rgba(255,255,255,.08)}
+.pill-call{background:linear-gradient(135deg,var(--orange),var(--amber));color:#fff}
+@media(max-width:640px){.pill-ghost{display:none}.brand img{height:28px}}
 
-  /* Hero */
-  .hero { background:var(--brand); border-radius:16px; padding:36px 32px; margin-bottom:32px; position:relative; overflow:hidden; }
-  .hero::before { content:''; position:absolute; top:-40px; right:-40px; width:200px; height:200px; background:rgba(255,255,255,0.05); border-radius:50%; }
-  .hero::after { content:''; position:absolute; bottom:-60px; left:40%; width:160px; height:160px; background:rgba(255,255,255,0.04); border-radius:50%; }
-  .hero-eyebrow { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.15); color:#fff; font-size:11px; font-weight:600; letter-spacing:0.8px; text-transform:uppercase; padding:4px 12px; border-radius:99px; margin-bottom:16px; }
-  .hero-eyebrow span { width:6px; height:6px; background:#4ade80; border-radius:50%; }
-  .hero h1 { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(24px,5vw,32px); font-weight:800; color:#fff; margin:0 0 10px; line-height:1.2; text-wrap:balance; }
-  .hero p { color:rgba(255,255,255,0.8); margin:0 0 24px; font-size:15px; max-width:420px; }
-  .btn-download { display:inline-flex; align-items:center; gap:10px; background:#fff; color:var(--brand); font-weight:700; font-size:15px; padding:13px 24px; border-radius:10px; text-decoration:none; transition:transform 0.15s,box-shadow 0.15s; box-shadow:0 4px 12px rgba(0,0,0,0.2); position:relative; z-index:1; }
-  .btn-download:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,0.25); }
-  .btn-download svg { width:18px; height:18px; flex-shrink:0; }
+/* Hero */
+.hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(1200px 500px at 85% -10%,rgba(45,212,191,.28),transparent 60%),radial-gradient(900px 500px at -10% 110%,rgba(8,145,178,.35),transparent 60%),linear-gradient(160deg,#071d2b 0%,#0b2a3c 45%,#0d4f5c 100%);padding:64px 0 120px}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(180deg,#000 30%,transparent 95%);pointer-events:none}
+.hero .container{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+@media(max-width:900px){.hero .container{grid-template-columns:1fr}.hero{padding:44px 0 110px}}
+.live{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#a7f3d0;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.35);padding:6px 12px;border-radius:99px}
+.dot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.7);animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.6)}70%{box-shadow:0 0 0 10px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+.hero h1{font-size:clamp(2rem,4.6vw,3.3rem);line-height:1.08;font-weight:800;letter-spacing:-.02em;margin:18px 0 14px}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,#5eead4,#67e8f9);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:1.07rem;color:#cfe6e9;max-width:560px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font:inherit;font-weight:700;font-size:15px;border:0;border-radius:12px;padding:13px 20px;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s}
+.btn svg{width:18px;height:18px}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:linear-gradient(135deg,var(--teal),var(--cyan));color:#fff;box-shadow:0 10px 24px rgba(13,148,136,.35)}
+.btn-white{background:#fff;color:var(--navy)}
+.btn-glass{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.trust{display:flex;flex-wrap:wrap;gap:18px;margin-top:26px;font-size:13px;color:#a9cdd2}
+.trust span{display:inline-flex;align-items:center;gap:6px}
+.trust svg{width:16px;height:16px;color:#5eead4}
+.hero-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:22px;backdrop-filter:blur(10px)}
+.hero-card h3{font-size:15px;font-weight:700;color:#e2f5f3;margin-bottom:14px}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:14px}
+.stat b{display:block;font-size:22px;font-weight:800;color:#fff}
+.stat span{font-size:12px;color:#a9cdd2}
 
-  /* Steps */
-  .section-label { font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
-  .steps { display:flex; flex-direction:column; gap:12px; margin-bottom:32px; }
-  .step { display:flex; gap:16px; align-items:flex-start; background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px 20px; }
-  .step-num { width:32px; height:32px; background:var(--step-bg); color:var(--brand); font-weight:700; font-size:14px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-variant-numeric:tabular-nums; }
-  .step-body { min-width:0; }
-  .step-body strong { display:block; font-weight:600; font-size:14px; margin-bottom:3px; color:var(--fg); }
-  .step-body p { margin:0; font-size:13.5px; color:var(--muted); line-height:1.5; }
-  .step-body code { display:inline-block; background:var(--step-bg); color:var(--brand); font-size:13px; font-family:'SF Mono','Fira Code',monospace; padding:2px 8px; border-radius:5px; margin-top:4px; font-weight:600; }
+/* Quick channels */
+.channels{margin-top:-78px;position:relative;z-index:2}
+.ch-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:980px){.ch-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.ch-grid{grid-template-columns:1fr}}
+.ch{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;transition:transform .18s,box-shadow .18s,border-color .18s}
+.ch:hover{transform:translateY(-4px);border-color:#99f6e4;box-shadow:0 18px 40px rgba(13,148,136,.14)}
+.ch .ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff}
+.ch .ic svg{width:22px;height:22px}
+.ch h3{font-size:16px;font-weight:800}
+.ch p{font-size:13.5px;color:var(--muted);flex:1}
+.ch .val{font-size:14px;font-weight:700;color:var(--ink)}
+.ch .act{display:inline-flex;align-items:center;justify-content:center;gap:7px;font:inherit;font-size:14px;font-weight:700;border-radius:10px;padding:10px 14px;text-decoration:none;border:0;cursor:pointer;color:#fff}
+.ch .act svg{width:16px;height:16px}
+.ch .act[disabled]{opacity:.7;cursor:wait}
+.chat-status{font-size:12px;color:#b91c1c}
 
-  /* Notice */
-  .notice { display:flex; gap:12px; align-items:flex-start; background:var(--accent-lt); border:1px solid var(--accent); border-radius:10px; padding:14px 16px; margin-bottom:32px; }
-  .notice svg { flex-shrink:0; color:var(--accent); width:18px; height:18px; margin-top:1px; }
-  .notice p { margin:0; font-size:13.5px; color:var(--fg); }
-  .notice strong { color:var(--brand); }
+/* Sections */
+section.block{padding:64px 0}
+.eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+h2.title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-.01em;line-height:1.15;margin:8px 0 10px}
+p.sub{color:var(--muted);max-width:640px}
 
-  /* Contact */
-  .contact-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px; }
-  .contact-card h3 { margin:0 0 16px; font-family:'Plus Jakarta Sans',sans-serif; font-size:16px; font-weight:700; }
-  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-  @media (max-width:480px) { .contact-grid { grid-template-columns:1fr; } }
-  .contact-item { display:flex; gap:10px; align-items:center; }
-  .contact-icon { width:36px; height:36px; background:var(--step-bg); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-  .contact-icon svg { width:16px; height:16px; color:var(--brand); }
-  .contact-item-text { min-width:0; }
-  .contact-item-text span { display:block; font-size:11px; color:var(--muted); font-weight:500; text-transform:uppercase; letter-spacing:0.4px; }
-  .contact-item-text strong { font-size:13.5px; font-weight:600; word-break:break-all; }
+/* Ticket */
+.ticket-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:start;margin-top:28px}
+@media(max-width:900px){.ticket-wrap{grid-template-columns:1fr}}
+.side-list{display:grid;gap:12px;margin-top:18px}
+.side-item{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+.side-item .n{flex-shrink:0;width:32px;height:32px;border-radius:10px;background:#ccfbf1;color:var(--teal-d);font-weight:800;display:flex;align-items:center;justify-content:center}
+.side-item > div > b{display:block;font-size:14.5px}
+.side-item span{font-size:13.5px;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:26px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.form-grid{grid-template-columns:1fr}}
+.full{grid-column:1/-1}
+.fld label{display:block;font-size:12.5px;font-weight:700;color:#334155;margin-bottom:6px}
+.fld input,.fld select,.fld textarea{width:100%;font:inherit;font-size:14.5px;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:11px 13px;outline:none;transition:border-color .15s,box-shadow .15s}
+.fld textarea{resize:vertical;min-height:110px}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(13,148,136,.12)}
+.prio{display:flex;flex-wrap:wrap;gap:8px}
+.prio label{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--line);border-radius:99px;padding:7px 12px;font-size:13px;font-weight:700;cursor:pointer;color:#334155;margin:0}
+.prio input{accent-color:var(--teal)}
+.prio label:has(input:checked){border-color:var(--teal);background:#f0fdfa;color:var(--teal-d)}
+.check{display:flex;gap:9px;align-items:flex-start;font-size:13px;color:var(--muted)}
+.check input{margin-top:3px;accent-color:var(--teal)}
+.hp{position:absolute;left:-9999px}
+.form-msg{display:none;margin-top:14px;border-radius:12px;padding:12px 14px;font-size:14px;font-weight:600}
+.form-msg.err{display:block;background:#fef2f2;color:#991b1b}
+.success{display:none;text-align:center;padding:10px 4px}
+.success .tick{width:64px;height:64px;border-radius:50%;margin:0 auto 14px;background:linear-gradient(135deg,#d1fae5,#a7f3d0);color:#047857;display:flex;align-items:center;justify-content:center}
+.success .tick svg{width:30px;height:30px}
+.success h3{font-size:20px;font-weight:800}
+.tid{display:inline-flex;align-items:center;gap:10px;margin:14px 0 8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:20px;font-weight:800;letter-spacing:.04em;background:#0b2a3c;color:#5eead4;border-radius:12px;padding:10px 16px}
+.tid button{font:inherit;font-size:12px;font-family:'DM Sans',sans-serif;font-weight:700;background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:8px;padding:5px 9px;cursor:pointer}
+.success p{color:var(--muted);font-size:14px;max-width:420px;margin:0 auto}
+.success .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
 
-  /* Session button */
-  .btn-session { display:flex; align-items:center; justify-content:center; gap:12px; background:var(--brand); color:#fff; font-weight:700; font-size:16px; padding:16px 28px; border-radius:12px; text-decoration:none; transition:transform 0.15s,box-shadow 0.15s; box-shadow:0 4px 16px rgba(26,60,110,0.3); border:none; cursor:pointer; }
-  .btn-session:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(26,60,110,0.4); }
-  .btn-badge { background:rgba(255,255,255,0.2); font-size:11px; font-weight:600; padding:3px 9px; border-radius:99px; letter-spacing:0.3px; }
+/* Remote steps */
+.remote{background:linear-gradient(160deg,#0b2a3c,#0d4f5c);color:#fff;border-radius:28px;padding:40px;position:relative;overflow:hidden}
+.remote::before{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(45,212,191,.25),transparent 70%)}
+.remote .eyebrow{color:#5eead4}
+.remote p.sub{color:#cfe6e9}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px;position:relative}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.steps{grid-template-columns:1fr}.remote{padding:28px 20px}}
+.step{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px}
+.step .k{font-size:12px;font-weight:800;color:#5eead4;letter-spacing:.1em}
+.step > b{display:block;font-size:15.5px;margin:6px 0 4px}
+.step span{font-size:13.5px;color:#cfe6e9}
+.step code{display:inline-block;margin-top:8px;font-size:12.5px;background:rgba(0,0,0,.25);padding:3px 8px;border-radius:6px;color:#a7f3d0}
+.remote-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px;position:relative}
+.safe{display:flex;gap:10px;align-items:flex-start;margin-top:20px;font-size:13.5px;color:#cfe6e9;position:relative}
+.safe svg{width:18px;height:18px;color:#5eead4;flex-shrink:0;margin-top:2px}
 
-  footer { text-align:center; margin-top:40px; font-size:12px; color:var(--muted); }
+/* Services + FAQ */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+@media(max-width:900px){.svc{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.svc{grid-template-columns:1fr}}
+.svc div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.svc b{display:block;font-size:15px;margin-bottom:4px}
+.svc span{font-size:13.5px;color:var(--muted)}
+.faq{margin-top:22px;display:grid;gap:10px;max-width:860px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.faq summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:20px;line-height:1;color:var(--teal)}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin-top:10px;color:var(--muted);font-size:14.5px}
 
-  /* Raise a support request */
-  .request-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px; margin-bottom:32px; }
-  .request-card h2 { margin:0 0 6px; font-family:'Plus Jakarta Sans',sans-serif; font-size:19px; font-weight:800; color:var(--fg); text-wrap:balance; }
-  .request-card > p { margin:0 0 20px; font-size:14px; color:var(--muted); }
-  .request-options { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:22px; }
-  @media (max-width:620px) { .request-options { grid-template-columns:1fr; } }
-  .request-option { display:flex; flex-direction:column; gap:8px; border:1px solid var(--border); border-radius:10px; padding:16px; background:var(--bg); min-width:0; }
-  .request-option strong { font-size:14px; font-weight:700; color:var(--fg); }
-  .request-option p { margin:0; font-size:13px; color:var(--muted); line-height:1.5; flex:1; }
-  .request-option .opt-value { font-size:13.5px; font-weight:600; color:var(--brand); word-break:break-all; }
-  .btn-req { display:inline-flex; align-items:center; justify-content:center; gap:8px; font-weight:700; font-size:14px; padding:11px 16px; border-radius:9px; text-decoration:none; border:none; cursor:pointer; font-family:inherit; transition:transform 0.15s,box-shadow 0.15s; }
-  .btn-req:hover { transform:translateY(-1px); }
-  .btn-req svg { width:18px; height:18px; flex-shrink:0; }
-  .btn-chat { background:#0d9488; color:#fff; box-shadow:0 3px 10px rgba(13,148,136,0.3); }
-  .btn-chat[disabled] { opacity:.75; cursor:progress; }
-  .btn-email { background:var(--brand); color:#fff; box-shadow:0 3px 10px rgba(26,60,110,0.25); }
-  .btn-call { background:var(--surface); color:var(--brand); border:1px solid var(--border); }
-  .chat-status { margin:0; font-size:12.5px; color:#b91c1c; line-height:1.45; }
-  .details-title { font-size:13px; font-weight:700; color:var(--fg); margin:0 0 8px; }
-  .details-list { margin:0; padding-left:20px; font-size:13.5px; color:var(--muted); display:grid; gap:4px; }
+/* Footer */
+.foot{background:#071d2b;color:#94a3b8;padding:34px 0;font-size:13px}
+.foot .container{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
+.foot a{color:#5eead4;text-decoration:none}
+.foot .consent{flex-basis:100%;font-size:12px;line-height:1.7;border-top:1px solid rgba(255,255,255,.08);padding-top:14px;margin-top:4px}
 
-  /* Floating WhatsApp */
-  .wa-float { position:fixed; bottom:28px; right:24px; z-index:999; display:flex; flex-direction:column; align-items:flex-end; gap:10px; }
-  .wa-bubble { background:#fff; border-radius:16px; box-shadow:0 8px 32px rgba(0,0,0,0.18); padding:14px 18px; max-width:240px; font-size:13.5px; font-weight:500; color:#1a2332; line-height:1.45; position:relative; display:none; border:1px solid #e2e8f0; }
-  .wa-bubble::after { content:''; position:absolute; bottom:-10px; right:22px; width:0; height:0; border-left:10px solid transparent; border-right:10px solid transparent; border-top:10px solid #fff; }
-  .wa-bubble.show { display:block; animation:popIn 0.25s ease; }
-  @keyframes popIn { from{opacity:0;transform:scale(0.8) translateY(8px)} to{opacity:1;transform:scale(1) translateY(0)} }
-  .wa-btn { width:60px; height:60px; background:#25d366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 20px rgba(37,211,102,0.45); text-decoration:none; transition:transform 0.2s,box-shadow 0.2s; position:relative; cursor:pointer; border:none; }
-  .wa-btn:hover { transform:scale(1.1); box-shadow:0 10px 28px rgba(37,211,102,0.55); }
-  .wa-btn svg { width:32px; height:32px; fill:#fff; }
-  .wa-ping { position:absolute; top:2px; right:2px; width:14px; height:14px; background:#ff4444; border-radius:50%; border:2px solid #fff; animation:ping 1.5s ease-in-out infinite; }
-  @keyframes ping { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.3);opacity:0.7} }
+/* Floating WhatsApp */
+.wa{position:fixed;right:20px;bottom:20px;z-index:60;width:58px;height:58px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(34,197,94,.45);transition:transform .15s}
+.wa:hover{transform:scale(1.06)}
+.wa svg{width:30px;height:30px;fill:#fff}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
+<a class="skip" href="#ticket">Skip to the support form</a>
 
-<div class="wrap">
-  <header class="site-header">
-    <a href="/" class="home-link" aria-label="OMNET IT Solutions home">
-      <div class="logo-badge">
-        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      </div>
-      <div class="logo-text">
-        <strong>OMNET IT Solutions</strong>
-        <span>Remote Support Portal</span>
-      </div>
+<header class="topbar">
+  <div class="container">
+    <a class="brand" href="/" aria-label="OMNET IT Solutions home">
+      <img src="/logo-omnet-light.svg" alt="OMNET IT Solutions" width="114" height="34">
+      <small>Support Centre</small>
     </a>
-    <a href="/" class="back-link">&larr; Main website</a>
-  </header>
-
-  <div class="hero">
-    <div class="hero-eyebrow"><span></span> Live Support Available</div>
-    <h1>Remote IT Support</h1>
-    <p>Our technician will guide you through the setup. Download AnyDesk and share your ID to get started.</p>
-    <a href="https://anydesk.com/en/downloads" target="_blank" class="btn-download">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-      </svg>
-      Download AnyDesk — Free
-    </a>
+    <nav class="top-actions" aria-label="Support quick actions">
+      <a class="pill pill-ghost" href="/">&larr; Main website</a>
+      <a class="pill pill-ghost" href="#remote">Remote help</a>
+      <a class="pill pill-call" href="tel:+918920603270"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.18 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.1 9.9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91 89206 03270</a>
+    </nav>
   </div>
+</header>
 
-  <p class="section-label">Log a complaint or service request</p>
-  <section class="request-card" aria-labelledby="raise-request">
-    <h2 id="raise-request">Raise a Support Request</h2>
-    <p>You can log a complaint or service request with OMNET IT Solutions in any of the following ways. Our support team will review your request and get back to you.</p>
-
-    <div class="request-options">
-      <div class="request-option">
-        <strong>Live Chat</strong>
-        <p>Chat with our support team and describe the issue. You can also use the round chat button at the bottom-right corner of any page on our website.</p>
-        <button type="button" class="btn-req btn-chat" id="startChat">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.48 3 2 6.92 2 11.75c0 2.4 1.1 4.57 2.9 6.15L4 22l4.37-2.3c1.12.33 2.34.5 3.63.5 5.52 0 10-3.92 10-8.75S17.52 3 12 3z"/></svg>
-          <span id="startChatLabel">Start Live Chat</span>
-        </button>
-        <p class="chat-status" id="chatStatus" role="status" hidden>Live chat could not be loaded. Please email support@omnetit.in or call +91 89206 03270.</p>
+<main>
+  <section class="hero">
+    <div class="container">
+      <div>
+        <span class="live"><span class="dot"></span> Helpdesk online · 24×7</span>
+        <h1>How can we <em>help you</em> today?</h1>
+        <p class="lead">Raise a ticket, chat with an engineer, or let us fix it remotely in minutes. CERT-In empanelled IT support for businesses in Noida, Delhi &amp; Gurugram — and remotely across India.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-white" href="#ticket"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v6a2 2 0 0 0 0 4v6H4v-6a2 2 0 0 0 0-4z"/><path d="M12 4v16" stroke-dasharray="2 3"/></svg>Raise a ticket</a>
+          <a class="btn btn-glass" href="#remote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Get remote help</a>
+        </div>
+        <div class="trust">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>CERT-In Empanelled</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Onsite in Delhi NCR</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Encrypted remote sessions</span>
+        </div>
       </div>
-      <div class="request-option">
-        <strong>Email</strong>
-        <p>Send the details of your issue by email. Please include the information listed below.</p>
-        <span class="opt-value">support@omnetit.in</span>
-        <a class="btn-req btn-email" href="mailto:support@omnetit.in?subject=Support%20Request%20-%20%5BYour%20Company%5D&body=Name%3A%20%0ACompany%3A%20%0AContact%20number%3A%20%0A%0ADescription%20of%20the%20issue%3A%20%0A%0AAnyDesk%20ID%20(if%20remote%20support%20is%20needed)%3A%20">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Email Support
-        </a>
-      </div>
-      <div class="request-option">
-        <strong>Phone / WhatsApp</strong>
-        <p>Call or message our support desk to report an urgent issue.</p>
-        <span class="opt-value">+91 89206 03270</span>
-        <a class="btn-req btn-call" href="tel:+918920603270">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Call Support
-        </a>
-      </div>
+      <aside class="hero-card" aria-label="Support at a glance">
+        <h3>Support at a glance</h3>
+        <div class="stat-grid">
+          <div class="stat"><b>24×7</b><span>Remote helpdesk</span></div>
+          <div class="stat"><b>4 ways</b><span>Ticket · Chat · Call · WhatsApp</span></div>
+          <div class="stat"><b>Onsite</b><span>Noida · Delhi · Gurugram</span></div>
+          <div class="stat"><b>Since 2016</b><span>Serving businesses</span></div>
+        </div>
+      </aside>
     </div>
-
-    <p class="details-title">To help us resolve your request quickly, please include:</p>
-    <ul class="details-list">
-      <li>Your name and company name</li>
-      <li>Your contact number and email address</li>
-      <li>A short description of the issue and when it started</li>
-      <li>Screenshots or error messages, if available</li>
-      <li>Your AnyDesk ID, if you need a remote support session</li>
-    </ul>
   </section>
 
-  <p class="section-label">How it works — 4 easy steps</p>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-body">
-        <strong>Download &amp; Install AnyDesk</strong>
-        <p>Click the button above to download AnyDesk. It installs in under a minute — no account needed.</p>
+  <section class="channels" aria-label="Contact channels">
+    <div class="container ch-grid">
+      <div class="ch">
+        <div class="ic" style="background:linear-gradient(135deg,#0d9488,#0891b2)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.9 2 11.75c0 2.4 1.1 4.57 2.9 6.15L4 22l4.37-2.3c1.12.33 2.34.5 3.63.5 5.5 0 10-3.92 10-8.75S17.5 3 12 3z"/></svg></div>
+        <h3>Live chat</h3>
+        <p>Talk to our support team right now, straight from your browser.</p>
+        <button type="button" class="act" id="startChat" style="background:var(--teal)"><span id="startChatLabel">Start live chat</span></button>
+        <p class="chat-status" id="chatStatus" role="status" hidden>Live chat could not be loaded. Please email support@omnetit.in or call +91 89206 03270.</p>
+      </div>
+      <div class="ch">
+        <div class="ic" style="background:var(--green)"><svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.3.6 4.5 1.8 6.5L3 29l6.9-1.8c1.9 1 4 1.6 6.1 1.6 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm6.4 18.1c-.3.8-1.6 1.5-2.2 1.6-.6.1-1.3.1-2.1-.1-.5-.2-1.1-.4-1.9-.7-3.3-1.4-5.5-4.7-5.6-4.9-.2-.2-1.3-1.8-1.3-3.4 0-1.6.8-2.4 1.1-2.7.3-.3.6-.4.8-.4h.6c.2 0 .5-.1.7.5.3.7.9 2.3 1 2.4.1.2.1.3 0 .5-.1.2-.2.3-.3.5l-.5.5c-.2.2-.3.3-.1.6.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.4 2.6 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.9.9 2.2 1.1.3.2.5.2.6.4.1.1.1.8-.2 1.5z"/></svg></div>
+        <h3>WhatsApp</h3>
+        <p>Message us with screenshots or a voice note — we reply fast.</p>
+        <a class="act" style="background:var(--green)" href="https://wa.me/918920603270?text=Hello%20OMNET%20IT%20Solutions%2C%20I%20need%20technical%20support." target="_blank" rel="noopener">Chat on WhatsApp</a>
+      </div>
+      <div class="ch">
+        <div class="ic" style="background:linear-gradient(135deg,#f97316,#eab308)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.18 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.1 9.9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <h3>Call the helpdesk</h3>
+        <p>For urgent issues, speak to an engineer directly.</p>
+        <span class="val">+91 89206 03270</span>
+        <a class="act" style="background:var(--orange)" href="tel:+918920603270">Call now</a>
+      </div>
+      <div class="ch">
+        <div class="ic" style="background:#334155"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></div>
+        <h3>Email support</h3>
+        <p>Send details and attachments; we'll log a ticket for you.</p>
+        <span class="val">support@omnetit.in</span>
+        <a class="act" style="background:#334155" href="mailto:support@omnetit.in?subject=Support%20Request%20-%20%5BYour%20Company%5D&body=Name%3A%20%0ACompany%3A%20%0AContact%20number%3A%20%0A%0ADescription%20of%20the%20issue%3A%20%0A%0AAnyDesk%20ID%20(if%20remote%20support%20needed)%3A%20">Email us</a>
       </div>
     </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-body">
-        <strong>Open AnyDesk — note your ID</strong>
-        <p>Once open, a 9-digit <strong>Your Address</strong> number appears on screen. This is your unique ID.</p>
-        <code>Example: 123 456 789</code>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-body">
-        <strong>Share your ID with our technician</strong>
-        <p>Call or WhatsApp us and read out your 9-digit ID. Our technician will connect from their end.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <div class="step-body">
-        <strong>Click "Accept" to allow access</strong>
-        <p>A pop-up will appear asking permission. Click <strong>Accept</strong> — our technician can now see and help with your screen.</p>
-      </div>
-    </div>
-  </div>
+  </section>
 
-  <div class="notice">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
-    </svg>
-    <p><strong>Your privacy is protected.</strong> You can see everything the technician does on your screen and disconnect at any time by closing AnyDesk.</p>
-  </div>
+  <section class="block" id="ticket" aria-labelledby="ticketTitle">
+    <div class="container">
+      <span class="eyebrow">Raise a ticket</span>
+      <h2 class="title" id="ticketTitle">Tell us what's wrong — get a ticket ID instantly</h2>
+      <p class="sub">Every request is logged and tracked by our helpdesk. Keep your ticket ID handy when you call or chat with us.</p>
+      <div class="ticket-wrap">
+        <div>
+          <div class="side-list">
+            <div class="side-item"><span class="n">1</span><div><b>Submit the form</b><span>You get a unique ticket ID on screen right away.</span></div></div>
+            <div class="side-item"><span class="n">2</span><div><b>An engineer reviews it</b><span>We prioritise by impact — critical issues first.</span></div></div>
+            <div class="side-item"><span class="n">3</span><div><b>We fix it — remotely or onsite</b><span>Remote via AnyDesk, or an engineer visits in Delhi NCR.</span></div></div>
+          </div>
+          <div class="side-item" style="margin-top:12px;background:#f0fdfa;border-color:#99f6e4">
+            <span class="n" style="background:#fff">!</span>
+            <div><b>Is your business down right now?</b><span>Choose <strong>Critical</strong> priority and also call <a href="tel:+918920603270" style="color:var(--teal-d);font-weight:700">+91 89206 03270</a>.</span></div>
+          </div>
+        </div>
 
-  <div class="contact-card">
-    <h3>Contact our support team</h3>
-    <div class="contact-grid">
-      <div class="contact-item">
-        <div class="contact-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
-        </div>
-        <div class="contact-item-text">
-          <span>Phone / WhatsApp</span>
-          <strong>+91 8920603270</strong>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
-          </svg>
-        </div>
-        <div class="contact-item-text">
-          <span>Email</span>
-          <strong>support@omnetit.in</strong>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-          </svg>
-        </div>
-        <div class="contact-item-text">
-          <span>Support Hours</span>
-          <strong>24 × 7 Always Available</strong>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
-        </div>
-        <div class="contact-item-text">
-          <span>Website</span>
-          <strong>www.omnetit.in</strong>
+        <div class="card">
+          <form id="tkForm" novalidate>
+            <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <div class="form-grid">
+              <div class="fld"><label for="tkName">Your name *</label><input id="tkName" name="name" required autocomplete="name" placeholder="Full name"></div>
+              <div class="fld"><label for="tkCompany">Company</label><input id="tkCompany" name="company" autocomplete="organization" placeholder="Company / organisation"></div>
+              <div class="fld"><label for="tkPhone">Phone / WhatsApp *</label><input id="tkPhone" name="phone" type="tel" required autocomplete="tel" placeholder="+91 XXXXX XXXXX"></div>
+              <div class="fld"><label for="tkEmail">Email *</label><input id="tkEmail" name="email" type="email" required autocomplete="email" placeholder="you@company.com"></div>
+              <div class="fld"><label for="tkCat">Issue type</label>
+                <select id="tkCat" name="category">
+                  <option>Computer / Laptop</option><option>Email / Microsoft 365 / Google Workspace</option><option>Network / Internet / Wi-Fi</option>
+                  <option>Printer / Scanner</option><option>Server / Backup / NAS</option><option>Security / Virus / Phishing</option>
+                  <option>Software / Tally / ERP</option><option>CCTV / Access control</option><option>New hardware / Purchase</option><option>Other</option>
+                </select></div>
+              <div class="fld"><label for="tkAny">AnyDesk ID <span style="font-weight:500;color:var(--muted)">(optional)</span></label><input id="tkAny" name="anydesk" inputmode="numeric" placeholder="123 456 789"></div>
+              <div class="fld full"><label>Priority</label>
+                <div class="prio">
+                  <label><input type="radio" name="priority" value="Low"> Low</label>
+                  <label><input type="radio" name="priority" value="Normal" checked> Normal</label>
+                  <label><input type="radio" name="priority" value="High"> High</label>
+                  <label><input type="radio" name="priority" value="Critical"> Critical</label>
+                </div></div>
+              <div class="fld full"><label for="tkDesc">Describe the issue *</label><textarea id="tkDesc" name="description" required placeholder="What happened, when it started, how many users are affected, any error message…"></textarea></div>
+              <label class="check full"><input type="checkbox" name="whatsapp" value="Yes"> Send me ticket updates from OMNET IT Solutions on WhatsApp at the number above. I can reply STOP to opt out.</label>
+            </div>
+            <button type="submit" class="btn btn-primary" id="tkSubmit" style="width:100%;margin-top:18px">Submit ticket</button>
+            <div class="form-msg" id="tkMsg" role="alert"></div>
+            <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:12px">By submitting you agree to our <a href="/privacy-policy.html" style="color:var(--teal-d)">Privacy Policy</a>.</p>
+          </form>
+
+          <div class="success" id="tkDone" role="status" aria-live="polite">
+            <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></div>
+            <h3>Ticket received</h3>
+            <div class="tid"><span id="tkId">OMN-000000-XXXX</span><button type="button" id="tkCopy">Copy</button></div>
+            <p id="tkNote">Our helpdesk has your request. Please quote this ticket ID when you contact us.</p>
+            <div class="row">
+              <a class="btn btn-primary" id="tkWa" href="#" target="_blank" rel="noopener">Share on WhatsApp</a>
+              <button class="btn" type="button" id="tkNew" style="background:#f1f5f9;color:var(--ink)">Raise another ticket</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div style="margin-top:28px;">
-    <p class="section-label">Already have AnyDesk? Start directly</p>
-    <a href="anydesk:" class="btn-session">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;flex-shrink:0;">
-        <rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/><line x1="2" y1="20" x2="22" y2="20"/>
-      </svg>
-      Start Remote Support Session
-      <span class="btn-badge">AnyDesk</span>
-    </a>
-    <p style="font-size:12px;color:var(--muted);margin-top:10px;text-align:center;">
-      This opens AnyDesk directly if it is already installed on your computer.
-    </p>
-  </div>
+  <section class="block" id="remote" style="padding-top:0" aria-labelledby="remoteTitle">
+    <div class="container">
+      <div class="remote">
+        <span class="eyebrow">Remote support</span>
+        <h2 class="title" id="remoteTitle">Get fixed remotely in 4 simple steps</h2>
+        <p class="sub">Our engineer connects securely to your screen using AnyDesk — no travel, no waiting.</p>
+        <div class="steps">
+          <div class="step"><span class="k">STEP 1</span><b>Download AnyDesk</b><span>Free, installs in under a minute. No account needed.</span></div>
+          <div class="step"><span class="k">STEP 2</span><b>Note your ID</b><span>Open AnyDesk and find the 9-digit <strong>Your Address</strong> number.</span><br><code>e.g. 123 456 789</code></div>
+          <div class="step"><span class="k">STEP 3</span><b>Share it with us</b><span>Call, WhatsApp, or add it to your ticket above.</span></div>
+          <div class="step"><span class="k">STEP 4</span><b>Click “Accept”</b><span>Allow the connection — our engineer can now help on your screen.</span></div>
+        </div>
+        <div class="remote-ctas">
+          <a class="btn btn-white" href="https://anydesk.com/en/downloads" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/></svg>Download AnyDesk — free</a>
+          <a class="btn btn-glass" href="anydesk:"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Already installed? Open AnyDesk</a>
+        </div>
+        <div class="safe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span><b style="color:#fff">Your privacy is protected.</b> A session starts only when you click Accept, you see everything the engineer does, and you can disconnect anytime by closing AnyDesk. OMNET will never ask for your passwords or OTPs.</span></div>
+      </div>
+    </div>
+  </section>
 
-  <footer>
-    &copy; 2026 OMNET IT Solutions &nbsp;·&nbsp; New Delhi, India &nbsp;·&nbsp; All support sessions are encrypted end-to-end.
-  </footer>
-</div>
+  <section class="block" style="padding-top:0" aria-labelledby="svcTitle">
+    <div class="container">
+      <span class="eyebrow">What we support</span>
+      <h2 class="title" id="svcTitle">One helpdesk for your entire IT</h2>
+      <div class="svc">
+        <div><b>Desktops, laptops &amp; Macs</b><span>Slow systems, crashes, OS updates, repairs and upgrades.</span></div>
+        <div><b>Email &amp; collaboration</b><span>Microsoft 365, Google Workspace, Outlook and mailbox issues.</span></div>
+        <div><b>Network &amp; Wi-Fi</b><span>Internet outages, firewalls, routers, switches and VPN.</span></div>
+        <div><b>Servers &amp; backup</b><span>Windows/Linux servers, NAS, backup and recovery.</span></div>
+        <div><b>Cybersecurity</b><span>Virus, phishing, ransomware response and endpoint protection.</span></div>
+        <div><b>Printers, CCTV &amp; more</b><span>Printers, scanners, CCTV, access control and peripherals.</span></div>
+      </div>
 
-<!-- Floating WhatsApp Button -->
-<div class="wa-float" id="waFloat">
-  <div class="wa-bubble" id="waBubble">
-    Need help? Message our support team on WhatsApp.
+      <h2 class="title" style="margin-top:56px">Frequently asked questions</h2>
+      <div class="faq">
+        <details><summary>How do I raise an IT support ticket?</summary><p>Use the form above for an instant ticket ID, start a live chat, email support@omnetit.in, or call / WhatsApp +91 89206 03270.</p></details>
+        <details><summary>Is AnyDesk remote support safe?</summary><p>Yes. The session starts only after you click Accept, you can watch everything, and you can end it anytime by closing AnyDesk. We never ask for passwords or OTPs.</p></details>
+        <details><summary>Do you send engineers onsite?</summary><p>Yes — onsite engineers are available across Noida, Delhi and Gurugram (Delhi NCR). Remote support is available across India and worldwide.</p></details>
+        <details><summary>I'm not an AMC customer. Can I still get help?</summary><p>Absolutely. We support one-time (casual) requests as well as AMC and managed IT customers. <a href="/pricing.html" style="color:var(--teal-d)">See pricing</a> or raise a ticket and we'll guide you.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="container">
+    <span>&copy; <span id="yr">2026</span> OMNET IT Solutions · New Delhi, India · CERT-In Empanelled</span>
+    <span><a href="/">Home</a> · <a href="/register.html">Contact Us</a> · <a href="/privacy-policy.html">Privacy Policy</a> · <a href="/terms-of-service.html">Terms</a></span>
+    <p class="consent"><b style="color:#e2e8f0">Communication &amp; WhatsApp consent:</b> By submitting a form, requesting support or messaging us, you agree that OMNET IT Solutions may contact you by phone, SMS, email and WhatsApp about your request and our services. Promotional messages are sent only to people who have opted in. Opt out anytime by replying STOP on WhatsApp, via <a href="/unsubscribe.html">Unsubscribe from Mailer Promotions</a>, or by writing to <a href="mailto:info@omnetit.in">info@omnetit.in</a>.</p>
   </div>
-  <a href="https://wa.me/918920603270?text=Hello%20OMNET%20IT%20Solutions%2C%20I%20need%20technical%20support." 
-     target="_blank" class="wa-btn" id="waBtn" title="Chat on WhatsApp">
-    <div class="wa-ping"></div>
-    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-      <path d="M16 0C7.163 0 0 7.163 0 16c0 2.84.742 5.502 2.043 7.818L0 32l8.418-2.01A15.938 15.938 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 01-6.77-1.852l-.486-.29-5.002 1.195 1.236-4.868-.317-.5A13.27 13.27 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.29-9.874c-.4-.2-2.366-1.166-2.732-1.3-.366-.133-.632-.2-.9.2-.266.4-1.033 1.3-1.266 1.566-.233.267-.466.3-.866.1-.4-.2-1.688-.623-3.215-1.985-1.188-1.06-1.99-2.37-2.223-2.77-.233-.4-.025-.616.175-.815.18-.179.4-.466.6-.7.2-.233.266-.4.4-.666.133-.266.066-.5-.033-.7-.1-.2-.9-2.166-1.233-2.966-.325-.78-.654-.673-.9-.685l-.766-.013c-.266 0-.7.1-1.066.5s-1.4 1.366-1.4 3.332 1.433 3.866 1.633 4.132c.2.267 2.82 4.3 6.832 6.032.955.413 1.7.659 2.282.843.958.305 1.831.262 2.52.159.768-.114 2.366-.968 2.7-1.9.333-.933.333-1.733.233-1.9-.1-.166-.366-.266-.766-.466z"/>
-    </svg>
-  </a>
-</div>
+</footer>
+
+<a class="wa" href="https://wa.me/918920603270?text=Hello%20OMNET%20IT%20Solutions%2C%20I%20need%20technical%20support." target="_blank" rel="noopener" aria-label="Chat with OMNET support on WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.3.6 4.5 1.8 6.5L3 29l6.9-1.8c1.9 1 4 1.6 6.1 1.6 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm6.4 18.1c-.3.8-1.6 1.5-2.2 1.6-.6.1-1.3.1-2.1-.1-.5-.2-1.1-.4-1.9-.7-3.3-1.4-5.5-4.7-5.6-4.9-.2-.2-1.3-1.8-1.3-3.4 0-1.6.8-2.4 1.1-2.7.3-.3.6-.4.8-.4h.6c.2 0 .5-.1.7.5.3.7.9 2.3 1 2.4.1.2.1.3 0 .5-.1.2-.2.3-.3.5l-.5.5c-.2.2-.3.3-.1.6.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.4 2.6 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.9.9 2.2 1.1.3.2.5.2.6.4.1.1.1.8-.2 1.5z"/></svg></a>
 
 <script>
-  const bubble = document.getElementById('waBubble');
-  const btn    = document.getElementById('waBtn');
-  setTimeout(() => bubble.classList.add('show'), 3000);
-  btn.addEventListener('click', () => bubble.classList.remove('show'));
+document.getElementById('yr').textContent = new Date().getFullYear();
 
-</script>
-<script>
-  /* Live chat (Tawk.to): the default launcher stays hidden; the chat opens from "Start Live Chat" */
-  var Tawk_API = Tawk_API || {}, Tawk_LoadTime = new Date();
-  (function () {
-    var ready = false, failed = false, pending = null;
-    var btn = document.getElementById('startChat');
-    var label = document.getElementById('startChatLabel');
-    var status = document.getElementById('chatStatus');
-    function hideLauncher() { if (typeof Tawk_API.hideWidget === 'function') Tawk_API.hideWidget(); }
-    function reset() { btn.disabled = false; label.textContent = 'Start Live Chat'; }
-    function openChat() { reset(); status.hidden = true; Tawk_API.showWidget(); Tawk_API.maximize(); }
-    function unavailable() { reset(); status.hidden = false; }
-    function settle(ok) { if (!pending) return; clearTimeout(pending); pending = null; ok ? openChat() : unavailable(); }
-    Tawk_API.onBeforeLoad = hideLauncher;
-    Tawk_API.onLoad = function () { ready = true; hideLauncher(); settle(true); };
-    Tawk_API.onChatMinimized = hideLauncher;
-    btn.addEventListener('click', function () {
-      if (ready) return openChat();
-      if (failed) return unavailable();
-      btn.disabled = true; label.textContent = 'Connecting\u2026';
-      clearTimeout(pending);
-      pending = setTimeout(function () { pending = null; unavailable(); }, 6000);
-    });
-    function loadTawk() {
-      var s1 = document.createElement('script'), s0 = document.getElementsByTagName('script')[0];
-      s1.async = true;
-      s1.src = 'https://embed.tawk.to/6ac1452ce6f57734ca7b09da/1k41fce27';
-      s1.charset = 'UTF-8';
-      s1.setAttribute('crossorigin', '*');
-      s1.onerror = function () { failed = true; settle(false); };
-      s0.parentNode.insertBefore(s1, s0);
+/* Support ticket → Google Sheet ("Tickets") + email notification */
+(function () {
+  var SHEET = 'https://script.google.com/macros/s/AKfycbwiRsUFv_kVzLkY0DmVRko2fPvPhzZ1li3F_U80OhwLy5pqd8T_N9VHNG2ONBEk5X60/exec';
+  var f = document.getElementById('tkForm'), done = document.getElementById('tkDone'), msg = document.getElementById('tkMsg'), btn = document.getElementById('tkSubmit');
+  function makeId() {
+    var d = new Date(), p = function (n) { return String(n).padStart(2, '0'); };
+    var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', r = '';
+    var buf = new Uint32Array(4); (window.crypto || window.msCrypto).getRandomValues(buf);
+    for (var i = 0; i < 4; i++) r += chars[buf[i] % chars.length];
+    return 'OMN-' + String(d.getFullYear()).slice(2) + p(d.getMonth() + 1) + p(d.getDate()) + '-' + r;
+  }
+  f.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    msg.className = 'form-msg';
+    var d = new FormData(f), v = function (k) { return String(d.get(k) || '').trim(); };
+    if (v('website')) return;
+    if (!v('name') || !v('phone') || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v('email')) || !v('description')) {
+      msg.textContent = 'Please fill in your name, phone, a valid email and a description of the issue.'; msg.className = 'form-msg err'; return;
     }
-    if (document.readyState === 'complete') loadTawk();
-    else window.addEventListener('load', loadTawk);
-  })();
+    btn.disabled = true; btn.textContent = 'Submitting…';
+    var id = makeId();
+    var data = { ticket_id: id, name: v('name'), company: v('company'), phone: v('phone'), email: v('email'), category: v('category'), priority: v('priority') || 'Normal',
+      anydesk: v('anydesk'), description: v('description'), whatsapp: d.get('whatsapp') ? 'Yes' : 'No',
+      consent_text: d.get('whatsapp') ? 'WhatsApp ticket-updates opt-in on ' + location.href : '' };
+    var sheet = fetch(SHEET, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(Object.assign({ type: 'ticket', page: location.href, userAgent: navigator.userAgent }, data)) })
+      .then(function () { return true; }, function () { return false; });
+    var mail = fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(Object.assign({ access_key: '2af0c0f5-01fa-4349-b83c-fff623cb969b', subject: 'Support Ticket ' + id + ' [' + data.priority + '] - ' + data.name, from_name: 'OMNET Support Centre' }, data)) })
+      .then(function (r) { return r.json(); }).then(function (j) { return !!j.success; }, function () { return false; });
+    var res = await Promise.all([sheet, mail]);
+    btn.disabled = false; btn.textContent = 'Submit ticket';
+    if (!(res[0] || res[1])) { msg.textContent = 'We could not submit your ticket. Please call +91 89206 03270 or WhatsApp us.'; msg.className = 'form-msg err'; return; }
+    document.getElementById('tkId').textContent = id;
+    document.getElementById('tkNote').textContent = 'Thanks ' + data.name.split(' ')[0] + '! Your ' + data.priority.toLowerCase() + '-priority ticket is logged. Please quote this ID when you contact us.' + (data.priority === 'Critical' ? ' For a business-down issue, please also call +91 89206 03270 now.' : '');
+    document.getElementById('tkWa').href = 'https://wa.me/918920603270?text=' + encodeURIComponent('Hello OMNET, my support ticket ID is ' + id + ' (' + data.category + ', ' + data.priority + ').');
+    f.style.display = 'none'; done.style.display = 'block'; done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    try { localStorage.setItem('omn_last_ticket', id); } catch (x) {}
+    if (window.gtag) gtag('event', 'generate_lead', { form: 'support_ticket', priority: data.priority, category: data.category });
+  });
+  document.getElementById('tkCopy').addEventListener('click', function () {
+    var t = document.getElementById('tkId').textContent, b = this;
+    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1500); }, function () {});
+  });
+  document.getElementById('tkNew').addEventListener('click', function () { f.reset(); done.style.display = 'none'; f.style.display = 'block'; });
+})();
+
+/* Live chat (Tawk.to): launcher hidden; opens from "Start live chat" */
+var Tawk_API = Tawk_API || {}, Tawk_LoadTime = new Date();
+(function () {
+  var ready = false, failed = false, pending = null;
+  var btn = document.getElementById('startChat'), label = document.getElementById('startChatLabel'), status = document.getElementById('chatStatus');
+  function hideLauncher() { if (typeof Tawk_API.hideWidget === 'function') Tawk_API.hideWidget(); }
+  function reset() { btn.disabled = false; label.textContent = 'Start live chat'; }
+  function openChat() { reset(); status.hidden = true; Tawk_API.showWidget(); Tawk_API.maximize(); }
+  function unavailable() { reset(); status.hidden = false; }
+  function settle(ok) { if (!pending) return; clearTimeout(pending); pending = null; ok ? openChat() : unavailable(); }
+  Tawk_API.onBeforeLoad = hideLauncher;
+  Tawk_API.onLoad = function () { ready = true; hideLauncher(); settle(true); };
+  Tawk_API.onChatMinimized = hideLauncher;
+  btn.addEventListener('click', function () {
+    if (ready) return openChat();
+    if (failed) return unavailable();
+    btn.disabled = true; label.textContent = 'Connecting…';
+    clearTimeout(pending);
+    pending = setTimeout(function () { pending = null; unavailable(); }, 6000);
+  });
+  function loadTawk() {
+    var s1 = document.createElement('script'), s0 = document.getElementsByTagName('script')[0];
+    s1.async = true; s1.src = 'https://embed.tawk.to/6ac1452ce6f57734ca7b09da/1k41fce27'; s1.charset = 'UTF-8'; s1.setAttribute('crossorigin', '*');
+    s1.onerror = function () { failed = true; settle(false); };
+    s0.parentNode.insertBefore(s1, s0);
+  }
+  if (document.readyState === 'complete') loadTawk(); else window.addEventListener('load', loadTawk);
+})();
 </script>
 </body>
 </html>
