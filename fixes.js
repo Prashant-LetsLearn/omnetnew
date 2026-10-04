@@ -212,6 +212,15 @@ if (typeof window.cbOpen !== 'function') {
 (function () {
   var SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwiRsUFv_kVzLkY0DmVRko2fPvPhzZ1li3F_U80OhwLy5pqd8T_N9VHNG2ONBEk5X60/exec';
 
+  (function () {
+    var st = document.createElement('style');
+    st.textContent = '.btn-register-hdr:not(.omn-sub-btn){background:#fff!important;color:#0f766e!important;border-color:#fff!important;font-weight:800!important;box-shadow:0 0 0 0 rgba(255,255,255,.7);animation:omnContactGlow 2.2s infinite}' +
+      '.btn-register-hdr:not(.omn-sub-btn):hover{background:#ccfbf1!important}' +
+      '@keyframes omnContactGlow{0%{box-shadow:0 0 0 0 rgba(255,255,255,.65)}70%{box-shadow:0 0 0 9px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}' +
+      '@media (prefers-reduced-motion:reduce){.btn-register-hdr{animation:none!important}}';
+    (document.head || document.documentElement).appendChild(st);
+  })();
+
   function upgradeStrip() {
     document.querySelectorAll('.btn-register-hdr:not(.omn-sub-btn)').forEach(function (a) {
       a.href = '/register.html';
