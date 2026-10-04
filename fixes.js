@@ -217,7 +217,10 @@ if (typeof window.cbOpen !== 'function') {
     st.textContent = '.btn-register-hdr:not(.omn-sub-btn){background:#fff!important;color:#0f766e!important;border-color:#fff!important;font-weight:800!important;box-shadow:0 0 0 0 rgba(255,255,255,.7);animation:omnContactGlow 2.2s infinite}' +
       '.btn-register-hdr:not(.omn-sub-btn):hover{background:#ccfbf1!important}' +
       '@keyframes omnContactGlow{0%{box-shadow:0 0 0 0 rgba(255,255,255,.65)}70%{box-shadow:0 0 0 9px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}' +
-      '@media (prefers-reduced-motion:reduce){.btn-register-hdr{animation:none!important}}';
+      '@media (prefers-reduced-motion:reduce){.btn-register-hdr{animation:none!important}}' +
+      '.dual-action-right a{white-space:nowrap}' +
+      '@media (max-width:1280px){.dual-action-left{display:none!important}.dual-action-inner{justify-content:flex-end}}' +
+      '@media (max-width:480px){.dual-action-right a.btn-register-hdr:not(.omn-sub-btn){display:inline-flex!important}.dual-action-right .btn-managed,.dual-action-right .omn-sub-btn{display:none!important}}';
     (document.head || document.documentElement).appendChild(st);
   })();
 
