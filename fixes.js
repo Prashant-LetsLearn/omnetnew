@@ -186,3 +186,23 @@
 if (typeof window.cbOpen !== 'function') {
   window.cbOpen = function () { window.location.href = '/contact.html#callback'; };
 }
+
+/* Request a Callback form → also log to Google Sheet ("Callbacks" tab).
+   Runs alongside the existing Web3Forms submit; never blocks it. */
+(function () {
+  var SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwiRsUFv_kVzLkY0DmVRko2fPvPhzZ1li3F_U80OhwLy5pqd8T_N9VHNG2ONBEk5X60/exec';
+  document.addEventListener('submit', function (e) {
+    var f = e.target;
+    if (!f || f.id !== 'cbForm') return;
+    try {
+      var fd = new FormData(f);
+      var body = new URLSearchParams({
+        type: 'callback',
+        name: fd.get('cb_name') || '', phone: fd.get('cb_phone') || '',
+        date: fd.get('cb_date') || '', time: fd.get('cb_time') || '',
+        topic: fd.get('cb_topic') || '', page: location.href, userAgent: navigator.userAgent
+      });
+      fetch(SHEET_ENDPOINT, { method: 'POST', mode: 'no-cors', body: body }).catch(function () {});
+    } catch (err) {}
+  }, true);
+})();
