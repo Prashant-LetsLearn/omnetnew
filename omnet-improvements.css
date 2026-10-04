@@ -162,7 +162,7 @@ body {
   font-weight: 500;
   transition: background 0.2s;
 }
-.mobile-nav-inner a:hover { background: #f0fdfa; color: #0d9488; }
+.mobile-nav-inner a:hover { background: #f0fdfa; color: #0a6b62; }
 .mobile-nav-section { margin: 0.25rem 0; }
 .mobile-nav-label {
   font-size: 0.7rem;
@@ -269,7 +269,7 @@ body {
   width: 44px; height: 44px;
   background: #f0fdfa;
   border-radius: 50%;
-  color: #0d9488;
+  color: #0a6b62;
   font-size: 1.2rem;
   text-decoration: none;
   flex-shrink: 0;
@@ -279,7 +279,7 @@ body {
   flex: 1;
   display: flex; align-items: center; justify-content: center;
   gap: 0.5rem;
-  background: linear-gradient(135deg, #0d9488, #06b6d4);
+  background: linear-gradient(135deg, #0a6b62, #06b6d4);
   color: #fff;
   border-radius: 10px;
   padding: 0.75rem;
@@ -291,7 +291,7 @@ body {
 .omnet-sticky-wa {
   display: flex; align-items: center; justify-content: center;
   width: 44px; height: 44px;
-  background: #25D366;
+  background: #0f7a3e;
   border-radius: 50%;
   color: #fff;
   font-size: 1.25rem;
@@ -575,7 +575,7 @@ main, .page-main {
   color: #111827;
 }
 .contact-detail-value a {
-  color: #0d9488;
+  color: #0a6b62;
   text-decoration: none;
 }
 .contact-detail-value a:hover { text-decoration: underline; }
@@ -613,8 +613,8 @@ main, .page-main {
 }
 .btn-white {
   background: #fff;
-  color: #0d9488;
-  border-color: #0d9488;
+  color: #0a6b62;
+  border-color: #0a6b62;
 }
 .btn-white:hover {
   background: #f0fdfa;
@@ -663,8 +663,8 @@ main, .page-main {
   gap: 0.3rem;
   white-space: nowrap;
 }
-.nav-link:hover { color: #0d9488; background: #f0fdfa; }
-.nav-link.active { color: #0d9488; font-weight: 700; }
+.nav-link:hover { color: #0a6b62; background: #f0fdfa; }
+.nav-link.active { color: #0a6b62; font-weight: 700; }
 
 .dropdown-btn {
   background: none;
@@ -682,7 +682,7 @@ main, .page-main {
   transition: all 0.2s;
   font-family: inherit;
 }
-.dropdown-btn:hover { color: #0d9488; background: #f0fdfa; }
+.dropdown-btn:hover { color: #0a6b62; background: #f0fdfa; }
 .nav-dropdown { position: relative; }
 .nav-dropdown:hover .dropdown-menu,
 .nav-dropdown:focus-within .dropdown-menu {
@@ -721,8 +721,8 @@ main, .page-main {
   border-radius: 8px;
   transition: all 0.15s;
 }
-.dropdown-menu-inner a:hover { background: #f0fdfa; color: #0d9488; }
-.dropdown-menu-inner a i { font-size: 1rem; color: #0d9488; flex-shrink: 0; }
+.dropdown-menu-inner a:hover { background: #f0fdfa; color: #0a6b62; }
+.dropdown-menu-inner a i { font-size: 1rem; color: #0a6b62; flex-shrink: 0; }
 
 /* ── 16. BADGES ── */
 .badge {
@@ -737,7 +737,7 @@ main, .page-main {
 }
 .badge-teal {
   background: #f0fdfa;
-  color: #0d9488;
+  color: #0a6b62;
   border: 1px solid #ccfbf1;
 }
 .badge-white-glass {
@@ -785,7 +785,7 @@ main, .page-main {
   line-height: 1.5;
 }
 .check-list li i {
-  color: #0d9488;
+  color: #0a6b62;
   font-size: 1rem;
   flex-shrink: 0;
   margin-top: 0.1rem;
@@ -881,7 +881,7 @@ main, .page-main {
 /* ── 25. FORM IMPROVEMENTS ── */
 input:focus, select:focus, textarea:focus {
   outline: none;
-  border-color: #0d9488 !important;
+  border-color: #0a6b62 !important;
   box-shadow: 0 0 0 3px rgba(13,148,136,0.12) !important;
 }
 input, select, textarea {
@@ -914,7 +914,7 @@ input, select, textarea {
   letter-spacing: 0.5px;
   line-height: 1.1;
 }
-.logo-name .om { color: #0d9488; }
+.logo-name .om { color: #0a6b62; }
 .logo-name .net { color: #111827; }
 .logo-tagline {
   font-size: 0.65rem;
@@ -929,7 +929,7 @@ input, select, textarea {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  color: #0d9488;
+  color: #0a6b62;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.875rem;

@@ -12,7 +12,7 @@
 /* Browsers by default remove focus rings — that's an accessibility violation.
    This adds a high-contrast focus ring on all interactive elements. */
 *:focus-visible {
-  outline: 3px solid #0d9488;
+  outline: 3px solid #0a6b62;
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -109,7 +109,7 @@ body {
 
 /* ── 10. Selection colour ───────────────────────────────────────────── */
 ::selection {
-  background: #0d9488;
+  background: #0a6b62;
   color: #fff;
 }
 
@@ -168,7 +168,7 @@ label { cursor: pointer; }
     width: 44px !important;
     height: 44px !important;
     background: #f0fdfa !important;
-    color: #0d9488 !important;
+    color: #0a6b62 !important;
     border-radius: 8px !important;
     text-decoration: none !important;
     flex-shrink: 0 !important;
@@ -179,7 +179,7 @@ label { cursor: pointer; }
     align-items: center !important;
     justify-content: center !important;
     gap: 6px !important;
-    background: #0d9488 !important;
+    background: #0a6b62 !important;
     color: #ffffff !important;
     padding: 10px !important;
     border-radius: 8px !important;
@@ -194,7 +194,7 @@ label { cursor: pointer; }
     justify-content: center !important;
     width: 44px !important;
     height: 44px !important;
-    background: #25D366 !important;
+    background: #0f7a3e !important;
     color: #ffffff !important;
     border-radius: 8px !important;
     text-decoration: none !important;
@@ -302,7 +302,7 @@ label { cursor: pointer; }
   content: "\2713"; /* check */
   margin-left: auto;
   font-weight: 700;
-  color: var(--teal-600, #0d9488);
+  color: var(--teal-600, #0a6b62);
 }
 .omnet-lang-flag {
   font-size: 18px;
@@ -331,7 +331,7 @@ label { cursor: pointer; }
   font-weight: 800;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--teal-600, #0d9488);
+  color: var(--teal-600, #0a6b62);
   padding: .35rem .25rem;
 }
 .omnet-lang-mobile select {
@@ -380,7 +380,7 @@ label { cursor: pointer; }
 }
 .omnet-lang-suggest .omnet-suggest-icon {
   font-size: 22px;
-  color: var(--teal-600, #0d9488);
+  color: var(--teal-600, #0a6b62);
   flex-shrink: 0;
 }
 .omnet-lang-suggest .omnet-suggest-text {
@@ -436,7 +436,7 @@ label { cursor: pointer; }
 }
 .omnet-content-note.show { display: flex; }
 .omnet-content-note button {
-  background: var(--teal-600, #0d9488);
+  background: var(--teal-600, #0a6b62);
   color: #fff;
   border: none;
   border-radius: 50px;
