@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Unsubscribe from Mailer Promotions | OMNET IT Solutions</title>
+<meta name="description" content="Unsubscribe from OMNET IT Solutions promotional emails." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="canonical" href="https://www.omnetit.in/unsubscribe.html" />
+<meta name="theme-color" content="#0d9488" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 16px;
+       font-family:'DM Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+       background:linear-gradient(135deg,#f0fdfa 0%,#ccfbf1 100%);color:#334155}
+  .card{width:100%;max-width:440px;background:#fff;border-radius:14px;padding:40px 32px 32px;
+        box-shadow:0 10px 30px rgba(13,148,136,.12);text-align:center}
+  .logo{height:42px;width:auto;margin-bottom:22px}
+  h1{font-size:1.45rem;font-weight:800;color:#0d9488;line-height:1.3;margin-bottom:24px}
+  input[type=email]{width:100%;padding:12px 14px;font:inherit;font-size:.95rem;border:1px solid #cbd5e1;
+        border-radius:8px;outline:none;transition:border-color .15s,box-shadow .15s}
+  input[type=email]:focus{border-color:#0d9488;box-shadow:0 0 0 3px rgba(13,148,136,.15)}
+  button{width:100%;margin-top:12px;padding:12px;font:inherit;font-weight:700;font-size:.95rem;color:#fff;
+        background:#0d9488;border:0;border-radius:8px;cursor:pointer;transition:background .15s}
+  button:hover{background:#0f766e}
+  button:disabled{opacity:.6;cursor:wait}
+  .msg{margin-top:14px;font-size:.9rem;font-weight:600;min-height:1.2em}
+  .msg.ok{color:#047857}.msg.err{color:#b91c1c}
+  .note{margin-top:22px;font-size:.82rem;line-height:1.6;color:#64748b}
+  .note a{color:#0d9488;font-weight:700;text-decoration:none}
+  .sign{margin-top:14px;font-size:.8rem;color:#94a3b8}
+  .hp{position:absolute;left:-9999px}
+</style>
+</head>
+<body>
+<main class="card">
+  <a href="index.html"><img src="logo-omnet.svg" alt="OMNET IT Solutions" class="logo" width="140" height="42"></a>
+  <h1>Unsubscribe from Mailer Promotions</h1>
+
+  <form id="unsubForm" novalidate>
+    <label for="email" class="hp">Email address</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email address" required autocomplete="email">
+    <!-- honeypot: bots fill this, humans don't see it -->
+    <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button type="submit" id="submitBtn">Submit</button>
+    <div class="msg" id="msg" role="status" aria-live="polite"></div>
+  </form>
+
+  <p class="note">Since our unsubscription process is automated, please expect your email ID to be removed from our mailing list within 24 hours. If you continue to receive emails, please write to us at <a href="mailto:info@omnetit.in">info@omnetit.in</a>.</p>
+  <p class="sign">— OMNET IT Solutions</p>
+</main>
+
+<script>
+/* ▼▼ Paste your Google Apps Script Web App URL here (see google-sheet-unsubscribe/README.md) ▼▼ */
+var UNSUB_ENDPOINT = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+
+(function(){
+  var form = document.getElementById('unsubForm');
+  var input = document.getElementById('email');
+  var btn = document.getElementById('submitBtn');
+  var msg = document.getElementById('msg');
+
+  // Pre-fill if link in mailer is like unsubscribe.html?email=someone@x.com
+  var q = new URLSearchParams(location.search).get('email');
+  if (q) input.value = q;
+
+  function show(text, ok){ msg.textContent = text; msg.className = 'msg ' + (ok ? 'ok' : 'err'); }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var email = input.value.trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { show('Please enter a valid email address.', false); input.focus(); return; }
+    if (form.website.value) { show('You have been unsubscribed successfully.', true); return; } // bot
+
+    if (UNSUB_ENDPOINT.indexOf('https://script.google.com/') !== 0) { show('Unsubscribe service is not configured yet. Please email info@omnetit.in.', false); return; }
+
+    btn.disabled = true; btn.textContent = 'Submitting…';
+    var body = new URLSearchParams({ email: email, source: document.referrer || 'direct', page: location.href, userAgent: navigator.userAgent });
+
+    fetch(UNSUB_ENDPOINT, { method: 'POST', mode: 'no-cors', body: body })
+      .then(function(){
+        show('Done! ' + email + ' has been unsubscribed from our mailer promotions.', true);
+        form.reset();
+        if (window.gtag) gtag('event', 'unsubscribe_request');
+      })
+      .catch(function(){ show('Something went wrong. Please try again or email info@omnetit.in.', false); })
+      .finally(function(){ btn.disabled = false; btn.textContent = 'Submit'; });
+  });
+})();
+</script>
+</body>
+</html>
