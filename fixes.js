@@ -206,3 +206,115 @@ if (typeof window.cbOpen !== 'function') {
     } catch (err) {}
   }, true);
 })();
+
+/* Top strip: "Register / Sign Up" → "Contact Us", plus a "Subscribe" button
+   with a sign-up modal. Subscribers are logged to Google Sheet ("Subscribers"). */
+(function () {
+  var SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwiRsUFv_kVzLkY0DmVRko2fPvPhzZ1li3F_U80OhwLy5pqd8T_N9VHNG2ONBEk5X60/exec';
+
+  function upgradeStrip() {
+    document.querySelectorAll('.btn-register-hdr:not(.omn-sub-btn)').forEach(function (a) {
+      a.href = '/register.html';
+      a.innerHTML = '<i class="ri-chat-smile-2-line"></i> Contact Us';
+      a.title = 'Contact OMNET IT Solutions';
+      if (!a.parentNode.querySelector('.omn-sub-btn')) {
+        var s = document.createElement('a');
+        s.href = '#subscribe';
+        s.className = 'btn-register-hdr omn-sub-btn';
+        s.innerHTML = '<i class="ri-notification-3-line"></i> Subscribe';
+        s.title = 'Get IT tips, security alerts & offers';
+        s.addEventListener('click', function (e) { e.preventDefault(); openSub(); });
+        a.parentNode.insertBefore(s, a.nextSibling);
+      }
+    });
+  }
+
+  var modal;
+  function buildModal() {
+    var st = document.createElement('style');
+    st.textContent =
+      '.omn-sub-btn{background:linear-gradient(135deg,#f97316,#eab308)!important;border-color:transparent!important;color:#fff!important}' +
+      '#omnSubOv{position:fixed;inset:0;background:rgba(2,6,23,.55);z-index:9300;display:none;align-items:center;justify-content:center;padding:16px}' +
+      '#omnSubOv.open{display:flex}' +
+      '#omnSub{background:#fff;border-radius:18px;max-width:440px;width:100%;box-shadow:0 24px 70px rgba(0,0,0,.3);overflow:hidden;font-family:inherit;color:#334155}' +
+      '#omnSub .hd{background:linear-gradient(135deg,#0d9488,#0891b2);color:#fff;padding:20px 22px;position:relative}' +
+      '#omnSub .hd b{display:block;font-size:18px;font-weight:800}#omnSub .hd span{font-size:13px;opacity:.9}' +
+      '#omnSub .x{position:absolute;top:10px;right:14px;background:none;border:0;color:#fff;font-size:26px;cursor:pointer;line-height:1}' +
+      '#omnSub form{padding:20px 22px}' +
+      '#omnSub input[type=email],#omnSub input[type=text]{width:100%;box-sizing:border-box;padding:10px 12px;border:1.5px solid #e5e7eb;border-radius:9px;font:inherit;font-size:14px;margin-bottom:10px;outline:none}' +
+      '#omnSub input:focus{border-color:#0d9488}' +
+      '#omnSub .chips{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 14px}' +
+      '#omnSub .chips label{display:inline-flex;align-items:center;gap:5px;border:1.5px solid #e5e7eb;border-radius:99px;padding:5px 10px;font-size:12px;font-weight:600;cursor:pointer}' +
+      '#omnSub .chips input{accent-color:#0d9488}' +
+      '#omnSub button[type=submit]{width:100%;padding:12px;border:0;border-radius:9px;background:linear-gradient(135deg,#f97316,#eab308);color:#fff;font-weight:800;font-size:14px;cursor:pointer}' +
+      '#omnSub .m{margin-top:10px;font-size:13px;font-weight:600;min-height:1em}#omnSub .m.ok{color:#047857}#omnSub .m.err{color:#b91c1c}' +
+      '#omnSub .ft{font-size:11px;color:#94a3b8;margin-top:10px;text-align:center}#omnSub .ft a{color:#0d9488}';
+    document.head.appendChild(st);
+    modal = document.createElement('div');
+    modal.id = 'omnSubOv';
+    modal.innerHTML =
+      '<div id="omnSub" role="dialog" aria-modal="true" aria-labelledby="omnSubT">' +
+      '<div class="hd"><button class="x" type="button" aria-label="Close">&times;</button>' +
+      '<b id="omnSubT">Stay ahead on IT &amp; security</b><span>Practical IT tips, security alerts and exclusive offers. No spam — unsubscribe anytime.</span></div>' +
+      '<form novalidate><input type="email" name="email" placeholder="Your work email *" required autocomplete="email">' +
+      '<input type="text" name="name" placeholder="Your name (optional)" autocomplete="name">' +
+      '<div style="font-size:12px;font-weight:700;color:#475569">I\'m interested in</div><div class="chips">' +
+      ['IT Support & AMC', 'Cybersecurity alerts', 'Cloud & Microsoft 365', 'Hardware deals', 'Tech tips'].map(function (t) {
+        return '<label><input type="checkbox" name="interests" value="' + t + '">' + t.replace('&', '&amp;') + '</label>';
+      }).join('') +
+      '</div><button type="submit">Subscribe</button><div class="m" role="status" aria-live="polite"></div>' +
+      '<div class="ft">By subscribing you agree to our <a href="/privacy-policy.html">Privacy Policy</a>.</div></form></div>';
+    document.body.appendChild(modal);
+    modal.addEventListener('click', function (e) { if (e.target === modal || e.target.classList.contains('x')) closeSub(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSub(); });
+    var form = modal.querySelector('form'), m = modal.querySelector('.m'), b = form.querySelector('button[type=submit]');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var fd = new FormData(form), email = String(fd.get('email') || '').trim().toLowerCase();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { m.textContent = 'Please enter a valid email address.'; m.className = 'm err'; return; }
+      b.disabled = true; b.textContent = 'Subscribing…';
+      fetch(SHEET_ENDPOINT, { method: 'POST', mode: 'no-cors', body: new URLSearchParams({
+        type: 'subscribe', email: email, name: fd.get('name') || '', interests: fd.getAll('interests').join(', '),
+        page: location.href, userAgent: navigator.userAgent }) })
+        .then(function () {
+          m.textContent = 'You\'re subscribed! Watch your inbox for IT tips and offers from OMNET.'; m.className = 'm ok'; form.reset();
+          if (window.gtag) gtag('event', 'sign_up', { method: 'newsletter' });
+          setTimeout(closeSub, 3000);
+        })
+        .catch(function () { m.textContent = 'Something went wrong. Please try again.'; m.className = 'm err'; })
+        .finally(function () { b.disabled = false; b.textContent = 'Subscribe'; });
+    });
+  }
+  function openSub() { if (!modal) buildModal(); modal.classList.add('open'); setTimeout(function () { modal.querySelector('input[type=email]').focus(); }, 50); }
+  function closeSub() { if (modal) modal.classList.remove('open'); }
+  window.omnOpenSubscribe = openSub;
+
+  function init() {
+    upgradeStrip();
+    if (location.hash === '#subscribe') openSub();
+    if (!modal) { var st = document.createElement('style'); st.textContent = '.omn-sub-btn{background:linear-gradient(135deg,#f97316,#eab308)!important;border-color:transparent!important;color:#fff!important}'; document.head.appendChild(st); }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+  window.addEventListener('load', upgradeStrip);
+})();
+
+/* Footer: communication & WhatsApp consent notice (all pages). */
+(function () {
+  function addConsent() {
+    var footer = document.querySelector('footer');
+    if (!footer || footer.querySelector('.omn-consent')) return;
+    var box = document.createElement('div');
+    box.className = 'omn-consent';
+    box.setAttribute('style', 'max-width:1280px;margin:0 auto;padding:.9rem 1.5rem;border-top:1px solid rgba(255,255,255,.08);font-size:.74rem;line-height:1.65;color:#94a3b8');
+    box.innerHTML =
+      '<strong style="color:#e2e8f0;font-weight:600"><i class="ri-shield-user-line" style="margin-right:4px;color:#2dd4bf"></i>Communication &amp; WhatsApp consent:</strong> ' +
+      'By submitting a form on this website, requesting a callback, or messaging us, you agree that OMNET IT Solutions may contact you by phone, SMS, email and WhatsApp ' +
+      'about your enquiry and our services. Promotional messages are sent only to people who have opted in. You can opt out anytime by replying <b>STOP</b> on WhatsApp, ' +
+      'using the <a href="/unsubscribe.html" style="color:#2dd4bf">Unsubscribe from Mailer Promotions</a> page, or writing to ' +
+      '<a href="mailto:info@omnetit.in" style="color:#2dd4bf">info@omnetit.in</a>. We never sell or share your details. See our ' +
+      '<a href="/privacy-policy.html" style="color:#2dd4bf">Privacy Policy</a>.';
+    var bottom = footer.querySelector('.footer-bottom');
+    if (bottom) footer.insertBefore(box, bottom); else footer.appendChild(box);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addConsent); else addConsent();
+})();
