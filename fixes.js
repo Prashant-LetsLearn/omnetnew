@@ -330,3 +330,27 @@ if (typeof window.cbOpen !== 'function') {
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addConsent); else addConsent();
 })();
+
+/* Google Business Profile: footer icon + "Review us on Google" button (all pages). */
+(function () {
+  var GBP = 'https://g.page/r/Cf63UF3mDoO6EBM';
+  function addGbp() {
+    var social = document.querySelector('.footer-social');
+    if (social && !social.querySelector('.omn-gbp')) {
+      var g = document.createElement('a');
+      g.href = GBP; g.target = '_blank'; g.rel = 'noopener'; g.className = 'omn-gbp';
+      g.setAttribute('aria-label', 'OMNET IT Solutions on Google');
+      g.innerHTML = '<i class="ri-google-fill"></i>';
+      social.appendChild(g);
+    }
+    var brand = document.querySelector('.footer-brand') || (social && social.parentNode);
+    if (brand && !document.querySelector('.omn-review-btn')) {
+      var r = document.createElement('a');
+      r.href = GBP + '/review'; r.target = '_blank'; r.rel = 'noopener'; r.className = 'omn-review-btn';
+      r.setAttribute('style', 'display:inline-flex;align-items:center;gap:6px;margin-top:.9rem;background:#fff;color:#0f172a;font-weight:700;font-size:.8rem;border-radius:99px;padding:6px 14px;text-decoration:none');
+      r.innerHTML = '<span style="color:#f59e0b;letter-spacing:1px">\u2605\u2605\u2605\u2605\u2605</span> Review us on Google';
+      brand.appendChild(r);
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addGbp); else addGbp();
+})();

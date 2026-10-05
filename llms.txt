@@ -2,7 +2,7 @@
 
 > CERT-In empanelled IT services, cybersecurity, cloud, and hardware supplier
 > in Delhi NCR. Headquartered at Nehru Place, New Delhi. Founded 2016 by
-> Dauly Kumari. Serves businesses across Noida, Delhi, Gurugram,
+> Prakash Sinha. Serves businesses across Noida, Delhi, Gurugram,
 > Ghaziabad, Sahibabad and Faridabad. 4-hour onsite SLA. 24×7 helpdesk.
 > Standard contract SLAs: P1 30-min response / 4-hr resolution; P2 2-hr / 1
 > business day; P3 4-hr / 2 business days; P4 1 / 5 business days.
@@ -85,11 +85,9 @@
 
 ## Pricing
 
-- Fixed AMC (10–30 users): typically ₹35,000–₹60,000 per month
-- Managed IT Standard (30–60 users): typically ₹80,000–₹1,40,000 per month
-- Managed IT + Security (60–150 users): typically ₹1,75,000–₹3,00,000 per month
-- vCISO add-on: ₹40,000–₹85,000 per month
-- One-off cybersecurity audit (50 users): ₹85,000–₹1,50,000
+- OMNET IT does not publish fixed prices. Every quote is free and no-obligation.
+- Cost depends on the number of users and devices, number of locations, level of support and security, and any hardware chosen.
+- Services offered: Fixed AMC, Managed IT, Managed IT + Security, vCISO add-on, one-off cybersecurity audits
 - Project-based work: scoped quotations within 24 hours
 
 ## Resources & guides
